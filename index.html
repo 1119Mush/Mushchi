@@ -1758,7 +1758,7 @@ function countSentences(c){ return c.sections.reduce((a,s)=>a+s.sentences.length
 
 function renderSidebar(){
   const el = $('#sidebar');
-  el.innerHTML = '<div class="sb-title">上篇 · 第 1–8 篇</div>' +
+  el.innerHTML = '<div class="sb-title"> 喜歡你的SB </div>' +
     CHAPTERS.map((c,i)=>`
       <div class="chap-item ${i===state.chapter?'on':''}" onclick="selectChapter(${i})">
         <div class="ci-num">${c.num}</div>
