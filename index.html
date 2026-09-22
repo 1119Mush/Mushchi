@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文脈 · DSE 中文十六篇指定精讀</title>
+<style>
+:root{
+  --paper:#F8F4EC;
+  --paper2:#FFFDF8;
+  --ink:#1A1A1A;
+  --ink2:#5A5040;
+  --cinnabar:#C0392B;
+  --jade:#7BA9A2;
+  --gold:#C9A96E;
+  --line:#E6DCCB;
+  --shadow:0 2px 10px rgba(90,70,40,.06);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;
+  background:var(--paper);
+  background-image:radial-gradient(circle at 20% 10%, rgba(201,169,110,.06) 0%, transparent 45%),
+                   radial-gradient(circle at 85% 80%, rgba(123,169,162,.05) 0%, transparent 40%);
+  color:var(--ink);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+.kai{font-family:"Kaiti","KaiTi","STKaiti","DFKai-SB","Songti TC",serif;}
+
+/* ---------- HEADER ---------- */
+header{
+  position:sticky;top:0;z-index:120;
+  background:rgba(248,244,236,.94);
+  backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.hd-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;gap:20px;
+  padding:12px 20px;
+}
+.logo{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;}
+.logo-seal{
+  width:36px;height:36px;border-radius:8px;
+  background:var(--cinnabar);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Kaiti","KaiTi",serif;font-size:20px;font-weight:700;
+  box-shadow:0 2px 6px rgba(192,57,43,.3);
+  letter-spacing:-1px;
+}
+.logo-txt h1{font-size:17px;font-weight:700;letter-spacing:2px;line-height:1.2;}
+.logo-txt p{font-size:10.5px;color:var(--ink2);letter-spacing:.5px;line-height:1.2;}
+nav.tabs{margin-left:auto;display:flex;gap:4px;background:#EFE8DA;padding:4px;border-radius:10px;}
+nav.tabs button{
+  border:none;background:transparent;cursor:pointer;
+  font-family:inherit;font-size:14px;color:var(--ink2);
+  padding:7px 16px;border-radius:7px;transition:.2s;font-weight:500;
+}
+nav.tabs button:hover{color:var(--ink);}
+nav.tabs button.on{background:#fff;color:var(--cinnabar);box-shadow:var(--shadow);font-weight:700;}
+
+/* ---------- VIEWS ---------- */
+.view{display:none;}
+.view.on{display:block;}
+
+/* ---------- READER ---------- */
+.reader{display:flex;max-width:1280px;margin:0 auto;align-items:flex-start;}
+.sidebar{
+  width:250px;flex-shrink:0;
+  padding:18px 12px 60px;
+  position:sticky;top:65px;
+  max-height:calc(100vh - 65px);
+  overflow-y:auto;
+}
+.sidebar::-webkit-scrollbar{width:5px;}
+.sidebar::-webkit-scrollbar-thumb{background:#DDD2BE;border-radius:4px;}
+.sb-title{
+  font-size:11px;letter-spacing:2px;color:var(--ink2);
+  padding:0 8px 10px;font-weight:600;
+}
+.chap-item{
+  display:flex;align-items:flex-start;gap:9px;
+  padding:9px 10px;border-radius:8px;cursor:pointer;
+  transition:.16s;margin-bottom:2px;
+}
+.chap-item:hover{background:#F1EADC;}
+.chap-item.on{background:#fff;box-shadow:var(--shadow);}
+.chap-item.on .ci-num{background:var(--cinnabar);color:#fff;border-color:var(--cinnabar);}
+.ci-num{
+  flex-shrink:0;width:21px;height:21px;border-radius:5px;
+  border:1px solid var(--line);background:#FBF7EF;
+  font-size:11px;display:flex;align-items:center;justify-content:center;
+  color:var(--ink2);font-weight:700;margin-top:2px;
+}
+.ci-body{min-width:0;}
+.ci-title{font-size:13.5px;font-weight:600;line-height:1.4;color:var(--ink);}
+.ci-sub{font-size:11px;color:#998E7B;margin-top:1px;}
+
+.content{flex:1;min-width:0;padding:22px 26px 100px;max-width:920px;}
+
+/* chapter header */
+.ch-head{
+  background:var(--paper2);border:1px solid var(--line);border-radius:14px;
+  padding:22px 26px;margin-bottom:20px;position:relative;overflow:hidden;
+}
+.ch-head::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--cinnabar),var(--gold));
+}
+.ch-head h2{font-size:24px;letter-spacing:2px;margin-bottom:6px;}
+.ch-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.ch-meta span{
+  font-size:11.5px;padding:2px 10px;border-radius:20px;
+  background:#F2EADC;color:#7A6A4E;border:1px solid #E6D9BF;
+}
+.ch-intro{font-size:13.5px;color:var(--ink2);line-height:1.85;}
+
+.sec-name{
+  font-family:"Kaiti","KaiTi",serif;
+  font-size:16px;color:var(--cinnabar);letter-spacing:2px;
+  margin:26px 0 12px;padding-left:12px;
+  border-left:3px solid var(--cinnabar);
+}
+
+/* sentence card */
+.sentence{
+  background:var(--paper2);border:1px solid var(--line);border-radius:11px;
+  padding:14px 18px 13px;margin-bottom:11px;cursor:pointer;
+  transition:.18s;position:relative;
+}
+.sentence:hover{border-color:#DBC99E;box-shadow:0 2px 12px rgba(160,130,70,.08);}
+.sentence.open{border-color:var(--gold);box-shadow:0 3px 16px rgba(160,130,70,.11);}
+.s-text{
+  font-family:"Kaiti","KaiTi","STKaiti","DFKai-SB",serif;
+  font-size:18.5px;line-height:2.05;color:#241F19;letter-spacing:.5px;
+}
+.s-trans{
+  font-size:13.5px;color:#3E6B63;line-height:1.8;
+  margin-top:9px;padding:8px 12px;background:#F0F6F4;border-radius:7px;
+  border-left:3px solid var(--jade);
+  display:none;
+}
+.sentence.open .s-trans{display:block;}
+.s-tags{display:flex;flex-wrap:wrap;gap:0;margin-top:7px;}
+.tag{
+  display:inline-block;font-size:11px;padding:1.5px 9px;border-radius:20px;
+  margin:3px 6px 0 0;line-height:1.6;
+}
+.tag-rhet{background:#FDECEA;color:#B23A2C;border:1px solid #F2C8C2;}
+.tag-tech{background:#EAF4F2;color:#2E6B62;border:1px solid #C5E0DC;}
+.tag-point{background:#FBF4E6;color:#8A6A2F;border:1px solid #EAD9B5;}
+.s-detail{display:none;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);}
+.sentence.open .s-detail{display:block;}
+.d-row{display:flex;gap:10px;margin-bottom:9px;font-size:13px;line-height:1.8;}
+.d-key{
+  flex-shrink:0;width:64px;font-size:11.5px;font-weight:700;
+  color:#9A8B6E;letter-spacing:1px;padding-top:2px;
+}
+.d-val{flex:1;color:var(--ink2);}
+.d-val b{color:var(--cinnabar);font-weight:600;}
+.word-chip{
+  display:inline-block;background:#FBF4E6;border:1px solid #EAD9B5;
+  border-radius:5px;padding:0 7px;margin:2px 5px 2px 0;font-size:12.5px;
+}
+.word-chip i{font-style:normal;color:var(--cinnabar);font-weight:700;margin-right:4px;}
+.w{
+  border-bottom:1.5px dashed var(--gold);
+  color:#8A5A2B;cursor:help;transition:.15s;padding-bottom:1px;
+}
+.w:hover{background:#FFF2D6;border-radius:3px;}
+
+/* word popup */
+#wpop{
+  position:fixed;z-index:300;max-width:250px;
+  background:#26221C;color:#F5EFE3;font-size:13px;line-height:1.65;
+  padding:9px 13px;border-radius:9px;
+  box-shadow:0 8px 24px rgba(0,0,0,.28);
+  display:none;pointer-events:none;
+}
+#wpop b{color:#F0C36A;display:block;font-size:13.5px;margin-bottom:2px;}
+
+/* ---------- PRACTICE ---------- */
+.practice-wrap{max-width:800px;margin:0 auto;padding:24px 20px 100px;}
+.p-filters{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px;}
+.chip{
+  font-size:12.5px;padding:5px 14px;border-radius:20px;
+  border:1px solid var(--line);background:var(--paper2);
+  cursor:pointer;transition:.16s;font-family:inherit;color:var(--ink2);
+}
+.chip:hover{border-color:var(--gold);}
+.chip.on{background:var(--cinnabar);color:#fff;border-color:var(--cinnabar);font-weight:600;}
+
+.p-card{
+  background:var(--paper2);border:1px solid var(--line);border-radius:14px;
+  padding:24px 26px;box-shadow:var(--shadow);
+}
+.p-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.p-top .tag{margin:0;}
+.p-prog{margin-left:auto;font-size:12px;color:#A2967F;font-weight:600;letter-spacing:.5px;}
+.p-q{font-size:16px;line-height:1.85;margin-bottom:18px;color:#231E18;font-weight:500;}
+.p-q .kai{font-size:17.5px;}
+.opt{
+  display:flex;gap:11px;align-items:flex-start;width:100%;text-align:left;
+  background:#FCFAF5;border:1px solid var(--line);border-radius:9px;
+  padding:11px 15px;margin-bottom:9px;cursor:pointer;
+  font-family:inherit;font-size:14px;color:#332D25;line-height:1.7;
+  transition:.16s;
+}
+.opt:hover:not(.done){border-color:var(--gold);background:#FFFBF0;}
+.opt-key{
+  flex-shrink:0;width:22px;height:22px;border-radius:6px;
+  background:#EFE7D7;color:#8A7A5C;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.opt.right{background:#EAF6F0;border-color:#7FBFA0;}
+.opt.right .opt-key{background:#4E9E78;color:#fff;}
+.opt.wrong{background:#FDEDEB;border-color:#E5A79E;}
+.opt.wrong .opt-key{background:#C0392B;color:#fff;}
+.opt.done{cursor:default;}
+.p-exp{
+  display:none;margin-top:16px;padding:14px 17px;
+  background:#FBF6EA;border-left:3px solid var(--gold);border-radius:0 9px 9px 0;
+  font-size:13.5px;line-height:1.85;color:#4A4133;
+}
+.p-exp.on{display:block;}
+.p-exp b{color:var(--cinnabar);}
+.p-foot{display:flex;align-items:center;gap:12px;margin-top:18px;}
+.btn{
+  font-family:inherit;font-size:13.5px;font-weight:600;
+  padding:9px 24px;border-radius:9px;border:none;cursor:pointer;transition:.16s;
+}
+.btn-primary{background:var(--cinnabar);color:#fff;box-shadow:0 2px 8px rgba(192,57,43,.25);}
+.btn-primary:hover{background:#A93226;}
+.btn-ghost{background:transparent;color:var(--ink2);border:1px solid var(--line);}
+.btn-ghost:hover{border-color:var(--gold);color:var(--ink);}
+.p-score{margin-left:auto;font-size:13px;color:var(--ink2);font-weight:600;}
+.p-score b{color:var(--cinnabar);font-size:16px;}
+
+/* ---------- NOTES ---------- */
+.notes-wrap{max-width:900px;margin:0 auto;padding:24px 20px 100px;}
+.note-card{
+  background:var(--paper2);border:1px solid var(--line);border-radius:12px;
+  padding:16px 20px;margin-bottom:12px;box-shadow:var(--shadow);
+}
+.note-card h4{font-size:14.5px;margin-bottom:9px;display:flex;align-items:center;gap:8px;}
+.note-card h4 .ci-num{margin:0;}
+.note-card h4 span{font-size:11px;color:#A2967F;font-weight:400;}
+.note-card textarea{
+  width:100%;min-height:76px;resize:vertical;
+  border:1px solid var(--line);border-radius:8px;
+  padding:10px 13px;font-family:inherit;font-size:13.5px;line-height:1.8;
+  background:#FCFAF5;color:var(--ink);outline:none;transition:.16s;
+}
+.note-card textarea:focus{border-color:var(--gold);background:#fff;}
+.save-hint{font-size:11px;color:#4E9E78;opacity:0;transition:.3s;margin-top:5px;}
+.save-hint.on{opacity:1;}
+
+/* ---------- STATS ---------- */
+.stats-wrap{max-width:900px;margin:0 auto;padding:24px 20px 100px;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:24px;}
+.stat-box{
+  background:var(--paper2);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;box-shadow:var(--shadow);
+}
+.stat-box .num{font-size:28px;font-weight:700;color:var(--cinnabar);line-height:1.2;font-family:"Kaiti",serif;}
+.stat-box .num small{font-size:14px;color:#B5AA96;font-weight:400;}
+.stat-box .lbl{font-size:12px;color:var(--ink2);margin-top:3px;letter-spacing:.5px;}
+.panel{
+  background:var(--paper2);border:1px solid var(--line);border-radius:12px;
+  padding:20px 22px;margin-bottom:16px;box-shadow:var(--shadow);
+}
+.panel h3{font-size:14.5px;margin-bottom:16px;letter-spacing:1px;color:#3A3227;}
+.bar-row{display:flex;align-items:center;gap:12px;margin-bottom:11px;font-size:13px;}
+.bar-lbl{width:80px;flex-shrink:0;color:var(--ink2);}
+.bar-track{flex:1;height:9px;background:#EFE8DA;border-radius:6px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--jade),#4E9E78);transition:width .5s;}
+.bar-fill.low{background:linear-gradient(90deg,#E5A79E,var(--cinnabar));}
+.bar-val{width:56px;text-align:right;color:#8A7A5C;font-size:12px;flex-shrink:0;}
+.empty{text-align:center;color:#B5AA96;font-size:13.5px;padding:40px 0;}
+
+@media (max-width:860px){
+  .hd-inner{padding:10px 14px;gap:10px;}
+  .logo-txt p{display:none;}
+  nav.tabs button{padding:6px 11px;font-size:13px;}
+  .reader{flex-direction:column;}
+  .sidebar{
+    width:100%;position:static;max-height:none;
+    display:flex;gap:7px;overflow-x:auto;
+    border-bottom:1px solid var(--line);
+    padding:11px 12px;
+  }
+  .sidebar::-webkit-scrollbar{height:0;}
+  .sb-title{display:none;}
+  .chap-item{
+    flex-shrink:0;background:var(--paper2);border:1px solid var(--line);
+    padding:6px 12px;margin:0;
+  }
+  .chap-item .ci-num{display:none;}
+  .ci-sub{display:none;}
+  .ci-title{font-size:12.5px;white-space:nowrap;}
+  .content{padding:16px 14px 90px;}
+  .ch-head{padding:18px 18px;}
+  .ch-head h2{font-size:20px;}
+  .s-text{font-size:17px;}
+  .p-card{padding:18px 16px;}
+  .p-q{font-size:15px;}
+  .opt{font-size:13.5px;padding:10px 12px;}
+  .logo-txt h1{font-size:15px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd-inner">
+    <div class="logo" onclick="switchView('read')">
+      <div class="logo-seal">文</div>
+      <div class="logo-txt">
+        <h1>文脈</h1>
+        <p>DSE 中文十六篇 · 逐句精讀</p>
+      </div>
+    </div>
+    <nav class="tabs">
+      <button data-v="read" class="on" onclick="switchView('read')">精讀</button>
+      <button data-v="practice" onclick="switchView('practice')">練習</button>
+      <button data-v="notes" onclick="switchView('notes')">筆記</button>
+      <button data-v="stats" onclick="switchView('stats')">統計</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ 精讀 ============ -->
+<section id="view-read" class="view on">
+  <div class="reader">
+    <aside class="sidebar" id="sidebar"></aside>
+    <main class="content" id="readerContent"></main>
+  </div>
+</section>
+
+<!-- ============ 練習 ============ -->
+<section id="view-practice" class="view">
+  <div class="practice-wrap">
+    <div class="p-filters" id="pFilters"></div>
+    <div id="pBody"></div>
+  </div>
+</section>
+
+<!-- ============ 筆記 ============ -->
+<section id="view-notes" class="view">
+  <div class="notes-wrap">
+    <div class="panel" style="margin-bottom:18px;">
+      <h3>📝 我的筆記本</h3>
+      <p style="font-size:13px;color:var(--ink2);line-height:1.8;">
+        為每篇範文記下你的理解、答題框架與易錯點。內容自動儲存於本機瀏覽器，離線亦可溫習。
+      </p>
+    </div>
+    <div id="notesBody"></div>
+  </div>
+</section>
+
+<!-- ============ 統計 ============ -->
+<section id="view-stats" class="view">
+  <div class="stats-wrap" id="statsBody"></div>
+</section>
+
+<div id="wpop"></div>
+
+<script>
+/* =========================================================
+   數據層
+   ========================================================= */
+const CHAPTERS = [
+{
+  id:'lunyu', num:1, title:'論仁、論孝、論君子', author:'論語', era:'先秦', genre:'語錄體', theme:'儒家修養',
+  intro:'《論語》是孔子與弟子言論的結集。本篇選錄「論仁」「論孝」「論君子」三組章節，從愛人、知人、殺身成仁，到敬養父母、義利之辨，勾勒出儒家修身的核心輪廓。',
+  sections:[
+  { name:'論仁', sentences:[
+    { text:'樊遲問仁。子曰：「愛人。」問知。子曰：「知人。」',
+      trans:'樊遲問甚麼是仁。孔子說：「愛人。」又問甚麼是智。孔子說：「了解人。」',
+      words:[{w:'仁',d:'仁愛，儒家最高的道德準則'},{w:'知',d:'同「智」，智慧、見識'}],
+      rhet:[], tech:'語錄問答體——以弟子問、孔子答的簡潔對話，直接點明概念內涵',
+      point:'「仁＝愛人」是必背定義，常考與「知＝知人」的分別' },
+    { text:'子曰：「志士仁人，無求生以害仁，有殺身以成仁。」',
+      trans:'孔子說：「有志之士和仁德之人，不會為了保全性命而損害仁德，只會犧牲生命來成全仁德。」',
+      words:[{w:'志士',d:'有志向節操的人'},{w:'害',d:'損害、妨害'},{w:'殺身',d:'犧牲生命'},{w:'成',d:'成全、成就'}],
+      rhet:[{t:'對偶',p:'無求生以害仁／有殺身以成仁',e:'正反相對，鏗鏘有力，突出仁高於生命的價值取向'}],
+      tech:'正反對照——以「無……有……」的句式並列兩種取捨',
+      point:'「殺身成仁」成語出處，與《魚我所欲也》「捨生取義」並考' },
+    { text:'子曰：「君子喻於義，小人喻於利。」',
+      trans:'孔子說：「君子明白的是道義，小人明白的是利益。」',
+      words:[{w:'喻',d:'明白、通曉'},{w:'義',d:'合宜的道德準則'},{w:'利',d:'私利、利益'}],
+      rhet:[{t:'對偶',p:'君子喻於義／小人喻於利',e:'句式整齊，君子與小人對舉，界限分明'}],
+      tech:'對比論證——以君子、小人之別確立義利之辨',
+      point:'「義利之辨」是儒家核心命題，常與《魚我所欲也》連考' }
+  ]},
+  { name:'論孝', sentences:[
+    { text:'子游問孝。子曰：「今之孝者，是謂能養。至於犬馬，皆能有養；不敬，何以別乎？」',
+      trans:'子游問甚麼是孝。孔子說：「如今所謂的孝，只是說能養活父母。但狗馬也都能得到飼養；如果沒有恭敬之心，那和飼養狗馬有甚麼分別呢？」',
+      words:[{w:'養',d:'供養、飼養'},{w:'敬',d:'恭敬之心'},{w:'別',d:'分別、區別'}],
+      rhet:[{t:'反問',p:'不敬，何以別乎？',e:'以反問強調「敬」才是孝的本質，語氣加強，發人深省'}],
+      tech:'對比論證——以「養犬馬」與「養父母」對比，凸顯「敬」的關鍵',
+      point:'高頻考點：孔子認為孝＝養＋敬，缺「敬」則與禽獸之養無異' },
+    { text:'子曰：「事父母幾諫，見志不從，又敬不違，勞而不怨。」',
+      trans:'孔子說：「侍奉父母，要委婉地勸諫；看到自己的意見不被聽從，仍然要恭敬而不違逆，雖然憂愁但不怨恨。」',
+      words:[{w:'事',d:'侍奉'},{w:'幾諫',d:'委婉地勸諫。幾，輕微、委婉'},{w:'違',d:'違逆、冒犯'},{w:'勞',d:'憂愁、憂勞'}],
+      rhet:[], tech:'層遞——由「諫」到「不從」到「敬不違」到「勞不怨」，層層深入',
+      point:'常考「幾」字的解釋（委婉），以及儒家孝道中「順」與「諫」的平衡' }
+  ]},
+  { name:'論君子', sentences:[
+    { text:'子曰：「君子坦蕩蕩，小人長戚戚。」',
+      trans:'孔子說：「君子心胸平坦寬廣，小人卻總是憂愁不安。」',
+      words:[{w:'坦蕩蕩',d:'心胸開闊、坦然自若'},{w:'長',d:'常常、總是'},{w:'戚戚',d:'憂愁、憂懼的樣子'}],
+      rhet:[{t:'對偶',p:'君子坦蕩蕩／小人長戚戚',e:'對舉工整，以「蕩蕩」與「戚戚」的疊字形成音韻與心理的強烈對比'}],
+      tech:'對比論證——君子與小人的精神狀態對照',
+      point:'疊字「蕩蕩」「戚戚」為常考修辭點' }
+  ]}
+  ]
+},
+{
+  id:'yuwwo', num:2, title:'魚我所欲也', author:'孟子', era:'先秦', genre:'議論散文', theme:'捨生取義',
+  intro:'孟子以「魚」與「熊掌」設喻，層層推論，論證「義」重於「生」，人皆有「本心」，只是賢者能保存不失。全文氣勢充沛，比喻與對比交錯。',
+  sections:[
+  { name:'本文', sentences:[
+    { text:'魚，我所欲也；熊掌，亦我所欲也。二者不可得兼，舍魚而取熊掌者也。',
+      trans:'魚是我想要的，熊掌也是我想要的；如果兩者不能同時得到，那就捨棄魚而取熊掌。',
+      words:[{w:'欲',d:'想要、喜愛'},{w:'得兼',d:'同時得到'},{w:'舍',d:'捨棄'}],
+      rhet:[{t:'排比',p:'魚……；熊掌……；二者……',e:'三句連貫而下，為下文的類比鋪路，節奏明快'}],
+      tech:'比喻論證——以「魚」喻生、以「熊掌」喻義，先設喻後立論',
+      point:'開篇設喻是本文論證的起點，常考「設喻—推論—立論」的結構' },
+    { text:'生，亦我所欲也；義，亦我所欲也。二者不可得兼，舍生而取義者也。',
+      trans:'生命是我想要的，道義也是我想要的；如果兩者不能同時得到，那就捨棄生命而取道義。',
+      words:[{w:'生',d:'生命'},{w:'義',d:'道義、正義'},{w:'舍生取義',d:'捨棄生命以成全道義'}],
+      rhet:[{t:'排比',p:'生……；義……；二者……',e:'與首句結構完全對稱，形成類比推理，使結論水到渠成'}],
+      tech:'類比論證——由「魚與熊掌」類推到「生與義」',
+      point:'中心論點所在，「舍生取義」為必背成語及核心思想' },
+    { text:'生亦我所欲，所欲有甚於生者，故不為苟得也。',
+      trans:'生命固然是我想要的，但我所想要的還有比生命更重要的，所以我不去做苟且偷生的事。',
+      words:[{w:'甚',d:'超過、勝過'},{w:'苟得',d:'苟且求得（指不擇手段求生）'}],
+      rhet:[], tech:'因果推論——由「有甚於生者」推出「不為苟得」',
+      point:'常考「甚」與「苟得」的解釋' },
+    { text:'非獨賢者有是心也，人皆有之，賢者能勿喪耳。',
+      trans:'不只是賢人有這種本心，人人都有，只是賢人能夠不喪失罷了。',
+      words:[{w:'非獨',d:'不只'},{w:'是心',d:'這種本心（指羞惡之心）'},{w:'勿喪',d:'不喪失'},{w:'耳',d:'語氣詞，罷了'}],
+      rhet:[], tech:'由個別推及普遍——從賢者推論到人人皆有本心',
+      point:'體現孟子「性善論」，常考與「人皆有之」相關的理解題' },
+    { text:'呼爾而與之，行道之人弗受；蹴爾而與之，乞人不屑也。',
+      trans:'吆喝著給人食物，路上飢餓的人也不會接受；用腳踢著給人食物，連乞丐也不屑一顧。',
+      words:[{w:'呼爾',d:'吆喝著。爾，語氣詞，表輕蔑'},{w:'與',d:'給予'},{w:'蹴',d:'用腳踢'},{w:'不屑',d:'不值得接受，鄙視'}],
+      rhet:[{t:'對偶',p:'呼爾而與之／蹴爾而與之',e:'句式對稱，強化「不食嗟來之食」的尊嚴主題'}],
+      tech:'舉例論證——以行人、乞人為例，證明人皆有羞惡之心',
+      point:'「嗟來之食」典故出處，常考乞人「不屑」的原因' },
+    { text:'萬鍾則不辯禮義而受之，萬鍾於我何加焉！',
+      trans:'但對於優厚的俸祿，卻不辨別是否合乎禮義就接受了，優厚的俸祿對我有甚麼益處呢！',
+      words:[{w:'萬鍾',d:'優厚的俸祿。鍾，古代量器'},{w:'辯',d:'同「辨」，辨別'},{w:'何加',d:'有甚麼益處'}],
+      rhet:[{t:'反問',p:'萬鍾於我何加焉！',e:'以反問作結，語氣強烈，批判見利忘義之人'}],
+      tech:'對比論證——將「不受嗟來之食」與「不辯禮義而受萬鍾」對比',
+      point:'結尾反問句的修辭效果為常考題型' }
+  ]}
+  ]
+},
+{
+  id:'xiaoyao', num:3, title:'逍遙遊（節錄）', author:'莊子', era:'先秦', genre:'寓言散文', theme:'精神自由',
+  intro:'莊子以鯤鵬之大、蜩鳩之小設喻，說明萬物皆「有所待」——大鵬需厚風、大舟需深水，唯有破除依待，方能臻於逍遙。',
+  sections:[
+  { name:'本文', sentences:[
+    { text:'北冥有魚，其名為鯤。鯤之大，不知其幾千里也。化而為鳥，其名為鵬。',
+      trans:'北海有一條魚，名叫鯤。鯤的巨大，不知道有幾千里。牠變化成鳥，名叫鵬。',
+      words:[{w:'冥',d:'同「溟」，大海'},{w:'鯤',d:'傳說中的大魚'},{w:'化',d:'變化'}],
+      rhet:[{t:'誇張',p:'不知其幾千里也',e:'以不確定的大數目極言鯤之大，營造雄奇瑰麗的想像世界'}],
+      tech:'寓言開篇——以奇幻形象吸引讀者，寄寓哲理',
+      point:'「鯤鵬」為中國文學重要意象，常考其象徵意義' },
+    { text:'鵬之背，不知其幾千里也；怒而飛，其翼若垂天之雲。',
+      trans:'鵬的背，不知道有幾千里；牠奮力振翅而飛，翅膀就像掛在天邊的雲。',
+      words:[{w:'怒',d:'奮力、振作，非憤怒'},{w:'垂天',d:'掛在天邊'},{w:'翼',d:'翅膀'}],
+      rhet:[{t:'比喻',p:'其翼若垂天之雲',e:'以「垂天之雲」比喻鵬翼之巨，形象具體，氣勢磅礴'}],
+      tech:'誇張與比喻並用——塑造大鵬雄偉形象',
+      point:'「怒」字的解釋（奮力）為必考字詞' },
+    { text:'是鳥也，海運則將徙於南冥。',
+      trans:'這隻鳥啊，當海水翻騰震動時，就將遷徙到南海去。',
+      words:[{w:'是',d:'這'},{w:'海運',d:'海水翻騰震動'},{w:'徙',d:'遷移'}],
+      rhet:[], tech:'敘述——交代大鵬行動的條件，為下文「有待」張本',
+      point:'「海運」的古義（海動）常與今義混淆，屬易錯點' },
+    { text:'且夫水之積也不厚，則其負大舟也無力。',
+      trans:'再說，如果水積蓄得不夠深厚，那麼它負載大船就沒有力量。',
+      words:[{w:'且夫',d:'再說，發語詞'},{w:'積',d:'積蓄'},{w:'負',d:'負載'}],
+      rhet:[], tech:'類比推理——以水喻風，說明大鵬高飛須憑厚風',
+      point:'本文論證的核心句，常考「水」與「風」的類比關係' },
+    { text:'覆杯水於坳堂之上，則芥為之舟；置杯焉則膠，水淺而舟大也。',
+      trans:'倒一杯水在堂上低窪處，那麼放一根小草就成了船；放上杯子就貼住不動了，這是因為水太淺而船太大。',
+      words:[{w:'坳堂',d:'堂上低窪處'},{w:'芥',d:'小草'},{w:'膠',d:'黏住、貼住不動'}],
+      rhet:[{t:'比喻',p:'覆杯水……則芥為之舟',e:'以淺水不能載杯，比喻積累不足則不能成大事'}],
+      tech:'舉例論證——以日常小事說明「積厚」之理',
+      point:'「芥」與「膠」的字義常考' },
+    { text:'風之積也不厚，則其負大翼也無力。',
+      trans:'如果風積蓄得不夠深厚，那麼它承載巨大的翅膀就沒有力量。',
+      words:[{w:'大翼',d:'指鵬的巨大翅膀'}],
+      rhet:[], tech:'類比——與「水負大舟」句平行，強化論點',
+      point:'與前句構成平行類比，常考其論證作用' }
+  ]}
+  ]
+},
+{
+  id:'quanxue', num:4, title:'勸學（節錄）', author:'荀子', era:'先秦', genre:'議論散文', theme:'學習之道',
+  intro:'荀子以博喻手法，反覆論證學習不可停止：學習能改變本性、提升智慧，君子並非天賦異稟，而是「善假於物」、鍥而不捨。',
+  sections:[
+  { name:'本文', sentences:[
+    { text:'君子曰：學不可以已。',
+      trans:'君子說：學習是不可以停止的。',
+      words:[{w:'已',d:'停止'}],
+      rhet:[], tech:'開門見山——直接提出中心論點',
+      point:'全文中心論點，「已」字解釋為必考' },
+    { text:'青，取之於藍，而青於藍；冰，水為之，而寒於水。',
+      trans:'靛青是從藍草中提取的，卻比藍草更青；冰是水凝結成的，卻比水更寒冷。',
+      words:[{w:'青',d:'靛青，一種染料'},{w:'藍',d:'藍草，可提取染料'},{w:'為',d:'形成、凝結'}],
+      rhet:[{t:'對偶',p:'青，取之於藍，而青於藍／冰，水為之，而寒於水',e:'兩句結構對稱，以自然現象並列，增強說服力'}],
+      tech:'比喻論證——以青出於藍、冰寒於水，喻學習可以超越本源',
+      point:'「青出於藍」成語出處，常考比喻義' },
+    { text:'木直中繩，輮以為輪，其曲中規。雖有槁暴，不復挺者，輮使之然也。',
+      trans:'木材筆直得合乎墨線，用火烤彎做成車輪，它的彎曲度合乎圓規。即使又曬乾了，也不會再挺直，這是用火烤使它這樣的。',
+      words:[{w:'中繩',d:'合乎墨線。中，符合'},{w:'輮',d:'用火烤使彎曲'},{w:'規',d:'圓規'},{w:'槁暴',d:'曬乾。槁，枯乾；暴，同「曝」，曬'}],
+      rhet:[], tech:'比喻論證——以木經加工而變形，喻學習能改變人的本性',
+      point:'「中」「輮」「暴」三字解釋為高頻考點' },
+    { text:'故木受繩則直，金就礪則利。',
+      trans:'所以木材經墨線量過就能取直，金屬放到磨刀石上磨就會鋒利。',
+      words:[{w:'受繩',d:'經墨線校正'},{w:'金',d:'指金屬製的刀劍'},{w:'就礪',d:'放到磨刀石上磨。礪，磨刀石'}],
+      rhet:[{t:'對偶',p:'木受繩則直／金就礪則利',e:'對稱句式，以兩物並舉，類推學習對人的作用'}],
+      tech:'比喻論證——以物需加工，喻人需學習',
+      point:'常考「就」與「礪」的字義' },
+    { text:'君子博學而日參省乎己，則知明而行無過矣。',
+      trans:'君子廣泛地學習，並且每天檢查反省自己，就能智慧明達而行為沒有過錯了。',
+      words:[{w:'博學',d:'廣泛地學習'},{w:'參省',d:'檢驗反省。參，同「三」，多次'},{w:'知',d:'同「智」'}],
+      rhet:[], tech:'結論——由比喻歸結到學習對人的實際功效',
+      point:'「參省」的解釋及通假字「知」為常考' },
+    { text:'吾嘗終日而思矣，不如須臾之所學也。',
+      trans:'我曾經整天思考，卻不如片刻學習所得的收穫大。',
+      words:[{w:'嘗',d:'曾經'},{w:'須臾',d:'片刻、一會兒'}],
+      rhet:[{t:'對比',p:'終日而思／須臾之所學',e:'以時間長短與收穫多寡形成反差，突出學習之效'}],
+      tech:'對比論證——思與學的效益對比',
+      point:'常考「須臾」的解釋，以及思、學關係的理解' },
+    { text:'君子生非異也，善假於物也。',
+      trans:'君子的天性並非與常人不同，只是善於借助外物罷了。',
+      words:[{w:'生',d:'同「性」，天性'},{w:'假',d:'借助、憑藉'},{w:'物',d:'外物，指學習條件與工具'}],
+      rhet:[], tech:'總結論點——點明君子成材的關鍵在「善假於物」',
+      point:'「生」通「性」為必考通假字；「假」解作「借助」' },
+    { text:'鍥而舍之，朽木不折；鍥而不捨，金石可鏤。',
+      trans:'雕刻一下就放棄，腐朽的木頭也刻不斷；雕刻而不停止，金屬和石頭也能雕出花紋。',
+      words:[{w:'鍥',d:'雕刻'},{w:'舍',d:'同「捨」，放棄'},{w:'鏤',d:'雕刻'}],
+      rhet:[{t:'對偶',p:'鍥而舍之，朽木不折／鍥而不捨，金石可鏤',e:'正反對照，句式工整，強調堅持的重要'}],
+      tech:'對比論證——捨與不捨的結果對比',
+      point:'「鍥而不捨」成語出處，為默寫與理解高頻句' }
+  ]}
+  ]
+},
+{
+  id:'lianpo', num:5, title:'廉頗藺相如列傳（節錄）', author:'司馬遷', era:'西漢', genre:'史傳散文', theme:'智勇忠義',
+  intro:'本文節錄「完璧歸趙」「澠池之會」「負荊請罪」三段，以詳略得宜的筆法塑造藺相如智勇雙全、以國為先的形象，並寫出廉頗勇於改過的一面。',
+  sections:[
+  { name:'完璧歸趙', sentences:[
+    { text:'廉頗者，趙之良將也。……藺相如者，趙人也，為趙宦者令繆賢舍人。',
+      trans:'廉頗是趙國的名將。……藺相如是趙國人，是趙國宦官首領繆賢的門客。',
+      words:[{w:'良將',d:'優秀的將領'},{w:'宦者令',d:'宦官的首領'},{w:'舍人',d:'門客'}],
+      rhet:[], tech:'人物介紹——先交代身份地位，為下文對比張本',
+      point:'常考「舍人」的解釋及二人身份差距的作用' },
+    { text:'臣所以去親戚而事君者，徒慕君之高義也。',
+      trans:'我之所以離開親人來侍奉您，只是仰慕您的高尚品德罷了。',
+      words:[{w:'親戚',d:'古義指父母兄弟等至親'},{w:'事',d:'侍奉'},{w:'徒',d:'只是'},{w:'高義',d:'高尚的品德'}],
+      rhet:[], tech:'直陳心志——以言語刻畫藺相如的見識與忠誠',
+      point:'「親戚」古今異義為必考；「徒」解作「只是」' },
+    { text:'王必無人，臣願奉璧往使。城入趙而璧留秦；城不入，臣請完璧歸趙。',
+      trans:'大王如果實在沒有合適的人，我願意捧著和氏璧出使秦國。城池劃歸趙國，璧就留在秦國；城池不歸趙國，我請求把璧完好無損地帶回趙國。',
+      words:[{w:'必',d:'如果、果真'},{w:'奉',d:'捧'},{w:'完',d:'使……完好無損（使動用法）'}],
+      rhet:[], tech:'語言描寫——以條件式承諾展現藺相如的膽識與決斷',
+      point:'「完」的使動用法及「完璧歸趙」成語出處' },
+    { text:'相如因持璧卻立，倚柱，怒髮上衝冠。',
+      trans:'藺相如於是拿著璧退後站定，靠著柱子，憤怒得頭髮直豎，頂起了帽子。',
+      words:[{w:'卻立',d:'退後站定'},{w:'倚',d:'靠'},{w:'上衝冠',d:'向上頂起帽子'}],
+      rhet:[{t:'誇張',p:'怒髮上衝冠',e:'以頭髮豎起頂冠的誇張描寫，將內心的極度憤怒外化為具體形象'}],
+      tech:'動作描寫——「持」「卻立」「倚」一連串動作，寫出警覺與威勢',
+      point:'「怒髮上衝冠」為常考誇張句，亦考動作描寫的作用' },
+    { text:'臣知欺大王之罪當誅，臣請就湯鑊。',
+      trans:'我知道欺騙大王的罪過應當處死，我請求接受烹刑。',
+      words:[{w:'誅',d:'殺、處死'},{w:'就',d:'接受、趨向'},{w:'湯鑊',d:'古代酷刑，把人投入沸水鍋中煮死'}],
+      rhet:[], tech:'語言描寫——以死明志，反襯秦王的理虧',
+      point:'「湯鑊」的解釋及藺相如言語的氣勢為常考' }
+  ]},
+  { name:'負荊請罪', sentences:[
+    { text:'今兩虎共鬥，其勢不俱生。吾所以為此者，以先國家之急而後私讎也。',
+      trans:'如今兩虎相鬥，勢必不能共存。我之所以這樣做，是把國家的急難放在前面，而把私人的仇怨放在後面啊。',
+      words:[{w:'俱生',d:'同時存活'},{w:'先／後',d:'把……放在前／後（意動用法）'},{w:'私讎',d:'私人仇怨。讎，同「仇」'}],
+      rhet:[{t:'比喻',p:'今兩虎共鬥',e:'以兩虎相鬥比喻將相不和，形象說明內訌必招外患'}],
+      tech:'語言描寫——點明全文主旨：先國家之急而後私讎',
+      point:'全文主旨句，必考；「先」「後」的意動用法為難點' },
+    { text:'廉頗聞之，肉袒負荊，因賓客至藺相如門謝罪。',
+      trans:'廉頗聽到這些話，便脫去上衣露出臂膀，背著荊條，通過賓客引領到藺相如門前請罪。',
+      words:[{w:'肉袒',d:'脫去上衣露出身體，表示認罪受罰'},{w:'負荊',d:'背著荊條，表示願受鞭打'},{w:'因',d:'通過、憑藉'},{w:'謝罪',d:'道歉認錯'}],
+      rhet:[], tech:'動作描寫——以具體行動刻畫廉頗勇於改過的性格',
+      point:'「負荊請罪」成語出處，「肉袒」「因」的解釋為常考' }
+  ]}
+  ]
+},
+{
+  id:'chushi', num:6, title:'出師表', author:'諸葛亮', era:'三國', genre:'表文', theme:'忠君報國',
+  intro:'諸葛亮出師北伐前上表後主，分析時局、薦舉賢臣、追念先帝知遇之恩，字字懇切，體現「鞠躬盡瘁」的忠貞。',
+  sections:[
+  { name:'本文', sentences:[
+    { text:'臣亮言：先帝創業未半而中道崩殂，今天下三分，益州疲弊，此誠危急存亡之秋也。',
+      trans:'臣諸葛亮進言：先帝開創事業還未完成一半就中途去世了，如今天下三分，益州疲弱困乏，這實在是危急存亡的時刻啊。',
+      words:[{w:'崩殂',d:'指帝王去世'},{w:'疲弊',d:'疲弱困乏'},{w:'誠',d:'實在、的確'},{w:'秋',d:'時刻、時期'}],
+      rhet:[], tech:'開篇陳情——先言國勢危急，奠定全文懇切基調',
+      point:'「秋」解作「時刻」為必考；「崩殂」的解釋亦常考' },
+    { text:'然侍衛之臣不懈於內，忠志之士忘身於外者，蓋追先帝之殊遇，欲報之於陛下也。',
+      trans:'然而侍衛大臣在宮內不懈怠，忠誠有志的將士在外面捨生忘死，都是因為追念先帝的特殊恩遇，想要報答陛下啊。',
+      words:[{w:'懈',d:'懈怠'},{w:'忘身',d:'捨身忘死'},{w:'殊遇',d:'特殊的恩遇'},{w:'報',d:'報答'}],
+      rhet:[{t:'對偶',p:'侍衛之臣不懈於內／忠志之士忘身於外',e:'內外對舉，句式整齊，全面呈現朝野忠臣的盡忠之狀'}],
+      tech:'敘述——由危局轉寫忠臣，為下文勸諫鋪路',
+      point:'常考此句在結構上的「承上啟下」作用' },
+    { text:'誠宜開張聖聽，以光先帝遺德，恢弘志士之氣；不宜妄自菲薄，引喻失義，以塞忠諫之路也。',
+      trans:'實在應該廣泛聽取意見，以發揚先帝遺留的美德，振奮志士的士氣；不應該隨便看輕自己，說話不恰當，以致堵塞忠臣進諫的道路。',
+      words:[{w:'開張聖聽',d:'廣泛聽取意見'},{w:'光',d:'發揚光大'},{w:'恢弘',d:'振奮、發揚'},{w:'妄自菲薄',d:'過分看輕自己'},{w:'引喻失義',d:'說話引用比喻不合道理'}],
+      rhet:[{t:'對偶',p:'誠宜……／不宜……',e:'正反對舉，一「宜」一「不宜」，勸諫分明，語氣懇切有力'}],
+      tech:'正反對比論證——從正反兩面提出勸諫',
+      point:'「妄自菲薄」為必考成語，宜／不宜的對舉結構常考' },
+    { text:'親賢臣，遠小人，此先漢所以興隆也；親小人，遠賢臣，此後漢所以傾頹也。',
+      trans:'親近賢臣，疏遠小人，這是先漢興隆的原因；親近小人，疏遠賢臣，這是後漢傾覆衰敗的原因。',
+      words:[{w:'親',d:'親近'},{w:'遠',d:'疏遠'},{w:'所以',d:'……的原因'},{w:'傾頹',d:'傾覆衰敗'}],
+      rhet:[{t:'對偶',p:'親賢臣，遠小人／親小人，遠賢臣',e:'正反對舉，以歷史興亡作證，警誡意味濃厚'}],
+      tech:'對比論證＋舉例論證——以兩漢興衰為歷史教訓',
+      point:'高頻考點：以史為鑑的勸諫手法' },
+    { text:'臣本布衣，躬耕於南陽，苟全性命於亂世，不求聞達於諸侯。',
+      trans:'我本來是個平民，在南陽親自耕種，只求在亂世中苟且保全性命，不奢求在諸侯中顯達。',
+      words:[{w:'布衣',d:'借代平民'},{w:'躬耕',d:'親自耕種'},{w:'苟全',d:'苟且保全'},{w:'聞達',d:'顯達、有名望'}],
+      rhet:[{t:'借代',p:'布衣',e:'以平民所穿的衣服代指平民，具體形象，亦見謙卑'}],
+      tech:'自述經歷——追敘出身，反襯先帝知遇之隆',
+      point:'「布衣」的借代用法及「聞達」的解釋為常考' },
+    { text:'先帝不以臣卑鄙，猥自枉屈，三顧臣於草廬之中。',
+      trans:'先帝不因為我出身卑微、見識短淺而嫌棄我，反而降低身份委屈自己，三次到草廬中來拜訪我。',
+      words:[{w:'卑鄙',d:'古義指身份低微、見識短淺'},{w:'猥',d:'辱，謙詞'},{w:'枉屈',d:'委屈自己'},{w:'三顧',d:'三次拜訪'}],
+      rhet:[], tech:'敘事——以「三顧茅廬」寫先帝知遇之恩',
+      point:'「卑鄙」古今異義為必考；「三顧」典故出處' },
+    { text:'今當遠離，臨表涕零，不知所言。',
+      trans:'如今即將遠行，面對這份表章淚流滿面，不知道說了些甚麼。',
+      words:[{w:'涕零',d:'流淚。涕，眼淚'},{w:'不知所言',d:'不知該說甚麼'}],
+      rhet:[], tech:'抒情作結——以真情收束，感人至深',
+      point:'結句的情感表達及「涕」的古義為常考' }
+  ]}
+  ]
+},
+{
+  id:'shishuo', num:7, title:'師說', author:'韓愈', era:'唐', genre:'議論散文', theme:'尊師重道',
+  intro:'韓愈針對當時「恥學於師」的風氣，闡明師的職責、擇師標準與師生關係，倡導「道之所存，師之所存」的求學精神。',
+  sections:[
+  { name:'本文', sentences:[
+    { text:'古之學者必有師。師者，所以傳道、受業、解惑也。',
+      trans:'古代求學的人一定有老師。老師，是用來傳授道理、教授學業、解答疑惑的人。',
+      words:[{w:'學者',d:'求學的人'},{w:'所以',d:'用來……的'},{w:'受',d:'同「授」，傳授'},{w:'惑',d:'疑難問題'}],
+      rhet:[{t:'排比',p:'傳道、受業、解惑',e:'三項並列，簡潔有力地界定教師的三大職責'}],
+      tech:'定義說明——開篇即為「師」下定義，確立論述基礎',
+      point:'「受」通「授」為必考通假字；師的三項職責為必背' },
+    { text:'人非生而知之者，孰能無惑？惑而不從師，其為惑也終不解矣。',
+      trans:'人不是生下來就懂得道理的，誰能沒有疑惑呢？有疑惑卻不跟從老師學習，那些疑惑最終也無法解決了。',
+      words:[{w:'生而知之',d:'天生就懂得道理'},{w:'孰',d:'誰'},{w:'從師',d:'跟隨老師學習'}],
+      rhet:[{t:'反問',p:'孰能無惑？',e:'以反問強調人必有惑，語氣肯定，不容置疑'}],
+      tech:'因果推論——由「有惑」推出「必須從師」',
+      point:'反問句的作用及「孰」的解釋為常考' },
+    { text:'生乎吾前，其聞道也固先乎吾，吾從而師之。',
+      trans:'出生在我之前的人，他懂得道理本來就比我早，我跟從他並以他為師。',
+      words:[{w:'乎',d:'介詞，於'},{w:'聞道',d:'懂得道理'},{w:'固',d:'本來'},{w:'師之',d:'以他為師（意動用法）'}],
+      rhet:[], tech:'舉例說明——具體說明擇師的依據是「聞道先後」',
+      point:'「師之」的意動用法為難點，常考' },
+    { text:'是故無貴無賤，無長無少，道之所存，師之所存也。',
+      trans:'所以無論地位高低、年齡大小，道理在哪裡，老師就在哪裡。',
+      words:[{w:'無',d:'無論、不分'},{w:'貴賤',d:'地位高低'},{w:'長少',d:'年齡大小'},{w:'所存',d:'存在的地方'}],
+      rhet:[{t:'排比',p:'無貴無賤，無長無少',e:'兩組並列，掃除世俗擇師的偏見，氣勢充沛'}],
+      tech:'結論句——提出擇師的唯一標準是「道」',
+      point:'本文擇師標準的核心句，必考' },
+    { text:'嗟乎！師道之不傳也久矣！欲人之無惑也難矣！',
+      trans:'唉！從師求學的風氣不流傳已經很久了！想要人們沒有疑惑，也就很難了！',
+      words:[{w:'嗟乎',d:'感嘆詞，唉'},{w:'師道',d:'從師求學的風氣'},{w:'之',d:'取消句子獨立性，無實義'}],
+      rhet:[{t:'感嘆',p:'嗟乎！……久矣！……難矣！',e:'連用感嘆，情感強烈，表達對時弊的痛心與批判'}],
+      tech:'抒情議論——由說理轉入對時弊的批判',
+      point:'常考感嘆詞與語氣詞所表達的情感' },
+    { text:'彼與彼年相若也，道相似也。位卑則足羞，官盛則近諛。',
+      trans:'那些人與那些人年齡相近，道行也差不多。以地位低的人為師就感到羞恥，以官職高的人為師就近乎諂媚。',
+      words:[{w:'相若',d:'相似、相近'},{w:'位卑',d:'地位低'},{w:'足羞',d:'足以感到羞恥'},{w:'近諛',d:'近乎諂媚'}],
+      rhet:[{t:'對偶',p:'位卑則足羞／官盛則近諛',e:'對舉工整，揭露世人擇師的功利心態，批判有力'}],
+      tech:'批評時弊——揭示「恥學於師」的心理根源',
+      point:'常考此句對世俗擇師觀念的批判' },
+    { text:'是故弟子不必不如師，師不必賢於弟子。聞道有先後，術業有專攻，如是而已。',
+      trans:'所以弟子不一定不如老師，老師也不一定比弟子賢能。懂得道理有先有後，技藝學問各有專長，如此罷了。',
+      words:[{w:'不必',d:'不一定'},{w:'賢於',d:'比……賢能'},{w:'術業',d:'技藝學問'},{w:'專攻',d:'專門研究'}],
+      rhet:[], tech:'結論——提出嶄新的師生觀：師生關係是相對的',
+      point:'「不必」的古義（不一定）為必考；此句為全文主旨句之一' }
+  ]}
+  ]
+},
+{
+  id:'xishan', num:8, title:'始得西山宴遊記', author:'柳宗元', era:'唐', genre:'遊記', theme:'物我合一',
+  intro:'柳宗元貶謫永州，借西山之遊抒發情懷。文章以「始得」為眼，寫出由「未始知」到「始遊」的心境轉折，達到物我兩忘的境界。',
+  sections:[
+  { name:'本文', sentences:[
+    { text:'自余為僇人，居是州，恆惴慄。',
+      trans:'自從我成為受刑辱的罪人，住在這個州，心中常常恐懼不安。',
+      words:[{w:'僇人',d:'受刑辱的人，罪人'},{w:'是州',d:'這個州，指永州'},{w:'恆',d:'常常'},{w:'惴慄',d:'恐懼不安'}],
+      rhet:[], tech:'直陳心境——交代貶謫背景與憂懼心情',
+      point:'「僇人」的解釋及開篇奠定全文情感基調為常考' },
+    { text:'其隙也，則施施而行，漫漫而遊。',
+      trans:'有空閒的時候，就慢慢地走，隨意地遊覽。',
+      words:[{w:'隙',d:'空閒的時候'},{w:'施施',d:'緩慢行走的樣子'},{w:'漫漫',d:'隨意、漫無目的的樣子'}],
+      rhet:[{t:'對偶',p:'施施而行／漫漫而遊',e:'句式對稱，以疊字寫出閒散無所適從的狀態'}],
+      tech:'動作描寫——寫出貶謫生活中強作閒適的情態',
+      point:'「施施」「漫漫」的解釋及表達效果為常考' },
+    { text:'日與其徒上高山，入深林，窮迴溪，幽泉怪石，無遠不到。',
+      trans:'每天和同伴登上高山，進入深林，走到曲折溪流的盡頭，幽深的泉水、奇特的石頭，沒有遠的地方不去。',
+      words:[{w:'徒',d:'同伴、隨從'},{w:'窮',d:'走到盡頭'},{w:'迴溪',d:'曲折的溪流'}],
+      rhet:[{t:'排比',p:'上高山，入深林，窮迴溪',e:'三個動賓短語連貫而下，寫出遊覽之廣、之勤'}],
+      tech:'敘述——鋪寫遊歷之廣，為下文「未始知西山」作反襯',
+      point:'常考排比句的作用及「窮」的解釋' },
+    { text:'以為凡是州之山水有異態者，皆我有也，而未始知西山之怪特。',
+      trans:'我以為凡是這個州形態奇異的山水，都已被我遊賞過了，卻從不知道西山的奇特卓異。',
+      words:[{w:'異態',d:'奇異的形態'},{w:'皆我有',d:'都為我所有，指都已遊賞'},{w:'未始',d:'未曾'},{w:'怪特',d:'奇特卓異'}],
+      rhet:[], tech:'轉折——以「以為……而未始知」形成轉折，引出西山',
+      point:'「未始」的解釋及此句的結構作用為常考' },
+    { text:'遂命僕人過湘江，緣染溪，斫榛莽，焚茅茷，窮山之高而止。',
+      trans:'於是命令僕人渡過湘江，沿著染溪而行，砍伐叢生的草木，燒掉茂密的茅草，直到山的最高處才停下來。',
+      words:[{w:'緣',d:'沿著'},{w:'斫',d:'砍伐'},{w:'榛莽',d:'叢生的草木'},{w:'茅茷',d:'茂密的茅草'}],
+      rhet:[{t:'排比',p:'過湘江，緣染溪，斫榛莽，焚茅茷',e:'四個動賓短語連用，節奏急促，寫出登山之艱與決心'}],
+      tech:'動作描寫——一系列動作寫出探幽的急切',
+      point:'常考此句的排比及其表達效果' },
+    { text:'攀援而登，箕踞而遨，則凡數州之土壤，皆在衽席之下。',
+      trans:'攀援著登上山頂，伸開兩腿隨意坐著遊賞，那麼幾個州的土地，都在我的坐席之下了。',
+      words:[{w:'箕踞',d:'像簸箕一樣張開兩腿而坐，不拘禮節'},{w:'遨',d:'遊賞'},{w:'衽席',d:'坐席'}],
+      rhet:[{t:'誇張',p:'凡數州之土壤，皆在衽席之下',e:'以極寫視野之高遠，反襯西山之特出與心胸之開闊'}],
+      tech:'景物描寫——登高望遠，寫出開闊之境',
+      point:'「箕踞」的解釋及誇張手法的作用為常考' },
+    { text:'然後知吾嚮之未始遊，遊於是乎始。',
+      trans:'這以後才知道我從前根本未曾真正遊覽過，真正的遊覽從這裡才開始。',
+      words:[{w:'嚮',d:'同「向」，從前'},{w:'於是',d:'從這裡'},{w:'始',d:'才開始'}],
+      rhet:[], tech:'點題——照應篇題「始得」，點明心境轉折',
+      point:'「嚮」通「向」為必考；此句為全文主旨句' }
+  ]}
+  ]
+},
+{
+  id:'yueyang', num:9, title:'岳陽樓記', author:'范仲淹', era:'北宋', genre:'記敘抒情', theme:'憂樂情懷',
+  intro:'范仲淹應好友滕子京之請作記，由洞庭湖的陰晴之景，引出遷客騷人的悲喜之情，最終以「先天下之憂而憂」的宏大襟懷作結。',
+  sections:[
+  { name:'本文', sentences:[
+    { text:'慶曆四年春，滕子京謫守巴陵郡。',
+      trans:'慶曆四年的春天，滕子京被貶官到巴陵郡做太守。',
+      words:[{w:'謫',d:'貶官'},{w:'守',d:'做太守（名詞作動詞）'}],
+      rhet:[], tech:'記敘——交代時間、人物、地點，為後文抒情議論奠下背景',
+      point:'此句為「背景鋪墊」，DSE 曾考「本文寫作緣起」' },
+    { text:'越明年，政通人和，百廢具興，乃重修岳陽樓，增其舊制，刻唐賢今人詩賦於其上。',
+      trans:'到了第二年，政事順利，百姓和樂，各種荒廢的事業都興辦起來，於是重新修建岳陽樓，擴大它原有的規模，把唐代名家和當代人的詩賦刻在上面。',
+      words:[{w:'越明年',d:'到了第二年'},{w:'政通人和',d:'政事順利，百姓和樂'},{w:'具',d:'同「俱」，都'},{w:'增其舊制',d:'擴大原有的規模'}],
+      rhet:[], tech:'敘事——寫重修岳陽樓的緣由與經過',
+      point:'「具」通「俱」為常考通假字' },
+    { text:'予觀夫巴陵勝狀，在洞庭一湖。銜遠山，吞長江，浩浩湯湯，橫無際涯。',
+      trans:'我看那巴陵郡的美景，全在洞庭一湖。它連接著遠方的山，吞噬著長江的水，浩浩蕩蕩，寬廣無邊。',
+      words:[{w:'勝狀',d:'美好的景色'},{w:'銜',d:'包含、連接'},{w:'浩浩湯湯',d:'水勢浩大的樣子'},{w:'際涯',d:'邊際'}],
+      rhet:[{t:'擬人',p:'銜遠山，吞長江',e:'以「銜」「吞」二字賦予洞庭湖以生命，氣勢磅礴，形象生動'}],
+      tech:'景物描寫——從空間角度寫洞庭湖的雄偉壯闊',
+      point:'「銜」「吞」的擬人效果為高頻考點' },
+    { text:'若夫霪雨霏霏，連月不開，陰風怒號，濁浪排空。',
+      trans:'像那連日陰雨紛紛，整月不放晴的時候，陰冷的風怒吼，渾濁的浪衝向天空。',
+      words:[{w:'霪雨',d:'連綿不斷的雨'},{w:'霏霏',d:'雨雪紛紛的樣子'},{w:'開',d:'放晴'},{w:'排空',d:'衝向天空'}],
+      rhet:[{t:'擬人',p:'陰風怒號',e:'「怒號」賦予風以人的情感，渲染蕭瑟淒涼的氣氛'}],
+      tech:'景物描寫——寫「悲景」，為下文「感極而悲」鋪墊',
+      point:'常考「怒號」的擬人手法及悲景的作用' },
+    { text:'登斯樓也，則有去國懷鄉，憂讒畏譏，滿目蕭然，感極而悲者矣。',
+      trans:'登上這座樓，就會產生離開國都、懷念家鄉，擔心讒言、害怕譏諷的心情，滿眼蕭條冷落，感慨到極點而悲傷了。',
+      words:[{w:'去國',d:'離開國都'},{w:'讒',d:'讒言'},{w:'譏',d:'譏諷'},{w:'蕭然',d:'蕭條冷落的樣子'}],
+      rhet:[{t:'排比',p:'去國懷鄉，憂讒畏譏，滿目蕭然',e:'三層並列，層層推進，寫盡遷客騷人的悲涼心境'}],
+      tech:'抒情——由景生情，寫「悲」的典型心境',
+      point:'常考遷客騷人「悲」的具體內涵' },
+    { text:'至若春和景明，波瀾不驚，上下天光，一碧萬頃。',
+      trans:'至於春風和煦、陽光明媚的時候，湖面波瀾平靜，天色與水光上下相接，一片碧綠，廣闊無邊。',
+      words:[{w:'景',d:'日光'},{w:'驚',d:'起、動'},{w:'萬頃',d:'形容廣闊無邊'}],
+      rhet:[{t:'對偶',p:'春和景明，波瀾不驚',e:'句式整齊，描繪出明媚和諧的春日湖景'}],
+      tech:'景物描寫——寫「喜景」，與前段悲景形成對比',
+      point:'「景」解作「日光」為必考；悲喜兩段對比的作用常考' },
+    { text:'不以物喜，不以己悲。',
+      trans:'不因外物的好壞和自己的得失而或喜或悲。',
+      words:[{w:'以',d:'因為'},{w:'物',d:'外物、環境'}],
+      rhet:[{t:'互文',p:'不以物喜，不以己悲',e:'上下句互相補充，意為「不因物與己而喜悲」，句式簡潔而內涵豐富'}],
+      tech:'議論——提出古仁人超脫個人得失的境界',
+      point:'互文修辭為高頻考點，常考其正確理解' },
+    { text:'先天下之憂而憂，後天下之樂而樂。',
+      trans:'在天下人憂愁之前先憂愁，在天下人快樂之後才快樂。',
+      words:[{w:'先',d:'在……之前'},{w:'後',d:'在……之後'}],
+      rhet:[{t:'對偶',p:'先天下之憂而憂／後天下之樂而樂',e:'對舉工整，鏗鏘有力，成為千古傳誦的名句'}],
+      tech:'議論抒情——點明全文主旨，抒發以天下為己任的抱負',
+      point:'全文主旨句，必背必考；亦常與《出師表》比較士人精神' }
+  ]}
+  ]
+},
+{
+  id:'liuguo', num:10, title:'六國論', author:'蘇洵', era:'北宋', genre:'議論散文', theme:'借古諷今',
+  intro:'蘇洵借六國賂秦而亡的史實，論證「弊在賂秦」，實則借古諷今，警告北宋統治者勿以歲幣求和。全文結構嚴謹，論證層層遞進。',
+  sections:[
+  { name:'本文', sentences:[
+    { text:'六國破滅，非兵不利，戰不善，弊在賂秦。',
+      trans:'六國滅亡，不是因為兵器不鋒利，仗打得不好，弊端在於賄賂秦國。',
+      words:[{w:'兵',d:'兵器'},{w:'弊',d:'弊端、弊病'},{w:'賂',d:'賄賂，此指割地求和'}],
+      rhet:[{t:'對比',p:'非兵不利，戰不善／弊在賂秦',e:'先否定再肯定，突出中心論點，開門見山，旗幟鮮明'}],
+      tech:'開門見山——直接提出中心論點',
+      point:'全文中心論點，必考；「兵」解作「兵器」為易錯點' },
+    { text:'賂秦而力虧，破滅之道也。',
+      trans:'賄賂秦國而使自己國力虧損，這正是滅亡的原因啊。',
+      words:[{w:'虧',d:'虧損、削弱'},{w:'道',d:'原因、途徑'}],
+      rhet:[], tech:'因果論證——說明賂秦與破滅的因果關係',
+      point:'「道」解作「原因」為常考' },
+    { text:'較秦之所得，與戰勝而得者，其實百倍；諸侯之所亡，與戰敗而亡者，其實亦百倍。',
+      trans:'比較秦國因受賄而得來的土地，與戰勝而得的土地，實際上多達百倍；諸侯因賄賂而失去的土地，與戰敗而失去的，實際上也有百倍。',
+      words:[{w:'較',d:'比較'},{w:'其實',d:'它的實際數目'},{w:'亡',d:'喪失'}],
+      rhet:[{t:'對比',p:'秦之所得／諸侯之所亡',e:'雙向對比，以數據強化「賂秦之害」的論證力度'}],
+      tech:'對比論證——以數字對比說明賂秦損失之巨',
+      point:'「其實」的古義（它的實際數目）為常考' },
+    { text:'思厥先祖父，暴霜露，斬荊棘，以有尺寸之地。',
+      trans:'想想他們的祖輩父輩，冒著風霜雨露，砍伐荊棘，才得到很少的土地。',
+      words:[{w:'厥',d:'他們的'},{w:'先祖父',d:'祖輩和父輩'},{w:'暴',d:'同「曝」，冒著'},{w:'尺寸',d:'形容極少'}],
+      rhet:[], tech:'敘述——追述先人創業之艱，與子孫賂秦之輕率形成反差',
+      point:'「祖父」古今異義、「暴」通「曝」為必考' },
+    { text:'以地事秦，猶抱薪救火，薪不盡，火不滅。',
+      trans:'用土地來侍奉秦國，就像抱著柴草去救火，柴草不燒完，火就不會熄滅。',
+      words:[{w:'事',d:'侍奉'},{w:'猶',d:'好像'},{w:'薪',d:'柴草'}],
+      rhet:[{t:'比喻',p:'猶抱薪救火',e:'以「抱薪救火」比喻「以地事秦」的荒謬，生動說明賄賂只會加速滅亡，使抽象道理具體化，增強說服力'}],
+      tech:'比喻論證——以日常事理說明政治謬誤',
+      point:'高頻考點：比喻論證的效果分析，常考作答框架三層' },
+    { text:'且燕趙處秦革滅殆盡之際，可謂智力孤危，戰敗而亡，誠不得已。',
+      trans:'況且燕、趙處於秦國將其他國家消滅殆盡的時候，可以說是智謀和力量都孤立危急，戰敗而亡，實在是不得已的。',
+      words:[{w:'革滅',d:'消滅'},{w:'殆盡',d:'幾乎完了'},{w:'智力',d:'智謀與力量'},{w:'誠',d:'實在'}],
+      rhet:[], tech:'舉例論證——以燕趙為例，說明不賂者亦難倖免',
+      point:'常考燕趙「不得已」的原因，以及作者對六國的評價' },
+    { text:'苟以天下之大，下而從六國破亡之故事，是又在六國下矣。',
+      trans:'如果憑藉這麼大的天下，卻重蹈六國滅亡的覆轍，那就又在六國之下了。',
+      words:[{w:'苟',d:'如果'},{w:'從',d:'跟隨、重蹈'},{w:'故事',d:'舊事、前例'},{w:'下',d:'之下，不如'}],
+      rhet:[], tech:'借古諷今——點明寫作意圖，警告北宋統治者',
+      point:'「故事」古今異義為必考；此句為全文主旨所在' }
+  ]}
+  ]
+},
+{
+  id:'shanju', num:11, title:'山居秋暝', author:'王維', era:'唐', genre:'唐詩·五律', theme:'山水田園',
+  intro:'王維以「詩中有畫」的筆法，寫出雨後空山的清幽秋景，於動靜相生中寄託歸隱之志。',
+  sections:[
+  { name:'全詩', sentences:[
+    { text:'空山新雨後，天氣晚來秋。',
+      trans:'空寂的山中剛下過一場新雨，傍晚的天氣帶來了秋意。',
+      words:[{w:'空山',d:'空寂清幽的山林'},{w:'新雨',d:'剛下過的雨'},{w:'晚來',d:'傍晚時分'}],
+      rhet:[], tech:'以景起筆——點明時地，營造清幽空靈的氛圍',
+      point:'首聯點題，「空」字為全詩詩眼，常考' },
+    { text:'明月松間照，清泉石上流。',
+      trans:'明月的清輝灑落在松林之間，清澈的泉水在山石上流淌。',
+      words:[{w:'照',d:'照耀'},{w:'流',d:'流淌'}],
+      rhet:[{t:'對偶',p:'明月松間照／清泉石上流',e:'名詞與名詞、動詞與動詞一一相對，畫面工整，音韻和諧'}],
+      tech:'動靜結合——月光為靜景，泉流為動景，動靜相生',
+      point:'千古名句，「詩中有畫」的典型，常考對偶與動靜結合' },
+    { text:'竹喧歸浣女，蓮動下漁舟。',
+      trans:'竹林裡傳來喧鬧聲，那是洗衣的姑娘回來了；蓮葉晃動，是漁船順流而下。',
+      words:[{w:'喧',d:'喧鬧'},{w:'浣女',d:'洗衣的女子'},{w:'下',d:'順流而下'}],
+      rhet:[{t:'對偶',p:'竹喧歸浣女／蓮動下漁舟',e:'對仗工整，且以「喧」「動」二字寫出聲與形'}],
+      tech:'以動襯靜——以喧鬧與晃動反襯山居的幽靜，亦寫出田園生活之樂',
+      point:'常考「以動襯靜」的手法及「喧」「動」的作用' },
+    { text:'隨意春芳歇，王孫自可留。',
+      trans:'任憑春天的花草凋謝吧，我這個隱居之人自然可以留在山中。',
+      words:[{w:'隨意',d:'任憑'},{w:'歇',d:'凋謝'},{w:'王孫',d:'本指貴族子弟，此為詩人自指'}],
+      rhet:[{t:'用典',p:'王孫自可留',e:'反用《楚辭》「王孫兮歸來，山中兮不可久留」之意，表達留戀山林的心志'}],
+      tech:'直抒胸臆——點明歸隱之志',
+      point:'尾聯點明主旨，反用典故為高頻考點' }
+  ]}
+  ]
+},
+{
+  id:'yuexia', num:12, title:'月下獨酌', author:'李白', era:'唐', genre:'唐詩·五古', theme:'孤獨曠達',
+  intro:'李白於花間獨酌，邀月與影為伴，於孤獨中展開奇思，最後相期雲漢，展現出曠達超脫的浪漫情懷。',
+  sections:[
+  { name:'全詩', sentences:[
+    { text:'花間一壺酒，獨酌無相親。',
+      trans:'花叢中擺著一壺酒，我獨自飲酒，沒有親近的人相伴。',
+      words:[{w:'獨酌',d:'獨自飲酒'},{w:'相親',d:'親近的人'}],
+      rhet:[], tech:'敘事起筆——點明「獨」字，奠定全詩孤獨基調',
+      point:'「獨」字為全詩情感核心，常考' },
+    { text:'舉杯邀明月，對影成三人。',
+      trans:'舉起酒杯邀請明月，對著自己的影子，就成了三個人。',
+      words:[{w:'邀',d:'邀請'},{w:'對影',d:'對著自己的影子'}],
+      rhet:[{t:'想像',p:'對影成三人',e:'以奇特的想像化孤獨為熱鬧，展現李白浪漫曠達的個性'}],
+      tech:'以虛寫實——用想像中的「三人」反襯現實的孤獨',
+      point:'名句，常考「三人」所指及想像手法的作用' },
+    { text:'月既不解飲，影徒隨我身。',
+      trans:'月亮既不懂得飲酒，影子也只是白白地跟隨我的身體。',
+      words:[{w:'解',d:'懂得'},{w:'徒',d:'只是、白白地'}],
+      rhet:[{t:'擬人',p:'月既不解飲',e:'將月人格化，寫出月雖相伴卻不能共飲的遺憾'}],
+      tech:'轉折——由想像的熱鬧轉回現實的孤寂',
+      point:'「徒」解作「只是」為常考字詞' },
+    { text:'暫伴月將影，行樂須及春。',
+      trans:'暫且伴著月亮和影子，行樂要趁著春天。',
+      words:[{w:'將',d:'和、與'},{w:'及',d:'趁著'}],
+      rhet:[], tech:'抒情——由孤獨轉為及時行樂的自我排解',
+      point:'常考詩人情感由悲轉達的轉折' },
+    { text:'我歌月徘徊，我舞影零亂。',
+      trans:'我唱歌時月亮徘徊不去，我跳舞時影子零亂紛雜。',
+      words:[{w:'徘徊',d:'來回走動，此指月隨人行'},{w:'零亂',d:'紛亂不整'}],
+      rhet:[{t:'擬人',p:'我歌月徘徊',e:'賦予月亮以人的情態，寫出物我交融之樂'}],
+      tech:'動作描寫——以歌、舞寫出酒後的放達',
+      point:'常考擬人手法及其表達效果' },
+    { text:'醒時同交歡，醉後各分散。',
+      trans:'清醒時一同歡樂，醉後便各自分散。',
+      words:[{w:'交歡',d:'一同歡樂'},{w:'分散',d:'各自離去'}],
+      rhet:[], tech:'敘述——寫出聚散無常，暗含孤獨',
+      point:'常考此句所流露的深層孤獨感' },
+    { text:'永結無情遊，相期邈雲漢。',
+      trans:'永遠結為忘情的伴侶一同遊樂，相約在遙遠的銀河相見。',
+      words:[{w:'無情遊',d:'忘卻世俗之情的交遊'},{w:'相期',d:'相約'},{w:'邈',d:'遙遠'},{w:'雲漢',d:'銀河'}],
+      rhet:[{t:'想像',p:'相期邈雲漢',e:'以超現實的想像作結，將孤獨昇華為永恆的精神寄託'}],
+      tech:'浪漫主義收束——由現實的孤獨走向精神的高遠',
+      point:'「雲漢」的解釋及結句的意境為常考' }
+  ]}
+  ]
+},
+{
+  id:'denglou', num:13, title:'登樓', author:'杜甫', era:'唐', genre:'唐詩·七律', theme:'憂國傷時',
+  intro:'杜甫登樓遠望，於萬方多難之際，由眼前春色想到古今變遷，抒發憂國傷時、壯志難酬的沉鬱情懷。',
+  sections:[
+  { name:'全詩', sentences:[
+    { text:'花近高樓傷客心，萬方多難此登臨。',
+      trans:'繁花靠近高樓，卻傷了我這客居之人的心；在四方多難之際，我在這裡登樓遠望。',
+      words:[{w:'客',d:'客居他鄉之人，詩人自指'},{w:'萬方多難',d:'各地多災多難'},{w:'登臨',d:'登樓遠望'}],
+      rhet:[{t:'反襯',p:'花近高樓傷客心',e:'以樂景（繁花）寫哀情，春色愈美，愈襯出內心之痛'}],
+      tech:'以樂景寫哀情——開篇即定下沉鬱基調',
+      point:'「以樂景寫哀情」為高頻考點；「客」的指代常考' },
+    { text:'錦江春色來天地，玉壘浮雲變古今。',
+      trans:'錦江的春色鋪天蓋地而來，玉壘山的浮雲變幻著古往今來。',
+      words:[{w:'錦江',d:'成都錦江'},{w:'玉壘',d:'玉壘山，在成都西北'},{w:'變古今',d:'古今變幻'}],
+      rhet:[{t:'對偶',p:'錦江春色來天地／玉壘浮雲變古今',e:'空間（天地）與時間（古今）相對，氣象宏大，內涵深遠'}],
+      tech:'借景抒情——由眼前之景寫到古今之變，拓展意境',
+      point:'常考此聯的時空對舉及其作用' },
+    { text:'北極朝廷終不改，西山寇盜莫相侵。',
+      trans:'北極星般的朝廷終究不會改變，西山的盜寇不要來侵擾。',
+      words:[{w:'北極',d:'北極星，比喻朝廷'},{w:'西山寇盜',d:'指吐蕃入侵者'},{w:'莫',d:'不要'}],
+      rhet:[{t:'比喻',p:'北極朝廷',e:'以北極星比喻朝廷的穩固不動，表達對唐王朝的信念'}],
+      tech:'議論——抒發對國家的忠誠與對外患的憤慨',
+      point:'「北極」的比喻義為必考' },
+    { text:'可憐後主還祠廟，日暮聊為梁甫吟。',
+      trans:'可嘆蜀漢後主劉禪還能有祠廟供奉，日暮時分我姑且吟誦《梁甫吟》。',
+      words:[{w:'後主',d:'蜀漢後主劉禪'},{w:'祠廟',d:'祭祀的廟宇'},{w:'梁甫吟',d:'諸葛亮隱居時喜吟的樂府詩，寄託壯志'}],
+      rhet:[{t:'用典',p:'後主還祠廟／梁甫吟',e:'借劉禪與諸葛亮之事，抒發對朝廷無人、壯志難酬的慨嘆'}],
+      tech:'用典抒情——以古事寄今情，含蓄深沉',
+      point:'用典的深層含義為高頻考點' }
+  ]}
+  ]
+},
+{
+  id:'ninnujiao', num:14, title:'念奴嬌·赤壁懷古', author:'蘇軾', era:'北宋', genre:'宋詞·豪放', theme:'懷古曠達',
+  intro:'蘇軾貶謫黃州，遊赤壁而懷古，以雄奇之筆寫周瑜之英姿，最後歸於「人生如夢」的曠達感慨。',
+  sections:[
+  { name:'全詞', sentences:[
+    { text:'大江東去，浪淘盡，千古風流人物。',
+      trans:'長江滾滾向東流去，浪濤淘盡了千百年來的英雄人物。',
+      words:[{w:'淘',d:'沖洗、淘汰'},{w:'風流人物',d:'傑出的英雄人物'}],
+      rhet:[{t:'誇張',p:'浪淘盡，千古風流人物',e:'以大江與千古並舉，氣勢磅礴，奠定豪放基調'}],
+      tech:'寫景起興——由眼前江景引出懷古之情',
+      point:'開篇為豪放詞的典範，常考其作用' },
+    { text:'故壘西邊，人道是，三國周郎赤壁。',
+      trans:'舊營壘的西邊，人們說，那就是三國時周瑜大破曹軍的赤壁。',
+      words:[{w:'故壘',d:'舊時的營壘'},{w:'人道是',d:'人們說是'},{w:'周郎',d:'周瑜'}],
+      rhet:[], tech:'點題——以「人道是」虛寫，引出懷古對象',
+      point:'「人道是」的虛寫作用為常考' },
+    { text:'亂石穿空，驚濤拍岸，捲起千堆雪。',
+      trans:'陡峭的石壁直插雲霄，驚濤駭浪拍打江岸，捲起千萬堆白雪般的浪花。',
+      words:[{w:'穿空',d:'直插天空'},{w:'驚濤',d:'洶湧的波濤'},{w:'千堆雪',d:'比喻浪花'}],
+      rhet:[{t:'比喻',p:'捲起千堆雪',e:'以「雪」比喻浪花，形象寫出浪濤之白、之盛'}],
+      tech:'景物描寫——從形、聲、色三方面寫赤壁之壯',
+      point:'「千堆雪」的比喻本體為必考' },
+    { text:'江山如畫，一時多少豪傑。',
+      trans:'江山美得像圖畫，一時間湧現了多少英雄豪傑。',
+      words:[{w:'一時',d:'當時、一時間'},{w:'豪傑',d:'英雄人物'}],
+      rhet:[{t:'比喻',p:'江山如畫',e:'以畫喻江山，概括上文的壯麗景色'}],
+      tech:'承上啟下——由寫景轉入懷人',
+      point:'常考此句的結構作用' },
+    { text:'遙想公瑾當年，小喬初嫁了，雄姿英發。',
+      trans:'遙想當年的周瑜，小喬剛剛嫁給他，他姿態雄偉，英氣勃發。',
+      words:[{w:'公瑾',d:'周瑜的字'},{w:'小喬',d:'周瑜之妻'},{w:'英發',d:'英氣勃發'}],
+      rhet:[], tech:'以美人襯英雄——以小喬初嫁烘托周瑜的春風得意',
+      point:'「小喬初嫁」的烘托作用為高頻考點' },
+    { text:'羽扇綸巾，談笑間，檣櫓灰飛煙滅。',
+      trans:'他手執羽扇，頭戴綸巾，談笑之間，曹軍的戰船就化為灰燼煙消雲散。',
+      words:[{w:'羽扇綸巾',d:'手執羽扇，頭戴青絲頭巾，儒將裝束'},{w:'檣櫓',d:'船桅和船槳，借代曹軍戰船'},{w:'灰飛煙滅',d:'化為灰燼煙霧'}],
+      rhet:[{t:'借代',p:'檣櫓',e:'以船桅船槳代指曹軍水師，具體形象'}],
+      tech:'側面烘托——以「談笑間」襯托周瑜的從容與戰功之偉',
+      point:'「檣櫓」的借代用法、「談笑間」的襯托作用為必考' },
+    { text:'人生如夢，一尊還酹江月。',
+      trans:'人生就像一場夢，還是舉起一杯酒，灑向江中的明月吧。',
+      words:[{w:'一尊',d:'一杯酒。尊，同「樽」'},{w:'酹',d:'把酒灑在地上或水中以祭奠'}],
+      rhet:[{t:'比喻',p:'人生如夢',e:'以夢喻人生，抒發對人生短暫、功業難成的感慨'}],
+      tech:'抒情作結——由懷古轉為自傷，復歸曠達',
+      point:'結句的情感（曠達中的感慨）為高頻考點' }
+  ]}
+  ]
+},
+{
+  id:'shengsheng', num:15, title:'聲聲慢', author:'李清照', era:'南宋', genre:'宋詞·婉約', theme:'愁緒',
+  intro:'李清照晚年之作，國破家亡、夫死漂泊，全詞以疊字起筆，借秋景層層鋪寫愁情，字字血淚。',
+  sections:[
+  { name:'全詞', sentences:[
+    { text:'尋尋覓覓，冷冷清清，悽悽慘慘戚戚。',
+      trans:'到處尋找尋覓，四周冷冷清清，心中淒涼悲慘憂戚。',
+      words:[{w:'尋尋覓覓',d:'反覆尋找，寫心神不寧'},{w:'悽悽慘慘戚戚',d:'淒涼悲慘憂傷的樣子'}],
+      rhet:[{t:'疊字',p:'尋尋覓覓，冷冷清清，悽悽慘慘戚戚',e:'十四疊字連用，由動作到環境到心境，層層遞進，聲情並茂，為詞史名筆'}],
+      tech:'開篇造勢——以疊字層層渲染愁緒',
+      point:'十四疊字為必考，常考其層次（動作→環境→心境）' },
+    { text:'乍暖還寒時候，最難將息。',
+      trans:'天氣忽暖忽冷的時候，最難調養身體。',
+      words:[{w:'乍暖還寒',d:'忽暖忽冷'},{w:'將息',d:'調養、保重身體'}],
+      rhet:[], tech:'寫景抒情——以天氣無常寫身心難安',
+      point:'「將息」的解釋為常考' },
+    { text:'三杯兩盞淡酒，怎敵他、晚來風急？',
+      trans:'三兩杯淡薄的酒，怎麼抵擋得住傍晚的急風呢？',
+      words:[{w:'盞',d:'小酒杯'},{w:'敵',d:'抵擋'}],
+      rhet:[{t:'反問',p:'怎敵他、晚來風急？',e:'以反問寫出酒不解愁，愁緒之重連酒也無法抵擋'}],
+      tech:'借酒抒愁——以淡酒、急風寫愁之難遣',
+      point:'常考「淡酒」與「風急」的象徵意義' },
+    { text:'雁過也，正傷心，卻是舊時相識。',
+      trans:'大雁飛過，我正傷心，卻發現牠是舊時相識。',
+      words:[{w:'雁',d:'大雁，古有傳書之說'},{w:'舊時相識',d:'指從前見過的雁'}],
+      rhet:[{t:'擬人',p:'卻是舊時相識',e:'將雁視為舊識，寫出物是人非、觸景傷情之痛'}],
+      tech:'借物抒情——以雁傳書的典故寫懷人之苦',
+      point:'「雁」的象徵義（傳書、懷人）為高頻考點' },
+    { text:'滿地黃花堆積，憔悴損，如今有誰堪摘？',
+      trans:'滿地菊花堆積，我憔悴不堪，如今還有誰值得為他摘花呢？',
+      words:[{w:'黃花',d:'菊花，此兼喻詞人自己'},{w:'憔悴損',d:'憔悴得厲害'},{w:'堪摘',d:'值得摘取'}],
+      rhet:[{t:'比喻',p:'滿地黃花堆積，憔悴損',e:'以黃花凋零比喻詞人的憔悴衰老，物我合一'}],
+      tech:'借景抒情——以殘菊自況，寫身世之悲',
+      point:'「黃花」的雙重含義為常考' },
+    { text:'梧桐更兼細雨，到黃昏、點點滴滴。',
+      trans:'梧桐樹上又下起了細雨，到黃昏時分，點點滴滴地下著。',
+      words:[{w:'梧桐',d:'梧桐樹，古典詩詞中常與愁苦相連'},{w:'更兼',d:'再加上'}],
+      rhet:[{t:'疊字',p:'點點滴滴',e:'以疊字摹寫雨聲，聲聲入耳，愁緒綿長不絕'}],
+      tech:'以景結情——以梧桐細雨渲染愁境',
+      point:'梧桐、細雨、黃昏的意象組合為常考' },
+    { text:'這次第，怎一個愁字了得！',
+      trans:'這般情景，怎麼是一個「愁」字能說得盡的呢！',
+      words:[{w:'這次第',d:'這情形、這光景'},{w:'了得',d:'了結、說盡'}],
+      rhet:[{t:'反問',p:'怎一個愁字了得！',e:'以反問作結，將無法言說的愁緒推向極致，言有盡而意無窮'}],
+      tech:'卒章顯志——以反問收束全詞',
+      point:'結句的反問及其效果為高頻考點' }
+  ]}
+  ]
+},
+{
+  id:'qingyu', num:16, title:'青玉案·元夕', author:'辛棄疾', era:'南宋', genre:'宋詞·婉約', theme:'尋覓',
+  intro:'辛棄疾寫元宵燈會之盛，卻在熱鬧中尋覓「那人」，於燈火闌珊處得見，寄託其不趨流俗、自甘寂寞的高潔人格。',
+  sections:[
+  { name:'全詞', sentences:[
+    { text:'東風夜放花千樹，更吹落、星如雨。',
+      trans:'元宵夜的東風吹開千樹繁花般的燈火，又吹落了如雨般墜落的煙火。',
+      words:[{w:'花千樹',d:'形容燈火如千樹繁花'},{w:'星如雨',d:'煙火如星雨般落下'}],
+      rhet:[{t:'比喻',p:'花千樹／星如雨',e:'以繁花喻燈、以星雨喻煙火，寫出元宵燈火之盛與夜色之美'}],
+      tech:'誇張＋比喻——極寫元宵之熱鬧繁華',
+      point:'常考「花千樹」「星如雨」的比喻本體' },
+    { text:'寶馬雕車香滿路。',
+      trans:'華麗的車馬走過，香氣瀰漫了整條路。',
+      words:[{w:'寶馬雕車',d:'裝飾華美的車馬'},{w:'香',d:'指車上女子散發的香氣'}],
+      rhet:[], tech:'側面描寫——以車馬之盛、香氣之濃寫元宵之繁華',
+      point:'常考側面描寫的作用' },
+    { text:'鳳簫聲動，玉壺光轉，一夜魚龍舞。',
+      trans:'鳳簫的聲音吹動起來，玉壺般的明月流轉著清光，整夜魚龍形的花燈飛舞。',
+      words:[{w:'鳳簫',d:'簫的美稱'},{w:'玉壺',d:'指明月'},{w:'魚龍舞',d:'魚龍形的花燈舞動'}],
+      rhet:[{t:'排比',p:'鳳簫聲動，玉壺光轉，一夜魚龍舞',e:'從聽覺、視覺、動態三方面鋪寫，全面呈現元宵盛況'}],
+      tech:'多感官描寫——聲、光、舞交織',
+      point:'常考此句的多感官描寫手法' },
+    { text:'蛾兒雪柳黃金縷，笑語盈盈暗香去。',
+      trans:'女子們頭戴蛾兒、雪柳、黃金縷等飾物，笑語盈盈，帶著幽香走遠了。',
+      words:[{w:'蛾兒雪柳黃金縷',d:'宋代婦女元宵所戴的各種頭飾'},{w:'盈盈',d:'儀態美好的樣子'},{w:'暗香',d:'幽微的香氣'}],
+      rhet:[], tech:'場面描寫——寫觀燈女子的盛裝與歡笑',
+      point:'常考此句在結構上的鋪墊作用' },
+    { text:'眾裡尋他千百度，驀然回首，那人卻在，燈火闌珊處。',
+      trans:'在人群中尋覓她千百次，猛然回頭，那人卻在燈火零落稀疏的地方。',
+      words:[{w:'千百度',d:'千百次'},{w:'驀然',d:'突然'},{w:'闌珊',d:'零落、稀疏'}],
+      rhet:[{t:'反襯',p:'燈火闌珊處',e:'以元宵燈火的熱鬧繁華，反襯「那人」的孤高淡泊，亦寄託詞人自甘寂寞的情懷'}],
+      tech:'以景結情——於冷清處點出「那人」，境界陡轉，餘味無窮',
+      point:'千古名句；「那人」的象徵義（理想人格／政治抱負）為高頻考點' }
+  ]}
+  ]
+}
+];
+
+/* ============ 題庫 ============ */
+const QUESTIONS = [
+/* 論語 */
+{q:'「樊遲問仁。子曰：『愛人。』」孔子以哪個詞解釋「仁」？',o:['愛人','知人','敬人','利人'],a:0,t:'字詞',c:'論仁、論孝、論君子',e:'孔子以「愛人」釋仁，以「知人」釋智（知）。這是儒家仁學的核心定義。'},
+{q:'「志士仁人，無求生以害仁」句中「害」的意思是？',o:['傷害身體','妨害、損害','畏懼','嫉妒'],a:1,t:'字詞',c:'論仁、論孝、論君子',e:'「害」在此解作「妨害、損害」，「害仁」即損害仁德。全句謂志士仁人不會為求活命而損害仁德。'},
+{q:'「君子坦蕩蕩，小人長戚戚」運用了甚麼修辭手法？',o:['比喻','對偶','排比','誇張'],a:1,t:'修辭',c:'論仁、論孝、論君子',e:'此句為對偶：君子／小人、坦蕩蕩／長戚戚，句式工整對舉，且以疊字形成音韻對比。'},
+{q:'孔子認為「孝」與單純「養」父母的分別在於？',o:['供養的豐厚程度','是否與父母同住','有沒有「敬」的態度','能否繼承父志'],a:2,t:'內容理解',c:'論仁、論孝、論君子',e:'孔子指出「至於犬馬，皆能有養；不敬，何以別乎」，強調「敬」是孝與飼養禽畜的根本分別。'},
+{q:'「事父母幾諫」中「幾」的意思是？',o:['幾次','輕微、委婉','幾乎','機會'],a:1,t:'字詞',c:'論仁、論孝、論君子',e:'「幾」解作輕微、委婉。「幾諫」即委婉地勸諫父母，避免直接頂撞。'},
+{q:'「君子喻於義，小人喻於利」中「喻」的意思是？',o:['比喻','明白、通曉','教導','比較'],a:1,t:'字詞',c:'論仁、論孝、論君子',e:'「喻」解作明白、通曉。君子所明白的是義，小人所明白的是利，此即儒家「義利之辨」。'},
+
+/* 魚我所欲也 */
+{q:'「二者不可得兼，舍生而取義者也」體現的中心思想是？',o:['貪生怕死','捨生取義','明哲保身','知足常樂'],a:1,t:'內容理解',c:'魚我所欲也',e:'此為全文中心論點：當生命與道義不能兼得時，應捨棄生命而取道義。'},
+{q:'「呼爾而與之」中「爾」的意思是？',o:['你','語氣詞，表輕蔑地呼喝','如此','而已'],a:1,t:'字詞',c:'魚我所欲也',e:'「爾」為語氣詞，配合「呼」表示吆喝、輕蔑的語氣。「呼爾而與之」即吆喝著給人食物。'},
+{q:'「蹴爾而與之，乞人不屑也」中「蹴」的意思是？',o:['用腳踢','催促','蹲下','突然'],a:0,t:'字詞',c:'魚我所欲也',e:'「蹴」解作用腳踢。此句寫以腳踢食物給乞丐，乞丐亦不屑接受，即「嗟來之食」之意。'},
+{q:'本文以「魚」與「熊掌」設喻，在論證上屬於？',o:['對比論證','比喻論證','舉例論證','引用論證'],a:1,t:'寫作手法',c:'魚我所欲也',e:'孟子以「魚」喻生、「熊掌」喻義，先設喻再類推到「生」與「義」的取捨，屬比喻論證。'},
+{q:'「非獨賢者有是心也，人皆有之，賢者能勿喪耳」說明甚麼？',o:['只有賢人有本心','人人皆有本心，賢人能保存不失','賢人天生異稟','本心會自然消失'],a:1,t:'內容理解',c:'魚我所欲也',e:'此句體現孟子性善論：本心人人皆有，差別只在賢者能保存而不喪失。'},
+{q:'「萬鍾則不辯禮義而受之」中「萬鍾」借代甚麼？',o:['大量糧食','優厚的俸祿','鐘聲','官位'],a:1,t:'修辭',c:'魚我所欲也',e:'「鍾」是古代量器，「萬鍾」借代優厚的俸祿。此句批判見利忘義之人。'},
+
+/* 逍遙遊 */
+{q:'「怒而飛」的「怒」意思是？',o:['憤怒','奮力、振作','責備','急速'],a:1,t:'字詞',c:'逍遙遊',e:'「怒」在此解作奮力、振作，形容大鵬振翅奮飛之勢，並非憤怒。'},
+{q:'「其翼若垂天之雲」用了甚麼修辭手法？',o:['比喻','對偶','排比','借代'],a:0,t:'修辭',c:'逍遙遊',e:'以「若」字作明喻標誌，將鵬翼比作掛在天邊的雲，極言其巨大。'},
+{q:'「水之積也不厚，則其負大舟也無力」在全文中的作用是？',o:['單純描寫大海','以水喻風，說明大鵬需厚風方能高飛','批評世人目光短淺','讚美鯤鵬之大'],a:1,t:'寫作手法',c:'逍遙遊',e:'此句以水負大舟為喻，類推到風負大翼，說明大鵬高飛須憑藉深厚之風，即萬物「有所待」。'},
+{q:'「覆杯水於坳堂之上，則芥為之舟」中「芥」指？',o:['芥菜','小草','芥末','塵埃'],a:1,t:'字詞',c:'逍遙遊',e:'「芥」指小草。倒一杯水在低窪處，放一根小草便可作船，放杯子則黏住不動，說明水淺不能載大物。'},
+{q:'莊子借大鵬的形象主要想說明甚麼？',o:['鳥類的偉大','萬物皆有所待，需積厚方能致遠','人類的渺小','自然之美'],a:1,t:'內容理解',c:'逍遙遊',e:'大鵬雖大，仍須待厚風方能高飛，說明萬物皆「有所待」，唯有破除依待才能達致逍遙。'},
+{q:'「海運則將徙於南冥」中「海運」的意思是？',o:['海上運輸','海水翻騰震動','航海','潮汐'],a:1,t:'字詞',c:'逍遙遊',e:'「海運」古義指海水翻騰震動，非今日「海上運輸」之意，屬古今異義。'},
+
+/* 勸學 */
+{q:'「學不可以已」中「已」的意思是？',o:['已經','停止','完成','足夠'],a:1,t:'字詞',c:'勸學',e:'「已」解作停止。全句謂學習是不可以停止的，為全文中心論點。'},
+{q:'「青，取之於藍，而青於藍」用了甚麼論證手法？',o:['比喻論證','舉例論證','對比論證','引用論證'],a:0,t:'寫作手法',c:'勸學',e:'以靛青從藍草提取卻比藍草更青，比喻學習能使人超越本源，屬比喻論證。'},
+{q:'「木直中繩，輮以為輪」中「中」的意思是？',o:['中間','符合','集中','中等'],a:1,t:'字詞',c:'勸學',e:'「中」解作符合。「中繩」即合乎墨線，形容木材筆直。'},
+{q:'「君子生非異也」中「生」通假為哪個字？',o:['性','勝','聲','甥'],a:0,t:'字詞',c:'勸學',e:'「生」通「性」，指天性、資質。全句謂君子的天性與常人並無不同，只是善於借助外物。'},
+{q:'「鍥而不捨，金石可鏤」說明甚麼道理？',o:['金石可以雕刻','堅持不懈的重要','工具的重要','學習的痛苦'],a:1,t:'內容理解',c:'勸學',e:'此句以雕刻為喻，說明只要堅持不懈，即使堅硬的金石也能雕鏤，強調持之以恆。'},
+{q:'荀子認為學習最終可以達到的效果是？',o:['改變本性、知明而行無過','升官發財','超脫生死','遠離世俗'],a:0,t:'內容理解',c:'勸學',e:'荀子謂「君子博學而日參省乎己，則知明而行無過矣」，認為學習能改變本性、提升智慧、端正行為。'},
+
+/* 廉頗藺相如列傳 */
+{q:'「臣請完璧歸趙」中「完」的用法是？',o:['完成','使動用法，使……完好無損','結束','修補'],a:1,t:'字詞',c:'廉頗藺相如列傳',e:'「完」在此為使動用法，「完璧」即「使璧完好無損」地帶回趙國。'},
+{q:'「怒髮上衝冠」用了甚麼修辭手法？',o:['誇張','比喻','擬人','排比'],a:0,t:'修辭',c:'廉頗藺相如列傳',e:'以頭髮豎起頂起帽子的誇張描寫，將藺相如內心的極度憤怒外化為具體形象，極具感染力。'},
+{q:'「臣所以去親戚而事君者」中「親戚」的古義是？',o:['泛指親屬','父母兄弟等至親','朋友','鄰居'],a:1,t:'字詞',c:'廉頗藺相如列傳',e:'「親戚」古義指父母兄弟等至親，與今日泛指親屬不同，屬古今異義。'},
+{q:'藺相如處處避讓廉頗的原因是？',o:['畏懼廉頗的權勢','以先國家之急而後私讎','身體不適','不想爭權奪利'],a:1,t:'內容理解',c:'廉頗藺相如列傳',e:'藺相如明言「吾所以為此者，以先國家之急而後私讎也」，把國家安危放在私人恩怨之前。'},
+{q:'「肉袒負荊」中「負」的意思是？',o:['背負','辜負','失敗','依靠'],a:0,t:'字詞',c:'廉頗藺相如列傳',e:'「負」解作背負。「肉袒負荊」指脫去上衣、背著荊條，表示認罪願受鞭打。'},
+{q:'本文「完璧歸趙」詳寫、「澠池之會」略寫，屬於甚麼手法？',o:['詳略得宜','倒敘','插敘','對比'],a:0,t:'寫作手法',c:'廉頗藺相如列傳',e:'司馬遷詳寫完璧歸趙以突出藺相如的智勇，澠池之會則以簡筆帶過，使敘事節奏富變化，避免流水帳。'},
+
+/* 出師表 */
+{q:'「此誠危急存亡之秋也」中「秋」的意思是？',o:['秋天','時期、時刻','收成','憂愁'],a:1,t:'字詞',c:'出師表',e:'「秋」在此解作時期、時刻，指關鍵緊要的關頭。「危急存亡之秋」即危急存亡的時刻。'},
+{q:'「不宜妄自菲薄，引喻失義」中「菲薄」的意思是？',o:['輕薄','看輕自己','節儉','卑微'],a:1,t:'字詞',c:'出師表',e:'「菲薄」即看輕、輕視，「妄自菲薄」指過分看輕自己，是諸葛亮勸諫後主之語。'},
+{q:'「親賢臣，遠小人，此先漢所以興隆也」用了甚麼手法？',o:['對比','比喻','排比','誇張'],a:0,t:'寫作手法',c:'出師表',e:'此句以「親賢臣，遠小人」與「親小人，遠賢臣」正反對比，並舉兩漢興亡為證，屬對比論證兼舉例論證。'},
+{q:'「臣本布衣」中「布衣」的修辭手法是？',o:['比喻','借代','誇張','用典'],a:1,t:'修辭',c:'出師表',e:'「布衣」以平民所穿的衣服借代平民，是借代手法，同時流露諸葛亮自謙之意。'},
+{q:'「三顧臣於草廬之中」中「三顧」指？',o:['三次責備','三次拜訪','三次回顧','三次商議'],a:1,t:'字詞',c:'出師表',e:'「顧」解作拜訪，「三顧」即三次到草廬拜訪，指劉備三顧茅廬的知遇之恩。'},
+{q:'諸葛亮在表中反覆提及「先帝」，主要作用是？',o:['單純懷念故人','借先帝之名勸勉後主、表明忠誠','炫耀自己的功績','責備後主無能'],a:1,t:'寫作手法',c:'出師表',e:'反覆提及先帝，既借先帝的知遇之恩表明自己的忠誠，又以先帝遺德勸勉後主，情理兼備，增強說服力。'},
+
+/* 師說 */
+{q:'「師者，所以傳道、受業、解惑也」中「受」通假為？',o:['授','收','承受','接受'],a:0,t:'字詞',c:'師說',e:'「受」通「授」，解作傳授。「傳道、受業、解惑」即老師的三大職責。'},
+{q:'「道之所存，師之所存也」說明擇師的標準是？',o:['年齡長幼','地位高低','道的有無','官職大小'],a:2,t:'內容理解',c:'師說',e:'韓愈認為「無貴無賤，無長無少，道之所存，師之所存也」，擇師的唯一標準是「道」。'},
+{q:'「位卑則足羞，官盛則近諛」用了甚麼修辭手法？',o:['對偶','比喻','誇張','反問'],a:0,t:'修辭',c:'師說',e:'「位卑」對「官盛」，「足羞」對「近諛」，句式工整對舉，揭露世人以地位取師的功利心態。'},
+{q:'「是故弟子不必不如師」中「不必」的意思是？',o:['不需要','不一定','必然不','必須不'],a:1,t:'字詞',c:'師說',e:'「不必」古義為「不一定」，與今日「不需要」不同。全句謂弟子不一定不如老師。'},
+{q:'韓愈寫作《師說》的主要目的是？',o:['讚美老師的偉大','批評當時恥學於師的風氣','介紹教學方法','記述自己的老師'],a:1,t:'內容理解',c:'師說',e:'韓愈針對唐代士大夫「恥學於師」的風氣而作，倡導尊師重道，並提出新的師生觀。'},
+{q:'「聞道有先後，術業有專攻」說明甚麼？',o:['老師一定比學生強','師生關係是相對的，各有所長','術業無高低之分','道比術更重要'],a:1,t:'內容理解',c:'師說',e:'此句說明聞道有先後之別，學問技藝各有專長，故弟子不必不如師，師不必賢於弟子，師生關係是相對的。'},
+
+/* 始得西山宴遊記 */
+{q:'「自余為僇人」中「僇人」指？',o:['殺人犯','受刑辱的罪人','僕人','旅客'],a:1,t:'字詞',c:'始得西山宴遊記',e:'「僇」通「戮」，「僇人」指受刑辱的罪人，是柳宗元被貶後的自稱。'},
+{q:'「恆惴慄」中「惴慄」的意思是？',o:['恐懼不安','憤怒不平','疲累不堪','興奮難抑'],a:0,t:'字詞',c:'始得西山宴遊記',e:'「惴慄」解作恐懼不安，寫出柳宗元貶謫永州後終日惶恐的心境。'},
+{q:'「然後知吾嚮之未始遊」中「嚮」的意思是？',o:['方向','從前','趨向','響應'],a:1,t:'字詞',c:'始得西山宴遊記',e:'「嚮」通「向」，解作從前。全句謂從前根本未曾真正遊覽過，真正的遊覽從遊西山才開始。'},
+{q:'「凡數州之土壤，皆在衽席之下」用了甚麼手法表現西山之高？',o:['比喻','誇張','擬人','排比'],a:1,t:'修辭',c:'始得西山宴遊記',e:'此句以誇張手法極寫登西山後視野之高遠，數州土地盡在坐席之下，反襯西山之特出與心胸之開闊。'},
+{q:'柳宗元遊西山後的心境是？',o:['更加憂鬱苦悶','超脫物我、精神解脫','強烈思念家鄉','憤世嫉俗'],a:1,t:'內容理解',c:'始得西山宴遊記',e:'柳宗元登西山後「心凝形釋，與萬化冥合」，達到物我兩忘的境界，從貶謫的憂懼中獲得精神解脫。'},
+{q:'「箕踞而遨」中「箕踞」的意思是？',o:['像簸箕一樣張開兩腿而坐','蹲下身子','快步行走','攀爬而上'],a:0,t:'字詞',c:'始得西山宴遊記',e:'「箕踞」指像簸箕一樣張開兩腿而坐，是不拘禮節的坐姿，寫出柳宗元登高後的自在灑脫。'},
+
+/* 岳陽樓記 */
+{q:'「滕子京謫守巴陵郡」中「謫」的意思是？',o:['責備','貶官','調升','辭官'],a:1,t:'字詞',c:'岳陽樓記',e:'「謫」解作貶官。「謫守巴陵郡」即被貶到巴陵郡做太守。'},
+{q:'「銜遠山，吞長江」用了甚麼修辭手法？',o:['擬人兼誇張','對偶','排比','借代'],a:0,t:'修辭',c:'岳陽樓記',e:'「銜」「吞」二字將洞庭湖人格化，寫出湖水連接遠山、吞噬長江的雄偉氣勢，屬擬人兼誇張。'},
+{q:'「不以物喜，不以己悲」用了甚麼修辭手法？',o:['互文','比喻','誇張','設問'],a:0,t:'修辭',c:'岳陽樓記',e:'此句為互文，上下句互相補充，意為「不因外物的好壞和自己的得失而或喜或悲」，須合併理解。'},
+{q:'「先天下之憂而憂，後天下之樂而樂」表現了范仲淹？',o:['追求個人享樂','憂國憂民、以天下為己任','消極避世','隨遇而安'],a:1,t:'內容理解',c:'岳陽樓記',e:'此句為全文主旨，抒發了范仲淹以天下為己任、先憂後樂的宏大襟懷。'},
+{q:'「至若春和景明」中「景」的意思是？',o:['景色','日光','影子','情況'],a:1,t:'字詞',c:'岳陽樓記',e:'「景」在此解作日光。「春和景明」即春風和煦、陽光明媚。'},
+{q:'本文「霪雨霏霏」與「春和景明」兩段的主要作用是？',o:['單純記錄天氣變化','以景生情，形成悲喜對比，為議論鋪墊','記錄當地氣候','批評時政'],a:1,t:'寫作手法',c:'岳陽樓記',e:'兩段一悲一喜，寫出遷客騷人因景而生的兩種心情，形成對比，為後文議論古仁人的「不以物喜，不以己悲」作鋪墊。'},
+
+/* 六國論 */
+{q:'《六國論》的中心論點是？',o:['六國兵力不足','六國破滅，弊在賂秦','秦國國力強大','六國不善作戰'],a:1,t:'內容理解',c:'六國論',e:'文章開篇即提出「六國破滅，非兵不利，戰不善，弊在賂秦」，這是全文的中心論點。'},
+{q:'「以地事秦，猶抱薪救火」用了甚麼論證手法？',o:['比喻論證','舉例論證','引用論證','對比論證'],a:0,t:'寫作手法',c:'六國論',e:'以「抱薪救火」比喻「以地事秦」的荒謬，生動說明賄賂秦國只會加速滅亡，使抽象道理具體化，增強說服力。'},
+{q:'「思厥先祖父」中「祖父」的古義是？',o:['爺爺','祖輩與父輩','泛指祖先','家族'],a:1,t:'字詞',c:'六國論',e:'「祖父」古義指祖輩與父輩，與今日專指爺爺不同，屬古今異義。'},
+{q:'「暴霜露，斬荊棘」中「暴」的意思是？',o:['暴露、冒著','殘暴','突然','曬'],a:0,t:'字詞',c:'六國論',e:'「暴」通「曝」，解作冒著。「暴霜露」即冒著風霜雨露，寫先人創業之艱。'},
+{q:'蘇洵寫作《六國論》的真正用意是？',o:['純粹檢討歷史','借古諷今，警告北宋勿賂敵','讚美六國的堅守','批評秦國的殘暴'],a:1,t:'內容理解',c:'六國論',e:'蘇洵借六國賂秦而亡的史實，諷刺北宋以歲幣求和的政策，警告統治者勿重蹈覆轍。'},
+{q:'「下而從六國破亡之故事」中「故事」的意思是？',o:['故事傳說','舊事、前例','情節','計謀'],a:1,t:'字詞',c:'六國論',e:'「故事」古義指舊事、前例，與今日「故事」不同。此句謂重蹈六國滅亡的覆轍。'},
+
+/* 山居秋暝 */
+{q:'「空山新雨後，天氣晚來秋」營造了甚麼氛圍？',o:['熱鬧喧囂','清幽空靈','悲涼蕭瑟','緊張壓抑'],a:1,t:'內容理解',c:'山居秋暝',e:'首聯以「空山」「新雨」點出雨後山林的清新空寂，營造清幽空靈的氛圍，其中「空」字為全詩詩眼。'},
+{q:'「明月松間照，清泉石上流」用了甚麼手法？',o:['動靜結合（兼對偶）','誇張','擬人','借代'],a:0,t:'寫作手法',c:'山居秋暝',e:'此聯既是工整對偶，又是動靜結合：月光灑落為靜景，泉水流淌為動景，動靜相生，富於畫意。'},
+{q:'「竹喧歸浣女，蓮動下漁舟」中「喧」與「動」的作用是？',o:['以動襯靜','渲染熱鬧氣氛','表達悲傷之情','單純描寫聲音'],a:0,t:'寫作手法',c:'山居秋暝',e:'以竹林的喧鬧與蓮葉的晃動，反襯山居環境的幽靜，同時寫出田園生活的純樸之樂。'},
+{q:'「隨意春芳歇，王孫自可留」表達了作者？',o:['強烈思念家鄉','留戀山中、歸隱之志','感嘆時光易逝','惋惜春天離去'],a:1,t:'內容理解',c:'山居秋暝',e:'尾聯反用《楚辭》「王孫兮歸來，山中兮不可久留」之意，表達留戀山林、決意歸隱的心志。'},
+{q:'本詩的詩眼可說是哪個字？',o:['空','秋','明','留'],a:0,t:'內容理解',c:'山居秋暝',e:'「空」字統攝全詩，既寫山林的空寂清幽，也暗含詩人空明澄澈的心境，為全詩詩眼。'},
+{q:'王維此詩體現了甚麼風格？',o:['豪放飄逸','田園山水、詩中有畫','邊塞雄渾','諷喻現實'],a:1,t:'內容理解',c:'山居秋暝',e:'王維為山水田園詩派代表，此詩寫雨後山居秋景，詩中有畫，畫中有詩，意境清幽。'},
+
+/* 月下獨酌 */
+{q:'「舉杯邀明月，對影成三人」中「三人」指？',o:['李白、明月、影子','李白與兩位朋友','三位詩人','月亮與兩個影子'],a:0,t:'內容理解',c:'月下獨酌',e:'「三人」指詩人自己、明月與影子。此句以奇特想像化孤獨為熱鬧，展現李白的浪漫曠達。'},
+{q:'「影徒隨我身」中「徒」的意思是？',o:['徒弟','只是、白白地','徒步','徒然無功'],a:1,t:'字詞',c:'月下獨酌',e:'「徒」解作只是、白白地。全句謂影子也只是白白地跟隨我的身體，寫出伴侶的無情。'},
+{q:'「相期邈雲漢」中「雲漢」指？',o:['雲霧','銀河','漢朝','天空'],a:1,t:'字詞',c:'月下獨酌',e:'「雲漢」指銀河。詩人相約在遙遠的銀河相見，將孤獨昇華為永恆的精神寄託。'},
+{q:'本詩主要抒發了作者怎樣的情感？',o:['歡樂愉悅','孤獨與超脫','愛國情懷','閒適自得'],a:1,t:'內容理解',c:'月下獨酌',e:'全詩由孤獨起筆，經邀月對影的奇想，最終相期雲漢，抒發孤獨中的曠達與超脫。'},
+{q:'「我歌月徘徊，我舞影零亂」用了甚麼修辭手法？',o:['擬人','誇張','借代','設問'],a:0,t:'修辭',c:'月下獨酌',e:'「月徘徊」賦予月亮以人的情態，彷彿月亮隨詩人歌唱而徘徊不去，屬擬人手法。'},
+{q:'「行樂須及春」反映李白怎樣的人生態度？',o:['消極避世','及時行樂、曠達自適','貪圖享樂','悲觀厭世'],a:1,t:'內容理解',c:'月下獨酌',e:'「行樂須及春」表現李白在孤獨中仍能自我排解、及時行樂的曠達情懷。'},
+
+/* 登樓 */
+{q:'「花近高樓傷客心」中「客」指？',o:['路過的客人','詩人自己（羈旅之人）','詩人的朋友','當地百姓'],a:1,t:'內容理解',c:'登樓',e:'「客」指客居他鄉的詩人自己。杜甫流寓成都，故自稱「客」。'},
+{q:'「錦江春色來天地，玉壘浮雲變古今」用了甚麼修辭手法？',o:['對偶','排比','比喻','擬人'],a:0,t:'修辭',c:'登樓',e:'此聯為工整對偶，並以空間（天地）與時間（古今）對舉，氣象宏大，內涵深遠。'},
+{q:'「北極朝廷終不改」中「北極」指？',o:['北極星，喻朝廷','極北之地','北方邊境','北極圈'],a:0,t:'字詞',c:'登樓',e:'「北極」指北極星，比喻朝廷如北極星般穩固不動，表達詩人對唐王朝的堅定信念。'},
+{q:'本詩的風格是？',o:['豪放飄逸','沉鬱頓挫','清新淡雅','纏綿悱惻'],a:1,t:'內容理解',c:'登樓',e:'杜甫此詩於登樓所見中寄託家國之思，情感深沉，風格沉鬱頓挫，為杜詩典型。'},
+{q:'「可憐後主還祠廟」中「後主」指？',o:['蜀漢劉禪','陳後主','唐玄宗','南唐後主'],a:0,t:'字詞',c:'登樓',e:'「後主」指蜀漢後主劉禪。杜甫借劉禪尚有祠廟，抒發對當朝無人、國勢日衰的感慨。'},
+{q:'杜甫登樓所見所感，核心情感是？',o:['遊玩之樂','憂國傷時','思鄉念親','隱居之志'],a:1,t:'內容理解',c:'登樓',e:'此詩寫於萬方多難之際，詩人登樓遠望，由春色想到古今變遷，核心情感是憂國傷時。'},
+
+/* 念奴嬌 */
+{q:'「大江東去，浪淘盡，千古風流人物」在詞中的作用是？',o:['寫景起興，奠定豪放基調','單純描寫長江','懷念朋友','記錄歷史'],a:0,t:'寫作手法',c:'念奴嬌·赤壁懷古',e:'以大江東去、淘盡千古人物開篇，由眼前江景引出懷古之情，氣勢磅礴，奠定全詞豪放基調。'},
+{q:'「捲起千堆雪」中「雪」比喻甚麼？',o:['真雪','浪花','白雲','石頭'],a:1,t:'修辭',c:'念奴嬌·赤壁懷古',e:'「千堆雪」比喻洶湧的浪花，形象寫出浪濤之白、之盛，是比喻手法的典型運用。'},
+{q:'「羽扇綸巾」描寫的是誰？',o:['諸葛亮','周瑜','曹操','蘇軾'],a:1,t:'內容理解',c:'念奴嬌·赤壁懷古',e:'「羽扇綸巾」寫周瑜手執羽扇、頭戴綸巾的儒將裝束，表現其從容瀟灑的風度。'},
+{q:'「人生如夢，一尊還酹江月」表達了？',o:['壯志凌雲','曠達中的感慨','極度悲傷','得意忘形'],a:1,t:'內容理解',c:'念奴嬌·赤壁懷古',e:'結句以「人生如夢」抒發對人生短暫、功業難成的感慨，但舉酒酹江月又見曠達，是曠達中的感慨。'},
+{q:'「檣櫓灰飛煙滅」中「檣櫓」的修辭手法是？',o:['比喻','借代','誇張','用典'],a:1,t:'修辭',c:'念奴嬌·赤壁懷古',e:'「檣櫓」以船桅和船槳借代曹軍戰船，屬借代手法，具體形象。'},
+{q:'《念奴嬌·赤壁懷古》屬於哪一派詞風？',o:['婉約派','豪放派','花間派','格律派'],a:1,t:'內容理解',c:'念奴嬌·赤壁懷古',e:'蘇軾此詞氣象恢宏，開豪放詞先河，與柳永、李清照的婉約詞風相對。'},
+
+/* 聲聲慢 */
+{q:'「尋尋覓覓，冷冷清清，悽悽慘慘戚戚」用了甚麼修辭手法？',o:['疊字（兼排比）','比喻','誇張','借代'],a:0,t:'修辭',c:'聲聲慢',e:'十四疊字連用，由動作到環境到心境層層遞進，聲情並茂，是詞史上著名的疊字名筆。'},
+{q:'「最難將息」中「將息」的意思是？',o:['休息','調養、保重','將要','嘆息'],a:1,t:'字詞',c:'聲聲慢',e:'「將息」解作調養、保重身體。全句謂乍暖還寒的天氣最難調養身體。'},
+{q:'「雁過也，正傷心，卻是舊時相識」中「雁」象徵？',o:['自由自在','傳書、懷人','秋天的到來','孤獨無依'],a:1,t:'內容理解',c:'聲聲慢',e:'古有雁足傳書之說，此處大雁飛過，勾起詞人對亡夫與故國的思念，觸景傷情。'},
+{q:'「滿地黃花堆積，憔悴損」中「黃花」比喻？',o:['詞人自己的憔悴','秋天的花','財富','歡樂'],a:0,t:'修辭',c:'聲聲慢',e:'黃花堆積、憔悴凋零，正是詞人自身容顏憔悴、身世飄零的寫照，物我合一。'},
+{q:'「怎一個愁字了得」用了甚麼句式？',o:['反問','設問','感嘆','祈使'],a:0,t:'修辭',c:'聲聲慢',e:'以反問作結，將無法言說的愁緒推向極致，言有盡而意無窮，是全詞的點睛之筆。'},
+{q:'《聲聲慢》表達的核心情感是？',o:['國破家亡、夫死漂泊之愁','相思相戀之樂','閒適恬淡之情','懷古傷今之思'],a:0,t:'內容理解',c:'聲聲慢',e:'李清照晚年經歷國破、家亡、夫死、漂泊，全詞層層鋪寫的正是這種深重難言的愁緒。'},
+
+/* 青玉案 */
+{q:'「東風夜放花千樹」描寫的是甚麼景象？',o:['春天百花盛開','元宵燈火璀璨','秋天落葉紛飛','雨夜的景象'],a:1,t:'內容理解',c:'青玉案·元夕',e:'此句以「花千樹」比喻元宵夜璀璨的燈火，寫出燈會之盛，並非真的春花。'},
+{q:'「一夜魚龍舞」中「魚龍舞」指？',o:['真魚真龍起舞','魚龍形的花燈舞動','雜技舞蹈','水上表演'],a:1,t:'字詞',c:'青玉案·元夕',e:'「魚龍舞」指魚龍形狀的花燈在夜中舞動，寫元宵燈會的熱鬧場面。'},
+{q:'「驀然回首」中「驀然」的意思是？',o:['慢慢地','突然','傷心地','高興地'],a:1,t:'字詞',c:'青玉案·元夕',e:'「驀然」解作突然。「驀然回首」即猛然回頭，寫出尋覓後的意外驚喜。'},
+{q:'「燈火闌珊處」中「闌珊」的意思是？',o:['燦爛輝煌','零落、稀疏','熱鬧非凡','遙遠難及'],a:1,t:'字詞',c:'青玉案·元夕',e:'「闌珊」解作零落、稀疏。「燈火闌珊處」即燈火稀疏冷清的地方，與前面的熱鬧形成反襯。'},
+{q:'「那人卻在，燈火闌珊處」中「那人」象徵？',o:['一位美人','作者理想的人格或政治抱負','作者的朋友','路過的陌生人'],a:1,t:'內容理解',c:'青玉案·元夕',e:'「那人」在熱鬧之外、燈火冷清處，象徵詞人不趨流俗、自甘寂寞的高潔人格與政治理想。'},
+{q:'《青玉案·元夕》主要運用了甚麼手法？',o:['以樂景反襯（熱鬧反襯冷清）','直抒胸臆','誇張','擬人'],a:0,t:'寫作手法',c:'青玉案·元夕',e:'全詞極寫元宵燈火的熱鬧繁華，最後卻歸於「燈火闌珊處」的冷清，以熱鬧反襯「那人」的孤高，境界陡轉。'},
+
+/* 跨篇章 */
+{q:'《魚我所欲也》的「捨生取義」與《岳陽樓記》的「先天下之憂而憂」共同體現了？',o:['道家超脫精神','儒家淑世擔當的價值取向','法家的功利思想','佛家的出世情懷'],a:1,t:'跨篇比較',c:'跨篇章',e:'兩者同屬儒家價值系統：前者重道義高於生命，後者重天下先於個人，皆體現淑世擔當。'},
+{q:'《岳陽樓記》與《始得西山宴遊記》同為貶謫之作，二者的抒情取向有何不同？',o:['兩者完全相同','前者憂國憂民，後者傾向個人精神超脫','前者消極，後者積極','前者寫景，後者議論'],a:1,t:'跨篇比較',c:'跨篇章',e:'范仲淹雖遭貶仍心繫天下，情懷宏大；柳宗元則借西山之遊獲得個人精神的超脫，兩者取徑不同。'},
+{q:'《師說》與《勸學》同為議論散文，二者的共同點是？',o:['都批判時弊','都強調後天學習與求師的重要','都運用大量比喻','都以問答體寫成'],a:1,t:'跨篇比較',c:'跨篇章',e:'兩文皆為勉學之作：荀子強調學習不可已、善假於物；韓愈強調從師問道，均重視後天的學習與修養。'},
+{q:'「不以物喜，不以己悲」與「錦江春色來天地，玉壘浮雲變古今」的共通修辭是？',o:['對偶','比喻','擬人','反問'],a:0,t:'跨篇比較',c:'跨篇章',e:'兩者皆為工整的對偶句，前者對舉物與己，後者對舉空間（天地）與時間（古今）。'},
+{q:'《出師表》與《岳陽樓記》共同體現了古代士人的甚麼精神？',o:['隱逸避世','以天下為己任的責任感','追求功名利祿','消極應世'],a:1,t:'跨篇比較',c:'跨篇章',e:'諸葛亮「鞠躬盡瘁」與范仲淹「先憂後樂」，皆體現了士人以天下為己任的責任感與擔當。'},
+{q:'李白《月下獨酌》與蘇軾《念奴嬌》都以「月」入詩詞，二者的情感取向是？',o:['都寫歡樂','前者寫孤獨中的曠達，後者寫懷古中的感慨','都寫思鄉','都寫愛情'],a:1,t:'跨篇比較',c:'跨篇章',e:'李白借月影排解孤獨，終歸曠達；蘇軾借江月抒發懷古之情與人生感慨，兩者情感內涵各異。'},
+{q:'柳宗元《始得西山宴遊記》與蘇軾《念奴嬌》的共通之處是？',o:['都借山水景物抒發貶謫情懷','都寫愛情','都是駢文','都批判時政'],a:0,t:'跨篇比較',c:'跨篇章',e:'兩文皆作於貶謫期間，作者均借登臨山水、懷古抒懷來排解內心的鬱結，最終歸於精神超脫。'},
+{q:'《六國論》「抱薪救火」與《魚我所欲也》「舍魚取熊掌」在論證手法上的共同點是？',o:['都使用比喻論證','都使用引用論證','都使用舉例論證','都使用數據論證'],a:0,t:'跨篇比較',c:'跨篇章',e:'兩者皆以具體事物設喻，使抽象道理形象化：前者喻賂秦之害，後者喻生義之取捨。'},
+{q:'李清照《聲聲慢》與杜甫《登樓》都寫「愁」，二者的分別是？',o:['前者為個人身世之愁，後者為家國之愁','前者寫歡樂，後者寫悲傷','兩者完全相同','前者寫愛情，後者寫親情'],a:0,t:'跨篇比較',c:'跨篇章',e:'李清照的愁源於國破家亡、夫死漂泊的個人身世；杜甫的愁則源於萬方多難、憂國傷時的家國情懷。'},
+{q:'王維《山居秋暝》與柳宗元《始得西山宴遊記》同寫山水，二者的主要分別是？',o:['前者恬淡自適，後者寄託貶謫情懷','前者寫海，後者寫山','兩者完全一致','前者悲涼，後者歡快'],a:0,t:'跨篇比較',c:'跨篇章',e:'王維詩寫雨後山居的清幽，流露恬淡的歸隱之志；柳宗元文則借西山之遊排解貶謫的憂懼，託意不同。'}
+];
+
+/* =========================================================
+   工具
+   ========================================================= */
+const LS = {
+  get(k,d){ try{ return JSON.parse(localStorage.getItem('wm_'+k)) ?? d; }catch(e){ return d; } },
+  set(k,v){ try{ localStorage.setItem('wm_'+k, JSON.stringify(v)); }catch(e){} }
+};
+function esc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+const $ = s => document.querySelector(s);
+
+/* 題目加 ID */
+QUESTIONS.forEach((q,i)=>{ q.id = 'q'+i; });
+
+/* =========================================================
+   狀態
+   ========================================================= */
+const state = {
+  view:'read',
+  chapter:0,
+  pFilter:'all',
+  pPool:[],
+  pIdx:0,
+  pAnswered:false
+};
+
+/* =========================================================
+   視圖切換
+   ========================================================= */
+function switchView(v){
+  state.view = v;
+  document.querySelectorAll('.view').forEach(el=>el.classList.remove('on'));
+  document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('on', b.dataset.v===v));
+  $('#view-'+v).classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(v==='practice') renderPractice();
+  if(v==='notes') renderNotes();
+  if(v==='stats') renderStats();
+}
+
+/* =========================================================
+   精讀
+   ========================================================= */
+function countSentences(c){
+  return c.sections.reduce((a,s)=>a+s.sentences.length,0);
+}
+
+function renderSidebar(){
+  const el = $('#sidebar');
+  el.innerHTML = '<div class="sb-title">十六篇指定篇章</div>' +
+    CHAPTERS.map((c,i)=>`
+      <div class="chap-item ${i===state.chapter?'on':''}" onclick="selectChapter(${i})">
+        <div class="ci-num">${c.num}</div>
+        <div class="ci-body">
+          <div class="ci-title">${esc(c.title)}</div>
+          <div class="ci-sub">${esc(c.author)} · ${esc(c.genre)}</div>
+        </div>
+      </div>`).join('');
+}
+
+function selectChapter(i){
+  state.chapter = i;
+  renderSidebar();
+  renderReader();
+  const c = $('#readerContent');
+  if(c) c.scrollIntoView({behavior:'smooth',block:'start'});
+  if(window.innerWidth<=860) window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function markWords(text, words){
+  if(!words || !words.length) return esc(text);
+  const occupied = new Array(text.length).fill(false);
+  const marks = [];
+  const sorted = [...words].sort((a,b)=>b.w.length-a.w.length);
+  sorted.forEach(item=>{
+    if(!item.w) return;
+    let idx = text.indexOf(item.w);
+    while(idx !== -1){
+      let ok = true;
+      for(let k=idx;k<idx+item.w.length;k++){ if(occupied[k]){ ok=false; break; } }
+      if(ok){
+        for(let k=idx;k<idx+item.w.length;k++) occupied[k]=true;
+        marks.push({s:idx,e:idx+item.w.length,item});
+        break;
+      }
+      idx = text.indexOf(item.w, idx+1);
+    }
+  });
+  marks.sort((a,b)=>a.s-b.s);
+  let html='', pos=0;
+  marks.forEach(m=>{
+    if(m.s < pos) return;
+    html += esc(text.slice(pos, m.s));
+    html += `<span class="w" data-d="${esc(m.item.d)}" data-w="${esc(m.item.w)}">${esc(text.slice(m.s,m.e))}</span>`;
+    pos = m.e;
+  });
+  html += esc(text.slice(pos));
+  return html;
+}
+
+function renderReader(){
+  const c = CHAPTERS[state.chapter];
+  const readMap = LS.get('read', {});
+  const readArr = readMap[c.id] || [];
+
+  let html = `
+  <div class="ch-head">
+    <h2 class="kai">${esc(c.title)}</h2>
+    <div class="ch-meta">
+      <span>${esc(c.author)}</span>
+      <span>${esc(c.era)}</span>
+      <span>${esc(c.genre)}</span>
+      <span>${esc(c.theme)}</span>
+      <span>共 ${countSentences(c)} 句</span>
+    </div>
+    <div class="ch-intro">${esc(c.intro)}</div>
+  </div>`;
+
+  let gi = 0;
+  c.sections.forEach(sec=>{
+    html += `<div class="sec-name">${esc(sec.name)}</div>`;
+    sec.sentences.forEach(s=>{
+      const key = c.id+'-'+gi;
+      const isRead = readArr.includes(key);
+      const tags = [];
+      if(s.rhet && s.rhet.length) s.rhet.forEach(r=>tags.push(`<span class="tag tag-rhet">修辭 · ${esc(r.t)}</span>`));
+      if(s.tech) tags.push(`<span class="tag tag-tech">手法 · ${esc(s.tech.split('——')[0].split('＋')[0].split('—')[0].trim())}</span>`);
+      if(s.point) tags.push(`<span class="tag tag-point">考點</span>`);
+
+      let detail = '';
+      if(s.rhet && s.rhet.length){
+        s.rhet.forEach(r=>{
+          detail += `<div class="d-row"><div class="d-key">修辭效果</div><div class="d-val"><b>${esc(r.t)}</b>｜「${esc(r.p)}」<br>${esc(r.e)}</div></div>`;
+        });
+      }
+      if(s.words && s.words.length){
+        detail += `<div class="d-row"><div class="d-key">字詞注釋</div><div class="d-val">${
+          s.words.map(w=>`<span class="word-chip"><i>${esc(w.w)}</i>${esc(w.d)}</span>`).join('')
+        }</div></div>`;
+      }
+      if(s.tech){
+        detail += `<div class="d-row"><div class="d-key">寫作手法</div><div class="d-val">${esc(s.tech)}</div></div>`;
+      }
+      if(s.point){
+        detail += `<div class="d-row"><div class="d-key">考點提示</div><div class="d-val">${esc(s.point)}</div></div>`;
+      }
+
+      html += `
+      <div class="sentence ${isRead?'':'unread'}" data-key="${key}" onclick="toggleSentence(this, '${key}')">
+        <div class="s-text">${markWords(s.text, s.words)}</div>
+        <div class="s-trans"><b style="color:#2E6B62;">語譯：</b>${esc(s.trans)}</div>
+        <div class="s-tags">${tags.join('')}</div>
+        <div class="s-detail">${detail}</div>
+      </div>`;
+      gi++;
+    });
+  });
+
+  $('#readerContent').innerHTML = html;
+  updateWordPop();
+}
+
+function toggleSentence(el, key){
+  el.classList.toggle('open');
+  const c = CHAPTERS[state.chapter];
+  const readMap = LS.get('read', {});
+  if(!readMap[c.id]) readMap[c.id] = [];
+  if(el.classList.contains('open')){
+    if(!readMap[c.id].includes(key)) readMap[c.id].push(key);
+  }
+  LS.set('read', readMap);
+}
+
+/* 詞語氣泡 */
+function updateWordPop(){
+  const pop = $('#wpop');
+  document.querySelectorAll('.w').forEach(w=>{
+    w.addEventListener('click', e=>{
+      e.stopPropagation();
+      pop.innerHTML = `<b>${esc(w.dataset.w)}</b>${esc(w.dataset.d)}`;
+      pop.style.display='block';
+      const r = w.getBoundingClientRect();
+      let left = r.left + r.width/2 - 125;
+      left = Math.max(10, Math.min(left, window.innerWidth-260));
+      let top = r.bottom + 8;
+      if(top + 80 > window.innerHeight) top = r.top - 70;
+      pop.style.left = left+'px';
+      pop.style.top = top+'px';
+    });
+  });
+}
+document.addEventListener('click', e=>{
+  if(!e.target.classList.contains('w')) $('#wpop').style.display='none';
+});
+window.addEventListener('scroll', ()=>{ $('#wpop').style.display='none'; }, true);
+
+/* =========================================================
+   練習
+   ========================================================= */
+function buildPool(){
+  let pool = QUESTIONS.slice();
+  if(state.pFilter !== 'all'){
+    pool = pool.filter(q => q.t === state.pFilter || q.c === state.pFilter);
+  }
+  return pool;
+}
+
+function renderPractice(){
+  const types = ['all','字詞','修辭','寫作手法','內容理解','跨篇比較'];
+  $('#pFilters').innerHTML = types.map(t=>
+    `<button class="chip ${state.pFilter===t?'on':''}" onclick="setPFilter('${t}')">${t==='all'?'全部題型':t}</button>`
+  ).join('');
+
+  if(state.pPool.length === 0 || state.pIdx >= state.pPool.length){
+    state.pPool = buildPool();
+    state.pIdx = 0;
+    state.pAnswered = false;
+  }
+  renderQuestion();
+}
+
+function setPFilter(f){
+  state.pFilter = f;
+  state.pPool = buildPool();
+  state.pIdx = 0;
+  state.pAnswered = false;
+  renderPractice();
+}
+
+function renderQuestion(){
+  const pool = state.pPool;
+  const q = pool[state.pIdx];
+  const stats = LS.get('stats', {});
+  const total = Object.keys(stats).length;
+  const correct = Object.values(stats).filter(v=>v===1).length;
+
+  if(!q){
+    $('#pBody').innerHTML = '<div class="empty">此分類暫無題目</div>';
+    return;
+  }
+
+  const typeCls = q.t==='修辭'?'tag-rhet':(q.t==='寫作手法'?'tag-tech':'tag-point');
+
+  $('#pBody').innerHTML = `
+  <div class="p-card">
+    <div class="p-top">
+      <span class="tag ${typeCls}">${esc(q.t)}</span>
+      <span class="tag tag-tech">${esc(q.c)}</span>
+      <span class="p-prog">第 ${state.pIdx+1} / ${pool.length} 題</span>
+    </div>
+    <div class="p-q">${esc(q.q)}</div>
+    <div id="opts">
+      ${q.o.map((o,i)=>`<button class="opt" data-i="${i}" onclick="answerQ(${i})">
+        <span class="opt-key">${'ABCD'[i]}</span><span>${esc(o)}</span>
+      </button>`).join('')}
+    </div>
+    <div class="p-exp" id="pExp"><b>解析：</b>${esc(q.e)}</div>
+    <div class="p-foot">
+      <button class="btn btn-primary" id="btnNext" style="display:none" onclick="nextQ()">
+        ${state.pIdx+1>=pool.length?'重新開始':'下一題 →'}
+      </button>
+      <button class="btn btn-ghost" onclick="resetStats()">清除練習記錄</button>
+      <div class="p-score">已答 <b>${total}</b> 題 · 正確率 <b>${total?Math.round(correct/total*100):0}%</b></div>
+    </div>
+  </div>`;
+  state.pAnswered = false;
+}
+
+function answerQ(i){
+  if(state.pAnswered) return;
+  state.pAnswered = true;
+  const q = state.pPool[state.pIdx];
+  const opts = document.querySelectorAll('#opts .opt');
+  opts.forEach((el,idx)=>{
+    el.classList.add('done');
+    if(idx === q.a) el.classList.add('right');
+    if(idx === i && i !== q.a) el.classList.add('wrong');
+  });
+  $('#pExp').classList.add('on');
+  $('#btnNext').style.display = 'inline-block';
+
+  const stats = LS.get('stats', {});
+  stats[q.id] = (i === q.a) ? 1 : 0;
+  LS.set('stats', stats);
+}
+
+function nextQ(){
+  state.pIdx++;
+  if(state.pIdx >= state.pPool.length){
+    state.pIdx = 0;
+    state.pPool = buildPool();
+  }
+  renderQuestion();
+}
+
+function resetStats(){
+  if(confirm('確定清除所有練習記錄？')){
+    LS.set('stats', {});
+    renderQuestion();
+  }
+}
+
+/* =========================================================
+   筆記
+   ========================================================= */
+function renderNotes(){
+  const notes = LS.get('notes', {});
+  $('#notesBody').innerHTML = CHAPTERS.map(c=>`
+    <div class="note-card">
+      <h4><span class="ci-num">${c.num}</span>${esc(c.title)} <span>· ${esc(c.author)}</span></h4>
+      <textarea placeholder="記下這篇的重點、答題框架、易錯字詞……" oninput="saveNote('${c.id}', this)">${esc(notes[c.id]||'')}</textarea>
+      <div class="save-hint" id="hint-${c.id}">✓ 已儲存</div>
+    </div>`).join('');
+}
+
+let noteTimer = null;
+function saveNote(id, el){
+  const notes = LS.get('notes', {});
+  notes[id] = el.value;
+  LS.set('notes', notes);
+  const h = $('#hint-'+id);
+  h.classList.add('on');
+  clearTimeout(noteTimer);
+  noteTimer = setTimeout(()=>h.classList.remove('on'), 1200);
+}
+
+/* =========================================================
+   統計
+   ========================================================= */
+function renderStats(){
+  const readMap = LS.get('read', {});
+  const stats = LS.get('stats', {});
+
+  const totalS = CHAPTERS.reduce((a,c)=>a+countSentences(c),0);
+  let readN = 0;
+  CHAPTERS.forEach(c=>{ readN += (readMap[c.id]||[]).length; });
+
+  const answered = Object.keys(stats).length;
+  const correct = Object.values(stats).filter(v=>v===1).length;
+  const rate = answered ? Math.round(correct/answered*100) : 0;
+
+  // 按題型統計
+  const byType = {};
+  QUESTIONS.forEach(q=>{
+    if(!byType[q.t]) byType[q.t] = {n:0, c:0};
+    if(stats[q.id] !== undefined){
+      byType[q.t].n++;
+      if(stats[q.id]===1) byType[q.t].c++;
+    }
+  });
+
+  // 按篇章精讀進度
+  const chapRows = CHAPTERS.map(c=>{
+    const t = countSentences(c);
+    const r = (readMap[c.id]||[]).length;
+    return {name:c.title, t, r};
+  });
+
+  let html = `
+  <div class="stat-grid">
+    <div class="stat-box"><div class="num">${readN}<small> / ${totalS}</small></div><div class="lbl">已精讀句數</div></div>
+    <div class="stat-box"><div class="num">${answered}</div><div class="lbl">累計答題</div></div>
+    <div class="stat-box"><div class="num">${rate}<small>%</small></div><div class="lbl">整體正確率</div></div>
+    <div class="stat-box"><div class="num">${Math.round(readN/totalS*100)}<small>%</small></div><div class="lbl">精讀完成度</div></div>
+  </div>
+
+  <div class="panel">
+    <h3>各題型正確率</h3>
+    ${Object.keys(byType).length ? Object.entries(byType).map(([k,v])=>{
+      const p = v.n ? Math.round(v.c/v.n*100) : 0;
+      return `<div class="bar-row">
+        <div class="bar-lbl">${esc(k)}</div>
+        <div class="bar-track"><div class="bar-fill ${p<60?'low':''}" style="width:${p}%"></div></div>
+        <div class="bar-val">${p}% (${v.c}/${v.n})</div>
+      </div>`;
+    }).join('') : '<div class="empty">尚未作答任何題目</div>'}
+  </div>
+
+  <div class="panel">
+    <h3>各篇精讀進度</h3>
+    ${chapRows.map(r=>{
+      const p = Math.round(r.r/r.t*100);
+      return `<div class="bar-row">
+        <div class="bar-lbl" style="width:130px;font-size:12px;">${esc(r.name)}</div>
+        <div class="bar-track"><div class="bar-fill ${p<50?'low':''}" style="width:${p}%"></div></div>
+        <div class="bar-val">${r.r}/${r.t}</div>
+      </div>`;
+    }).join('')}
+  </div>`;
+
+  $('#statsBody').innerHTML = html;
+}
+
+/* =========================================================
+   初始化
+   ========================================================= */
+renderSidebar();
+renderReader();
+</script>
+</body>
+</html>
