@@ -3,76 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>文脈 · DSE 中文十六篇指定精讀</title>
+<title>文脈 · DSE 中文十六篇（上篇）</title>
 <style>
-:root{
-  --paper:#F8F4EC; --paper2:#FFFDF8; --ink:#1A1A1A; --ink2:#5A5040;
-  --cinnabar:#C0392B; --jade:#7BA9A2; --gold:#C9A96E; --line:#E6DCCB;
-  --shadow:0 2px 10px rgba(90,70,40,.06);
-}
+:root{--paper:#F8F4EC;--paper2:#FFFDF8;--ink:#1A1A1A;--ink2:#5A5040;--cinnabar:#C0392B;--jade:#7BA9A2;--gold:#C9A96E;--line:#E6DCCB;--shadow:0 2px 10px rgba(90,70,40,.06);}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;
-  background:var(--paper);
-  background-image:radial-gradient(circle at 20% 10%, rgba(201,169,110,.06) 0%, transparent 45%),
-                   radial-gradient(circle at 85% 80%, rgba(123,169,162,.05) 0%, transparent 40%);
-  color:var(--ink); line-height:1.7; -webkit-font-smoothing:antialiased;
-}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;background:var(--paper);background-image:radial-gradient(circle at 20% 10%,rgba(201,169,110,.06) 0%,transparent 45%),radial-gradient(circle at 85% 80%,rgba(123,169,162,.05) 0%,transparent 40%);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;}
 .kai{font-family:"Kaiti","KaiTi","STKaiti","DFKai-SB","Songti TC",serif;}
-
-header{position:sticky;top:0;z-index:120;background:rgba(248,244,236,.94);
-  backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);}
+header{position:sticky;top:0;z-index:120;background:rgba(248,244,236,.94);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);}
 .hd-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:20px;padding:12px 20px;}
 .logo{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;}
-.logo-seal{width:36px;height:36px;border-radius:8px;background:var(--cinnabar);color:#fff;
-  display:flex;align-items:center;justify-content:center;font-family:"Kaiti",serif;
-  font-size:20px;font-weight:700;box-shadow:0 2px 6px rgba(192,57,43,.3);}
+.logo-seal{width:36px;height:36px;border-radius:8px;background:var(--cinnabar);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Kaiti",serif;font-size:20px;font-weight:700;box-shadow:0 2px 6px rgba(192,57,43,.3);}
 .logo-txt h1{font-size:17px;font-weight:700;letter-spacing:2px;line-height:1.2;}
 .logo-txt p{font-size:10.5px;color:var(--ink2);letter-spacing:.5px;line-height:1.2;}
 nav.tabs{margin-left:auto;display:flex;gap:3px;background:#EFE8DA;padding:4px;border-radius:10px;flex-wrap:wrap;}
-nav.tabs button{border:none;background:transparent;cursor:pointer;font-family:inherit;
-  font-size:13px;color:var(--ink2);padding:7px 13px;border-radius:7px;transition:.2s;font-weight:500;}
+nav.tabs button{border:none;background:transparent;cursor:pointer;font-family:inherit;font-size:13px;color:var(--ink2);padding:7px 13px;border-radius:7px;transition:.2s;font-weight:500;}
 nav.tabs button.on{background:#fff;color:var(--cinnabar);box-shadow:var(--shadow);font-weight:700;}
-
-.view{display:none;} .view.on{display:block;}
-
+.view{display:none;}.view.on{display:block;}
 .reader{display:flex;max-width:1320px;margin:0 auto;align-items:flex-start;}
-.sidebar{width:250px;flex-shrink:0;padding:18px 12px 60px;position:sticky;top:65px;
-  max-height:calc(100vh - 65px);overflow-y:auto;}
+.sidebar{width:250px;flex-shrink:0;padding:18px 12px 60px;position:sticky;top:65px;max-height:calc(100vh - 65px);overflow-y:auto;}
 .sidebar::-webkit-scrollbar{width:5px;}
 .sidebar::-webkit-scrollbar-thumb{background:#DDD2BE;border-radius:4px;}
 .sb-title{font-size:11px;letter-spacing:2px;color:var(--ink2);padding:0 8px 10px;font-weight:600;}
-.chap-item{display:flex;align-items:flex-start;gap:9px;padding:9px 10px;border-radius:8px;
-  cursor:pointer;transition:.16s;margin-bottom:2px;}
+.chap-item{display:flex;align-items:flex-start;gap:9px;padding:9px 10px;border-radius:8px;cursor:pointer;transition:.16s;margin-bottom:2px;}
 .chap-item:hover{background:#F1EADC;}
 .chap-item.on{background:#fff;box-shadow:var(--shadow);}
 .chap-item.on .ci-num{background:var(--cinnabar);color:#fff;border-color:var(--cinnabar);}
-.ci-num{flex-shrink:0;width:21px;height:21px;border-radius:5px;border:1px solid var(--line);
-  background:#FBF7EF;font-size:11px;display:flex;align-items:center;justify-content:center;
-  color:var(--ink2);font-weight:700;margin-top:2px;}
+.ci-num{flex-shrink:0;width:21px;height:21px;border-radius:5px;border:1px solid var(--line);background:#FBF7EF;font-size:11px;display:flex;align-items:center;justify-content:center;color:var(--ink2);font-weight:700;margin-top:2px;}
 .ci-title{font-size:13.5px;font-weight:600;line-height:1.4;}
 .ci-sub{font-size:11px;color:#998E7B;margin-top:1px;}
-
 .content{flex:1;min-width:0;padding:22px 26px 120px;max-width:960px;}
-.ch-head{background:var(--paper2);border:1px solid var(--line);border-radius:14px;
-  padding:22px 26px;margin-bottom:20px;position:relative;overflow:hidden;}
-.ch-head::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
-  background:linear-gradient(180deg,var(--cinnabar),var(--gold));}
+.ch-head{background:var(--paper2);border:1px solid var(--line);border-radius:14px;padding:22px 26px;margin-bottom:20px;position:relative;overflow:hidden;}
+.ch-head::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--cinnabar),var(--gold));}
 .ch-head h2{font-size:24px;letter-spacing:2px;margin-bottom:6px;}
 .ch-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
-.ch-meta span{font-size:11.5px;padding:2px 10px;border-radius:20px;background:#F2EADC;
-  color:#7A6A4E;border:1px solid #E6D9BF;}
+.ch-meta span{font-size:11.5px;padding:2px 10px;border-radius:20px;background:#F2EADC;color:#7A6A4E;border:1px solid #E6D9BF;}
 .ch-intro{font-size:13.5px;color:var(--ink2);line-height:1.85;}
-.sec-name{font-family:"Kaiti",serif;font-size:16px;color:var(--cinnabar);letter-spacing:2px;
-  margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--cinnabar);}
-
-.sentence{background:var(--paper2);border:1px solid var(--line);border-radius:11px;
-  padding:14px 18px 13px;margin-bottom:11px;cursor:pointer;transition:.18s;position:relative;}
+.sec-name{font-family:"Kaiti",serif;font-size:16px;color:var(--cinnabar);letter-spacing:2px;margin:26px 0 12px;padding-left:12px;border-left:3px solid var(--cinnabar);}
+.sentence{background:var(--paper2);border:1px solid var(--line);border-radius:11px;padding:14px 18px 13px;margin-bottom:11px;cursor:pointer;transition:.18s;position:relative;}
 .sentence:hover{border-color:#DBC99E;box-shadow:0 2px 12px rgba(160,130,70,.08);}
 .sentence.open{border-color:var(--gold);box-shadow:0 3px 16px rgba(160,130,70,.11);}
 .s-text{font-family:"Kaiti",serif;font-size:18.5px;line-height:2.05;color:#241F19;letter-spacing:.5px;}
-.s-trans{font-size:13.5px;color:#3E6B63;line-height:1.8;margin-top:9px;padding:8px 12px;
-  background:#F0F6F4;border-radius:7px;border-left:3px solid var(--jade);display:none;}
+.s-trans{font-size:13.5px;color:#3E6B63;line-height:1.8;margin-top:9px;padding:8px 12px;background:#F0F6F4;border-radius:7px;border-left:3px solid var(--jade);display:none;}
 .sentence.open .s-trans{display:block;}
 .s-tags{display:flex;flex-wrap:wrap;gap:0;margin-top:7px;}
 .tag{display:inline-block;font-size:11px;padding:1.5px 9px;border-radius:20px;margin:3px 6px 0 0;line-height:1.6;}
@@ -82,27 +53,23 @@ nav.tabs button.on{background:#fff;color:var(--cinnabar);box-shadow:var(--shadow
 .tag-emo{background:#F3EAF7;color:#6B4A8A;border:1px solid #DCC8E8;}
 .tag-sym{background:#EAF0FB;color:#3A5A9E;border:1px solid #C8D6F0;}
 .tag-deep{background:#FDF2E9;color:#A05A20;border:1px solid #F0D6BA;}
-
 .s-detail{display:none;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);}
 .sentence.open .s-detail{display:block;}
-
 .an-block{border-radius:9px;padding:12px 15px;margin-bottom:11px;font-size:13px;line-height:1.85;}
-.an-block .an-title{font-size:11.5px;font-weight:700;letter-spacing:1.5px;margin-bottom:7px;
-  display:flex;align-items:center;gap:6px;}
+.an-block .an-title{font-size:11.5px;font-weight:700;letter-spacing:1.5px;margin-bottom:7px;display:flex;align-items:center;gap:6px;}
 .an-block .an-title::before{content:"";width:4px;height:13px;border-radius:2px;display:inline-block;}
 .an-emo{background:#FAF6FC;border:1px solid #EEE2F5;}
-.an-emo .an-title{color:#6B4A8A;} .an-emo .an-title::before{background:#7B4F9E;}
+.an-emo .an-title{color:#6B4A8A;}.an-emo .an-title::before{background:#7B4F9E;}
 .an-sym{background:#F4F7FD;border:1px solid #E0E8F7;}
-.an-sym .an-title{color:#3A5A9E;} .an-sym .an-title::before{background:#3A5A9E;}
+.an-sym .an-title{color:#3A5A9E;}.an-sym .an-title::before{background:#3A5A9E;}
 .an-deep{background:#FDF8F2;border:1px solid #F3E4D2;}
-.an-deep .an-title{color:#A05A20;} .an-deep .an-title::before{background:#D4782F;}
+.an-deep .an-title{color:#A05A20;}.an-deep .an-title::before{background:#D4782F;}
 .an-rhet{background:#FEF6F5;border:1px solid #F8E0DC;}
-.an-rhet .an-title{color:#B23A2C;} .an-rhet .an-title::before{background:#C0392B;}
+.an-rhet .an-title{color:#B23A2C;}.an-rhet .an-title::before{background:#C0392B;}
 .an-tech{background:#F3F9F8;border:1px solid #DCEDEA;}
-.an-tech .an-title{color:#2E6B62;} .an-tech .an-title::before{background:#4E9E78;}
+.an-tech .an-title{color:#2E6B62;}.an-tech .an-title::before{background:#4E9E78;}
 .an-point{background:#FEFAF0;border:1px solid #F5E9CF;}
-.an-point .an-title{color:#8A6A2F;} .an-point .an-title::before{background:#C9A96E;}
-
+.an-point .an-title{color:#8A6A2F;}.an-point .an-title::before{background:#C9A96E;}
 .word-grid{display:flex;flex-direction:column;gap:8px;}
 .word-item{background:#fff;border:1px solid #F0E6D2;border-radius:8px;padding:9px 13px;}
 .word-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;}
@@ -112,52 +79,35 @@ nav.tabs button.on{background:#fff;color:var(--cinnabar);box-shadow:var(--shadow
 .word-def{font-size:12.5px;color:var(--ink2);margin-top:4px;}
 .word-deep{font-size:12px;color:#6B5E48;margin-top:5px;padding-top:5px;border-top:1px dotted #EEE2CC;line-height:1.75;}
 .word-deep b{color:#A05A20;font-weight:600;}
-
 .w{border-bottom:1.5px dashed var(--gold);color:#8A5A2B;cursor:help;transition:.15s;padding-bottom:1px;}
 .w:hover{background:#FFF2D6;border-radius:3px;}
-
-#wpop{position:fixed;z-index:300;max-width:270px;background:#26221C;color:#F5EFE3;
-  font-size:12.5px;line-height:1.65;padding:10px 14px;border-radius:9px;
-  box-shadow:0 8px 24px rgba(0,0,0,.28);display:none;pointer-events:none;}
+#wpop{position:fixed;z-index:300;max-width:270px;background:#26221C;color:#F5EFE3;font-size:12.5px;line-height:1.65;padding:10px 14px;border-radius:9px;box-shadow:0 8px 24px rgba(0,0,0,.28);display:none;pointer-events:none;}
 #wpop b{color:#F0C36A;display:block;font-size:14px;margin-bottom:3px;font-family:"Kaiti",serif;}
 #wpop .wp-deep{color:#C9C0B0;font-size:11.5px;margin-top:5px;padding-top:5px;border-top:1px solid #3A352E;}
-
 .fw-wrap{max-width:920px;margin:0 auto;padding:24px 20px 120px;}
-.fw-intro{background:var(--paper2);border:1px solid var(--line);border-radius:14px;
-  padding:20px 24px;margin-bottom:20px;box-shadow:var(--shadow);}
+.fw-intro{background:var(--paper2);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin-bottom:20px;box-shadow:var(--shadow);}
 .fw-intro h2{font-size:19px;letter-spacing:1px;margin-bottom:8px;color:var(--cinnabar);font-family:"Kaiti",serif;}
 .fw-intro p{font-size:13.5px;color:var(--ink2);line-height:1.9;}
-.fw-card{background:var(--paper2);border:1px solid var(--line);border-radius:14px;
-  padding:22px 24px;margin-bottom:16px;box-shadow:var(--shadow);}
-.fw-card h3{font-size:16px;color:#2E7A45;margin-bottom:14px;display:flex;align-items:center;gap:9px;
-  font-family:"Kaiti",serif;letter-spacing:1px;}
-.fw-card h3 .fw-no{width:26px;height:26px;border-radius:7px;background:#2E7A45;color:#fff;
-  font-size:13px;display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-weight:700;}
+.fw-card{background:var(--paper2);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px;box-shadow:var(--shadow);}
+.fw-card h3{font-size:16px;color:#2E7A45;margin-bottom:14px;display:flex;align-items:center;gap:9px;font-family:"Kaiti",serif;letter-spacing:1px;}
+.fw-card h3 .fw-no{width:26px;height:26px;border-radius:7px;background:#2E7A45;color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;font-family:sans-serif;font-weight:700;}
 .fw-steps{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
-.fw-step{background:#F2FAF5;border:1px solid #C8E6D5;border-radius:8px;padding:7px 13px;font-size:12.5px;
-  color:#2E7A45;font-weight:600;position:relative;}
+.fw-step{background:#F2FAF5;border:1px solid #C8E6D5;border-radius:8px;padding:7px 13px;font-size:12.5px;color:#2E7A45;font-weight:600;position:relative;}
 .fw-step::after{content:"→";position:absolute;right:-16px;color:#A8C9B5;font-weight:400;}
 .fw-step:last-child::after{display:none;}
-.fw-formula{background:#FCFAF5;border:1px dashed #D8C9A8;border-radius:9px;
-  padding:13px 16px;font-size:13px;color:#5A4A2A;line-height:1.9;margin-bottom:13px;}
+.fw-formula{background:#FCFAF5;border:1px dashed #D8C9A8;border-radius:9px;padding:13px 16px;font-size:13px;color:#5A4A2A;line-height:1.9;margin-bottom:13px;}
 .fw-formula b{color:var(--cinnabar);}
-.fw-example{background:#F8FBF9;border-left:3px solid var(--jade);border-radius:0 9px 9px 0;
-  padding:13px 17px;font-size:13px;color:#3A4A44;line-height:1.9;}
+.fw-example{background:#F8FBF9;border-left:3px solid var(--jade);border-radius:0 9px 9px 0;padding:13px 17px;font-size:13px;color:#3A4A44;line-height:1.9;}
 .fw-example .ex-label{font-size:11px;color:#4E9E78;font-weight:700;letter-spacing:1px;margin-bottom:5px;}
 .fw-example .ex-text{font-family:"Kaiti",serif;font-size:14px;color:#2E5C4A;}
-
 .notes-wrap,.stats-wrap{max-width:920px;margin:0 auto;padding:24px 20px 120px;}
-.note-card{background:var(--paper2);border:1px solid var(--line);border-radius:12px;
-  padding:16px 20px;margin-bottom:12px;box-shadow:var(--shadow);}
+.note-card{background:var(--paper2);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:12px;box-shadow:var(--shadow);}
 .note-card h4{font-size:14.5px;margin-bottom:9px;display:flex;align-items:center;gap:8px;}
-.note-card textarea{width:100%;min-height:80px;resize:vertical;border:1px solid var(--line);
-  border-radius:8px;padding:10px 13px;font-family:inherit;font-size:13.5px;line-height:1.8;
-  background:#FCFAF5;color:var(--ink);outline:none;}
+.note-card textarea{width:100%;min-height:80px;resize:vertical;border:1px solid var(--line);border-radius:8px;padding:10px 13px;font-family:inherit;font-size:13.5px;line-height:1.8;background:#FCFAF5;color:var(--ink);outline:none;}
 .note-card textarea:focus{border-color:var(--gold);background:#fff;}
 .save-hint{font-size:11px;color:#4E9E78;opacity:0;transition:.3s;margin-top:5px;}
 .save-hint.on{opacity:1;}
-.panel{background:var(--paper2);border:1px solid var(--line);border-radius:12px;
-  padding:20px 22px;margin-bottom:16px;box-shadow:var(--shadow);}
+.panel{background:var(--paper2);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;box-shadow:var(--shadow);}
 .panel h3{font-size:14.5px;margin-bottom:16px;letter-spacing:1px;color:#3A3227;}
 .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:24px;}
 .stat-box{background:var(--paper2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow);}
@@ -165,28 +115,26 @@ nav.tabs button.on{background:#fff;color:var(--cinnabar);box-shadow:var(--shadow
 .stat-box .num small{font-size:14px;color:#B5AA96;font-weight:400;}
 .stat-box .lbl{font-size:12px;color:var(--ink2);margin-top:3px;}
 .bar-row{display:flex;align-items:center;gap:12px;margin-bottom:11px;font-size:13px;}
-.bar-lbl{width:88px;flex-shrink:0;color:var(--ink2);}
+.bar-lbl{width:130px;flex-shrink:0;color:var(--ink2);font-size:12px;}
 .bar-track{flex:1;height:9px;background:#EFE8DA;border-radius:6px;overflow:hidden;}
 .bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--jade),#4E9E78);transition:width .5s;}
 .bar-fill.low{background:linear-gradient(90deg,#E5A79E,var(--cinnabar));}
 .bar-val{width:60px;text-align:right;color:#8A7A5C;font-size:12px;flex-shrink:0;}
 .empty{text-align:center;color:#B5AA96;font-size:13.5px;padding:40px 0;}
-
 @media (max-width:900px){
   .hd-inner{padding:10px 12px;gap:8px;flex-wrap:wrap;}
   .logo-txt p{display:none;}
   nav.tabs button{padding:6px 10px;font-size:12px;}
   .reader{flex-direction:column;}
-  .sidebar{width:100%;position:static;max-height:none;display:flex;gap:7px;overflow-x:auto;
-    border-bottom:1px solid var(--line);padding:11px 12px;}
+  .sidebar{width:100%;position:static;max-height:none;display:flex;gap:7px;overflow-x:auto;border-bottom:1px solid var(--line);padding:11px 12px;}
   .sidebar::-webkit-scrollbar{height:0;}
   .sb-title{display:none;}
   .chap-item{flex-shrink:0;background:var(--paper2);border:1px solid var(--line);padding:6px 12px;margin:0;}
-  .chap-item .ci-num{display:none;} .ci-sub{display:none;}
+  .chap-item .ci-num{display:none;}.ci-sub{display:none;}
   .ci-title{font-size:12.5px;white-space:nowrap;}
   .content{padding:16px 14px 100px;}
-  .ch-head{padding:18px;} .ch-head h2{font-size:20px;}
-  .s-text{font-size:17px;} .logo-txt h1{font-size:15px;}
+  .ch-head{padding:18px;}.ch-head h2{font-size:20px;}
+  .s-text{font-size:17px;}.logo-txt h1{font-size:15px;}
 }
 </style>
 </head>
@@ -196,7 +144,7 @@ nav.tabs button.on{background:#fff;color:var(--cinnabar);box-shadow:var(--shadow
   <div class="hd-inner">
     <div class="logo" onclick="switchView('read')">
       <div class="logo-seal">文</div>
-      <div class="logo-txt"><h1>文脈</h1><p>DSE 中文十六篇 · 逐句精讀</p></div>
+      <div class="logo-txt"><h1>文脈</h1><p>DSE 中文十六篇 · 上篇（1–8）</p></div>
     </div>
     <nav class="tabs">
       <button data-v="read" class="on" onclick="switchView('read')">精讀</button>
@@ -222,9 +170,7 @@ nav.tabs button.on{background:#fff;color:var(--cinnabar);box-shadow:var(--shadow
   <div class="notes-wrap">
     <div class="panel" style="margin-bottom:18px;">
       <h3>📝 我的筆記本</h3>
-      <p style="font-size:13px;color:var(--ink2);line-height:1.8;">
-        為每篇範文記下你的理解、答題框架與易錯點。內容自動儲存於本機瀏覽器，離線亦可溫習。
-      </p>
+      <p style="font-size:13px;color:var(--ink2);line-height:1.8;">為每篇範文記下你的理解、答題框架與易錯點。內容自動儲存於本機瀏覽器，離線亦可溫習。</p>
     </div>
     <div id="notesBody"></div>
   </div>
@@ -238,1037 +184,883 @@ nav.tabs button.on{background:#fff;color:var(--cinnabar);box-shadow:var(--shadow
 
 <script>
 /* =========================================================
-   作答框架資料
+   作答框架
    ========================================================= */
 const FRAMEWORKS = [
-{
-  title:'修辭手法題', no:1,
-  steps:['手法名稱','引文具體內容','效果分析'],
-  formula:'【修辭手法】＋【引文內容（如何運用）】＋【效果分析（對表達的作用）】',
-  example:'作者以<b>比喻</b>手法，將「以地事秦」比作「抱薪救火」，生動形象地說明了賄賂秦國只會加速自身滅亡的道理，使抽象的政治論述變得具體可感，增強了說服力。',
-  note:'答題時切忌只寫手法名稱，必須引原文並分析效果；效果分析要扣緊「形象生動」「增強說服力」「突出情感」等方向。'
-},
-{
-  title:'寫作手法分析題', no:2,
-  steps:['手法判斷','文本證據','效果闡述','扣題回應'],
-  formula:'【手法判斷】→【文本證據（引文）】→【效果闡述（對人物／主旨／結構的作用）】→【扣題回應】',
-  example:'司馬遷運用<b>詳略得宜</b>的敘事手法。「完璧歸趙」一事詳加鋪陳，突出藺相如的機智勇敢；而「澠池之會」則以簡筆帶過。此舉使人物形象更鮮明，敘事節奏富變化，避免流水帳式記載，亦緊扣「智勇忠義」的主題。',
-  note:'不同手法有不同分析方向：敘事手法重結構與人物塑造，描寫手法重畫面與氛圍，抒情手法重情感傳達。'
-},
-{
-  title:'比較題（跨篇章）', no:3,
-  steps:['確立比較點','各自舉證','分析異同','評價效果'],
-  formula:'【確立比較點】→【甲篇舉證】→【乙篇舉證】→【分析異同】→【評價優劣／效果】',
-  example:'就<b>抒情手法</b>而言，《岳陽樓記》借景抒情，以洞庭湖陰晴變化寄託憂樂之情；《始得西山宴遊記》則以山水之遊寄寓貶謫後的超脫心境。兩者均借外物抒懷，但范仲淹側重家國情懷，柳宗元則傾向個人精神解脫，前者胸襟更宏大，後者則更見個人心境之細膩。',
-  note:'比較題必須先明確「比較點」（如手法、情感、結構），再分述兩篇，最後作綜合評價，切忌只描述而不比較。'
-},
-{
-  title:'象徵意義題', no:4,
-  steps:['指出象徵物','本體與象徵義','文本依據','深層情感'],
-  formula:'【象徵物】→【所象徵的本體／意義】→【文本依據（引文）】→【深層情感或主旨連結】',
-  example:'「燈火闌珊處」的<b>「那人」</b>，象徵詞人不趨流俗、自甘寂寞的高潔人格。全詞極寫元宵燈火的熱鬧繁華，最後卻歸於冷清之處，正是以熱鬧反襯「那人」的孤高，寄託辛棄疾在政治失意中堅守理想、不與世俗同流的情懷。',
-  note:'象徵題的關鍵是「由物及人、由表及裡」，須結合寫作背景與全篇主旨作答。'
-},
-{
-  title:'情感分析題', no:5,
-  steps:['情感判斷','文本依據','情感層次','深層意蘊'],
-  formula:'【情感判斷（喜／悲／愁／憤等）】→【文本依據（引文）】→【情感層次（由表及裡）】→【深層意蘊（結合背景）】',
-  example:'「尋尋覓覓，冷冷清清，悽悽慘慘戚戚」抒發了<b>深重難言的愁緒</b>。由動作（尋覓）到環境（冷清）再到心境（悽慘戚戚），層層遞進。結合李清照晚年國破家亡、夫死漂泊的遭遇，這愁既是個人身世之痛，亦暗含對故國的思念，層次豐富而深沉。',
-  note:'情感題切忌只答「悲傷」「高興」，必須結合文本與背景分析情感的層次與內涵。'
-},
-{
-  title:'字詞精練題', no:6,
-  steps:['解釋字義','語法特點','語境作用','表達效果'],
-  formula:'【字義解釋】→【語法特點（通假／活用／古今異義）】→【語境作用】→【表達效果】',
-  example:'「滕子京<b>謫</b>守巴陵郡」中「謫」解作貶官，屬古今異義詞。交代滕子京被貶的身份，為後文「不以物喜，不以己悲」的議論埋下伏筆，亦暗示作者與滕子京同為貶謫之人的共鳴。',
-  note:'字詞題不只是解字，更要連結語境與全篇，說明該字在文中的深層作用。'
-}
+{title:'修辭手法題',no:1,steps:['手法名稱','引文具體內容','效果分析'],
+ formula:'【修辭手法】＋【引文內容（如何運用）】＋【效果分析（對表達的作用）】',
+ example:'作者以<b>比喻</b>手法，將「以地事秦」比作「抱薪救火」，生動形象地說明了賄賂秦國只會加速自身滅亡的道理，使抽象的政治論述變得具體可感，增強了說服力。',
+ note:'答題時切忌只寫手法名稱，必須引原文並分析效果；效果分析要扣緊「形象生動」「增強說服力」「突出情感」等方向。'},
+{title:'寫作手法分析題',no:2,steps:['手法判斷','文本證據','效果闡述','扣題回應'],
+ formula:'【手法判斷】→【文本證據（引文）】→【效果闡述（對人物／主旨／結構的作用）】→【扣題回應】',
+ example:'司馬遷運用<b>詳略得宜</b>的敘事手法。「完璧歸趙」一事詳加鋪陳，突出藺相如的機智勇敢；而「澠池之會」則以簡筆帶過。此舉使人物形象更鮮明，敘事節奏富變化，避免流水帳式記載，亦緊扣「智勇忠義」的主題。',
+ note:'不同手法有不同分析方向：敘事手法重結構與人物塑造，描寫手法重畫面與氛圍，抒情手法重情感傳達。'},
+{title:'比較題（跨篇章）',no:3,steps:['確立比較點','各自舉證','分析異同','評價效果'],
+ formula:'【確立比較點】→【甲篇舉證】→【乙篇舉證】→【分析異同】→【評價優劣／效果】',
+ example:'就<b>抒情手法</b>而言，《岳陽樓記》借景抒情，以洞庭湖陰晴變化寄託憂樂之情；《始得西山宴遊記》則以山水之遊寄寓貶謫後的超脫心境。兩者均借外物抒懷，但范仲淹側重家國情懷，柳宗元則傾向個人精神解脫，前者胸襟更宏大，後者則更見個人心境之細膩。',
+ note:'比較題必須先明確「比較點」（如手法、情感、結構），再分述兩篇，最後作綜合評價，切忌只描述而不比較。'},
+{title:'象徵意義題',no:4,steps:['指出象徵物','本體與象徵義','文本依據','深層情感'],
+ formula:'【象徵物】→【所象徵的本體／意義】→【文本依據（引文）】→【深層情感或主旨連結】',
+ example:'「燈火闌珊處」的<b>「那人」</b>，象徵詞人不趨流俗、自甘寂寞的高潔人格。全詞極寫元宵燈火的熱鬧繁華，最後卻歸於冷清之處，正是以熱鬧反襯「那人」的孤高，寄託辛棄疾在政治失意中堅守理想、不與世俗同流的情懷。',
+ note:'象徵題的關鍵是「由物及人、由表及裡」，須結合寫作背景與全篇主旨作答。'},
+{title:'情感分析題',no:5,steps:['情感判斷','文本依據','情感層次','深層意蘊'],
+ formula:'【情感判斷（喜／悲／愁／憤等）】→【文本依據（引文）】→【情感層次（由表及裡）】→【深層意蘊（結合背景）】',
+ example:'「尋尋覓覓，冷冷清清，悽悽慘慘戚戚」抒發了<b>深重難言的愁緒</b>。由動作（尋覓）到環境（冷清）再到心境（悽慘戚戚），層層遞進。結合李清照晚年國破家亡、夫死漂泊的遭遇，這愁既是個人身世之痛，亦暗含對故國的思念，層次豐富而深沉。',
+ note:'情感題切忌只答「悲傷」「高興」，必須結合文本與背景分析情感的層次與內涵。'},
+{title:'字詞精練題',no:6,steps:['解釋字義','語法特點','語境作用','表達效果'],
+ formula:'【字義解釋】→【語法特點（通假／活用／古今異義）】→【語境作用】→【表達效果】',
+ example:'「滕子京<b>謫</b>守巴陵郡」中「謫」解作貶官，屬古今異義詞。交代滕子京被貶的身份，為後文「不以物喜，不以己悲」的議論埋下伏筆，亦暗示作者與滕子京同為貶謫之人的共鳴。',
+ note:'字詞題不只是解字，更要連結語境與全篇，說明該字在文中的深層作用。'}
 ];
 
 /* =========================================================
-   篇章資料（完整十六篇，深度強化版）
-   ========================================================= */
-/* =========================================================
-   完整十六篇篇章資料（取代原有 CHAPTERS 陣列）
+   上篇：第 1–8 篇
    ========================================================= */
 const CHAPTERS = [
-/* 1. 論仁、論孝、論君子 */
-{
-  id:'lunyu', num:1, title:'論仁、論孝、論君子', author:'論語', era:'先秦', genre:'語錄體', theme:'儒家修養',
-  intro:'《論語》是孔子與弟子言論的結集。本篇選錄「論仁」「論孝」「論君子」三組章節，從愛人、知人、克己復禮，到敬養父母、義利之辨，勾勒出儒家修身的核心輪廓。',
-  sections:[
-  { name:'論仁', sentences:[
-    { text:'子曰：「不仁者，不可以久處約，不可以長處樂。仁者安仁，知者利仁。」',
-      trans:'孔子說：「沒有仁德的人，不可以長久地處於窮困中，也不可以長久地處於安樂中。有仁德的人安於仁，有智慧的人利用仁。」',
-      words:[
-        {w:'約',d:'窮困、貧困',py:'yuē',pos:'形容詞',deep:'「約」在此指窮困、匱乏的處境。不仁者久處約則會為非作歹，無法安於貧困。'},
-        {w:'樂',d:'安樂、富貴',py:'lè',pos:'名詞',deep:'「樂」指安樂、富貴的處境。不仁者久處樂則會驕奢淫逸，無法長保。'},
-        {w:'安仁',d:'安於仁，以仁為安身立命之所',py:'ān rén',pos:'動詞',deep:'「安仁」指內心以仁德為歸宿，自然安適，不需勉強。仁者與仁合一，故能安。'},
-        {w:'利仁',d:'利用仁，以仁為有利而實行',py:'lì rén',pos:'動詞',deep:'「利仁」指知道仁對己有利而實行仁。知者雖不如仁者自然，但能明智地選擇行仁。'}
-      ],
-      rhet:[{t:'對偶',p:'不可以久處約，不可以長處樂',e:'兩句結構對稱，從「約」與「樂」兩極處境說明不仁者的困境，強化論點。'}],
-      tech:'正反對照——先從反面說不仁者，再從正面說仁者與知者',
-      point:'常考「約」「樂」的解釋，以及仁者與知者的分別',
-      emotion:'平靜而篤定的說理之情。孔子從正反兩面說明仁對人的重要性，語氣從容，體現其對仁德的深切體認。',
-      symbol:'「約」與「樂」象徵人生的兩種極端處境；「安仁」與「利仁」象徵兩種行仁的境界。',
-      deep:'此章從「不仁者」的困境入手，反襯仁的重要。不仁者無論處於貧困或安樂都無法長久，因其內心無所安頓。仁者安於仁，知者利於仁，二者境界不同但皆歸於仁。此章確立了仁作為人生根本的地位。' },
-    { text:'子曰：「富與貴，是人之所欲也；不以其道得之，不處也。貧與賤，是人之所惡也；不以其道得之，不去也。君子去仁，惡乎成名？君子無終食之間違仁，造次必於是，顛沛必於是。」',
-      trans:'孔子說：「富有和尊貴，是人人想要的；不用正當的方法得到，不接受。貧窮和卑賤，是人人厭惡的；不用正當的方法擺脫，不逃避。君子如果拋棄了仁德，怎麼能成就名聲呢？君子沒有一頓飯的時間違背仁德，倉促匆忙時也一定如此，顛沛流離時也一定如此。」',
-      words:[
-        {w:'處',d:'接受、安處',py:'chǔ',pos:'動詞',deep:'「處」指接受、安處於某種狀態。不以其道得富貴，則不接受。'},
-        {w:'去',d:'捨棄、擺脫',py:'qù',pos:'動詞',deep:'「去」指捨棄、離開。不以其道得貧賤，則不設法擺脫。'},
-        {w:'惡乎',d:'怎麼、如何',py:'wū hū',pos:'副詞',deep:'「惡乎」為疑問副詞，解作怎麼、如何。君子去仁，則無以成名。'},
-        {w:'終食之間',d:'一頓飯的時間，形容極短',py:'zhōng shí zhī jiān',pos:'名詞',deep:'「終食之間」指吃完一頓飯的時間，極言時間之短。君子連極短時間也不違仁。'},
-        {w:'造次',d:'倉促、匆忙',py:'zào cì',pos:'形容詞',deep:'「造次」指倉促匆忙之時。在緊急情況下仍不放棄仁德。'},
-        {w:'顛沛',d:'顛沛流離、困頓',py:'diān pèi',pos:'形容詞',deep:'「顛沛」指困頓、流離失所。在人生最艱難時仍堅守仁德。'}
-      ],
-      rhet:[{t:'對偶',p:'富與貴，是人之所欲也／貧與賤，是人之所惡也',e:'富貴與貧賤對舉，欲與惡相對，句式工整，全面涵蓋人生的兩種境遇。'}],
-      tech:'正反對照＋層遞——由富貴貧賤的取捨，到「無終食之間違仁」，再到「造次」「顛沛」，層層深入',
-      point:'「惡乎」「終食之間」「造次」「顛沛」的解釋為常考；此章論仁的堅守最為完整',
-      emotion:'堅定不移的守仁之情。孔子以「無終食之間違仁」強調仁的不可須臾離，語氣斬釘截鐵，展現對仁德的絕對忠誠。',
-      symbol:'「富貴」與「貧賤」象徵人生的順逆；「造次」「顛沛」象徵最艱難的考驗，君子在一切處境中皆不違仁。',
-      deep:'此章是《論語》中論仁最完整的段落之一。孔子先說富貴貧賤的取捨須以道，再說君子不可去仁，最後以「無終食之間違仁，造次必於是，顛沛必於是」收束，將仁提升為貫穿一切處境的生命原則。' },
-    { text:'顏淵問仁。子曰：「克己復禮為仁。一日克己復禮，天下歸仁焉。為仁由己，而由人乎哉？」顏淵曰：「請問其目。」子曰：「非禮勿視，非禮勿聽，非禮勿言，非禮勿動。」顏淵曰：「回雖不敏，請事斯語矣。」',
-      trans:'顏淵問什麼是仁。孔子說：「克制自己的私慾，使言行合於禮，就是仁。一旦做到克己復禮，天下人都會稱許你的仁德。行仁全靠自己，難道靠別人嗎？」顏淵說：「請問具體的條目。」孔子說：「不合禮的不看，不合禮的不聽，不合禮的不說，不合禮的不做。」顏淵說：「我雖然不聰敏，也要實行這些話。」',
-      words:[
-        {w:'克己',d:'克制自己的私慾',py:'kè jǐ',pos:'動詞',deep:'「克」指克制、戰勝，「己」指自身的私慾。克己是行仁的功夫。'},
-        {w:'復禮',d:'使言行回復合於禮',py:'fù lǐ',pos:'動詞',deep:'「復」指回復、回歸，「禮」指社會規範。復禮即言行合乎禮制。'},
-        {w:'歸仁',d:'稱許其仁、歸向仁德',py:'guī rén',pos:'動詞',deep:'「歸」指歸向、稱許。一日克己復禮，天下皆稱許其仁。'},
-        {w:'由己',d:'由自己決定、靠自己',py:'yóu jǐ',pos:'動詞',deep:'「由」指經由、依靠。行仁全靠自己，不靠他人。'},
-        {w:'目',d:'綱目、具體條目',py:'mù',pos:'名詞',deep:'「目」指具體的條目、細則。顏淵問仁的具體實踐方法。'},
-        {w:'事',d:'實行、從事',py:'shì',pos:'動詞',deep:'「事」指實行、從事。顏淵表示要實行孔子的教誨。'}
-      ],
-      rhet:[{t:'排比',p:'非禮勿視，非禮勿聽，非禮勿言，非禮勿動',e:'四個「非禮勿」並列，從視、聽、言、動四方面全面規範，節奏鏗鏘，層次分明。'}],
-      tech:'問答體——通過顏淵與孔子的連環問答，逐步展開仁的內涵與實踐方法',
-      point:'「克己復禮」「非禮勿視」等為必考名句；「目」「事」的解釋亦常考',
-      emotion:'殷切教誨的師者之情。孔子以「為仁由己」激勵顏淵，語氣懇切，展現其對弟子成德的深切期望。顏淵「請事斯語」則見其謙遜好學。',
-      symbol:'「克己復禮」象徵以禮約束私慾的修養功夫；「非禮勿視」四句象徵日常生活中的具體實踐。',
-      deep:'此章是《論語》中論仁最具體的一章。孔子以「克己復禮」為仁的總綱，以「非禮勿視，非禮勿聽，非禮勿言，非禮勿動」為具體條目，將仁從抽象概念落實為日常實踐。顏淵「請事斯語」的回應，則展現了儒家「知行合一」的精神。' },
-    { text:'子曰：「志士仁人，無求生以害仁，有殺身以成仁。」',
-      trans:'孔子說：「有志之士和仁德之人，不會為了保全性命而損害仁德，只會犧牲生命來成全仁德。」',
-      words:[
-        {w:'志士',d:'有志向節操的人',py:'zhì shì',pos:'名詞',deep:'「志」指心之所向，「士」為有德行之讀書人。「志士」強調其志向堅定。'},
-        {w:'害',d:'損害、妨害',py:'hài',pos:'動詞',deep:'「害」與下句「成」相對，一破一立，構成價值取捨的張力。'},
-        {w:'殺身',d:'犧牲生命',py:'shā shēn',pos:'動詞',deep:'「殺身」非被動受害，而是主動捨棄，凸顯主體在生死關頭的道德抉擇。'},
-        {w:'成',d:'成全、成就',py:'chéng',pos:'動詞',deep:'「成仁」之「成」有完成、圓滿之意，意指以生命為代價，完成仁德的最高實踐。'}
-      ],
-      rhet:[{t:'對偶',p:'無求生以害仁／有殺身以成仁',e:'正反相對，句式鏗鏘，突出仁德高於生命的價值取向，讀來擲地有聲。'}],
-      tech:'正反對照——以「無……有……」的句式並列兩種取捨，形成強烈的道德對比',
-      point:'「殺身成仁」成語出處，與《魚我所欲也》「捨生取義」並考',
-      emotion:'慷慨決絕的殉道之情。孔子以斬釘截鐵的語氣，道出志士仁人在生死與仁德之間的抉擇，語氣中帶著對道德理想的絕對忠誠與凜然正氣。',
-      symbol:'「殺身成仁」象徵儒家對道德理想的終極承諾——仁德不是外在規範，而是值得以生命守護的內在價值。',
-      deep:'此章直指儒家倫理的最高命題：當生命與仁德衝突時，仁德優先。孔子並非鼓勵輕生，而是強調道德主體在關鍵時刻的價值排序。「成仁」之「成」尤為關鍵——仁德需由具體行動來完成，而非僅停留於觀念。' }
-  ]},
-  { name:'論孝', sentences:[
-    { text:'孟懿子問孝。子曰：「無違。」樊遲御，子告之曰：「孟孫問孝於我，我對曰，無違。」樊遲曰：「何謂也？」子曰：「生，事之以禮；死，葬之以禮，祭之以禮。」',
-      trans:'孟懿子問什麼是孝。孔子說：「不要違背禮。」樊遲為孔子駕車，孔子告訴他說：「孟孫問我什麼是孝，我回答說不要違背禮。」樊遲說：「這是什麼意思呢？」孔子說：「父母活著時，按禮侍奉他們；父母死後，按禮安葬他們，按禮祭祀他們。」',
-      words:[
-        {w:'無違',d:'不要違背禮',py:'wú wéi',pos:'動詞',deep:'「違」指違背。孔子以「無違」答孟懿子，實指不違背禮，而非單純順從父母。'},
-        {w:'御',d:'駕車',py:'yù',pos:'動詞',deep:'「御」指駕車。樊遲為孔子駕車，故孔子有機會向他解釋。'},
-        {w:'事',d:'侍奉',py:'shì',pos:'動詞',deep:'「事」指侍奉、服侍。生事之以禮，即按禮侍奉父母。'},
-        {w:'葬',d:'安葬',py:'zàng',pos:'動詞',deep:'「葬」指安葬。死葬之以禮，即按禮安葬父母。'},
-        {w:'祭',d:'祭祀',py:'jì',pos:'動詞',deep:'「祭」指祭祀。祭之以禮，即按禮祭祀父母。'}
-      ],
-      rhet:[{t:'排比',p:'生，事之以禮；死，葬之以禮，祭之以禮',e:'從生到死，從事到葬到祭，三個「以禮」連貫而下，全面涵蓋孝的實踐。'}],
-      tech:'因材施教——對孟懿子簡答「無違」，對樊遲則詳細解釋，體現孔子因材施教的教育方法',
-      point:'常考「無違」的含義（不違背禮）及「生事之以禮」三句的解釋',
-      emotion:'因材施教的師者之情。孔子對不同弟子有不同的教導方式，語氣隨對象而異，展現其循循善誘的教育智慧。',
-      symbol:'「禮」貫穿生、死、祭三個階段，象徵孝是貫穿一生的責任，而非一時的行為。',
-      deep:'此章以「無違」為核心，實指不違背禮。孔子對孟懿子簡答，對樊遲詳解，體現因材施教。值得注意的是，孔子將孝與禮緊密結合，強調生事、死葬、祭祭皆須以禮為準則，這使孝從單純的情感提升為具有規範性的倫理實踐。' },
-    { text:'子游問孝。子曰：「今之孝者，是謂能養。至於犬馬，皆能有養；不敬，何以別乎！」',
-      trans:'子游問什麼是孝。孔子說：「如今所謂的孝，只是說能養活父母。但狗馬也都能得到飼養；如果沒有恭敬之心，那和飼養狗馬有什麼分別呢！」',
-      words:[
-        {w:'養',d:'供養、飼養',py:'yǎng',pos:'動詞',deep:'「養」兼指供養父母與飼養牲畜，孔子刻意用同一字，以凸顯「養而不敬」之失。'},
-        {w:'敬',d:'恭敬之心',py:'jìng',pos:'名詞',deep:'「敬」不只是外在禮節，更是內心的誠敬與尊重，是孝之所以為孝的本質。'},
-        {w:'別',d:'分別、區別',py:'bié',pos:'動詞',deep:'「何以別乎」以反問收束，強調若無敬，則人子之養與牲畜之養無異。'}
-      ],
-      rhet:[{t:'反問',p:'不敬，何以別乎！',e:'以反問強調「敬」才是孝的本質，語氣加強，發人深省，使論點不容置疑。'}],
-      tech:'對比論證——以「養犬馬」與「養父母」對比，凸顯「敬」的關鍵',
-      point:'高頻考點：孔子認為孝＝養＋敬，缺「敬」則與禽獸之養無異',
-      emotion:'嚴肅而懇切的提醒之情。孔子以犬馬作比，語氣雖略帶責備，實則出於對孝道本質的深切關懷，意在喚醒世人對「敬」的重視。',
-      symbol:'「敬」象徵人倫關係中的精神性——供養只是物質層面，恭敬才是人區別於禽獸的道德自覺。',
-      deep:'此章將「養」與「敬」並置，指出孝的物質基礎與精神本質。孔子並非否定奉養的重要性，而是提醒：若缺乏內在的恭敬，孝便淪為形式。此說奠定了儒家孝道「敬養並重」的基調。' },
-    { text:'子曰：「事父母幾諫，見志不從，又敬不違，勞而不怨。」',
-      trans:'孔子說：「侍奉父母，要委婉地勸諫；看到自己的意見不被聽從，仍然要恭敬而不違逆，雖然憂愁但不怨恨。」',
-      words:[
-        {w:'事',d:'侍奉',py:'shì',pos:'動詞',deep:'「事」有服務、奉侍之意，用於父母，體現子女對父母的恭敬與責任。'},
-        {w:'幾諫',d:'委婉地勸諫。幾，輕微、委婉',py:'jī jiàn',pos:'動詞',deep:'「幾」有細微、委婉之意，「幾諫」強調勸諫時態度溫和，避免直接衝撞，體現儒家「溫柔敦厚」的處世哲學。'},
-        {w:'違',d:'違逆、冒犯',py:'wéi',pos:'動詞',deep:'「不違」非盲從，而是不頂撞、不違逆父母的意志，保持恭敬的態度。'},
-        {w:'勞',d:'憂愁、憂勞',py:'láo',pos:'動詞',deep:'「勞」在此指內心憂愁操勞，非身體勞累，寫出子女在勸諫不從後的焦慮與牽掛。'}
-      ],
-      rhet:[], tech:'層遞——由「諫」到「不從」到「敬不違」到「勞不怨」，層層深入，寫出孝子委婉勸諫的完整心理過程',
-      point:'常考「幾」字的解釋（委婉），以及儒家孝道中「順」與「諫」的平衡',
-      emotion:'溫厚而堅韌的孝子之情。面對父母的不從，既不強硬違逆，也不放棄關懷，而是以恭敬與憂勞繼續侍奉，情感含蓄而深沉。',
-      symbol:'「幾諫」象徵儒家在「順」與「諫」之間的平衡智慧——既不失子女的恭敬，也不放棄道義的勸導。',
-      deep:'此章處理了孝道中的兩難：父母有過，子女當諫；但諫而不從，又不可違逆。孔子的答案是「幾諫」——委婉、持續、恭敬。這體現了儒家「溫柔敦厚」的倫理智慧，也為後世「諫而不逆」的孝道觀奠下基礎。' },
-    { text:'子曰：「父母之年，不可不知也。一則以喜，一則以懼。」',
-      trans:'孔子說：「父母的年紀，不可以不知道。一方面因為他們長壽而歡喜，一方面因為他們年邁而憂懼。」',
-      words:[
-        {w:'知',d:'知道、記住',py:'zhī',pos:'動詞',deep:'「知」指知道、記住。子女應清楚父母的年紀。'},
-        {w:'喜',d:'歡喜',py:'xǐ',pos:'動詞',deep:'「喜」指歡喜。父母長壽，子女為之歡喜。'},
-        {w:'懼',d:'憂懼',py:'jù',pos:'動詞',deep:'「懼」指憂懼。父母年邁，來日無多，子女為之憂懼。'}
-      ],
-      rhet:[{t:'對偶',p:'一則以喜，一則以懼',e:'喜與懼對舉，簡潔有力地寫出子女面對父母年邁的複雜心情。'}],
-      tech:'心理描寫——寫出子女面對父母年邁時既喜且懼的雙重情感',
-      point:'常考「一則以喜，一則以懼」的含義及所表達的情感',
-      emotion:'既喜且懼的孝子之情。孔子以「喜」與「懼」二字，精準捕捉子女面對父母年邁時的複雜心理，情感真摯而深沉。',
-      symbol:'「喜」與「懼」象徵生命的兩面——長壽值得歡喜，但衰老與死亡又令人憂懼。',
-      deep:'此章以極簡潔的語言，寫出子女面對父母年邁時的心理。喜的是父母長壽，懼的是時日無多。孔子藉此提醒為人子女者珍惜與父母相處的時光，體現儒家對親情的深切關懷。' }
-  ]},
-  { name:'論君子', sentences:[
-    { text:'子曰：「君子不重則不威；學則不固。主忠信。無友不如己者。過則勿憚改。」',
-      trans:'孔子說：「君子如果不莊重就沒有威嚴；學習了就不會閉塞。要以忠信為主。不要跟不如自己的人交朋友。有了過錯，就不要害怕改正。」',
-      words:[
-        {w:'重',d:'莊重、穩重',py:'zhòng',pos:'形容詞',deep:'「重」指莊重、穩重。君子不莊重則無威嚴，難以服人。'},
-        {w:'威',d:'威嚴',py:'wēi',pos:'名詞',deep:'「威」指威嚴、威信。莊重是威嚴的基礎。'},
-        {w:'固',d:'閉塞、固陋',py:'gù',pos:'形容詞',deep:'「固」指固陋、閉塞。學習可以開闊眼界，避免固陋。'},
-        {w:'主',d:'以……為主',py:'zhǔ',pos:'動詞',deep:'「主」指以……為主。君子以忠信為主要品質。'},
-        {w:'憚',d:'害怕、畏懼',py:'dàn',pos:'動詞',deep:'「憚」指害怕、畏懼。有了過錯，不要害怕改正。'}
-      ],
-      rhet:[], tech:'列舉——從莊重、學習、忠信、交友、改過五方面列舉君子的修養',
-      point:'常考「重」「固」「憚」的解釋，以及此章所論君子修養的各方面',
-      emotion:'殷切教誨的師者之情。孔子從多個方面教導弟子如何成為君子，語氣懇切，體現其對弟子成德的期望。',
-      symbol:'「重」象徵外在的莊重，「學」象徵內在的充實，「忠信」象徵待人的根本，「改過」象徵自我完善的能力。',
-      deep:'此章從五個方面論君子：莊重、學習、忠信、交友、改過。孔子將外在的莊重與內在的學習結合，將待人的忠信與交友的選擇並列，最後歸於改過的勇氣。此章可視為君子修養的綱領。' },
-    { text:'子曰：「君子坦蕩蕩，小人長戚戚。」',
-      trans:'孔子說：「君子心胸平坦寬廣，小人卻總是憂愁不安。」',
-      words:[
-        {w:'坦蕩蕩',d:'心胸開闊、坦然自若',py:'tǎn dàng dàng',pos:'形容詞',deep:'「坦」指平直，「蕩蕩」為疊字，形容寬廣無際。合指君子內心光明磊落，無所牽掛。'},
-        {w:'長',d:'常常、總是',py:'cháng',pos:'副詞',deep:'「長」強調時間上的持續，寫出小人憂懼之情的綿延不斷。'},
-        {w:'戚戚',d:'憂愁、憂懼的樣子',py:'qī qī',pos:'形容詞',deep:'「戚」本義為憂傷，「戚戚」疊用，強化小人內心終日惶惶不安的狀態。'}
-      ],
-      rhet:[{t:'對偶',p:'君子坦蕩蕩／小人長戚戚',e:'對舉工整，以「蕩蕩」與「戚戚」的疊字形成音韻與心理的強烈對比，讀來節奏鮮明。'}],
-      tech:'對比論證——君子與小人的精神狀態對照',
-      point:'疊字「蕩蕩」「戚戚」為常考修辭點',
-      emotion:'坦然自得的君子之風，與小人惶惶不安形成對照。孔子以簡潔的對句，流露出對君子人格的嚮往與肯定。',
-      symbol:'「坦蕩蕩」象徵君子內心的光明與無愧；「長戚戚」象徵小人因私欲纏繞而終日不安。二者是兩種生命狀態的寫照。',
-      deep:'此章以心境對比區分君子與小人：君子因無私而坦蕩，小人因計較而戚戚。孔子將抽象的人格差異轉化為可感的精神狀態，使讀者能自我觀照。此亦是後世「君子坦蕩」人格理想的重要源頭。' },
-    { text:'司馬牛問君子。子曰：「君子不憂不懼。」曰：「不憂不懼，斯謂之君子已乎？」子曰：「內省不疚，夫何憂何懼？」',
-      trans:'司馬牛問什麼是君子。孔子說：「君子不憂愁，不恐懼。」司馬牛說：「不憂愁不恐懼，這就叫做君子了嗎？」孔子說：「自己反省而問心無愧，那還有什麼可憂愁恐懼的呢？」',
-      words:[
-        {w:'憂',d:'憂愁',py:'yōu',pos:'動詞',deep:'「憂」指憂愁、憂慮。君子內心無愧，故不憂。'},
-        {w:'懼',d:'恐懼',py:'jù',pos:'動詞',deep:'「懼」指恐懼、害怕。君子內心無愧，故不懼。'},
-        {w:'內省',d:'自我反省',py:'nèi xǐng',pos:'動詞',deep:'「內省」指向內反省自己的言行。'},
-        {w:'疚',d:'愧疚、慚愧',py:'jiù',pos:'名詞',deep:'「疚」指愧疚、慚愧。內省不疚，即問心無愧。'}
-      ],
-      rhet:[{t:'反問',p:'夫何憂何懼？',e:'以反問強調內省不疚則自然無憂無懼，語氣肯定，不容置疑。'}],
-      tech:'問答體——通過司馬牛的追問，孔子進一步點明「內省不疚」是無憂無懼的根本',
-      point:'常考「內省不疚」的含義，以及君子不憂不懼的原因',
-      emotion:'坦蕩無愧的君子之情。孔子以「內省不疚」解釋君子不憂不懼的原因，語氣從容，展現君子問心無愧的精神境界。',
-      symbol:'「內省不疚」象徵道德上的自我確認——君子因內心無愧，故能超越外在的憂懼。',
-      deep:'此章以司馬牛的追問引出孔子的核心回答：「內省不疚，夫何憂何懼？」君子不憂不懼，並非因為外在無患，而是因為內心無愧。這種由內而外的道德自信，是儒家君子人格的重要特徵。' },
-    { text:'子曰：「君子成人之美，不成人之惡。小人反是。」',
-      trans:'孔子說：「君子成全別人的好事，不促成別人的壞事。小人卻相反。」',
-      words:[
-        {w:'成',d:'成全、成就',py:'chéng',pos:'動詞',deep:'「成」指成全、幫助完成。君子幫助別人成就好事。'},
-        {w:'美',d:'好事、美德',py:'měi',pos:'名詞',deep:'「美」指好事、善行。君子成全他人的善行。'},
-        {w:'惡',d:'壞事、惡行',py:'è',pos:'名詞',deep:'「惡」指壞事、惡行。君子不助長他人的惡行。'},
-        {w:'反是',d:'與此相反',py:'fǎn shì',pos:'動詞',deep:'「反是」指與此相反。小人的做法與君子完全相反。'}
-      ],
-      rhet:[{t:'對比',p:'君子成人之美，不成人之惡／小人反是',e:'以君子與小人對比，凸顯二者在待人上的根本差異。'}],
-      tech:'對比論證——君子與小人在待人上的對照',
-      point:'常考「成人之美」的含義，以及君子與小人在待人上的分別',
-      emotion:'與人為善的君子之情。孔子以「成人之美」寫君子的胸懷，語氣肯定，展現君子樂於助人的品德。',
-      symbol:'「成人之美」象徵君子的寬厚與善良；「成人之惡」象徵小人的狹隘與惡意。',
-      deep:'此章以「成人之美」與「成人之惡」對比君子與小人的待人方式。君子樂於成全他人的好事，小人則相反。這體現了儒家「與人為善」的道德理想，也為後世「君子成人之美」的處世哲學奠定了基礎。' },
-    { text:'子曰：「君子恥其言而過其行。」',
-      trans:'孔子說：「君子以說得多而做得少為恥。」',
-      words:[
-        {w:'恥',d:'以……為恥',py:'chǐ',pos:'動詞',deep:'「恥」為意動用法，指以……為恥。'},
-        {w:'過',d:'超過',py:'guò',pos:'動詞',deep:'「過」指超過。言語超過了行動，即說得多做得少。'}
-      ],
-      rhet:[], tech:'直陳——直接點明君子對言行關係的態度',
-      point:'常考「恥」的意動用法，以及此句所體現的言行觀',
-      emotion:'務實篤行的君子之情。孔子以「恥其言而過其行」強調言行一致，語氣嚴肅，體現儒家對務實精神的重視。',
-      symbol:'「言」與「行」的關係象徵道德實踐的真誠——君子不應只說不做，而應言行相稱。',
-      deep:'此章強調言行一致，君子以說得多做得少為恥。這與《論語》中「先行其言而後從之」「訥於言而敏於行」等章相呼應，體現了儒家對務實篤行的重視。' },
-    { text:'子曰：「君子義以為質，禮以行之，孫以出之，信以成之。君子哉！」',
-      trans:'孔子說：「君子以義為根本，用禮來實行它，用謙遜的言語來表達它，用誠信來完成它。這就是君子啊！」',
-      words:[
-        {w:'義以為質',d:'以義為根本',py:'yì yǐ wéi zhì',pos:'動詞',deep:'「質」指本質、根本。君子以義為立身處世的根本。'},
-        {w:'禮以行之',d:'用禮來實行',py:'lǐ yǐ xíng zhī',pos:'動詞',deep:'「行」指實行。以禮作為實行義的規範。'},
-        {w:'孫以出之',d:'用謙遜的言語表達',py:'sūn yǐ chū zhī',pos:'動詞',deep:'「孫」通「遜」，指謙遜。「出」指言語表達。以謙遜的態度說話。'},
-        {w:'信以成之',d:'用誠信來完成',py:'xìn yǐ chéng zhī',pos:'動詞',deep:'「信」指誠信，「成」指完成。以誠信來成就事業。'}
-      ],
-      rhet:[{t:'排比',p:'義以為質，禮以行之，孫以出之，信以成之',e:'四個「以」字句並列，從根本、實行、表達、完成四方面全面論述君子的修養，節奏鏗鏘。'}],
-      tech:'排比論證——從四個層面系統論述君子的修養',
-      point:'常考「質」「孫」的解釋，以及此章所論君子修養的四個層面',
-      emotion:'系統全面的君子之情。孔子從義、禮、孫、信四方面完整論述君子的修養，語氣肯定，展現其對君子人格的全面構想。',
-      symbol:'「義」象徵根本，「禮」象徵規範，「孫」象徵態度，「信」象徵實踐，四者共同構成君子的完整人格。',
-      deep:'此章以排比句式，從「義以為質」「禮以行之」「孫以出之」「信以成之」四個層面，系統地論述君子的修養。義是根本，禮是實行的方法，孫是表達的態度，信是完成的保證。四者環環相扣，構成君子人格的完整框架。' },
-    { text:'子曰：「君子病無能焉，不病人之不己知也。」',
-      trans:'孔子說：「君子擔憂自己沒有才能，不擔憂別人不知道自己。」',
-      words:[
-        {w:'病',d:'擔憂、憂慮',py:'bìng',pos:'動詞',deep:'「病」指擔憂、憂慮。君子所憂的是自己無能。'},
-        {w:'能',d:'才能、能力',py:'néng',pos:'名詞',deep:'「能」指才能、能力。君子擔憂自己缺乏才能。'},
-        {w:'不己知',d:'不了解自己',py:'bù jǐ zhī',pos:'動詞',deep:'「不己知」為賓語前置，即「不知己」。君子不擔憂別人不了解自己。'}
-      ],
-      rhet:[{t:'對比',p:'病無能／不病人之不己知',e:'以「病」與「不病」對比，凸顯君子對自身修養的重視，而非外在的認可。'}],
-      tech:'對比論證——君子所憂與所不憂的對照',
-      point:'常考「病」的解釋，以及「不己知」的賓語前置語法',
-      emotion:'反求諸己的君子之情。孔子強調君子應擔憂自己無能，而非別人不了解自己，語氣懇切，體現儒家反求諸己的精神。',
-      symbol:'「病無能」象徵對自我完善的追求；「不病人之不己知」象徵不慕虛榮、不求外在認可的品格。',
-      deep:'此章強調君子應反求諸己，擔憂自己無能，而非別人不了解自己。這與《論語》中「不患人之不己知，患不知人也」「不患莫己知，求為可知也」等章相呼應，體現了儒家重內在修養、輕外在名聲的價值取向。' },
-    { text:'子曰：「君子求諸己，小人求諸人。」',
-      trans:'孔子說：「君子要求自己，小人要求別人。」',
-      words:[
-        {w:'求',d:'要求、責求',py:'qiú',pos:'動詞',deep:'「求」指要求、責求。君子要求自己，小人要求別人。'},
-        {w:'諸',d:'之於、於',py:'zhū',pos:'介詞',deep:'「諸」為「之於」的合音。求諸己，即求之於己。'},
-        {w:'己',d:'自己',py:'jǐ',pos:'代詞',deep:'「己」指自己。君子從自身找原因。'},
-        {w:'人',d:'別人',py:'rén',pos:'代詞',deep:'「人」指別人。小人則要求別人。'}
-      ],
-      rhet:[{t:'對偶',p:'君子求諸己／小人求諸人',e:'句式對稱，以「己」與「人」對舉，凸顯君子與小人在責任歸屬上的根本差異。'}],
-      tech:'對比論證——君子與小人在面對問題時的態度對照',
-      point:'常考「求諸己」的含義，以及此句所體現的反求諸己精神',
-      emotion:'嚴於律己的君子之情。孔子以「求諸己」寫君子的自我要求，語氣肯定，展現儒家嚴於律己、寬以待人的精神。',
-      symbol:'「求諸己」象徵自我負責的態度；「求諸人」象徵推卸責任的習性。',
-      deep:'此章以「求諸己」與「求諸人」對比君子與小人。君子遇到問題時從自身找原因，小人則責怪別人。這體現了儒家「反求諸己」的核心精神，也與「君子病無能焉，不病人之不己知也」相互呼應。' }
-  ]}
-  ]
-},
+/* ========== 1 論仁、論孝、論君子 ========== */
+{id:'lunyu',num:1,title:'論仁、論孝、論君子',author:'論語',era:'先秦',genre:'語錄體',theme:'儒家修養',
+ intro:'《論語》是孔子與弟子言論的結集。本篇選錄「論仁」「論孝」「論君子」三組章節，從愛人、知人、克己復禮，到敬養父母、義利之辨，勾勒出儒家修身的核心輪廓。',
+ sections:[
+ {name:'論仁',sentences:[
+  {text:'子曰：「不仁者，不可以久處約，不可以長處樂。仁者安仁，知者利仁。」',
+   trans:'孔子說：「沒有仁德的人，不可以長久地處於窮困中，也不可以長久地處於安樂中。有仁德的人安於仁，有智慧的人利用仁。」',
+   words:[
+    {w:'約',d:'窮困、貧困',py:'yuē',pos:'形容詞',deep:'「約」在此指窮困、匱乏的處境。不仁者久處約則會為非作歹，無法安於貧困；久處樂則會驕奢淫逸，無法長保。'},
+    {w:'樂',d:'安樂、富貴',py:'lè',pos:'名詞',deep:'「樂」指安樂、富貴的處境。與「約」相對，代表人生的順境。'},
+    {w:'安仁',d:'安於仁，以仁為安身立命之所',py:'ān rén',pos:'動詞',deep:'「安仁」指內心以仁德為歸宿，自然安適，不需勉強。仁者與仁合一，故能安。這是行仁的最高境界。'},
+    {w:'利仁',d:'利用仁，以仁為有利而實行',py:'lì rén',pos:'動詞',deep:'「利仁」指知道仁對己有利而實行仁。知者雖不如仁者自然，但能明智地選擇行仁，是行仁的第二層境界。'}
+   ],
+   rhet:[{t:'對偶',p:'不可以久處約，不可以長處樂',e:'兩句結構對稱，從「約」與「樂」兩極處境說明不仁者的困境，強化論點。'}],
+   tech:'正反對照——先從反面說不仁者，再從正面說仁者與知者',
+   point:'常考「約」「樂」的解釋，以及仁者與知者的分別',
+   emotion:'平靜而篤定的說理之情。孔子從正反兩面說明仁對人的重要性，語氣從容，體現其對仁德的深切體認。',
+   symbol:'「約」與「樂」象徵人生的兩種極端處境；「安仁」與「利仁」象徵兩種行仁的境界。',
+   deep:'此章從「不仁者」的困境入手，反襯仁的重要。不仁者無論處於貧困或安樂都無法長久，因其內心無所安頓。仁者安於仁，知者利於仁，二者境界不同但皆歸於仁。此章確立了仁作為人生根本的地位。'},
+  {text:'子曰：「富與貴，是人之所欲也；不以其道得之，不處也。貧與賤，是人之所惡也；不以其道得之，不去也。君子去仁，惡乎成名？君子無終食之間違仁，造次必於是，顛沛必於是。」',
+   trans:'孔子說：「富有和尊貴，是人人想要的；不用正當的方法得到，不接受。貧窮和卑賤，是人人厭惡的；不用正當的方法擺脫，不逃避。君子如果拋棄了仁德，怎麼能成就名聲呢？君子沒有一頓飯的時間違背仁德，倉促匆忙時也一定如此，顛沛流離時也一定如此。」',
+   words:[
+    {w:'處',d:'接受、安處',py:'chǔ',pos:'動詞',deep:'「處」指接受、安處於某種狀態。不以其道得富貴，則不接受。'},
+    {w:'去',d:'捨棄、擺脫',py:'qù',pos:'動詞',deep:'「去」指捨棄、離開。不以其道得貧賤，則不設法擺脫。'},
+    {w:'惡乎',d:'怎麼、如何',py:'wū hū',pos:'副詞',deep:'「惡乎」為疑問副詞，解作怎麼、如何。君子去仁，則無以成名。'},
+    {w:'終食之間',d:'一頓飯的時間，形容極短',py:'zhōng shí zhī jiān',pos:'名詞',deep:'指吃完一頓飯的時間，極言時間之短。君子連極短時間也不違仁。'},
+    {w:'造次',d:'倉促、匆忙',py:'zào cì',pos:'形容詞',deep:'指倉促匆忙之時。在緊急情況下仍不放棄仁德。'},
+    {w:'顛沛',d:'顛沛流離、困頓',py:'diān pèi',pos:'形容詞',deep:'指困頓、流離失所。在人生最艱難時仍堅守仁德。'}
+   ],
+   rhet:[{t:'對偶',p:'富與貴，是人之所欲也／貧與賤，是人之所惡也',e:'富貴與貧賤對舉，欲與惡相對，句式工整，全面涵蓋人生的兩種境遇。'}],
+   tech:'正反對照＋層遞——由富貴貧賤的取捨，到「無終食之間違仁」，再到「造次」「顛沛」，層層深入',
+   point:'「惡乎」「終食之間」「造次」「顛沛」的解釋為常考；此章論仁的堅守最為完整',
+   emotion:'堅定不移的守仁之情。孔子以「無終食之間違仁」強調仁的不可須臾離，語氣斬釘截鐵，展現對仁德的絕對忠誠。',
+   symbol:'「富貴」與「貧賤」象徵人生的順逆；「造次」「顛沛」象徵最艱難的考驗，君子在一切處境中皆不違仁。',
+   deep:'此章是《論語》中論仁最完整的段落之一。孔子先說富貴貧賤的取捨須以道，再說君子不可去仁，最後以「無終食之間違仁，造次必於是，顛沛必於是」收束，將仁提升為貫穿一切處境的生命原則。'},
+  {text:'顏淵問仁。子曰：「克己復禮為仁。一日克己復禮，天下歸仁焉。為仁由己，而由人乎哉？」顏淵曰：「請問其目。」子曰：「非禮勿視，非禮勿聽，非禮勿言，非禮勿動。」顏淵曰：「回雖不敏，請事斯語矣。」',
+   trans:'顏淵問什麼是仁。孔子說：「克制自己的私慾，使言行合於禮，就是仁。一旦做到克己復禮，天下人都會稱許你的仁德。行仁全靠自己，難道靠別人嗎？」顏淵說：「請問具體的條目。」孔子說：「不合禮的不看，不合禮的不聽，不合禮的不說，不合禮的不做。」顏淵說：「我雖然不聰敏，也要實行這些話。」',
+   words:[
+    {w:'克己',d:'克制自己的私慾',py:'kè jǐ',pos:'動詞',deep:'「克」指克制、戰勝，「己」指自身的私慾。克己是行仁的功夫，強調主體的自覺與自制。'},
+    {w:'復禮',d:'使言行回復合於禮',py:'fù lǐ',pos:'動詞',deep:'「復」指回復、回歸，「禮」指社會規範。復禮即言行合乎禮制。'},
+    {w:'歸仁',d:'稱許其仁、歸向仁德',py:'guī rén',pos:'動詞',deep:'「歸」指歸向、稱許。一日克己復禮，天下皆稱許其仁。'},
+    {w:'由己',d:'由自己決定、靠自己',py:'yóu jǐ',pos:'動詞',deep:'「由」指經由、依靠。行仁全靠自己，不靠他人，強調道德的主體性。'},
+    {w:'目',d:'綱目、具體條目',py:'mù',pos:'名詞',deep:'「目」指具體的條目、細則。顏淵問仁的具體實踐方法。'},
+    {w:'事',d:'實行、從事',py:'shì',pos:'動詞',deep:'「事」指實行、從事。顏淵表示要實行孔子的教誨。'}
+   ],
+   rhet:[{t:'排比',p:'非禮勿視，非禮勿聽，非禮勿言，非禮勿動',e:'四個「非禮勿」並列，從視、聽、言、動四方面全面規範，節奏鏗鏘，層次分明。'}],
+   tech:'問答體——通過顏淵與孔子的連環問答，逐步展開仁的內涵與實踐方法',
+   point:'「克己復禮」「非禮勿視」等為必考名句；「目」「事」的解釋亦常考',
+   emotion:'殷切教誨的師者之情。孔子以「為仁由己」激勵顏淵，語氣懇切，展現其對弟子成德的深切期望。顏淵「請事斯語」則見其謙遜好學。',
+   symbol:'「克己復禮」象徵以禮約束私慾的修養功夫；「非禮勿視」四句象徵日常生活中的具體實踐。',
+   deep:'此章是《論語》中論仁最具體的一章。孔子以「克己復禮」為仁的總綱，以「非禮勿視，非禮勿聽，非禮勿言，非禮勿動」為具體條目，將仁從抽象概念落實為日常實踐。顏淵「請事斯語」的回應，則展現了儒家「知行合一」的精神。'},
+  {text:'子曰：「志士仁人，無求生以害仁，有殺身以成仁。」',
+   trans:'孔子說：「有志之士和仁德之人，不會為了保全性命而損害仁德，只會犧牲生命來成全仁德。」',
+   words:[
+    {w:'志士',d:'有志向節操的人',py:'zhì shì',pos:'名詞',deep:'「志」指心之所向，「士」為有德行之讀書人。「志士」強調其志向堅定，非泛指一般有志者。'},
+    {w:'害',d:'損害、妨害',py:'hài',pos:'動詞',deep:'「害」與下句「成」相對，一破一立，構成價值取捨的張力。'},
+    {w:'殺身',d:'犧牲生命',py:'shā shēn',pos:'動詞',deep:'「殺身」非被動受害，而是主動捨棄，凸顯主體在生死關頭的道德抉擇。'},
+    {w:'成',d:'成全、成就',py:'chéng',pos:'動詞',deep:'「成仁」之「成」有完成、圓滿之意，意指以生命為代價，完成仁德的最高實踐。'}
+   ],
+   rhet:[{t:'對偶',p:'無求生以害仁／有殺身以成仁',e:'正反相對，句式鏗鏘，突出仁德高於生命的價值取向，讀來擲地有聲。'}],
+   tech:'正反對照——以「無……有……」的句式並列兩種取捨，形成強烈的道德對比',
+   point:'「殺身成仁」成語出處，與《魚我所欲也》「捨生取義」並考',
+   emotion:'慷慨決絕的殉道之情。孔子以斬釘截鐵的語氣，道出志士仁人在生死與仁德之間的抉擇，語氣中帶著對道德理想的絕對忠誠與凜然正氣。',
+   symbol:'「殺身成仁」象徵儒家對道德理想的終極承諾——仁德不是外在規範，而是值得以生命守護的內在價值。',
+   deep:'此章直指儒家倫理的最高命題：當生命與仁德衝突時，仁德優先。孔子並非鼓勵輕生，而是強調道德主體在關鍵時刻的價值排序。「成仁」之「成」尤為關鍵——仁德需由具體行動來完成，而非僅停留於觀念。'}
+ ]},
+ {name:'論孝',sentences:[
+  {text:'孟懿子問孝。子曰：「無違。」樊遲御，子告之曰：「孟孫問孝於我，我對曰，無違。」樊遲曰：「何謂也？」子曰：「生，事之以禮；死，葬之以禮，祭之以禮。」',
+   trans:'孟懿子問什麼是孝。孔子說：「不要違背禮。」樊遲為孔子駕車，孔子告訴他說：「孟孫問我什麼是孝，我回答說不要違背禮。」樊遲說：「這是什麼意思呢？」孔子說：「父母活著時，按禮侍奉他們；父母死後，按禮安葬他們，按禮祭祀他們。」',
+   words:[
+    {w:'無違',d:'不要違背禮',py:'wú wéi',pos:'動詞',deep:'「違」指違背。孔子以「無違」答孟懿子，實指不違背禮，而非單純順從父母。'},
+    {w:'御',d:'駕車',py:'yù',pos:'動詞',deep:'「御」指駕車。樊遲為孔子駕車，故孔子有機會向他解釋。'},
+    {w:'事',d:'侍奉',py:'shì',pos:'動詞',deep:'「事」指侍奉、服侍。生事之以禮，即按禮侍奉父母。'},
+    {w:'葬',d:'安葬',py:'zàng',pos:'動詞',deep:'「葬」指安葬。死葬之以禮，即按禮安葬父母。'},
+    {w:'祭',d:'祭祀',py:'jì',pos:'動詞',deep:'「祭」指祭祀。祭之以禮，即按禮祭祀父母。'}
+   ],
+   rhet:[{t:'排比',p:'生，事之以禮；死，葬之以禮，祭之以禮',e:'從生到死，從事到葬到祭，三個「以禮」連貫而下，全面涵蓋孝的實踐。'}],
+   tech:'因材施教——對孟懿子簡答「無違」，對樊遲則詳細解釋，體現孔子因材施教的教育方法',
+   point:'常考「無違」的含義（不違背禮）及「生事之以禮」三句的解釋',
+   emotion:'因材施教的師者之情。孔子對不同弟子有不同的教導方式，語氣隨對象而異，展現其循循善誘的教育智慧。',
+   symbol:'「禮」貫穿生、死、祭三個階段，象徵孝是貫穿一生的責任，而非一時的行為。',
+   deep:'此章以「無違」為核心，實指不違背禮。孔子對孟懿子簡答，對樊遲詳解，體現因材施教。值得注意的是，孔子將孝與禮緊密結合，強調生事、死葬、祭祭皆須以禮為準則，這使孝從單純的情感提升為具有規範性的倫理實踐。'},
+  {text:'子游問孝。子曰：「今之孝者，是謂能養。至於犬馬，皆能有養；不敬，何以別乎！」',
+   trans:'子游問什麼是孝。孔子說：「如今所謂的孝，只是說能養活父母。但狗馬也都能得到飼養；如果沒有恭敬之心，那和飼養狗馬有什麼分別呢！」',
+   words:[
+    {w:'養',d:'供養、飼養',py:'yǎng',pos:'動詞',deep:'「養」兼指供養父母與飼養牲畜，孔子刻意用同一字，以凸顯「養而不敬」之失。'},
+    {w:'敬',d:'恭敬之心',py:'jìng',pos:'名詞',deep:'「敬」不只是外在禮節，更是內心的誠敬與尊重，是孝之所以為孝的本質。'},
+    {w:'別',d:'分別、區別',py:'bié',pos:'動詞',deep:'「何以別乎」以反問收束，強調若無敬，則人子之養與牲畜之養無異。'}
+   ],
+   rhet:[{t:'反問',p:'不敬，何以別乎！',e:'以反問強調「敬」才是孝的本質，語氣加強，發人深省，使論點不容置疑。'}],
+   tech:'對比論證——以「養犬馬」與「養父母」對比，凸顯「敬」的關鍵',
+   point:'高頻考點：孔子認為孝＝養＋敬，缺「敬」則與禽獸之養無異',
+   emotion:'嚴肅而懇切的提醒之情。孔子以犬馬作比，語氣雖略帶責備，實則出於對孝道本質的深切關懷，意在喚醒世人對「敬」的重視。',
+   symbol:'「敬」象徵人倫關係中的精神性——供養只是物質層面，恭敬才是人區別於禽獸的道德自覺。',
+   deep:'此章將「養」與「敬」並置，指出孝的物質基礎與精神本質。孔子並非否定奉養的重要性，而是提醒：若缺乏內在的恭敬，孝便淪為形式。此說奠定了儒家孝道「敬養並重」的基調。'},
+  {text:'子曰：「事父母幾諫，見志不從，又敬不違，勞而不怨。」',
+   trans:'孔子說：「侍奉父母，要委婉地勸諫；看到自己的意見不被聽從，仍然要恭敬而不違逆，雖然憂愁但不怨恨。」',
+   words:[
+    {w:'事',d:'侍奉',py:'shì',pos:'動詞',deep:'「事」有服務、奉侍之意，用於父母，體現子女對父母的恭敬與責任。'},
+    {w:'幾諫',d:'委婉地勸諫。幾，輕微、委婉',py:'jī jiàn',pos:'動詞',deep:'「幾」有細微、委婉之意，「幾諫」強調勸諫時態度溫和，避免直接衝撞，體現儒家「溫柔敦厚」的處世哲學。'},
+    {w:'違',d:'違逆、冒犯',py:'wéi',pos:'動詞',deep:'「不違」非盲從，而是不頂撞、不違逆父母的意志，保持恭敬的態度。'},
+    {w:'勞',d:'憂愁、憂勞',py:'láo',pos:'動詞',deep:'「勞」在此指內心憂愁操勞，非身體勞累，寫出子女在勸諫不從後的焦慮與牽掛。'}
+   ],
+   rhet:[],tech:'層遞——由「諫」到「不從」到「敬不違」到「勞不怨」，層層深入，寫出孝子委婉勸諫的完整心理過程',
+   point:'常考「幾」字的解釋（委婉），以及儒家孝道中「順」與「諫」的平衡',
+   emotion:'溫厚而堅韌的孝子之情。面對父母的不從，既不強硬違逆，也不放棄關懷，而是以恭敬與憂勞繼續侍奉，情感含蓄而深沉。',
+   symbol:'「幾諫」象徵儒家在「順」與「諫」之間的平衡智慧——既不失子女的恭敬，也不放棄道義的勸導。',
+   deep:'此章處理了孝道中的兩難：父母有過，子女當諫；但諫而不從，又不可違逆。孔子的答案是「幾諫」——委婉、持續、恭敬。這體現了儒家「溫柔敦厚」的倫理智慧，也為後世「諫而不逆」的孝道觀奠下基礎。'},
+  {text:'子曰：「父母之年，不可不知也。一則以喜，一則以懼。」',
+   trans:'孔子說：「父母的年紀，不可以不知道。一方面因為他們長壽而歡喜，一方面因為他們年邁而憂懼。」',
+   words:[
+    {w:'知',d:'知道、記住',py:'zhī',pos:'動詞',deep:'「知」指知道、記住。子女應清楚父母的年紀。'},
+    {w:'喜',d:'歡喜',py:'xǐ',pos:'動詞',deep:'「喜」指歡喜。父母長壽，子女為之歡喜。'},
+    {w:'懼',d:'憂懼',py:'jù',pos:'動詞',deep:'「懼」指憂懼。父母年邁，來日無多，子女為之憂懼。'}
+   ],
+   rhet:[{t:'對偶',p:'一則以喜，一則以懼',e:'喜與懼對舉，簡潔有力地寫出子女面對父母年邁的複雜心情。'}],
+   tech:'心理描寫——寫出子女面對父母年邁時既喜且懼的雙重情感',
+   point:'常考「一則以喜，一則以懼」的含義及所表達的情感',
+   emotion:'既喜且懼的孝子之情。孔子以「喜」與「懼」二字，精準捕捉子女面對父母年邁時的複雜心理，情感真摯而深沉。',
+   symbol:'「喜」與「懼」象徵生命的兩面——長壽值得歡喜，但衰老與死亡又令人憂懼。',
+   deep:'此章以極簡潔的語言，寫出子女面對父母年邁時的心理。喜的是父母長壽，懼的是時日無多。孔子藉此提醒為人子女者珍惜與父母相處的時光，體現儒家對親情的深切關懷。'}
+ ]},
+ {name:'論君子',sentences:[
+  {text:'子曰：「君子不重則不威；學則不固。主忠信。無友不如己者。過則勿憚改。」',
+   trans:'孔子說：「君子如果不莊重就沒有威嚴；學習了就不會閉塞。要以忠信為主。不要跟不如自己的人交朋友。有了過錯，就不要害怕改正。」',
+   words:[
+    {w:'重',d:'莊重、穩重',py:'zhòng',pos:'形容詞',deep:'「重」指莊重、穩重。君子不莊重則無威嚴，難以服人。'},
+    {w:'威',d:'威嚴',py:'wēi',pos:'名詞',deep:'「威」指威嚴、威信。莊重是威嚴的基礎。'},
+    {w:'固',d:'閉塞、固陋',py:'gù',pos:'形容詞',deep:'「固」指固陋、閉塞。學習可以開闊眼界，避免固陋。'},
+    {w:'主',d:'以……為主',py:'zhǔ',pos:'動詞',deep:'「主」指以……為主。君子以忠信為主要品質。'},
+    {w:'憚',d:'害怕、畏懼',py:'dàn',pos:'動詞',deep:'「憚」指害怕、畏懼。有了過錯，不要害怕改正。'}
+   ],
+   rhet:[],tech:'列舉——從莊重、學習、忠信、交友、改過五方面列舉君子的修養',
+   point:'常考「重」「固」「憚」的解釋，以及此章所論君子修養的各方面',
+   emotion:'殷切教誨的師者之情。孔子從多個方面教導弟子如何成為君子，語氣懇切，體現其對弟子成德的期望。',
+   symbol:'「重」象徵外在的莊重，「學」象徵內在的充實，「忠信」象徵待人的根本，「改過」象徵自我完善的能力。',
+   deep:'此章從五個方面論君子：莊重、學習、忠信、交友、改過。孔子將外在的莊重與內在的學習結合，將待人的忠信與交友的選擇並列，最後歸於改過的勇氣。此章可視為君子修養的綱領。'},
+  {text:'子曰：「君子坦蕩蕩，小人長戚戚。」',
+   trans:'孔子說：「君子心胸平坦寬廣，小人卻總是憂愁不安。」',
+   words:[
+    {w:'坦蕩蕩',d:'心胸開闊、坦然自若',py:'tǎn dàng dàng',pos:'形容詞',deep:'「坦」指平直，「蕩蕩」為疊字，形容寬廣無際。合指君子內心光明磊落，無所牽掛。'},
+    {w:'長',d:'常常、總是',py:'cháng',pos:'副詞',deep:'「長」強調時間上的持續，寫出小人憂懼之情的綿延不斷。'},
+    {w:'戚戚',d:'憂愁、憂懼的樣子',py:'qī qī',pos:'形容詞',deep:'「戚」本義為憂傷，「戚戚」疊用，強化小人內心終日惶惶不安的狀態。'}
+   ],
+   rhet:[{t:'對偶',p:'君子坦蕩蕩／小人長戚戚',e:'對舉工整，以「蕩蕩」與「戚戚」的疊字形成音韻與心理的強烈對比，讀來節奏鮮明。'}],
+   tech:'對比論證——君子與小人的精神狀態對照',
+   point:'疊字「蕩蕩」「戚戚」為常考修辭點',
+   emotion:'坦然自得的君子之風，與小人惶惶不安形成對照。孔子以簡潔的對句，流露出對君子人格的嚮往與肯定。',
+   symbol:'「坦蕩蕩」象徵君子內心的光明與無愧；「長戚戚」象徵小人因私欲纏繞而終日不安。二者是兩種生命狀態的寫照。',
+   deep:'此章以心境對比區分君子與小人：君子因無私而坦蕩，小人因計較而戚戚。孔子將抽象的人格差異轉化為可感的精神狀態，使讀者能自我觀照。此亦是後世「君子坦蕩」人格理想的重要源頭。'},
+  {text:'司馬牛問君子。子曰：「君子不憂不懼。」曰：「不憂不懼，斯謂之君子已乎？」子曰：「內省不疚，夫何憂何懼？」',
+   trans:'司馬牛問什麼是君子。孔子說：「君子不憂愁，不恐懼。」司馬牛說：「不憂愁不恐懼，這就叫做君子了嗎？」孔子說：「自己反省而問心無愧，那還有什麼可憂愁恐懼的呢？」',
+   words:[
+    {w:'憂',d:'憂愁',py:'yōu',pos:'動詞',deep:'「憂」指憂愁、憂慮。君子內心無愧，故不憂。'},
+    {w:'懼',d:'恐懼',py:'jù',pos:'動詞',deep:'「懼」指恐懼、害怕。君子內心無愧，故不懼。'},
+    {w:'內省',d:'自我反省',py:'nèi xǐng',pos:'動詞',deep:'「內省」指向內反省自己的言行。'},
+    {w:'疚',d:'愧疚、慚愧',py:'jiù',pos:'名詞',deep:'「疚」指愧疚、慚愧。內省不疚，即問心無愧。'}
+   ],
+   rhet:[{t:'反問',p:'夫何憂何懼？',e:'以反問強調內省不疚則自然無憂無懼，語氣肯定，不容置疑。'}],
+   tech:'問答體——通過司馬牛的追問，孔子進一步點明「內省不疚」是無憂無懼的根本',
+   point:'常考「內省不疚」的含義，以及君子不憂不懼的原因',
+   emotion:'坦蕩無愧的君子之情。孔子以「內省不疚」解釋君子不憂不懼的原因，語氣從容，展現君子問心無愧的精神境界。',
+   symbol:'「內省不疚」象徵道德上的自我確認——君子因內心無愧，故能超越外在的憂懼。',
+   deep:'此章以司馬牛的追問引出孔子的核心回答：「內省不疚，夫何憂何懼？」君子不憂不懼，並非因為外在無患，而是因為內心無愧。這種由內而外的道德自信，是儒家君子人格的重要特徵。'},
+  {text:'子曰：「君子成人之美，不成人之惡。小人反是。」',
+   trans:'孔子說：「君子成全別人的好事，不促成別人的壞事。小人卻相反。」',
+   words:[
+    {w:'成',d:'成全、成就',py:'chéng',pos:'動詞',deep:'「成」指成全、幫助完成。君子幫助別人成就好事。'},
+    {w:'美',d:'好事、美德',py:'měi',pos:'名詞',deep:'「美」指好事、善行。君子成全他人的善行。'},
+    {w:'惡',d:'壞事、惡行',py:'è',pos:'名詞',deep:'「惡」指壞事、惡行。君子不助長他人的惡行。'},
+    {w:'反是',d:'與此相反',py:'fǎn shì',pos:'動詞',deep:'「反是」指與此相反。小人的做法與君子完全相反。'}
+   ],
+   rhet:[{t:'對比',p:'君子成人之美，不成人之惡／小人反是',e:'以君子與小人對比，凸顯二者在待人上的根本差異。'}],
+   tech:'對比論證——君子與小人在待人上的對照',
+   point:'常考「成人之美」的含義，以及君子與小人在待人上的分別',
+   emotion:'與人為善的君子之情。孔子以「成人之美」寫君子的胸懷，語氣肯定，展現君子樂於助人的品德。',
+   symbol:'「成人之美」象徵君子的寬厚與善良；「成人之惡」象徵小人的狹隘與惡意。',
+   deep:'此章以「成人之美」與「成人之惡」對比君子與小人的待人方式。君子樂於成全他人的好事，小人則相反。這體現了儒家「與人為善」的道德理想，也為後世「君子成人之美」的處世哲學奠定了基礎。'},
+  {text:'子曰：「君子恥其言而過其行。」',
+   trans:'孔子說：「君子以說得多而做得少為恥。」',
+   words:[
+    {w:'恥',d:'以……為恥',py:'chǐ',pos:'動詞',deep:'「恥」為意動用法，指以……為恥。'},
+    {w:'過',d:'超過',py:'guò',pos:'動詞',deep:'「過」指超過。言語超過了行動，即說得多做得少。'}
+   ],
+   rhet:[],tech:'直陳——直接點明君子對言行關係的態度',
+   point:'常考「恥」的意動用法，以及此句所體現的言行觀',
+   emotion:'務實篤行的君子之情。孔子以「恥其言而過其行」強調言行一致，語氣嚴肅，體現儒家對務實精神的重視。',
+   symbol:'「言」與「行」的關係象徵道德實踐的真誠——君子不應只說不做，而應言行相稱。',
+   deep:'此章強調言行一致，君子以說得多做得少為恥。這與《論語》中「先行其言而後從之」「訥於言而敏於行」等章相呼應，體現了儒家對務實篤行的重視。'},
+  {text:'子曰：「君子義以為質，禮以行之，孫以出之，信以成之。君子哉！」',
+   trans:'孔子說：「君子以義為根本，用禮來實行它，用謙遜的言語來表達它，用誠信來完成它。這就是君子啊！」',
+   words:[
+    {w:'義以為質',d:'以義為根本',py:'yì yǐ wéi zhì',pos:'動詞',deep:'「質」指本質、根本。君子以義為立身處世的根本。'},
+    {w:'禮以行之',d:'用禮來實行',py:'lǐ yǐ xíng zhī',pos:'動詞',deep:'「行」指實行。以禮作為實行義的規範。'},
+    {w:'孫以出之',d:'用謙遜的言語表達',py:'sūn yǐ chū zhī',pos:'動詞',deep:'「孫」通「遜」，指謙遜。「出」指言語表達。以謙遜的態度說話。'},
+    {w:'信以成之',d:'用誠信來完成',py:'xìn yǐ chéng zhī',pos:'動詞',deep:'「信」指誠信，「成」指完成。以誠信來成就事業。'}
+   ],
+   rhet:[{t:'排比',p:'義以為質，禮以行之，孫以出之，信以成之',e:'四個「以」字句並列，從根本、實行、表達、完成四方面全面論述君子的修養，節奏鏗鏘。'}],
+   tech:'排比論證——從四個層面系統論述君子的修養',
+   point:'常考「質」「孫」的解釋，以及此章所論君子修養的四個層面',
+   emotion:'系統全面的君子之情。孔子從義、禮、孫、信四方面完整論述君子的修養，語氣肯定，展現其對君子人格的全面構想。',
+   symbol:'「義」象徵根本，「禮」象徵規範，「孫」象徵態度，「信」象徵實踐，四者共同構成君子的完整人格。',
+   deep:'此章以排比句式，從「義以為質」「禮以行之」「孫以出之」「信以成之」四個層面，系統地論述君子的修養。義是根本，禮是實行的方法，孫是表達的態度，信是完成的保證。四者環環相扣，構成君子人格的完整框架。'},
+  {text:'子曰：「君子病無能焉，不病人之不己知也。」',
+   trans:'孔子說：「君子擔憂自己沒有才能，不擔憂別人不知道自己。」',
+   words:[
+    {w:'病',d:'擔憂、憂慮',py:'bìng',pos:'動詞',deep:'「病」指擔憂、憂慮。君子所憂的是自己無能。'},
+    {w:'能',d:'才能、能力',py:'néng',pos:'名詞',deep:'「能」指才能、能力。君子擔憂自己缺乏才能。'},
+    {w:'不己知',d:'不了解自己',py:'bù jǐ zhī',pos:'動詞',deep:'「不己知」為賓語前置，即「不知己」。君子不擔憂別人不了解自己。'}
+   ],
+   rhet:[{t:'對比',p:'病無能／不病人之不己知',e:'以「病」與「不病」對比，凸顯君子對自身修養的重視，而非外在的認可。'}],
+   tech:'對比論證——君子所憂與所不憂的對照',
+   point:'常考「病」的解釋，以及「不己知」的賓語前置語法',
+   emotion:'反求諸己的君子之情。孔子強調君子應擔憂自己無能，而非別人不了解自己，語氣懇切，體現儒家反求諸己的精神。',
+   symbol:'「病無能」象徵對自我完善的追求；「不病人之不己知」象徵不慕虛榮、不求外在認可的品格。',
+   deep:'此章強調君子應反求諸己，擔憂自己無能，而非別人不了解自己。這與《論語》中「不患人之不己知，患不知人也」「不患莫己知，求為可知也」等章相呼應，體現了儒家重內在修養、輕外在名聲的價值取向。'},
+  {text:'子曰：「君子求諸己，小人求諸人。」',
+   trans:'孔子說：「君子要求自己，小人要求別人。」',
+   words:[
+    {w:'求',d:'要求、責求',py:'qiú',pos:'動詞',deep:'「求」指要求、責求。君子要求自己，小人要求別人。'},
+    {w:'諸',d:'之於、於',py:'zhū',pos:'介詞',deep:'「諸」為「之於」的合音。求諸己，即求之於己。'},
+    {w:'己',d:'自己',py:'jǐ',pos:'代詞',deep:'「己」指自己。君子從自身找原因。'},
+    {w:'人',d:'別人',py:'rén',pos:'代詞',deep:'「人」指別人。小人則要求別人。'}
+   ],
+   rhet:[{t:'對偶',p:'君子求諸己／小人求諸人',e:'句式對稱，以「己」與「人」對舉，凸顯君子與小人在責任歸屬上的根本差異。'}],
+   tech:'對比論證——君子與小人在面對問題時的態度對照',
+   point:'常考「求諸己」的含義，以及此句所體現的反求諸己精神',
+   emotion:'嚴於律己的君子之情。孔子以「求諸己」寫君子的自我要求，語氣肯定，展現儒家嚴於律己、寬以待人的精神。',
+   symbol:'「求諸己」象徵自我負責的態度；「求諸人」象徵推卸責任的習性。',
+   deep:'此章以「求諸己」與「求諸人」對比君子與小人。君子遇到問題時從自身找原因，小人則責怪別人。這體現了儒家「反求諸己」的核心精神，也與「君子病無能焉，不病人之不己知也」相互呼應。'}
+ ]}
+]},
 
-/* 2. 魚我所欲也 */
-{
-  id:'yuwwo', num:2, title:'魚我所欲也', author:'孟子', era:'先秦', genre:'議論散文', theme:'捨生取義',
-  intro:'孟子以「魚」與「熊掌」設喻，層層推論，論證「義」重於「生」，人皆有「本心」，只是賢者能保存不失。全文氣勢充沛，比喻與對比交錯。',
-  sections:[
-  { name:'本文', sentences:[
-    { text:'魚，我所欲也；熊掌，亦我所欲也。二者不可得兼，舍魚而取熊掌者也。',
-      trans:'魚是我想要的，熊掌也是我想要的；如果兩者不能同時得到，那就捨棄魚而取熊掌。',
-      words:[
-        {w:'欲',d:'想要、喜愛',py:'yù',pos:'動詞',deep:'「欲」指內心所求，此處兼指食慾與價值取向，為下文類比張本。'},
-        {w:'得兼',d:'同時得到',py:'dé jiān',pos:'動詞',deep:'「兼」有並存、同時之意，「不可得兼」點出二者只能擇一的困境。'},
-        {w:'舍',d:'捨棄',py:'shě',pos:'動詞',deep:'「舍」與下文「取」相對，構成取捨的張力，是全篇論證的關鍵動作。'}
-      ],
-      rhet:[{t:'排比',p:'魚……；熊掌……；二者……',e:'三句連貫而下，為下文的類比鋪路，節奏明快，使讀者易於接受。'}],
-      tech:'比喻論證——以「魚」喻生、以「熊掌」喻義，先設喻後立論',
-      point:'開篇設喻是本文論證的起點，常考「設喻—推論—立論」的結構',
-      emotion:'從容鋪墊的說理之情。孟子不急於立論，而以日常取捨設喻，語氣平緩，為後文層層推進蓄勢。',
-      symbol:'「魚」象徵生命，「熊掌」象徵道義，二者不可兼得，象徵人生中價值取捨的必然性。',
-      deep:'此句以生活常識為喻，將抽象的價值抉擇具象化。孟子先承認「魚」與「熊掌」皆為所欲，再指出不可兼得時的取捨，為下文「生」與「義」的類比奠定基礎。' },
-    { text:'生，亦我所欲也；義，亦我所欲也。二者不可得兼，舍生而取義者也。',
-      trans:'生命是我想要的，道義也是我想要的；如果兩者不能同時得到，那就捨棄生命而取道義。',
-      words:[
-        {w:'生',d:'生命',py:'shēng',pos:'名詞',deep:'「生」在此泛指生命及一切生存欲望，是人的本能所求。'},
-        {w:'義',d:'道義、正義',py:'yì',pos:'名詞',deep:'「義」是儒家最高的道德準則，指合乎公義的行為，其價值高於個體生命。'},
-        {w:'舍生取義',d:'捨棄生命以成全道義',py:'shě shēng qǔ yì',pos:'成語',deep:'此為全篇核心命題，後成為中華文化中「義高於生」的經典表述。'}
-      ],
-      rhet:[{t:'排比',p:'生……；義……；二者……',e:'與首句結構完全對稱，形成類比推理，使結論水到渠成，氣勢充沛。'}],
-      tech:'類比論證——由「魚與熊掌」類推到「生與義」',
-      point:'中心論點所在，「舍生取義」為必背成語及核心思想',
-      emotion:'毅然決然的殉道之情。孟子以對稱句式推出結論，語氣堅定，將「舍生取義」提升為不容置疑的道德律令。',
-      symbol:'「生」與「義」象徵本能與道德的兩極，取「義」捨「生」象徵人對動物性本能的超越。',
-      deep:'此句是全文的中心論點。孟子由「魚與熊掌」的類比自然推出「生與義」的取捨，邏輯嚴密。值得注意的是，孟子並非否定生命的價值，而是指出「義」有更高的價值層級，故在不可兼得時應捨生取義。' },
-    { text:'生亦我所欲，所欲有甚於生者，故不為苟得也。死亦我所惡，所惡有甚於死者，故患有所不辟也。',
-      trans:'生命固然是我想要的，但我所想要的還有比生命更重要的，所以我不去做苟且偷生的事。死亡固然是我厭惡的，但我所厭惡的還有比死亡更甚的，所以有些禍患我不躲避。',
-      words:[
-        {w:'甚',d:'超過、勝過',py:'shèn',pos:'動詞',deep:'「甚於生」指價值高於生命，點明「義」的優先性。'},
-        {w:'苟得',d:'苟且求得（指不擇手段求生）',py:'gǒu dé',pos:'動詞',deep:'「苟」指隨便、不循正當途徑，「苟得」即不顧道義而求生。'},
-        {w:'惡',d:'厭惡',py:'wù',pos:'動詞',deep:'「惡」指厭惡、憎恨。死亡是人所厭惡的。'},
-        {w:'患',d:'禍患、災難',py:'huàn',pos:'名詞',deep:'「患」指禍患、災難。有所不辟，即不躲避某些禍患。'},
-        {w:'辟',d:'同「避」，躲避',py:'bì',pos:'動詞',deep:'「辟」通「避」，指躲避、逃避。'}
-      ],
-      rhet:[], tech:'因果推論——由「有甚於生者」推出「不為苟得」，由「有甚於死者」推出「患有所不辟」',
-      point:'常考「甚」「苟得」「辟」的解釋',
-      emotion:'清醒而堅定的道德自覺。孟子剖析人心，指出人之所以不苟且偷生、不躲避禍患，正因心中有更高的價值追求。',
-      symbol:'「甚於生者」象徵人心中超越生存本能的精神追求，即道德與尊嚴。',
-      deep:'此句從正面說明「捨生取義」的內在依據：人之所以能捨生，是因為心中有比生命更珍貴的價值。孟子不訴諸外在規範，而訴諸人心內在的價值排序，這是其性善論的具體展開。' },
-    { text:'非獨賢者有是心也，人皆有之，賢者能勿喪耳。',
-      trans:'不只是賢人有這種本心，人人都有，只是賢人能夠不喪失罷了。',
-      words:[
-        {w:'非獨',d:'不只',py:'fēi dú',pos:'連詞',deep:'「非獨」有反駁意味，針對「只有賢人才有本心」的誤解而發。'},
-        {w:'是心',d:'這種本心（指羞惡之心）',py:'shì xīn',pos:'名詞',deep:'「是心」即上文所言「所欲有甚於生者」的道德本心，孟子認為人人天生具備。'},
-        {w:'勿喪',d:'不喪失',py:'wù sàng',pos:'動詞',deep:'「喪」指丟失、泯滅，「勿喪」強調賢者能保存本心而不使其流失。'}
-      ],
-      rhet:[], tech:'由個別推及普遍——從賢者推論到人人皆有本心',
-      point:'體現孟子「性善論」，常考與「人皆有之」相關的理解題',
-      emotion:'對人性充滿信心的肯定之情。孟子語氣篤定，認為本心人人皆有，差別只在能否保存，體現其性善論的樂觀精神。',
-      symbol:'「本心」象徵人與生俱來的道德自覺，是孟子性善論的核心概念。',
-      deep:'此句是孟子性善論的經典表述。孟子認為，道德本心並非賢者專有，而是人人天生具備；賢者與常人的差別，只在於能否「勿喪」。這既肯定了人性的普遍尊嚴，也指出了道德修養的方向。' },
-    { text:'一簞食，一豆羹，得之則生，弗得則死。呼爾而與之，行道之人弗受；蹴爾而與之，乞人不屑也。',
-      trans:'一竹筐飯，一碗湯，得到它就能活下去，得不到就會餓死。吆喝著給人食物，路上飢餓的人也不會接受；用腳踢著給人食物，連乞丐也不屑一顧。',
-      words:[
-        {w:'簞',d:'古代盛飯的竹器',py:'dān',pos:'名詞',deep:'「簞」指盛飯的圓形竹器。一簞食，形容食物極少。'},
-        {w:'豆',d:'古代盛羹的器皿',py:'dòu',pos:'名詞',deep:'「豆」指盛湯的器皿。一豆羹，形容湯極少。'},
-        {w:'呼爾',d:'吆喝著。爾，語氣詞，表輕蔑',py:'hū ěr',pos:'動詞',deep:'「呼」指大聲吆喝，「爾」為語氣詞，模擬輕蔑的口氣，寫出施捨者的無禮。'},
-        {w:'與',d:'給予',py:'yǔ',pos:'動詞',deep:'「與」即給予、施捨，此處指施捨食物。'},
-        {w:'蹴',d:'用腳踢',py:'cù',pos:'動詞',deep:'「蹴」是用腳踢的動作，比「呼爾」更具侮辱性，寫出施捨者的輕賤態度。'},
-        {w:'不屑',d:'不值得接受，鄙視',py:'bù xiè',pos:'動詞',deep:'「不屑」指認為不值得而不願接受，體現乞人雖貧卻不失尊嚴的骨氣。'}
-      ],
-      rhet:[{t:'對偶',p:'呼爾而與之／蹴爾而與之',e:'句式對稱，強化「不食嗟來之食」的尊嚴主題，讀來鏗鏘有力。'}],
-      tech:'舉例論證——以行人、乞人為例，證明人皆有羞惡之心',
-      point:'「嗟來之食」典故出處，常考乞人「不屑」的原因',
-      emotion:'對人格尊嚴的敬重之情。孟子以行人、乞人為例，讚揚他們寧可餓死也不接受侮辱性施捨的骨氣。',
-      symbol:'「呼爾」「蹴爾」象徵對人格尊嚴的踐踏；「弗受」「不屑」象徵人對尊嚴的堅守，即使身處困境也不放棄。',
-      deep:'此句以極端例子證明「本心」的普遍性：連乞丐都有羞惡之心，何況一般人？孟子以此反襯那些「不辯禮義而受萬鍾」的人，批判他們喪失本心，論證極具力度。' },
-    { text:'萬鍾則不辯禮義而受之，萬鍾於我何加焉！為宮室之美，妻妾之奉，所識窮乏者得我與？鄉為身死而不受，今為宮室之美為之；鄉為身死而不受，今為妻妾之奉為之；鄉為身死而不受，今為所識窮乏者得我而為之：是亦不可以已乎？此之謂失其本心。',
-      trans:'但對於優厚的俸祿，卻不辨別是否合乎禮義就接受了，優厚的俸祿對我有什麼益處呢！是為了宮室的華美、妻妾的侍奉，還是為了所認識的窮困者感激我呢？從前寧願死也不接受，如今為了宮室的華美而接受了；從前寧願死也不接受，如今為了妻妾的侍奉而接受了；從前寧願死也不接受，如今為了所認識的窮困者感激我而接受了：這些不是可以停止嗎？這就叫做喪失了本心。',
-      words:[
-        {w:'萬鍾',d:'優厚的俸祿。鍾，古代量器',py:'wàn zhōng',pos:'名詞',deep:'「鍾」為古代量器，「萬鍾」極言俸祿之厚，此處借代高官厚祿。'},
-        {w:'辯',d:'同「辨」，辨別',py:'biàn',pos:'動詞',deep:'「辯」通「辨」，指辨別、判斷。此處批評見利忘義者不辨禮義。'},
-        {w:'何加',d:'有什麼益處',py:'hé jiā',pos:'動詞',deep:'「加」指增益、好處，「何加」即有何益處，以反問否定厚祿的價值。'},
-        {w:'鄉',d:'同「向」，從前',py:'xiàng',pos:'名詞',deep:'「鄉」通「向」，指從前、以往。'},
-        {w:'已',d:'停止、放棄',py:'yǐ',pos:'動詞',deep:'「已」指停止、放棄。是亦不可以已乎，即這些不是可以停止嗎。'}
-      ],
-      rhet:[{t:'排比',p:'鄉為身死而不受，今為宮室之美為之；鄉為身死而不受，今為妻妾之奉為之；鄉為身死而不受，今為所識窮乏者得我而為之',e:'三組「鄉……今……」對比排比，層層遞進，將批判推向高潮，極具震撼力。'}],
-      tech:'對比論證——將「不受嗟來之食」與「不辯禮義而受萬鍾」對比',
-      point:'結尾反問句的修辭效果為常考題型；「鄉」通「向」為必考',
-      emotion:'義憤填膺的批判之情。孟子對那些見利忘義、喪失本心的人深感憤慨，以反問作結，語氣凌厲。',
-      symbol:'「萬鍾」象徵世俗的功名利祿；「失其本心」象徵道德的淪喪。',
-      deep:'此句將批判的矛頭指向「不辯禮義而受萬鍾」之人，與前文乞人「不屑」形成強烈反差：乞人尚且堅守尊嚴，而有些人卻為厚祿拋棄道義。孟子以三組排比對比與反問收束全篇，批判有力，發人深省。' }
-  ]}
-  ]
-},
+/* ========== 2 魚我所欲也 ========== */
+{id:'yuwwo',num:2,title:'魚我所欲也',author:'孟子',era:'先秦',genre:'議論散文',theme:'捨生取義',
+ intro:'孟子以「魚」與「熊掌」設喻，層層推論，論證「義」重於「生」，人皆有「本心」，只是賢者能保存不失。全文氣勢充沛，比喻與對比交錯。',
+ sections:[{name:'本文',sentences:[
+  {text:'魚，我所欲也；熊掌，亦我所欲也。二者不可得兼，舍魚而取熊掌者也。',
+   trans:'魚是我想要的，熊掌也是我想要的；如果兩者不能同時得到，那就捨棄魚而取熊掌。',
+   words:[
+    {w:'欲',d:'想要、喜愛',py:'yù',pos:'動詞',deep:'「欲」指內心所求，此處兼指食慾與價值取向，為下文類比張本。'},
+    {w:'得兼',d:'同時得到',py:'dé jiān',pos:'動詞',deep:'「兼」有並存、同時之意，「不可得兼」點出二者只能擇一的困境。'},
+    {w:'舍',d:'捨棄',py:'shě',pos:'動詞',deep:'「舍」與下文「取」相對，構成取捨的張力，是全篇論證的關鍵動作。'}
+   ],
+   rhet:[{t:'排比',p:'魚……；熊掌……；二者……',e:'三句連貫而下，為下文的類比鋪路，節奏明快，使讀者易於接受。'}],
+   tech:'比喻論證——以「魚」喻生、以「熊掌」喻義，先設喻後立論',
+   point:'開篇設喻是本文論證的起點，常考「設喻—推論—立論」的結構',
+   emotion:'從容鋪墊的說理之情。孟子不急於立論，而以日常取捨設喻，語氣平緩，為後文層層推進蓄勢。',
+   symbol:'「魚」象徵生命，「熊掌」象徵道義，二者不可兼得，象徵人生中價值取捨的必然性。',
+   deep:'此句以生活常識為喻，將抽象的價值抉擇具象化。孟子先承認「魚」與「熊掌」皆為所欲，再指出不可兼得時的取捨，為下文「生」與「義」的類比奠定基礎。這種「先設喻、後立論」的手法，使論證親切而不突兀。'},
+  {text:'生，亦我所欲也；義，亦我所欲也。二者不可得兼，舍生而取義者也。',
+   trans:'生命是我想要的，道義也是我想要的；如果兩者不能同時得到，那就捨棄生命而取道義。',
+   words:[
+    {w:'生',d:'生命',py:'shēng',pos:'名詞',deep:'「生」在此泛指生命及一切生存欲望，是人的本能所求。'},
+    {w:'義',d:'道義、正義',py:'yì',pos:'名詞',deep:'「義」是儒家最高的道德準則，指合乎公義的行為，其價值高於個體生命。'},
+    {w:'舍生取義',d:'捨棄生命以成全道義',py:'shě shēng qǔ yì',pos:'成語',deep:'此為全篇核心命題，後成為中華文化中「義高於生」的經典表述。'}
+   ],
+   rhet:[{t:'排比',p:'生……；義……；二者……',e:'與首句結構完全對稱，形成類比推理，使結論水到渠成，氣勢充沛。'}],
+   tech:'類比論證——由「魚與熊掌」類推到「生與義」',
+   point:'中心論點所在，「舍生取義」為必背成語及核心思想',
+   emotion:'毅然決然的殉道之情。孟子以對稱句式推出結論，語氣堅定，將「舍生取義」提升為不容置疑的道德律令。',
+   symbol:'「生」與「義」象徵本能與道德的兩極，取「義」捨「生」象徵人對動物性本能的超越。',
+   deep:'此句是全文的中心論點。孟子由「魚與熊掌」的類比自然推出「生與義」的取捨，邏輯嚴密。值得注意的是，孟子並非否定生命的價值，而是指出「義」有更高的價值層級，故在不可兼得時應捨生取義。'},
+  {text:'生亦我所欲，所欲有甚於生者，故不為苟得也。死亦我所惡，所惡有甚於死者，故患有所不辟也。',
+   trans:'生命固然是我想要的，但我所想要的還有比生命更重要的，所以我不去做苟且偷生的事。死亡固然是我厭惡的，但我所厭惡的還有比死亡更甚的，所以有些禍患我不躲避。',
+   words:[
+    {w:'甚',d:'超過、勝過',py:'shèn',pos:'動詞',deep:'「甚於生」指價值高於生命，點明「義」的優先性。'},
+    {w:'苟得',d:'苟且求得（指不擇手段求生）',py:'gǒu dé',pos:'動詞',deep:'「苟」指隨便、不循正當途徑，「苟得」即不顧道義而求生。'},
+    {w:'惡',d:'厭惡',py:'wù',pos:'動詞',deep:'「惡」指厭惡、憎恨。死亡是人所厭惡的。'},
+    {w:'患',d:'禍患、災難',py:'huàn',pos:'名詞',deep:'「患」指禍患、災難。有所不辟，即不躲避某些禍患。'},
+    {w:'辟',d:'同「避」，躲避',py:'bì',pos:'動詞',deep:'「辟」通「避」，指躲避、逃避。'}
+   ],
+   rhet:[],tech:'因果推論——由「有甚於生者」推出「不為苟得」，由「有甚於死者」推出「患有所不辟」',
+   point:'常考「甚」「苟得」「辟」的解釋',
+   emotion:'清醒而堅定的道德自覺。孟子剖析人心，指出人之所以不苟且偷生、不躲避禍患，正因心中有更高的價值追求。',
+   symbol:'「甚於生者」象徵人心中超越生存本能的精神追求，即道德與尊嚴。',
+   deep:'此句從正面說明「捨生取義」的內在依據：人之所以能捨生，是因為心中有比生命更珍貴的價值。孟子不訴諸外在規範，而訴諸人心內在的價值排序，這是其性善論的具體展開。'},
+  {text:'非獨賢者有是心也，人皆有之，賢者能勿喪耳。',
+   trans:'不只是賢人有這種本心，人人都有，只是賢人能夠不喪失罷了。',
+   words:[
+    {w:'非獨',d:'不只',py:'fēi dú',pos:'連詞',deep:'「非獨」有反駁意味，針對「只有賢人才有本心」的誤解而發。'},
+    {w:'是心',d:'這種本心（指羞惡之心）',py:'shì xīn',pos:'名詞',deep:'「是心」即上文所言「所欲有甚於生者」的道德本心，孟子認為人人天生具備。'},
+    {w:'勿喪',d:'不喪失',py:'wù sàng',pos:'動詞',deep:'「喪」指丟失、泯滅，「勿喪」強調賢者能保存本心而不使其流失。'}
+   ],
+   rhet:[],tech:'由個別推及普遍——從賢者推論到人人皆有本心',
+   point:'體現孟子「性善論」，常考與「人皆有之」相關的理解題',
+   emotion:'對人性充滿信心的肯定之情。孟子語氣篤定，認為本心人人皆有，差別只在能否保存，體現其性善論的樂觀精神。',
+   symbol:'「本心」象徵人與生俱來的道德自覺，是孟子性善論的核心概念。',
+   deep:'此句是孟子性善論的經典表述。孟子認為，道德本心並非賢者專有，而是人人天生具備；賢者與常人的差別，只在於能否「勿喪」。這既肯定了人性的普遍尊嚴，也指出了道德修養的方向。'},
+  {text:'一簞食，一豆羹，得之則生，弗得則死。呼爾而與之，行道之人弗受；蹴爾而與之，乞人不屑也。',
+   trans:'一竹筐飯，一碗湯，得到它就能活下去，得不到就會餓死。吆喝著給人食物，路上飢餓的人也不會接受；用腳踢著給人食物，連乞丐也不屑一顧。',
+   words:[
+    {w:'簞',d:'古代盛飯的竹器',py:'dān',pos:'名詞',deep:'「簞」指盛飯的圓形竹器。一簞食，形容食物極少。'},
+    {w:'豆',d:'古代盛羹的器皿',py:'dòu',pos:'名詞',deep:'「豆」指盛湯的器皿。一豆羹，形容湯極少。'},
+    {w:'呼爾',d:'吆喝著。爾，語氣詞，表輕蔑',py:'hū ěr',pos:'動詞',deep:'「呼」指大聲吆喝，「爾」為語氣詞，模擬輕蔑的口氣，寫出施捨者的無禮。'},
+    {w:'與',d:'給予',py:'yǔ',pos:'動詞',deep:'「與」即給予、施捨，此處指施捨食物。'},
+    {w:'蹴',d:'用腳踢',py:'cù',pos:'動詞',deep:'「蹴」是用腳踢的動作，比「呼爾」更具侮辱性，寫出施捨者的輕賤態度。'},
+    {w:'不屑',d:'不值得接受，鄙視',py:'bù xiè',pos:'動詞',deep:'「不屑」指認為不值得而不願接受，體現乞人雖貧卻不失尊嚴的骨氣。'}
+   ],
+   rhet:[{t:'對偶',p:'呼爾而與之／蹴爾而與之',e:'句式對稱，強化「不食嗟來之食」的尊嚴主題，讀來鏗鏘有力。'}],
+   tech:'舉例論證——以行人、乞人為例，證明人皆有羞惡之心',
+   point:'「嗟來之食」典故出處，常考乞人「不屑」的原因',
+   emotion:'對人格尊嚴的敬重之情。孟子以行人、乞人為例，讚揚他們寧可餓死也不接受侮辱性施捨的骨氣。',
+   symbol:'「呼爾」「蹴爾」象徵對人格尊嚴的踐踏；「弗受」「不屑」象徵人對尊嚴的堅守，即使身處困境也不放棄。',
+   deep:'此句以極端例子證明「本心」的普遍性：連乞丐都有羞惡之心，何況一般人？孟子以此反襯那些「不辯禮義而受萬鍾」的人，批判他們喪失本心，論證極具力度。'},
+  {text:'萬鍾則不辯禮義而受之，萬鍾於我何加焉！為宮室之美，妻妾之奉，所識窮乏者得我與？鄉為身死而不受，今為宮室之美為之；鄉為身死而不受，今為妻妾之奉為之；鄉為身死而不受，今為所識窮乏者得我而為之：是亦不可以已乎？此之謂失其本心。',
+   trans:'但對於優厚的俸祿，卻不辨別是否合乎禮義就接受了，優厚的俸祿對我有什麼益處呢！是為了宮室的華美、妻妾的侍奉，還是為了所認識的窮困者感激我呢？從前寧願死也不接受，如今為了宮室的華美而接受了；從前寧願死也不接受，如今為了妻妾的侍奉而接受了；從前寧願死也不接受，如今為了所認識的窮困者感激我而接受了：這些不是可以停止嗎？這就叫做喪失了本心。',
+   words:[
+    {w:'萬鍾',d:'優厚的俸祿。鍾，古代量器',py:'wàn zhōng',pos:'名詞',deep:'「鍾」為古代量器，「萬鍾」極言俸祿之厚，此處借代高官厚祿。'},
+    {w:'辯',d:'同「辨」，辨別',py:'biàn',pos:'動詞',deep:'「辯」通「辨」，指辨別、判斷。此處批評見利忘義者不辨禮義。'},
+    {w:'何加',d:'有什麼益處',py:'hé jiā',pos:'動詞',deep:'「加」指增益、好處，「何加」即有何益處，以反問否定厚祿的價值。'},
+    {w:'鄉',d:'同「向」，從前',py:'xiàng',pos:'名詞',deep:'「鄉」通「向」，指從前、以往。'},
+    {w:'已',d:'停止、放棄',py:'yǐ',pos:'動詞',deep:'「已」指停止、放棄。是亦不可以已乎，即這些不是可以停止嗎。'}
+   ],
+   rhet:[{t:'排比',p:'鄉為身死而不受，今為宮室之美為之；鄉為身死而不受，今為妻妾之奉為之；鄉為身死而不受，今為所識窮乏者得我而為之',e:'三組「鄉……今……」對比排比，層層遞進，將批判推向高潮，極具震撼力。'}],
+   tech:'對比論證——將「不受嗟來之食」與「不辯禮義而受萬鍾」對比',
+   point:'結尾反問句的修辭效果為常考題型；「鄉」通「向」為必考',
+   emotion:'義憤填膺的批判之情。孟子對那些見利忘義、喪失本心的人深感憤慨，以反問作結，語氣凌厲。',
+   symbol:'「萬鍾」象徵世俗的功名利祿；「失其本心」象徵道德的淪喪。',
+   deep:'此句將批判的矛頭指向「不辯禮義而受萬鍾」之人，與前文乞人「不屑」形成強烈反差：乞人尚且堅守尊嚴，而有些人卻為厚祿拋棄道義。孟子以三組排比對比與反問收束全篇，批判有力，發人深省。'}
+]}]},
 
-/* 3. 逍遙遊（節錄） */
-{
-  id:'xiaoyao', num:3, title:'逍遙遊（節錄）', author:'莊子', era:'先秦', genre:'寓言散文', theme:'精神自由',
-  intro:'莊子以鯤鵬之大、蜩鳩之小設喻，說明萬物皆「有所待」——大鵬需厚風、大舟需深水，唯有破除依待，方能臻於逍遙。',
-  sections:[
-  { name:'本文', sentences:[
-    { text:'北冥有魚，其名為鯤。鯤之大，不知其幾千里也。化而為鳥，其名為鵬。',
-      trans:'北海有一條魚，名叫鯤。鯤的巨大，不知道有幾千里。牠變化成鳥，名叫鵬。',
-      words:[
-        {w:'冥',d:'同「溟」，大海',py:'míng',pos:'名詞',deep:'「冥」通「溟」，指深黑不可測的大海，暗示其深邃浩瀚，為鯤鵬的奇幻出場提供背景。'},
-        {w:'鯤',d:'傳說中的大魚',py:'kūn',pos:'名詞',deep:'「鯤」為莊子虛構的大魚，其名本身即帶有奇幻色彩，象徵超越常識的存在。'},
-        {w:'化',d:'變化',py:'huà',pos:'動詞',deep:'「化」是莊子哲學的重要概念，指萬物形態的轉化，暗示生命與形體的相對性。'}
-      ],
-      rhet:[{t:'誇張',p:'不知其幾千里也',e:'以不確定的大數目極言鯤之大，營造雄奇瑰麗的想像世界，令讀者震撼。'}],
-      tech:'寓言開篇——以奇幻形象吸引讀者，寄寓哲理',
-      point:'「鯤鵬」為中國文學重要意象，常考其象徵意義',
-      emotion:'驚嘆與嚮往之情。莊子以雄奇的想像開篇，語氣中帶著對超越世俗之大境界的讚嘆與嚮往。',
-      symbol:'「鯤鵬」象徵超越世俗、志向遠大的精神境界；「化」象徵萬物形態與境界的轉化可能。',
-      deep:'莊子以鯤化為鵬的奇幻敘述開篇，不只是炫技，而是要以「大」破「小」——用超乎常識的鯤鵬，打破世人狹隘的認知框架，為後文論述「小大之辨」鋪路。' },
-    { text:'鵬之背，不知其幾千里也；怒而飛，其翼若垂天之雲。',
-      trans:'鵬的背，不知道有幾千里；牠奮力振翅而飛，翅膀就像掛在天邊的雲。',
-      words:[
-        {w:'怒',d:'奮力、振作，非憤怒',py:'nù',pos:'動詞',deep:'「怒」在此非憤怒，而是奮力、振作之意。此字寫出鵬蓄勢而發的磅礴氣勢，是常考字詞。'},
-        {w:'垂天',d:'掛在天邊',py:'chuí tiān',pos:'動詞',deep:'「垂」有懸掛之意，「垂天之雲」形容鵬翼之大，如雲般橫亙天際。'},
-        {w:'翼',d:'翅膀',py:'yì',pos:'名詞',deep:'「翼」指翅膀，此處以鵬翼之巨，反襯其飛翔所需條件之厚。'}
-      ],
-      rhet:[{t:'比喻',p:'其翼若垂天之雲',e:'以「垂天之雲」比喻鵬翼之巨，形象具體，氣勢磅礴，令讀者如見其形。'}],
-      tech:'誇張與比喻並用——塑造大鵬雄偉形象',
-      point:'「怒」字的解釋（奮力）為必考字詞',
-      emotion:'雄渾磅礴的震撼之情。莊子以「怒而飛」「垂天之雲」極寫鵬之雄偉，語氣中充滿對巨大力量的驚嘆。',
-      symbol:'「鵬」象徵超越世俗、志向遠大的精神境界；「怒而飛」象徵積蓄力量後的奮發。',
-      deep:'此句以「怒」字寫鵬的奮發，以「垂天之雲」寫鵬翼之巨，從動態與靜態兩方面塑造大鵬形象。莊子藉此暗示：要達到高遠境界，必須有與之相稱的雄厚積累。' },
-    { text:'是鳥也，海運則將徙於南冥。南冥者，天池也。',
-      trans:'這隻鳥啊，當海水翻騰震動時，就將遷徙到南海去。南海，是天然的大池。',
-      words:[
-        {w:'是',d:'這',py:'shì',pos:'代詞',deep:'「是」為指示代詞，指代上文的大鵬。'},
-        {w:'海運',d:'海水翻騰震動',py:'hǎi yùn',pos:'動詞',deep:'「海運」古義指海水翻騰震動，非今日「海上運輸」之意。此為古今異義詞，常考。'},
-        {w:'徙',d:'遷移',py:'xǐ',pos:'動詞',deep:'「徙」指遷移、移動，此處指大鵬由北冥飛往南冥。'},
-        {w:'天池',d:'天然的大池',py:'tiān chí',pos:'名詞',deep:'「天池」指天然形成的大池，即南冥。'}
-      ],
-      rhet:[], tech:'敘述——交代大鵬行動的條件，為下文「有待」張本',
-      point:'「海運」的古義（海動）常與今義混淆，屬易錯點',
-      emotion:'順勢而動的恢弘之情。莊子寫大鵬待海動而後徙，語氣平靜，卻暗含對「有所待」的揭示。',
-      symbol:'「海運」象徵大鵬高飛所憑藉的條件；「徙於南冥」象徵對更高境界的追求。',
-      deep:'此句點出大鵬遷徙需待「海運」，暗示其行動並非絕對自由，而是「有所待」。這為後文「水之積也不厚，則其負大舟也無力」的類比埋下伏筆。' },
-    { text:'且夫水之積也不厚，則其負大舟也無力。覆杯水於坳堂之上，則芥為之舟；置杯焉則膠，水淺而舟大也。',
-      trans:'再說，如果水積蓄得不夠深厚，那麼它負載大船就沒有力量。倒一杯水在堂上低窪處，那麼放一根小草就成了船；放上杯子就貼住不動了，這是因為水太淺而船太大。',
-      words:[
-        {w:'且夫',d:'再說，發語詞',py:'qiě fú',pos:'連詞',deep:'「且夫」為承接上文的發語詞，有「再說」之意，引出下文的類比推理。'},
-        {w:'積',d:'積蓄',py:'jī',pos:'動詞',deep:'「積」指累積、積蓄，此處指水的深度，是全篇「積厚」主題的關鍵字。'},
-        {w:'負',d:'負載',py:'fù',pos:'動詞',deep:'「負」指承載、負載，此處指水對大船的承載力。'},
-        {w:'坳堂',d:'堂上低窪處',py:'ào táng',pos:'名詞',deep:'「坳」指低窪，「堂」指廳堂，「坳堂」即堂上低窪的地方。'},
-        {w:'芥',d:'小草',py:'jiè',pos:'名詞',deep:'「芥」指小草，極言其輕小，與後文「杯」形成對比。'},
-        {w:'膠',d:'黏住、貼住不動',py:'jiāo',pos:'動詞',deep:'「膠」本指黏合，此處指杯子因水淺而貼住地面無法浮動。'}
-      ],
-      rhet:[{t:'比喻',p:'覆杯水……則芥為之舟',e:'以淺水不能載杯，比喻積累不足則不能成大事，形象生動。'}],
-      tech:'類比推理＋舉例論證——以水喻風，以日常小事說明「積厚」之理',
-      point:'本文論證的核心句，常考「水」與「風」的類比關係；「芥」與「膠」的字義常考',
-      emotion:'以小見大的說理之情。莊子以極平常的倒水放杯為例，語氣輕鬆，卻蘊含深刻哲理。',
-      symbol:'「水」象徵大鵬高飛所憑藉的風；「積厚」象徵達到高遠境界所需的雄厚積累。',
-      deep:'此句以水負大舟為喻，類推到風負大翼，說明大鵬高飛須憑深厚之風。莊子藉此指出：任何高遠的行動，都需要相應的條件積累。這是「有所待」命題的具體展開。' },
-    { text:'風之積也不厚，則其負大翼也無力。故九萬里，則風斯在下矣，而後乃今培風；背負青天而莫之夭閼者，而後乃今將圖南。',
-      trans:'如果風積蓄得不夠深厚，那麼它承載巨大的翅膀就沒有力量。所以鵬飛到九萬里高空，風就在牠下面了，然後才憑藉風力；背負青天而沒有什麼阻礙，然後才打算飛往南方。',
-      words:[
-        {w:'大翼',d:'指鵬的巨大翅膀',py:'dà yì',pos:'名詞',deep:'「大翼」指大鵬的巨大翅膀，與上文「大舟」相對應，強調所負載之物甚大。'},
-        {w:'斯',d:'就、於是',py:'sī',pos:'副詞',deep:'「斯」指就、於是。風斯在下矣，即風就在下面了。'},
-        {w:'培風',d:'憑藉風力',py:'péi fēng',pos:'動詞',deep:'「培」指憑藉、依靠。培風即憑藉風力飛行。'},
-        {w:'夭閼',d:'阻礙、遏止',py:'yāo è',pos:'動詞',deep:'「夭」指挫折，「閼」指堵塞。「夭閼」即阻礙、遏止。'}
-      ],
-      rhet:[], tech:'類比——與「水負大舟」句平行，強化論點',
-      point:'與前句構成平行類比，常考其論證作用；「培風」「夭閼」的解釋為常考',
-      emotion:'邏輯嚴密的說理之情。莊子以平行句式收束類比，語氣肯定，將論點推向結論。',
-      symbol:'「風」象徵大鵬高飛所憑藉的條件；「九萬里」象徵高遠的境界；「背負青天」象徵無所阻礙的自由。',
-      deep:'此句與「水之積也不厚」構成平行類比，從水推及風，從大舟推及大翼，邏輯嚴密。莊子以此說明：大鵬雖大，仍需厚風方能高飛，即萬物皆「有所待」。最後歸於「圖南」，點明大鵬的志向。' }
-  ]}
-  ]
-},
+/* ========== 3 逍遙遊（節錄） ========== */
+{id:'xiaoyao',num:3,title:'逍遙遊（節錄）',author:'莊子',era:'先秦',genre:'寓言散文',theme:'精神自由',
+ intro:'莊子以鯤鵬之大、蜩鳩之小設喻，說明萬物皆「有所待」——大鵬需厚風、大舟需深水，唯有破除依待，方能臻於逍遙。',
+ sections:[{name:'本文',sentences:[
+  {text:'北冥有魚，其名為鯤。鯤之大，不知其幾千里也。化而為鳥，其名為鵬。',
+   trans:'北海有一條魚，名叫鯤。鯤的巨大，不知道有幾千里。牠變化成鳥，名叫鵬。',
+   words:[
+    {w:'冥',d:'同「溟」，大海',py:'míng',pos:'名詞',deep:'「冥」通「溟」，指深黑不可測的大海，暗示其深邃浩瀚，為鯤鵬的奇幻出場提供背景。'},
+    {w:'鯤',d:'傳說中的大魚',py:'kūn',pos:'名詞',deep:'「鯤」為莊子虛構的大魚，其名本身即帶有奇幻色彩，象徵超越常識的存在。'},
+    {w:'化',d:'變化',py:'huà',pos:'動詞',deep:'「化」是莊子哲學的重要概念，指萬物形態的轉化，暗示生命與形體的相對性。'}
+   ],
+   rhet:[{t:'誇張',p:'不知其幾千里也',e:'以不確定的大數目極言鯤之大，營造雄奇瑰麗的想像世界，令讀者震撼。'}],
+   tech:'寓言開篇——以奇幻形象吸引讀者，寄寓哲理',
+   point:'「鯤鵬」為中國文學重要意象，常考其象徵意義',
+   emotion:'驚嘆與嚮往之情。莊子以雄奇的想像開篇，語氣中帶著對超越世俗之大境界的讚嘆與嚮往。',
+   symbol:'「鯤鵬」象徵超越世俗、志向遠大的精神境界；「化」象徵萬物形態與境界的轉化可能。',
+   deep:'莊子以鯤化為鵬的奇幻敘述開篇，不只是炫技，而是要以「大」破「小」——用超乎常識的鯤鵬，打破世人狹隘的認知框架，為後文論述「小大之辨」鋪路。'},
+  {text:'鵬之背，不知其幾千里也；怒而飛，其翼若垂天之雲。',
+   trans:'鵬的背，不知道有幾千里；牠奮力振翅而飛，翅膀就像掛在天邊的雲。',
+   words:[
+    {w:'怒',d:'奮力、振作，非憤怒',py:'nù',pos:'動詞',deep:'「怒」在此非憤怒，而是奮力、振作之意。此字寫出鵬蓄勢而發的磅礴氣勢，是常考字詞。'},
+    {w:'垂天',d:'掛在天邊',py:'chuí tiān',pos:'動詞',deep:'「垂」有懸掛之意，「垂天之雲」形容鵬翼之大，如雲般橫亙天際。'},
+    {w:'翼',d:'翅膀',py:'yì',pos:'名詞',deep:'「翼」指翅膀，此處以鵬翼之巨，反襯其飛翔所需條件之厚。'}
+   ],
+   rhet:[{t:'比喻',p:'其翼若垂天之雲',e:'以「垂天之雲」比喻鵬翼之巨，形象具體，氣勢磅礴，令讀者如見其形。'}],
+   tech:'誇張與比喻並用——塑造大鵬雄偉形象',
+   point:'「怒」字的解釋（奮力）為必考字詞',
+   emotion:'雄渾磅礴的震撼之情。莊子以「怒而飛」「垂天之雲」極寫鵬之雄偉，語氣中充滿對巨大力量的驚嘆。',
+   symbol:'「鵬」象徵超越世俗、志向遠大的精神境界；「怒而飛」象徵積蓄力量後的奮發。',
+   deep:'此句以「怒」字寫鵬的奮發，以「垂天之雲」寫鵬翼之巨，從動態與靜態兩方面塑造大鵬形象。莊子藉此暗示：要達到高遠境界，必須有與之相稱的雄厚積累。'},
+  {text:'是鳥也，海運則將徙於南冥。南冥者，天池也。',
+   trans:'這隻鳥啊，當海水翻騰震動時，就將遷徙到南海去。南海，是天然的大池。',
+   words:[
+    {w:'是',d:'這',py:'shì',pos:'代詞',deep:'「是」為指示代詞，指代上文的大鵬。'},
+    {w:'海運',d:'海水翻騰震動',py:'hǎi yùn',pos:'動詞',deep:'「海運」古義指海水翻騰震動，非今日「海上運輸」之意。此為古今異義詞，常考。'},
+    {w:'徙',d:'遷移',py:'xǐ',pos:'動詞',deep:'「徙」指遷移、移動，此處指大鵬由北冥飛往南冥。'},
+    {w:'天池',d:'天然的大池',py:'tiān chí',pos:'名詞',deep:'「天池」指天然形成的大池，即南冥。'}
+   ],
+   rhet:[],tech:'敘述——交代大鵬行動的條件，為下文「有待」張本',
+   point:'「海運」的古義（海動）常與今義混淆，屬易錯點',
+   emotion:'順勢而動的恢弘之情。莊子寫大鵬待海動而後徙，語氣平靜，卻暗含對「有所待」的揭示。',
+   symbol:'「海運」象徵大鵬高飛所憑藉的條件；「徙於南冥」象徵對更高境界的追求。',
+   deep:'此句點出大鵬遷徙需待「海運」，暗示其行動並非絕對自由，而是「有所待」。這為後文「水之積也不厚，則其負大舟也無力」的類比埋下伏筆。'},
+  {text:'且夫水之積也不厚，則其負大舟也無力。覆杯水於坳堂之上，則芥為之舟；置杯焉則膠，水淺而舟大也。',
+   trans:'再說，如果水積蓄得不夠深厚，那麼它負載大船就沒有力量。倒一杯水在堂上低窪處，那麼放一根小草就成了船；放上杯子就貼住不動了，這是因為水太淺而船太大。',
+   words:[
+    {w:'且夫',d:'再說，發語詞',py:'qiě fú',pos:'連詞',deep:'「且夫」為承接上文的發語詞，有「再說」之意，引出下文的類比推理。'},
+    {w:'積',d:'積蓄',py:'jī',pos:'動詞',deep:'「積」指累積、積蓄，此處指水的深度，是全篇「積厚」主題的關鍵字。'},
+    {w:'負',d:'負載',py:'fù',pos:'動詞',deep:'「負」指承載、負載，此處指水對大船的承載力。'},
+    {w:'坳堂',d:'堂上低窪處',py:'ào táng',pos:'名詞',deep:'「坳」指低窪，「堂」指廳堂，「坳堂」即堂上低窪的地方。'},
+    {w:'芥',d:'小草',py:'jiè',pos:'名詞',deep:'「芥」指小草，極言其輕小，與後文「杯」形成對比。'},
+    {w:'膠',d:'黏住、貼住不動',py:'jiāo',pos:'動詞',deep:'「膠」本指黏合，此處指杯子因水淺而貼住地面無法浮動。'}
+   ],
+   rhet:[{t:'比喻',p:'覆杯水……則芥為之舟',e:'以淺水不能載杯，比喻積累不足則不能成大事，形象生動。'}],
+   tech:'類比推理＋舉例論證——以水喻風，以日常小事說明「積厚」之理',
+   point:'本文論證的核心句，常考「水」與「風」的類比關係；「芥」與「膠」的字義常考',
+   emotion:'以小見大的說理之情。莊子以極平常的倒水放杯為例，語氣輕鬆，卻蘊含深刻哲理。',
+   symbol:'「水」象徵大鵬高飛所憑藉的風；「積厚」象徵達到高遠境界所需的雄厚積累。',
+   deep:'此句以水負大舟為喻，類推到風負大翼，說明大鵬高飛須憑深厚之風。莊子藉此指出：任何高遠的行動，都需要相應的條件積累。這是「有所待」命題的具體展開。'},
+  {text:'風之積也不厚，則其負大翼也無力。故九萬里，則風斯在下矣，而後乃今培風；背負青天而莫之夭閼者，而後乃今將圖南。',
+   trans:'如果風積蓄得不夠深厚，那麼它承載巨大的翅膀就沒有力量。所以鵬飛到九萬里高空，風就在牠下面了，然後才憑藉風力；背負青天而沒有什麼阻礙，然後才打算飛往南方。',
+   words:[
+    {w:'大翼',d:'指鵬的巨大翅膀',py:'dà yì',pos:'名詞',deep:'「大翼」指大鵬的巨大翅膀，與上文「大舟」相對應，強調所負載之物甚大。'},
+    {w:'斯',d:'就、於是',py:'sī',pos:'副詞',deep:'「斯」指就、於是。風斯在下矣，即風就在下面了。'},
+    {w:'培風',d:'憑藉風力',py:'péi fēng',pos:'動詞',deep:'「培」指憑藉、依靠。培風即憑藉風力飛行。'},
+    {w:'夭閼',d:'阻礙、遏止',py:'yāo è',pos:'動詞',deep:'「夭」指挫折，「閼」指堵塞。「夭閼」即阻礙、遏止。'}
+   ],
+   rhet:[],tech:'類比——與「水負大舟」句平行，強化論點',
+   point:'與前句構成平行類比，常考其論證作用；「培風」「夭閼」的解釋為常考',
+   emotion:'邏輯嚴密的說理之情。莊子以平行句式收束類比，語氣肯定，將論點推向結論。',
+   symbol:'「風」象徵大鵬高飛所憑藉的條件；「九萬里」象徵高遠的境界；「背負青天」象徵無所阻礙的自由。',
+   deep:'此句與「水之積也不厚」構成平行類比，從水推及風，從大舟推及大翼，邏輯嚴密。莊子以此說明：大鵬雖大，仍需厚風方能高飛，即萬物皆「有所待」。最後歸於「圖南」，點明大鵬的志向。'}
+]}]},
 
-/* 4. 勸學（節錄） */
-{
-  id:'quanxue', num:4, title:'勸學（節錄）', author:'荀子', era:'先秦', genre:'議論散文', theme:'學習之道',
-  intro:'荀子以博喻手法，反覆論證學習不可停止：學習能改變本性、提升智慧，君子並非天賦異稟，而是「善假於物」、鍥而不捨。',
-  sections:[
-  { name:'本文', sentences:[
-    { text:'君子曰：學不可以已。',
-      trans:'君子說：學習是不可以停止的。',
-      words:[
-        {w:'已',d:'停止',py:'yǐ',pos:'動詞',deep:'「已」解作停止。此字為全篇中心論點的核心，強調學習是持續不斷的過程。'}
-      ],
-      rhet:[], tech:'開門見山——直接提出中心論點',
-      point:'全文中心論點，「已」字解釋為必考',
-      emotion:'斬釘截鐵的勸勉之情。荀子以「君子曰」開篇，語氣肯定，直接點出學習不可停止的命題。',
-      symbol:'「學不可以已」象徵儒家對終身學習的堅持，學習不是階段性任務，而是終身的修養。',
-      deep:'此句為全文中心論點。荀子以「君子曰」引出，將學習提升為君子人格的根本要求。「不可以已」四字斬釘截鐵，奠定全篇勸學的基調。' },
-    { text:'青，取之於藍，而青於藍；冰，水為之，而寒於水。',
-      trans:'靛青是從藍草中提取的，卻比藍草更青；冰是水凝結成的，卻比水更寒冷。',
-      words:[
-        {w:'青',d:'靛青，一種染料',py:'qīng',pos:'名詞',deep:'「青」指靛青，從藍草中提取的染料，色澤比藍草更深。'},
-        {w:'藍',d:'藍草，可提取染料',py:'lán',pos:'名詞',deep:'「藍」指藍草，是提取靛青的原料。此字與「青」對舉，形成本源與超越的對比。'},
-        {w:'為',d:'形成、凝結',py:'wéi',pos:'動詞',deep:'「為」指形成、凝結，此處指水凝結成冰的過程。'}
-      ],
-      rhet:[{t:'對偶',p:'青，取之於藍，而青於藍／冰，水為之，而寒於水',e:'兩句結構對稱，以自然現象並列，增強說服力，讀來節奏鮮明。'}],
-      tech:'比喻論證——以青出於藍、冰寒於水，喻學習可以超越本源',
-      point:'「青出於藍」成語出處，常考比喻義',
-      emotion:'鼓舞向上的激勵之情。荀子以青、冰為喻，語氣昂揚，鼓勵學習者超越本源、不斷進步。',
-      symbol:'「青出於藍」象徵學習能使人超越本源；「冰寒於水」象徵後天努力可勝過先天條件。',
-      deep:'此句以青從藍出而勝於藍、冰由水成而寒於水為喻，說明學習能使人超越本源。荀子以此鼓勵學習者：只要努力，就能青出於藍，達到更高境界。' },
-    { text:'木直中繩，輮以為輪，其曲中規。雖有槁暴，不復挺者，輮使之然也。',
-      trans:'木材筆直得合乎墨線，用火烤彎做成車輪，它的彎曲度合乎圓規。即使又曬乾了，也不會再挺直，這是用火烤使它這樣的。',
-      words:[
-        {w:'中繩',d:'合乎墨線。中，符合',py:'zhòng shéng',pos:'動詞',deep:'「中」解作符合，「繩」指木工用的墨線。「中繩」即合乎墨線，形容木材筆直。'},
-        {w:'輮',d:'用火烤使彎曲',py:'róu',pos:'動詞',deep:'「輮」指用火烤使木材彎曲，是古代製作車輪的工藝。'},
-        {w:'規',d:'圓規',py:'guī',pos:'名詞',deep:'「規」指圓規，「中規」即合乎圓規所畫的圓形。'},
-        {w:'槁暴',d:'曬乾。槁，枯乾；暴，同「曝」，曬',py:'gǎo pù',pos:'動詞',deep:'「槁」指枯乾，「暴」通「曝」，曬。「槁暴」即曬乾，此處指木材被曬乾。'}
-      ],
-      rhet:[], tech:'比喻論證——以木經加工而變形，喻學習能改變人的本性',
-      point:'「中」「輮」「暴」三字解釋為高頻考點',
-      emotion:'堅定不移的勸學之情。荀子以木材經烤製而變形為喻，語氣肯定，強調學習對本性的改造作用。',
-      symbol:'「木」象徵人的本性；「輮」象徵後天的學習與改造；「不復挺」象徵學習對本性的深刻改變。',
-      deep:'此句以木材經火烤彎曲後不再挺直為喻，說明學習能改變人的本性，且效果持久。荀子以此強調後天學習對人性的塑造作用，體現其「化性起偽」的思想。' },
-    { text:'故木受繩則直，金就礪則利。君子博學而日參省乎己，則知明而行無過矣。',
-      trans:'所以木材經墨線量過就能取直，金屬放到磨刀石上磨就會鋒利。君子廣泛地學習，並且每天檢查反省自己，就能智慧明達而行為沒有過錯了。',
-      words:[
-        {w:'受繩',d:'經墨線校正',py:'shòu shéng',pos:'動詞',deep:'「受」指接受、經過，「繩」指墨線。「受繩」即經墨線校正而取直。'},
-        {w:'金',d:'指金屬製的刀劍',py:'jīn',pos:'名詞',deep:'「金」指金屬製的刀劍等器物，非指黃金。'},
-        {w:'就礪',d:'放到磨刀石上磨。礪，磨刀石',py:'jiù lì',pos:'動詞',deep:'「就」指靠近、放到，「礪」指磨刀石。「就礪」即放到磨刀石上磨。'},
-        {w:'參省',d:'檢驗反省。參，同「三」，多次',py:'cān xǐng',pos:'動詞',deep:'「參」通「三」，指多次；「省」指反省。「參省」即多次檢查反省自己。'},
-        {w:'知',d:'同「智」',py:'zhì',pos:'名詞',deep:'「知」通「智」，指智慧、見識。'}
-      ],
-      rhet:[{t:'對偶',p:'木受繩則直／金就礪則利',e:'對稱句式，以兩物並舉，類推學習對人的作用，增強說服力。'}],
-      tech:'比喻論證＋結論——以物需加工，喻人需學習，最後歸結到學習的實際功效',
-      point:'常考「就」「礪」「參省」的解釋及通假字「知」',
-      emotion:'循循善誘的勸勉之情。荀子以木、金為喻，語氣平實，說明學習對人的改造作用。',
-      symbol:'「木受繩」「金就礪」象徵人需經學習與磨練才能成材。',
-      deep:'此句以木受繩則直、金就礪則利為喻，說明人需經學習與磨練才能成材。荀子以日常事物為喻，使抽象道理具體可感，論證親切有力。最後歸結到「知明而行無過」，點明學習的實際功效。' },
-    { text:'吾嘗終日而思矣，不如須臾之所學也。吾嘗跂而望矣，不如登高之博見也。',
-      trans:'我曾經整天思考，卻不如片刻學習所得的收穫大。我曾經踮起腳跟遠望，卻不如登上高處看得廣闊。',
-      words:[
-        {w:'嘗',d:'曾經',py:'cháng',pos:'副詞',deep:'「嘗」指曾經，表示親身經歷。'},
-        {w:'須臾',d:'片刻、一會兒',py:'xū yú',pos:'名詞',deep:'「須臾」指極短的時間，與「終日」形成強烈對比。'},
-        {w:'跂',d:'踮起腳跟',py:'qǐ',pos:'動詞',deep:'「跂」指踮起腳跟。踮腳遠望，不如登高所見之廣。'}
-      ],
-      rhet:[{t:'對比',p:'終日而思／須臾之所學；跂而望／登高之博見',e:'以時間長短與收穫多寡形成反差，突出學習之效，說服力強。'}],
-      tech:'對比論證——思與學、望與登的效益對比',
-      point:'常考「須臾」「跂」的解釋，以及思、學關係的理解',
-      emotion:'現身說法的懇切之情。荀子以自身經驗為例，語氣真誠，強調學習勝於空想。',
-      symbol:'「終日而思」象徵空想；「須臾之所學」象徵實際學習；「登高之博見」象徵借助外物開闊眼界。',
-      deep:'此句以親身經驗說明學習勝於空想，並以「登高之博見」類比學習能開闊眼界。荀子並非否定思考，而是強調思考須以學習為基礎。此說與孔子「學而不思則罔，思而不學則殆」相呼應。' },
-    { text:'君子生非異也，善假於物也。',
-      trans:'君子的天性並非與常人不同，只是善於借助外物罷了。',
-      words:[
-        {w:'生',d:'同「性」，天性',py:'xìng',pos:'名詞',deep:'「生」通「性」，指天性、資質。此為必考通假字。'},
-        {w:'假',d:'借助、憑藉',py:'jiǎ',pos:'動詞',deep:'「假」指借助、憑藉。「善假於物」即善於借助外物，是全篇的核心方法論。'},
-        {w:'物',d:'外物，指學習條件與工具',py:'wù',pos:'名詞',deep:'「物」指外在的條件與工具，此處指學習的資源與方法。'}
-      ],
-      rhet:[], tech:'總結論點——點明君子成材的關鍵在「善假於物」',
-      point:'「生」通「性」為必考通假字；「假」解作「借助」',
-      emotion:'豁然開朗的領悟之情。荀子點明君子成材的關鍵不在天賦，而在善於借助外物，語氣肯定而透徹。',
-      symbol:'「善假於物」象徵善用外在條件與方法，是達到高遠境界的關鍵。',
-      deep:'此句為全篇總結論點：君子並非天賦異稟，而是善於借助外物。荀子以此破除天才論，強調後天學習與方法的重要性，體現其樸素唯物主義的思想傾向。' },
-    { text:'鍥而舍之，朽木不折；鍥而不捨，金石可鏤。',
-      trans:'雕刻一下就放棄，腐朽的木頭也刻不斷；雕刻而不停止，金屬和石頭也能雕出花紋。',
-      words:[
-        {w:'鍥',d:'雕刻',py:'qiè',pos:'動詞',deep:'「鍥」指雕刻，此處以雕刻為喻，說明堅持的重要。'},
-        {w:'舍',d:'同「捨」，放棄',py:'shě',pos:'動詞',deep:'「舍」通「捨」，指放棄、停止。'},
-        {w:'鏤',d:'雕刻',py:'lòu',pos:'動詞',deep:'「鏤」指雕刻花紋，此處指在金石上雕刻出花紋。'}
-      ],
-      rhet:[{t:'對偶',p:'鍥而舍之，朽木不折／鍥而不捨，金石可鏤',e:'正反對照，句式工整，強調堅持的重要，成為千古傳誦的名句。'}],
-      tech:'對比論證——捨與不捨的結果對比',
-      point:'「鍥而不捨」成語出處，為默寫與理解高頻句',
-      emotion:'激昂奮發的激勵之情。荀子以正反對比強調堅持的重要，語氣昂揚，鼓舞人心。',
-      symbol:'「鍥而不捨」象徵堅持不懈的精神；「金石可鏤」象徵堅持終能克服困難、達成目標。',
-      deep:'此句以雕刻為喻，正反對比說明堅持的重要：放棄則朽木不折，堅持則金石可鏤。荀子以此激勵學習者持之以恆，是全篇最具感染力的名句之一。' }
-  ]}
-  ]
-},
+/* ========== 4 勸學（節錄） ========== */
+{id:'quanxue',num:4,title:'勸學（節錄）',author:'荀子',era:'先秦',genre:'議論散文',theme:'學習之道',
+ intro:'荀子以博喻手法，反覆論證學習不可停止：學習能改變本性、提升智慧，君子並非天賦異稟，而是「善假於物」、鍥而不捨。',
+ sections:[{name:'本文',sentences:[
+  {text:'君子曰：學不可以已。',
+   trans:'君子說：學習是不可以停止的。',
+   words:[
+    {w:'已',d:'停止',py:'yǐ',pos:'動詞',deep:'「已」解作停止。此字為全篇中心論點的核心，強調學習是持續不斷的過程。'}
+   ],
+   rhet:[],tech:'開門見山——直接提出中心論點',
+   point:'全文中心論點，「已」字解釋為必考',
+   emotion:'斬釘截鐵的勸勉之情。荀子以「君子曰」開篇，語氣肯定，直接點出學習不可停止的命題。',
+   symbol:'「學不可以已」象徵儒家對終身學習的堅持，學習不是階段性任務，而是終身的修養。',
+   deep:'此句為全文中心論點。荀子以「君子曰」引出，將學習提升為君子人格的根本要求。「不可以已」四字斬釘截鐵，奠定全篇勸學的基調。'},
+  {text:'青，取之於藍，而青於藍；冰，水為之，而寒於水。',
+   trans:'靛青是從藍草中提取的，卻比藍草更青；冰是水凝結成的，卻比水更寒冷。',
+   words:[
+    {w:'青',d:'靛青，一種染料',py:'qīng',pos:'名詞',deep:'「青」指靛青，從藍草中提取的染料，色澤比藍草更深。'},
+    {w:'藍',d:'藍草，可提取染料',py:'lán',pos:'名詞',deep:'「藍」指藍草，是提取靛青的原料。此字與「青」對舉，形成本源與超越的對比。'},
+    {w:'為',d:'形成、凝結',py:'wéi',pos:'動詞',deep:'「為」指形成、凝結，此處指水凝結成冰的過程。'}
+   ],
+   rhet:[{t:'對偶',p:'青，取之於藍，而青於藍／冰，水為之，而寒於水',e:'兩句結構對稱，以自然現象並列，增強說服力，讀來節奏鮮明。'}],
+   tech:'比喻論證——以青出於藍、冰寒於水，喻學習可以超越本源',
+   point:'「青出於藍」成語出處，常考比喻義',
+   emotion:'鼓舞向上的激勵之情。荀子以青、冰為喻，語氣昂揚，鼓勵學習者超越本源、不斷進步。',
+   symbol:'「青出於藍」象徵學習能使人超越本源；「冰寒於水」象徵後天努力可勝過先天條件。',
+   deep:'此句以青從藍出而勝於藍、冰由水成而寒於水為喻，說明學習能使人超越本源。荀子以此鼓勵學習者：只要努力，就能青出於藍，達到更高境界。'},
+  {text:'木直中繩，輮以為輪，其曲中規。雖有槁暴，不復挺者，輮使之然也。',
+   trans:'木材筆直得合乎墨線，用火烤彎做成車輪，它的彎曲度合乎圓規。即使又曬乾了，也不會再挺直，這是用火烤使它這樣的。',
+   words:[
+    {w:'中繩',d:'合乎墨線。中，符合',py:'zhòng shéng',pos:'動詞',deep:'「中」解作符合，「繩」指木工用的墨線。「中繩」即合乎墨線，形容木材筆直。'},
+    {w:'輮',d:'用火烤使彎曲',py:'róu',pos:'動詞',deep:'「輮」指用火烤使木材彎曲，是古代製作車輪的工藝。'},
+    {w:'規',d:'圓規',py:'guī',pos:'名詞',deep:'「規」指圓規，「中規」即合乎圓規所畫的圓形。'},
+    {w:'槁暴',d:'曬乾。槁，枯乾；暴，同「曝」，曬',py:'gǎo pù',pos:'動詞',deep:'「槁」指枯乾，「暴」通「曝」，曬。「槁暴」即曬乾，此處指木材被曬乾。'}
+   ],
+   rhet:[],tech:'比喻論證——以木經加工而變形，喻學習能改變人的本性',
+   point:'「中」「輮」「暴」三字解釋為高頻考點',
+   emotion:'堅定不移的勸學之情。荀子以木材經烤製而變形為喻，語氣肯定，強調學習對本性的改造作用。',
+   symbol:'「木」象徵人的本性；「輮」象徵後天的學習與改造；「不復挺」象徵學習對本性的深刻改變。',
+   deep:'此句以木材經火烤彎曲後不再挺直為喻，說明學習能改變人的本性，且效果持久。荀子以此強調後天學習對人性的塑造作用，體現其「化性起偽」的思想。'},
+  {text:'故木受繩則直，金就礪則利。君子博學而日參省乎己，則知明而行無過矣。',
+   trans:'所以木材經墨線量過就能取直，金屬放到磨刀石上磨就會鋒利。君子廣泛地學習，並且每天檢查反省自己，就能智慧明達而行為沒有過錯了。',
+   words:[
+    {w:'受繩',d:'經墨線校正',py:'shòu shéng',pos:'動詞',deep:'「受」指接受、經過，「繩」指墨線。「受繩」即經墨線校正而取直。'},
+    {w:'金',d:'指金屬製的刀劍',py:'jīn',pos:'名詞',deep:'「金」指金屬製的刀劍等器物，非指黃金。'},
+    {w:'就礪',d:'放到磨刀石上磨。礪，磨刀石',py:'jiù lì',pos:'動詞',deep:'「就」指靠近、放到，「礪」指磨刀石。「就礪」即放到磨刀石上磨。'},
+    {w:'參省',d:'檢驗反省。參，同「三」，多次',py:'cān xǐng',pos:'動詞',deep:'「參」通「三」，指多次；「省」指反省。「參省」即多次檢查反省自己。'},
+    {w:'知',d:'同「智」',py:'zhì',pos:'名詞',deep:'「知」通「智」，指智慧、見識。'}
+   ],
+   rhet:[{t:'對偶',p:'木受繩則直／金就礪則利',e:'對稱句式，以兩物並舉，類推學習對人的作用，增強說服力。'}],
+   tech:'比喻論證＋結論——以物需加工，喻人需學習，最後歸結到學習的實際功效',
+   point:'常考「就」「礪」「參省」的解釋及通假字「知」',
+   emotion:'循循善誘的勸勉之情。荀子以木、金為喻，語氣平實，說明學習對人的改造作用。',
+   symbol:'「木受繩」「金就礪」象徵人需經學習與磨練才能成材。',
+   deep:'此句以木受繩則直、金就礪則利為喻，說明人需經學習與磨練才能成材。荀子以日常事物為喻，使抽象道理具體可感，論證親切有力。最後歸結到「知明而行無過」，點明學習的實際功效。'},
+  {text:'吾嘗終日而思矣，不如須臾之所學也。吾嘗跂而望矣，不如登高之博見也。',
+   trans:'我曾經整天思考，卻不如片刻學習所得的收穫大。我曾經踮起腳跟遠望，卻不如登上高處看得廣闊。',
+   words:[
+    {w:'嘗',d:'曾經',py:'cháng',pos:'副詞',deep:'「嘗」指曾經，表示親身經歷。'},
+    {w:'須臾',d:'片刻、一會兒',py:'xū yú',pos:'名詞',deep:'「須臾」指極短的時間，與「終日」形成強烈對比。'},
+    {w:'跂',d:'踮起腳跟',py:'qǐ',pos:'動詞',deep:'「跂」指踮起腳跟。踮腳遠望，不如登高所見之廣。'}
+   ],
+   rhet:[{t:'對比',p:'終日而思／須臾之所學；跂而望／登高之博見',e:'以時間長短與收穫多寡形成反差，突出學習之效，說服力強。'}],
+   tech:'對比論證——思與學、望與登的效益對比',
+   point:'常考「須臾」「跂」的解釋，以及思、學關係的理解',
+   emotion:'現身說法的懇切之情。荀子以自身經驗為例，語氣真誠，強調學習勝於空想。',
+   symbol:'「終日而思」象徵空想；「須臾之所學」象徵實際學習；「登高之博見」象徵借助外物開闊眼界。',
+   deep:'此句以親身經驗說明學習勝於空想，並以「登高之博見」類比學習能開闊眼界。荀子並非否定思考，而是強調思考須以學習為基礎。此說與孔子「學而不思則罔，思而不學則殆」相呼應。'},
+  {text:'君子生非異也，善假於物也。',
+   trans:'君子的天性並非與常人不同，只是善於借助外物罷了。',
+   words:[
+    {w:'生',d:'同「性」，天性',py:'xìng',pos:'名詞',deep:'「生」通「性」，指天性、資質。此為必考通假字。'},
+    {w:'假',d:'借助、憑藉',py:'jiǎ',pos:'動詞',deep:'「假」指借助、憑藉。「善假於物」即善於借助外物，是全篇的核心方法論。'},
+    {w:'物',d:'外物，指學習條件與工具',py:'wù',pos:'名詞',deep:'「物」指外在的條件與工具，此處指學習的資源與方法。'}
+   ],
+   rhet:[],tech:'總結論點——點明君子成材的關鍵在「善假於物」',
+   point:'「生」通「性」為必考通假字；「假」解作「借助」',
+   emotion:'豁然開朗的領悟之情。荀子點明君子成材的關鍵不在天賦，而在善於借助外物，語氣肯定而透徹。',
+   symbol:'「善假於物」象徵善用外在條件與方法，是達到高遠境界的關鍵。',
+   deep:'此句為全篇總結論點：君子並非天賦異稟，而是善於借助外物。荀子以此破除天才論，強調後天學習與方法的重要性，體現其樸素唯物主義的思想傾向。'},
+  {text:'鍥而舍之，朽木不折；鍥而不捨，金石可鏤。',
+   trans:'雕刻一下就放棄，腐朽的木頭也刻不斷；雕刻而不停止，金屬和石頭也能雕出花紋。',
+   words:[
+    {w:'鍥',d:'雕刻',py:'qiè',pos:'動詞',deep:'「鍥」指雕刻，此處以雕刻為喻，說明堅持的重要。'},
+    {w:'舍',d:'同「捨」，放棄',py:'shě',pos:'動詞',deep:'「舍」通「捨」，指放棄、停止。'},
+    {w:'鏤',d:'雕刻',py:'lòu',pos:'動詞',deep:'「鏤」指雕刻花紋，此處指在金石上雕刻出花紋。'}
+   ],
+   rhet:[{t:'對偶',p:'鍥而舍之，朽木不折／鍥而不捨，金石可鏤',e:'正反對照，句式工整，強調堅持的重要，成為千古傳誦的名句。'}],
+   tech:'對比論證——捨與不捨的結果對比',
+   point:'「鍥而不捨」成語出處，為默寫與理解高頻句',
+   emotion:'激昂奮發的激勵之情。荀子以正反對比強調堅持的重要，語氣昂揚，鼓舞人心。',
+   symbol:'「鍥而不捨」象徵堅持不懈的精神；「金石可鏤」象徵堅持終能克服困難、達成目標。',
+   deep:'此句以雕刻為喻，正反對比說明堅持的重要：放棄則朽木不折，堅持則金石可鏤。荀子以此激勵學習者持之以恆，是全篇最具感染力的名句之一。'}
+]}]},
 
-/* 5. 廉頗藺相如列傳（節錄） */
-{
-  id:'lianpo', num:5, title:'廉頗藺相如列傳（節錄）', author:'司馬遷', era:'西漢', genre:'史傳散文', theme:'智勇忠義',
-  intro:'本文節錄「完璧歸趙」「澠池之會」「負荊請罪」三段，以詳略得宜的筆法塑造藺相如智勇雙全、以國為先的形象，並寫出廉頗勇於改過的一面。',
-  sections:[
-  { name:'完璧歸趙', sentences:[
-    { text:'廉頗者，趙之良將也。趙惠文王十六年，廉頗為趙將伐齊，大破之，取陽晉，拜為上卿，以勇氣聞於諸侯。藺相如者，趙人也，為趙宦者令繆賢舍人。',
-      trans:'廉頗是趙國的名將。趙惠文王十六年，廉頗擔任趙國大將攻打齊國，大敗齊軍，奪取陽晉，被任命為上卿，憑勇氣聞名於諸侯。藺相如是趙國人，是趙國宦官首領繆賢的門客。',
-      words:[
-        {w:'良將',d:'優秀的將領',py:'liáng jiàng',pos:'名詞',deep:'「良」指優秀，「良將」即優秀的將領，點明廉頗的軍事地位。'},
-        {w:'拜',d:'任命、授予官職',py:'bài',pos:'動詞',deep:'「拜」指授予官職。拜為上卿，即被任命為上卿。'},
-        {w:'上卿',d:'官職名，地位很高',py:'shàng qīng',pos:'名詞',deep:'「上卿」為古代官職名，地位很高。廉頗以軍功被拜為上卿。'},
-        {w:'宦者令',d:'宦官的首領',py:'huàn zhě lìng',pos:'名詞',deep:'「宦者令」為官職名，指宦官的首領，點明繆賢的身份。'},
-        {w:'舍人',d:'門客',py:'shè rén',pos:'名詞',deep:'「舍人」指貴族或官員家中的門客，地位不高，為後文藺相如的崛起作鋪墊。'}
-      ],
-      rhet:[], tech:'人物介紹——先交代身份地位，為下文對比張本',
-      point:'常考「舍人」的解釋及二人身份差距的作用',
-      emotion:'客觀冷靜的敘述之情。司馬遷以簡潔筆墨交代二人身份，語氣平實，卻暗含對比——良將與門客的懸殊地位。',
-      symbol:'「良將」與「舍人」的身份對比，象徵才能與地位並非必然相稱，為藺相如的崛起埋下伏筆。',
-      deep:'此句以極簡筆墨交代廉頗與藺相如的身份，一為良將，一為門客，地位懸殊。司馬遷以此對比，為後文藺相如憑智勇崛起、位在廉頗之上的情節張本，亦暗含對出身與才能關係的思考。' },
-    { text:'臣所以去親戚而事君者，徒慕君之高義也。',
-      trans:'我之所以離開親人來侍奉您，只是仰慕您的高尚品德罷了。',
-      words:[
-        {w:'親戚',d:'古義指父母兄弟等至親',py:'qīn qī',pos:'名詞',deep:'「親戚」古義指父母兄弟等至親，與今日泛指親屬不同，屬古今異義。'},
-        {w:'事',d:'侍奉',py:'shì',pos:'動詞',deep:'「事」指侍奉、服務，此處指藺相如侍奉繆賢。'},
-        {w:'徒',d:'只是',py:'tú',pos:'副詞',deep:'「徒」解作只是、僅僅，強調動機的純粹。'},
-        {w:'高義',d:'高尚的品德',py:'gāo yì',pos:'名詞',deep:'「高義」指高尚的品德與節操，是藺相如追隨繆賢的原因。'}
-      ],
-      rhet:[], tech:'直陳心志——以言語刻畫藺相如的見識與忠誠',
-      point:'「親戚」古今異義為必考；「徒」解作「只是」',
-      emotion:'誠摯感念的知遇之情。藺相如以「慕君之高義」表白心志，語氣懇切，寫出其重義輕利的人格。',
-      symbol:'「去親戚而事君」象徵藺相如對道義的追求高於對親情的牽掛；「慕高義」象徵其以德行為擇主標準。',
-      deep:'此句以藺相如自述心志，寫出其追隨繆賢的原因——仰慕高義。司馬遷藉此刻畫藺相如重義輕利、見識不凡的性格，為後文其智勇雙全的表現奠定基礎。' },
-    { text:'王必無人，臣願奉璧往使。城入趙而璧留秦；城不入，臣請完璧歸趙。',
-      trans:'大王如果實在沒有合適的人，我願意捧著和氏璧出使秦國。城池劃歸趙國，璧就留在秦國；城池不歸趙國，我請求把璧完好無損地帶回趙國。',
-      words:[
-        {w:'必',d:'如果、果真',py:'bì',pos:'連詞',deep:'「必」在此作連詞，解作如果、果真。'},
-        {w:'奉',d:'捧',py:'fèng',pos:'動詞',deep:'「奉」指捧、持，表示恭敬地拿著。'},
-        {w:'完',d:'使……完好無損（使動用法）',py:'wán',pos:'動詞',deep:'「完」為使動用法，「完璧」即「使璧完好無損」。此為常考語法點。'}
-      ],
-      rhet:[], tech:'語言描寫——以條件式承諾展現藺相如的膽識與決斷',
-      point:'「完」的使動用法及「完璧歸趙」成語出處',
-      emotion:'勇於任事的擔當之情。藺相如以條件式承諾主動請纓，語氣堅定，展現其膽識與自信。',
-      symbol:'「完璧歸趙」象徵藺相如對國家利益的堅守與使命必達的決心。',
-      deep:'此句以藺相如主動請纓的言語，寫出其過人的膽識與縝密的思維。他先設條件——城入則璧留，城不入則完璧歸趙，展現其對局勢的準確判斷與承擔重任的勇氣。' },
-    { text:'相如因持璧卻立，倚柱，怒髮上衝冠。',
-      trans:'藺相如於是拿著璧退後站定，靠著柱子，憤怒得頭髮直豎，頂起了帽子。',
-      words:[
-        {w:'卻立',d:'退後站定',py:'què lì',pos:'動詞',deep:'「卻」指退後，「立」指站定。「卻立」寫出藺相如警覺的動作。'},
-        {w:'倚',d:'靠',py:'yǐ',pos:'動詞',deep:'「倚」指靠、倚靠，寫出藺相如靠柱自衛的姿態。'},
-        {w:'上衝冠',d:'向上頂起帽子',py:'shàng chōng guān',pos:'動詞',deep:'「上衝冠」形容憤怒至極，頭髮直豎頂起帽子。'}
-      ],
-      rhet:[{t:'誇張',p:'怒髮上衝冠',e:'以頭髮豎起頂冠的誇張描寫，將內心的極度憤怒外化為具體形象，極具感染力。'}],
-      tech:'動作描寫——「持」「卻立」「倚」一連串動作，寫出警覺與威勢',
-      point:'「怒髮上衝冠」為常考誇張句，亦考動作描寫的作用',
-      emotion:'怒不可遏的激憤之情。藺相如面對秦王的欺詐，憤怒至極，以誇張描寫將其內心的怒火外化。',
-      symbol:'「怒髮上衝冠」象徵藺相如對秦王背信棄義的強烈抗議，亦象徵其寧死不屈的剛烈性格。',
-      deep:'此句以誇張與動作描寫，寫出藺相如面對秦王欺詐時的憤怒與警覺。「持璧卻立」「倚柱」寫其自衛的機警，「怒髮上衝冠」寫其內心的激憤。司馬遷以寥寥數語，將藺相如的智勇剛烈刻畫得栩栩如生。' },
-    { text:'臣知欺大王之罪當誅，臣請就湯鑊。',
-      trans:'我知道欺騙大王的罪過應當處死，我請求接受烹刑。',
-      words:[
-        {w:'誅',d:'殺、處死',py:'zhū',pos:'動詞',deep:'「誅」指殺、處死，此處指因欺君之罪當被處死。'},
-        {w:'就',d:'接受、趨向',py:'jiù',pos:'動詞',deep:'「就」指趨向、接受，「就湯鑊」即接受烹刑。'},
-        {w:'湯鑊',d:'古代酷刑，把人投入沸水鍋中煮死',py:'tāng huò',pos:'名詞',deep:'「湯」指沸水，「鑊」指大鍋。「湯鑊」為古代酷刑，將人投入沸水中煮死。'}
-      ],
-      rhet:[], tech:'語言描寫——以死明志，反襯秦王的理虧',
-      point:'「湯鑊」的解釋及藺相如言語的氣勢為常考',
-      emotion:'視死如歸的悲壯之情。藺相如以死明志，語氣堅決，反襯秦王的理虧與自己的凜然正氣。',
-      symbol:'「就湯鑊」象徵藺相如寧死不屈的氣節，亦象徵其以死捍衛國家尊嚴的決心。',
-      deep:'此句以藺相如視死如歸的言語，寫出其凜然正氣。他明知欺君當誅，仍主動請就湯鑊，以死明志。這不僅震懾秦王，更反襯出秦王的理虧與卑劣，展現藺相如智勇雙全的形象。' }
-  ]},
-  { name:'負荊請罪', sentences:[
-    { text:'今兩虎共鬥，其勢不俱生。吾所以為此者，以先國家之急而後私讎也。',
-      trans:'如今兩虎相鬥，勢必不能共存。我之所以這樣做，是把國家的急難放在前面，而把私人的仇怨放在後面啊。',
-      words:[
-        {w:'俱生',d:'同時存活',py:'jù shēng',pos:'動詞',deep:'「俱」指同時，「俱生」即同時存活，此處指兩虎相鬥必有一傷。'},
-        {w:'先／後',d:'把……放在前／後（意動用法）',py:'xiān/hòu',pos:'動詞',deep:'「先」「後」為意動用法，「先國家之急」即「以國家之急為先」。此為常考語法點。'},
-        {w:'私讎',d:'私人仇怨。讎，同「仇」',py:'sī chóu',pos:'名詞',deep:'「讎」通「仇」，「私讎」指私人的仇怨，此處指與廉頗的過節。'}
-      ],
-      rhet:[{t:'比喻',p:'今兩虎共鬥',e:'以兩虎相鬥比喻將相不和，形象說明內訌必招外患，使抽象道理具體化。'}],
-      tech:'語言描寫——點明全文主旨：先國家之急而後私讎',
-      point:'全文主旨句，必考；「先」「後」的意動用法為難點',
-      emotion:'以國為先的忠義之情。藺相如以「先國家之急而後私讎」表白心志，語氣坦蕩，展現其以大局為重的胸襟。',
-      symbol:'「兩虎共鬥」象徵將相不和必招外患；「先國家之急」象徵以國家利益為最高優先。',
-      deep:'此句為全文主旨句。藺相如以「兩虎共鬥」為喻，說明將相不和的危害，並以「先國家之急而後私讎」點明其避讓廉頗的真正原因。司馬遷藉此凸顯藺相如以國為先、胸襟廣闊的形象，亦為廉頗負荊請罪埋下伏筆。' },
-    { text:'廉頗聞之，肉袒負荊，因賓客至藺相如門謝罪。',
-      trans:'廉頗聽到這些話，便脫去上衣露出臂膀，背著荊條，通過賓客引領到藺相如門前請罪。',
-      words:[
-        {w:'肉袒',d:'脫去上衣露出身體，表示認罪受罰',py:'ròu tǎn',pos:'動詞',deep:'「肉袒」指脫去上衣露出身體，是古代認罪受罰的表示。'},
-        {w:'負荊',d:'背著荊條，表示願受鞭打',py:'fù jīng',pos:'動詞',deep:'「負荊」指背著荊條，表示願意接受鞭打責罰，是極其謙卑的請罪方式。'},
-        {w:'因',d:'通過、憑藉',py:'yīn',pos:'介詞',deep:'「因」指通過、憑藉，「因賓客」即通過賓客的引領。'},
-        {w:'謝罪',d:'道歉認錯',py:'xiè zuì',pos:'動詞',deep:'「謝」指道歉，「謝罪」即承認過錯並請求原諒。'}
-      ],
-      rhet:[], tech:'動作描寫——以具體行動刻畫廉頗勇於改過的性格',
-      point:'「負荊請罪」成語出處，「肉袒」「因」的解釋為常考',
-      emotion:'誠摯悔過的愧疚之情。廉頗以「肉袒負荊」的具體行動請罪，展現其勇於改過的坦蕩胸懷。',
-      symbol:'「肉袒負荊」象徵廉頗放下身段、誠心認錯的勇氣；「將相和」象徵團結對敵的重要性。',
-      deep:'此句以「肉袒負荊」「因賓客謝罪」的具體行動，刻畫廉頗勇於改過的性格。司馬遷不寫廉頗的言語，而以動作取勝，使人物形象更加鮮明。「負荊請罪」後成為成語，象徵真誠認錯、勇於改過。' }
-  ]}
-  ]
-},
+/* ========== 5 廉頗藺相如列傳（節錄） ========== */
+{id:'lianpo',num:5,title:'廉頗藺相如列傳（節錄）',author:'司馬遷',era:'西漢',genre:'史傳散文',theme:'智勇忠義',
+ intro:'本文節錄「完璧歸趙」「澠池之會」「負荊請罪」三段，以詳略得宜的筆法塑造藺相如智勇雙全、以國為先的形象，並寫出廉頗勇於改過的一面。',
+ sections:[
+ {name:'完璧歸趙',sentences:[
+  {text:'廉頗者，趙之良將也。趙惠文王十六年，廉頗為趙將伐齊，大破之，取陽晉，拜為上卿，以勇氣聞於諸侯。藺相如者，趙人也，為趙宦者令繆賢舍人。',
+   trans:'廉頗是趙國的名將。趙惠文王十六年，廉頗擔任趙國大將攻打齊國，大敗齊軍，奪取陽晉，被任命為上卿，憑勇氣聞名於諸侯。藺相如是趙國人，是趙國宦官首領繆賢的門客。',
+   words:[
+    {w:'良將',d:'優秀的將領',py:'liáng jiàng',pos:'名詞',deep:'「良」指優秀，「良將」即優秀的將領，點明廉頗的軍事地位。'},
+    {w:'拜',d:'任命、授予官職',py:'bài',pos:'動詞',deep:'「拜」指授予官職。拜為上卿，即被任命為上卿。'},
+    {w:'上卿',d:'官職名，地位很高',py:'shàng qīng',pos:'名詞',deep:'「上卿」為古代官職名，地位很高。廉頗以軍功被拜為上卿。'},
+    {w:'宦者令',d:'宦官的首領',py:'huàn zhě lìng',pos:'名詞',deep:'「宦者令」為官職名，指宦官的首領，點明繆賢的身份。'},
+    {w:'舍人',d:'門客',py:'shè rén',pos:'名詞',deep:'「舍人」指貴族或官員家中的門客，地位不高，為後文藺相如的崛起作鋪墊。'}
+   ],
+   rhet:[],tech:'人物介紹——先交代身份地位，為下文對比張本',
+   point:'常考「舍人」的解釋及二人身份差距的作用',
+   emotion:'客觀冷靜的敘述之情。司馬遷以簡潔筆墨交代二人身份，語氣平實，卻暗含對比——良將與門客的懸殊地位。',
+   symbol:'「良將」與「舍人」的身份對比，象徵才能與地位並非必然相稱，為藺相如的崛起埋下伏筆。',
+   deep:'此句以極簡筆墨交代廉頗與藺相如的身份，一為良將，一為門客，地位懸殊。司馬遷以此對比，為後文藺相如憑智勇崛起、位在廉頗之上的情節張本，亦暗含對出身與才能關係的思考。'},
+  {text:'臣所以去親戚而事君者，徒慕君之高義也。',
+   trans:'我之所以離開親人來侍奉您，只是仰慕您的高尚品德罷了。',
+   words:[
+    {w:'親戚',d:'古義指父母兄弟等至親',py:'qīn qī',pos:'名詞',deep:'「親戚」古義指父母兄弟等至親，與今日泛指親屬不同，屬古今異義。'},
+    {w:'事',d:'侍奉',py:'shì',pos:'動詞',deep:'「事」指侍奉、服務，此處指藺相如侍奉繆賢。'},
+    {w:'徒',d:'只是',py:'tú',pos:'副詞',deep:'「徒」解作只是、僅僅，強調動機的純粹。'},
+    {w:'高義',d:'高尚的品德',py:'gāo yì',pos:'名詞',deep:'「高義」指高尚的品德與節操，是藺相如追隨繆賢的原因。'}
+   ],
+   rhet:[],tech:'直陳心志——以言語刻畫藺相如的見識與忠誠',
+   point:'「親戚」古今異義為必考；「徒」解作「只是」',
+   emotion:'誠摯感念的知遇之情。藺相如以「慕君之高義」表白心志，語氣懇切，寫出其重義輕利的人格。',
+   symbol:'「去親戚而事君」象徵藺相如對道義的追求高於對親情的牽掛；「慕高義」象徵其以德行為擇主標準。',
+   deep:'此句以藺相如自述心志，寫出其追隨繆賢的原因——仰慕高義。司馬遷藉此刻畫藺相如重義輕利、見識不凡的性格，為後文其智勇雙全的表現奠定基礎。'},
+  {text:'王必無人，臣願奉璧往使。城入趙而璧留秦；城不入，臣請完璧歸趙。',
+   trans:'大王如果實在沒有合適的人，我願意捧著和氏璧出使秦國。城池劃歸趙國，璧就留在秦國；城池不歸趙國，我請求把璧完好無損地帶回趙國。',
+   words:[
+    {w:'必',d:'如果、果真',py:'bì',pos:'連詞',deep:'「必」在此作連詞，解作如果、果真。'},
+    {w:'奉',d:'捧',py:'fèng',pos:'動詞',deep:'「奉」指捧、持，表示恭敬地拿著。'},
+    {w:'完',d:'使……完好無損（使動用法）',py:'wán',pos:'動詞',deep:'「完」為使動用法，「完璧」即「使璧完好無損」。此為常考語法點。'}
+   ],
+   rhet:[],tech:'語言描寫——以條件式承諾展現藺相如的膽識與決斷',
+   point:'「完」的使動用法及「完璧歸趙」成語出處',
+   emotion:'勇於任事的擔當之情。藺相如以條件式承諾主動請纓，語氣堅定，展現其膽識與自信。',
+   symbol:'「完璧歸趙」象徵藺相如對國家利益的堅守與使命必達的決心。',
+   deep:'此句以藺相如主動請纓的言語，寫出其過人的膽識與縝密的思維。他先設條件——城入則璧留，城不入則完璧歸趙，展現其對局勢的準確判斷與承擔重任的勇氣。'},
+  {text:'相如因持璧卻立，倚柱，怒髮上衝冠。',
+   trans:'藺相如於是拿著璧退後站定，靠著柱子，憤怒得頭髮直豎，頂起了帽子。',
+   words:[
+    {w:'卻立',d:'退後站定',py:'què lì',pos:'動詞',deep:'「卻」指退後，「立」指站定。「卻立」寫出藺相如警覺的動作。'},
+    {w:'倚',d:'靠',py:'yǐ',pos:'動詞',deep:'「倚」指靠、倚靠，寫出藺相如靠柱自衛的姿態。'},
+    {w:'上衝冠',d:'向上頂起帽子',py:'shàng chōng guān',pos:'動詞',deep:'「上衝冠」形容憤怒至極，頭髮直豎頂起帽子。'}
+   ],
+   rhet:[{t:'誇張',p:'怒髮上衝冠',e:'以頭髮豎起頂冠的誇張描寫，將內心的極度憤怒外化為具體形象，極具感染力。'}],
+   tech:'動作描寫——「持」「卻立」「倚」一連串動作，寫出警覺與威勢',
+   point:'「怒髮上衝冠」為常考誇張句，亦考動作描寫的作用',
+   emotion:'怒不可遏的激憤之情。藺相如面對秦王的欺詐，憤怒至極，以誇張描寫將其內心的怒火外化。',
+   symbol:'「怒髮上衝冠」象徵藺相如對秦王背信棄義的強烈抗議，亦象徵其寧死不屈的剛烈性格。',
+   deep:'此句以誇張與動作描寫，寫出藺相如面對秦王欺詐時的憤怒與警覺。「持璧卻立」「倚柱」寫其自衛的機警，「怒髮上衝冠」寫其內心的激憤。司馬遷以寥寥數語，將藺相如的智勇剛烈刻畫得栩栩如生。'},
+  {text:'臣知欺大王之罪當誅，臣請就湯鑊。',
+   trans:'我知道欺騙大王的罪過應當處死，我請求接受烹刑。',
+   words:[
+    {w:'誅',d:'殺、處死',py:'zhū',pos:'動詞',deep:'「誅」指殺、處死，此處指因欺君之罪當被處死。'},
+    {w:'就',d:'接受、趨向',py:'jiù',pos:'動詞',deep:'「就」指趨向、接受，「就湯鑊」即接受烹刑。'},
+    {w:'湯鑊',d:'古代酷刑，把人投入沸水鍋中煮死',py:'tāng huò',pos:'名詞',deep:'「湯」指沸水，「鑊」指大鍋。「湯鑊」為古代酷刑，將人投入沸水中煮死。'}
+   ],
+   rhet:[],tech:'語言描寫——以死明志，反襯秦王的理虧',
+   point:'「湯鑊」的解釋及藺相如言語的氣勢為常考',
+   emotion:'視死如歸的悲壯之情。藺相如以死明志，語氣堅決，反襯秦王的理虧與自己的凜然正氣。',
+   symbol:'「就湯鑊」象徵藺相如寧死不屈的氣節，亦象徵其以死捍衛國家尊嚴的決心。',
+   deep:'此句以藺相如視死如歸的言語，寫出其凜然正氣。他明知欺君當誅，仍主動請就湯鑊，以死明志。這不僅震懾秦王，更反襯出秦王的理虧與卑劣，展現藺相如智勇雙全的形象。'}
+ ]},
+ {name:'負荊請罪',sentences:[
+  {text:'今兩虎共鬥，其勢不俱生。吾所以為此者，以先國家之急而後私讎也。',
+   trans:'如今兩虎相鬥，勢必不能共存。我之所以這樣做，是把國家的急難放在前面，而把私人的仇怨放在後面啊。',
+   words:[
+    {w:'俱生',d:'同時存活',py:'jù shēng',pos:'動詞',deep:'「俱」指同時，「俱生」即同時存活，此處指兩虎相鬥必有一傷。'},
+    {w:'先／後',d:'把……放在前／後（意動用法）',py:'xiān/hòu',pos:'動詞',deep:'「先」「後」為意動用法，「先國家之急」即「以國家之急為先」。此為常考語法點。'},
+    {w:'私讎',d:'私人仇怨。讎，同「仇」',py:'sī chóu',pos:'名詞',deep:'「讎」通「仇」，「私讎」指私人的仇怨，此處指與廉頗的過節。'}
+   ],
+   rhet:[{t:'比喻',p:'今兩虎共鬥',e:'以兩虎相鬥比喻將相不和，形象說明內訌必招外患，使抽象道理具體化。'}],
+   tech:'語言描寫——點明全文主旨：先國家之急而後私讎',
+   point:'全文主旨句，必考；「先」「後」的意動用法為難點',
+   emotion:'以國為先的忠義之情。藺相如以「先國家之急而後私讎」表白心志，語氣坦蕩，展現其以大局為重的胸襟。',
+   symbol:'「兩虎共鬥」象徵將相不和必招外患；「先國家之急」象徵以國家利益為最高優先。',
+   deep:'此句為全文主旨句。藺相如以「兩虎共鬥」為喻，說明將相不和的危害，並以「先國家之急而後私讎」點明其避讓廉頗的真正原因。司馬遷藉此凸顯藺相如以國為先、胸襟廣闊的形象，亦為廉頗負荊請罪埋下伏筆。'},
+  {text:'廉頗聞之，肉袒負荊，因賓客至藺相如門謝罪。',
+   trans:'廉頗聽到這些話，便脫去上衣露出臂膀，背著荊條，通過賓客引領到藺相如門前請罪。',
+   words:[
+    {w:'肉袒',d:'脫去上衣露出身體，表示認罪受罰',py:'ròu tǎn',pos:'動詞',deep:'「肉袒」指脫去上衣露出身體，是古代認罪受罰的表示。'},
+    {w:'負荊',d:'背著荊條，表示願受鞭打',py:'fù jīng',pos:'動詞',deep:'「負荊」指背著荊條，表示願意接受鞭打責罰，是極其謙卑的請罪方式。'},
+    {w:'因',d:'通過、憑藉',py:'yīn',pos:'介詞',deep:'「因」指通過、憑藉，「因賓客」即通過賓客的引領。'},
+    {w:'謝罪',d:'道歉認錯',py:'xiè zuì',pos:'動詞',deep:'「謝」指道歉，「謝罪」即承認過錯並請求原諒。'}
+   ],
+   rhet:[],tech:'動作描寫——以具體行動刻畫廉頗勇於改過的性格',
+   point:'「負荊請罪」成語出處，「肉袒」「因」的解釋為常考',
+   emotion:'誠摯悔過的愧疚之情。廉頗以「肉袒負荊」的具體行動請罪，展現其勇於改過的坦蕩胸懷。',
+   symbol:'「肉袒負荊」象徵廉頗放下身段、誠心認錯的勇氣；「將相和」象徵團結對敵的重要性。',
+   deep:'此句以「肉袒負荊」「因賓客謝罪」的具體行動，刻畫廉頗勇於改過的性格。司馬遷不寫廉頗的言語，而以動作取勝，使人物形象更加鮮明。「負荊請罪」後成為成語，象徵真誠認錯、勇於改過。'}
+ ]}]},
 
-/* 6. 出師表 */
-{
-  id:'chushi', num:6, title:'出師表', author:'諸葛亮', era:'三國', genre:'表文', theme:'忠君報國',
-  intro:'諸葛亮出師北伐前上表後主，分析時局、薦舉賢臣、追念先帝知遇之恩，字字懇切，體現「鞠躬盡瘁」的忠貞。',
-  sections:[
-  { name:'本文', sentences:[
-    { text:'臣亮言：先帝創業未半而中道崩殂，今天下三分，益州疲弊，此誠危急存亡之秋也。',
-      trans:'臣諸葛亮進言：先帝開創事業還未完成一半就中途去世了，如今天下三分，益州疲弱困乏，這實在是危急存亡的時刻啊。',
-      words:[
-        {w:'崩殂',d:'指帝王去世',py:'bēng cú',pos:'動詞',deep:'「崩」指帝王去世，「殂」指死亡。「崩殂」為帝王去世的專稱。'},
-        {w:'疲弊',d:'疲弱困乏',py:'pí bì',pos:'形容詞',deep:'「疲」指疲弱，「弊」指困乏。「疲弊」形容益州國力衰弱。'},
-        {w:'誠',d:'實在、的確',py:'chéng',pos:'副詞',deep:'「誠」指實在、的確，加強語氣。'},
-        {w:'秋',d:'時刻、時期',py:'qiū',pos:'名詞',deep:'「秋」在此解作時刻、時期，指關鍵緊要的關頭，非指季節。此為常考字詞。'}
-      ],
-      rhet:[], tech:'開篇陳情——先言國勢危急，奠定全文懇切基調',
-      point:'「秋」解作「時刻」為必考；「崩殂」的解釋亦常考',
-      emotion:'憂心如焚的忠臣之情。諸葛亮以「危急存亡之秋」點明國勢，語氣沉重，流露出對蜀漢前途的深切憂慮。',
-      symbol:'「創業未半而中道崩殂」象徵先帝遺志未竟；「危急存亡之秋」象徵蜀漢面臨的嚴峻局勢。',
-      deep:'此句以「先帝創業未半」與「今天下三分」對舉，點明蜀漢面臨的內外困境。「危急存亡之秋」六字，既是對時局的判斷，也是對後主的警醒，為全文懇切陳情奠定基調。' },
-    { text:'然侍衛之臣不懈於內，忠志之士忘身於外者，蓋追先帝之殊遇，欲報之於陛下也。',
-      trans:'然而侍衛大臣在宮內不懈怠，忠誠有志的將士在外面捨生忘死，都是因為追念先帝的特殊恩遇，想要報答陛下啊。',
-      words:[
-        {w:'懈',d:'懈怠',py:'xiè',pos:'動詞',deep:'「懈」指懈怠、鬆懈。'},
-        {w:'忘身',d:'捨身忘死',py:'wàng shēn',pos:'動詞',deep:'「忘身」指忘記自身安危，即捨生忘死。'},
-        {w:'殊遇',d:'特殊的恩遇',py:'shū yù',pos:'名詞',deep:'「殊」指特殊，「遇」指恩遇。「殊遇」指先帝對臣下的特殊恩待。'}
-      ],
-      rhet:[{t:'對偶',p:'侍衛之臣不懈於內／忠志之士忘身於外',e:'內外對舉，句式整齊，全面呈現朝野忠臣的盡忠之狀。'}],
-      tech:'敘述——由危局轉寫忠臣，為下文勸諫鋪路',
-      point:'常考此句在結構上的「承上啟下」作用',
-      emotion:'感念知遇的忠義之情。諸葛亮寫朝野忠臣因追念先帝恩遇而盡忠，語氣懇切。',
-      symbol:'「不懈於內」「忘身於外」象徵朝野上下因感念先帝恩遇而團結盡忠。',
-      deep:'此句由危局轉寫忠臣，以「追先帝之殊遇」解釋臣下盡忠的原因，既感念先帝，又勉勵後主。' },
-    { text:'誠宜開張聖聽，以光先帝遺德，恢弘志士之氣；不宜妄自菲薄，引喻失義，以塞忠諫之路也。',
-      trans:'實在應該廣泛聽取意見，以發揚先帝遺留的美德，振奮志士的士氣；不應該隨便看輕自己，說話不恰當，以致堵塞忠臣進諫的道路。',
-      words:[
-        {w:'開張聖聽',d:'廣泛聽取意見',py:'kāi zhāng shèng tīng',pos:'動詞',deep:'「開張」指擴大、開放，「聖聽」指帝王的聽聞。'},
-        {w:'光',d:'發揚光大',py:'guāng',pos:'動詞',deep:'「光」指發揚光大。'},
-        {w:'恢弘',d:'振奮、發揚',py:'huī hóng',pos:'動詞',deep:'「恢弘」指擴大、振奮。'},
-        {w:'妄自菲薄',d:'過分看輕自己',py:'wàng zì fěi bó',pos:'成語',deep:'「妄」指隨便，「菲薄」指看輕。「妄自菲薄」即過分看輕自己。'}
-      ],
-      rhet:[{t:'對偶',p:'誠宜……／不宜……',e:'正反對舉，一「宜」一「不宜」，勸諫分明，語氣懇切有力。'}],
-      tech:'正反對比論證——從正反兩面提出勸諫',
-      point:'「妄自菲薄」為必考成語，宜／不宜的對舉結構常考',
-      emotion:'殷切懇切的勸諫之情。諸葛亮以「誠宜」與「不宜」對舉，語氣懇切，既有勸勉，也有警誡。',
-      symbol:'「開張聖聽」象徵廣納諫言；「妄自菲薄」象徵自我否定。',
-      deep:'此句以「宜」與「不宜」正反對舉，從正反兩面勸諫後主，情理兼備，體現其忠臣本色。' },
-    { text:'親賢臣，遠小人，此先漢所以興隆也；親小人，遠賢臣，此後漢所以傾頹也。',
-      trans:'親近賢臣，疏遠小人，這是先漢興隆的原因；親近小人，疏遠賢臣，這是後漢傾覆衰敗的原因。',
-      words:[
-        {w:'親',d:'親近',py:'qīn',pos:'動詞',deep:'「親」指親近、接近。'},
-        {w:'遠',d:'疏遠',py:'yuǎn',pos:'動詞',deep:'「遠」指疏遠、遠離。'},
-        {w:'所以',d:'……的原因',py:'suǒ yǐ',pos:'連詞',deep:'「所以」在此解作「……的原因」。'},
-        {w:'傾頹',d:'傾覆衰敗',py:'qīng tuí',pos:'動詞',deep:'「傾」指傾覆，「頹」指衰敗。'}
-      ],
-      rhet:[{t:'對偶',p:'親賢臣，遠小人／親小人，遠賢臣',e:'正反對舉，以歷史興亡作證，警誡意味濃厚。'}],
-      tech:'對比論證＋舉例論證——以兩漢興衰為歷史教訓',
-      point:'高頻考點：以史為鑑的勸諫手法',
-      emotion:'借古鑑今的警誡之情。諸葛亮以兩漢興亡為例，語氣沉重，警誡後主親賢遠小。',
-      symbol:'「親賢臣，遠小人」象徵興隆之道；「親小人，遠賢臣」象徵傾頹之由。',
-      deep:'此句以兩漢興衰為歷史教訓，正反對比說明親賢遠小的重要性，體現其政治遠見與忠臣苦心。' },
-    { text:'臣本布衣，躬耕於南陽，苟全性命於亂世，不求聞達於諸侯。',
-      trans:'我本來是個平民，在南陽親自耕種，只求在亂世中苟且保全性命，不奢求在諸侯中顯達。',
-      words:[
-        {w:'布衣',d:'借代平民',py:'bù yī',pos:'名詞',deep:'「布衣」以平民所穿的衣服借代平民，是借代手法，亦見諸葛亮自謙之意。'},
-        {w:'躬耕',d:'親自耕種',py:'gōng gēng',pos:'動詞',deep:'「躬」指親自，「躬耕」即親自耕種。'},
-        {w:'苟全',d:'苟且保全',py:'gǒu quán',pos:'動詞',deep:'「苟」指苟且，「全」指保全。'},
-        {w:'聞達',d:'顯達、有名望',py:'wén dá',pos:'動詞',deep:'「聞」指聞名，「達」指顯達。'}
-      ],
-      rhet:[{t:'借代',p:'布衣',e:'以平民所穿的衣服代指平民，具體形象，亦見謙卑。'}],
-      tech:'自述經歷——追敘出身，反襯先帝知遇之隆',
-      point:'「布衣」的借代用法及「聞達」的解釋為常考',
-      emotion:'謙卑感念的追述之情。諸葛亮追述自己出身平民、不求聞達，語氣謙卑。',
-      symbol:'「布衣」「躬耕」象徵諸葛亮出仕前的平民身份。',
-      deep:'此句追敘諸葛亮出仕前的平民生活，以「布衣」「躬耕」寫其出身，以「苟全性命」「不求聞達」寫其淡泊。' },
-    { text:'先帝不以臣卑鄙，猥自枉屈，三顧臣於草廬之中。',
-      trans:'先帝不因為我出身卑微、見識短淺而嫌棄我，反而降低身份委屈自己，三次到草廬中來拜訪我。',
-      words:[
-        {w:'卑鄙',d:'古義指身份低微、見識短淺',py:'bēi bǐ',pos:'形容詞',deep:'「卑鄙」古義指身份低微、見識短淺，與今日指品行惡劣不同，屬古今異義。'},
-        {w:'猥',d:'辱，謙詞',py:'wěi',pos:'副詞',deep:'「猥」為謙詞，指辱、承蒙。'},
-        {w:'枉屈',d:'委屈自己',py:'wǎng qū',pos:'動詞',deep:'「枉」指委屈，「屈」指屈尊。'},
-        {w:'三顧',d:'三次拜訪',py:'sān gù',pos:'動詞',deep:'「顧」指拜訪，「三顧」即三次拜訪。'}
-      ],
-      rhet:[], tech:'敘事——以「三顧茅廬」寫先帝知遇之恩',
-      point:'「卑鄙」古今異義為必考；「三顧」典故出處',
-      emotion:'感恩戴德的知遇之情。諸葛亮追述先帝三顧茅廬的恩遇，語氣感念。',
-      symbol:'「三顧茅廬」象徵先帝對諸葛亮的知遇之恩。',
-      deep:'此句以「先帝不以臣卑鄙」寫先帝的知遇之恩，以「三顧臣於草廬之中」寫其求賢之誠。' },
-    { text:'今當遠離，臨表涕零，不知所言。',
-      trans:'如今即將遠行，面對這份表章淚流滿面，不知道說了些甚麼。',
-      words:[
-        {w:'涕零',d:'流淚。涕，眼淚',py:'tì líng',pos:'動詞',deep:'「涕」指眼淚，「零」指落下。「涕零」即流淚。'},
-        {w:'不知所言',d:'不知該說甚麼',py:'bù zhī suǒ yán',pos:'成語',deep:'「不知所言」指不知該說甚麼，形容情感激動。'}
-      ],
-      rhet:[], tech:'抒情作結——以真情收束，感人至深',
-      point:'結句的情感表達及「涕」的古義為常考',
-      emotion:'涕淚交零的忠誠之情。諸葛亮以「臨表涕零，不知所言」作結，語氣哽咽。',
-      symbol:'「涕零」象徵諸葛亮對先帝與後主的深切情感。',
-      deep:'此句以「臨表涕零，不知所言」作結，將諸葛亮的忠誠與感激推向極致，成為後世忠臣的表率。' }
-  ]}
-  ]
-},
+/* ========== 6 出師表 ========== */
+{id:'chushi',num:6,title:'出師表',author:'諸葛亮',era:'三國',genre:'表文',theme:'忠君報國',
+ intro:'諸葛亮出師北伐前上表後主，分析時局、薦舉賢臣、追念先帝知遇之恩，字字懇切，體現「鞠躬盡瘁」的忠貞。',
+ sections:[{name:'本文',sentences:[
+  {text:'臣亮言：先帝創業未半而中道崩殂，今天下三分，益州疲弊，此誠危急存亡之秋也。',
+   trans:'臣諸葛亮進言：先帝開創事業還未完成一半就中途去世了，如今天下三分，益州疲弱困乏，這實在是危急存亡的時刻啊。',
+   words:[
+    {w:'崩殂',d:'指帝王去世',py:'bēng cú',pos:'動詞',deep:'「崩」指帝王去世，「殂」指死亡。「崩殂」為帝王去世的專稱。'},
+    {w:'疲弊',d:'疲弱困乏',py:'pí bì',pos:'形容詞',deep:'「疲」指疲弱，「弊」指困乏。「疲弊」形容益州國力衰弱。'},
+    {w:'誠',d:'實在、的確',py:'chéng',pos:'副詞',deep:'「誠」指實在、的確，加強語氣。'},
+    {w:'秋',d:'時刻、時期',py:'qiū',pos:'名詞',deep:'「秋」在此解作時刻、時期，指關鍵緊要的關頭，非指季節。此為常考字詞。'}
+   ],
+   rhet:[],tech:'開篇陳情——先言國勢危急，奠定全文懇切基調',
+   point:'「秋」解作「時刻」為必考；「崩殂」的解釋亦常考',
+   emotion:'憂心如焚的忠臣之情。諸葛亮以「危急存亡之秋」點明國勢，語氣沉重，流露出對蜀漢前途的深切憂慮。',
+   symbol:'「創業未半而中道崩殂」象徵先帝遺志未竟；「危急存亡之秋」象徵蜀漢面臨的嚴峻局勢。',
+   deep:'此句以「先帝創業未半」與「今天下三分」對舉，點明蜀漢面臨的內外困境。「危急存亡之秋」六字，既是對時局的判斷，也是對後主的警醒，為全文懇切陳情奠定基調。'},
+  {text:'然侍衛之臣不懈於內，忠志之士忘身於外者，蓋追先帝之殊遇，欲報之於陛下也。',
+   trans:'然而侍衛大臣在宮內不懈怠，忠誠有志的將士在外面捨生忘死，都是因為追念先帝的特殊恩遇，想要報答陛下啊。',
+   words:[
+    {w:'懈',d:'懈怠',py:'xiè',pos:'動詞',deep:'「懈」指懈怠、鬆懈。'},
+    {w:'忘身',d:'捨身忘死',py:'wàng shēn',pos:'動詞',deep:'「忘身」指忘記自身安危，即捨生忘死。'},
+    {w:'殊遇',d:'特殊的恩遇',py:'shū yù',pos:'名詞',deep:'「殊」指特殊，「遇」指恩遇。「殊遇」指先帝對臣下的特殊恩待。'}
+   ],
+   rhet:[{t:'對偶',p:'侍衛之臣不懈於內／忠志之士忘身於外',e:'內外對舉，句式整齊，全面呈現朝野忠臣的盡忠之狀。'}],
+   tech:'敘述——由危局轉寫忠臣，為下文勸諫鋪路',
+   point:'常考此句在結構上的「承上啟下」作用',
+   emotion:'感念知遇的忠義之情。諸葛亮寫朝野忠臣因追念先帝恩遇而盡忠，語氣懇切。',
+   symbol:'「不懈於內」「忘身於外」象徵朝野上下因感念先帝恩遇而團結盡忠。',
+   deep:'此句由危局轉寫忠臣，以「追先帝之殊遇」解釋臣下盡忠的原因，既感念先帝，又勉勵後主。'},
+  {text:'誠宜開張聖聽，以光先帝遺德，恢弘志士之氣；不宜妄自菲薄，引喻失義，以塞忠諫之路也。',
+   trans:'實在應該廣泛聽取意見，以發揚先帝遺留的美德，振奮志士的士氣；不應該隨便看輕自己，說話不恰當，以致堵塞忠臣進諫的道路。',
+   words:[
+    {w:'開張聖聽',d:'廣泛聽取意見',py:'kāi zhāng shèng tīng',pos:'動詞',deep:'「開張」指擴大、開放，「聖聽」指帝王的聽聞。'},
+    {w:'光',d:'發揚光大',py:'guāng',pos:'動詞',deep:'「光」指發揚光大。'},
+    {w:'恢弘',d:'振奮、發揚',py:'huī hóng',pos:'動詞',deep:'「恢弘」指擴大、振奮。'},
+    {w:'妄自菲薄',d:'過分看輕自己',py:'wàng zì fěi bó',pos:'成語',deep:'「妄」指隨便，「菲薄」指看輕。「妄自菲薄」即過分看輕自己。'}
+   ],
+   rhet:[{t:'對偶',p:'誠宜……／不宜……',e:'正反對舉，一「宜」一「不宜」，勸諫分明，語氣懇切有力。'}],
+   tech:'正反對比論證——從正反兩面提出勸諫',
+   point:'「妄自菲薄」為必考成語，宜／不宜的對舉結構常考',
+   emotion:'殷切懇切的勸諫之情。諸葛亮以「誠宜」與「不宜」對舉，語氣懇切，既有勸勉，也有警誡。',
+   symbol:'「開張聖聽」象徵廣納諫言；「妄自菲薄」象徵自我否定。',
+   deep:'此句以「宜」與「不宜」正反對舉，從正反兩面勸諫後主，情理兼備，體現其忠臣本色。'},
+  {text:'親賢臣，遠小人，此先漢所以興隆也；親小人，遠賢臣，此後漢所以傾頹也。',
+   trans:'親近賢臣，疏遠小人，這是先漢興隆的原因；親近小人，疏遠賢臣，這是後漢傾覆衰敗的原因。',
+   words:[
+    {w:'親',d:'親近',py:'qīn',pos:'動詞',deep:'「親」指親近、接近。'},
+    {w:'遠',d:'疏遠',py:'yuǎn',pos:'動詞',deep:'「遠」指疏遠、遠離。'},
+    {w:'所以',d:'……的原因',py:'suǒ yǐ',pos:'連詞',deep:'「所以」在此解作「……的原因」，非今日「因此」之意。'},
+    {w:'傾頹',d:'傾覆衰敗',py:'qīng tuí',pos:'動詞',deep:'「傾」指傾覆，「頹」指衰敗。'}
+   ],
+   rhet:[{t:'對偶',p:'親賢臣，遠小人／親小人，遠賢臣',e:'正反對舉，以歷史興亡作證，警誡意味濃厚。'}],
+   tech:'對比論證＋舉例論證——以兩漢興衰為歷史教訓',
+   point:'高頻考點：以史為鑑的勸諫手法',
+   emotion:'借古鑑今的警誡之情。諸葛亮以兩漢興亡為例，語氣沉重，警誡後主親賢遠小。',
+   symbol:'「親賢臣，遠小人」象徵興隆之道；「親小人，遠賢臣」象徵傾頹之由。',
+   deep:'此句以兩漢興衰為歷史教訓，正反對比說明親賢遠小的重要性，體現其政治遠見與忠臣苦心。'},
+  {text:'臣本布衣，躬耕於南陽，苟全性命於亂世，不求聞達於諸侯。',
+   trans:'我本來是個平民，在南陽親自耕種，只求在亂世中苟且保全性命，不奢求在諸侯中顯達。',
+   words:[
+    {w:'布衣',d:'借代平民',py:'bù yī',pos:'名詞',deep:'「布衣」以平民所穿的衣服借代平民，是借代手法，亦見諸葛亮自謙之意。'},
+    {w:'躬耕',d:'親自耕種',py:'gōng gēng',pos:'動詞',deep:'「躬」指親自，「躬耕」即親自耕種。'},
+    {w:'苟全',d:'苟且保全',py:'gǒu quán',pos:'動詞',deep:'「苟」指苟且，「全」指保全。'},
+    {w:'聞達',d:'顯達、有名望',py:'wén dá',pos:'動詞',deep:'「聞」指聞名，「達」指顯達。'}
+   ],
+   rhet:[{t:'借代',p:'布衣',e:'以平民所穿的衣服代指平民，具體形象，亦見謙卑。'}],
+   tech:'自述經歷——追敘出身，反襯先帝知遇之隆',
+   point:'「布衣」的借代用法及「聞達」的解釋為常考',
+   emotion:'謙卑感念的追述之情。諸葛亮追述自己出身平民、不求聞達，語氣謙卑。',
+   symbol:'「布衣」「躬耕」象徵諸葛亮出仕前的平民身份。',
+   deep:'此句追敘諸葛亮出仕前的平民生活，以「布衣」「躬耕」寫其出身，以「苟全性命」「不求聞達」寫其淡泊。'},
+  {text:'先帝不以臣卑鄙，猥自枉屈，三顧臣於草廬之中。',
+   trans:'先帝不因為我出身卑微、見識短淺而嫌棄我，反而降低身份委屈自己，三次到草廬中來拜訪我。',
+   words:[
+    {w:'卑鄙',d:'古義指身份低微、見識短淺',py:'bēi bǐ',pos:'形容詞',deep:'「卑鄙」古義指身份低微、見識短淺，與今日指品行惡劣不同，屬古今異義。'},
+    {w:'猥',d:'辱，謙詞',py:'wěi',pos:'副詞',deep:'「猥」為謙詞，指辱、承蒙。'},
+    {w:'枉屈',d:'委屈自己',py:'wǎng qū',pos:'動詞',deep:'「枉」指委屈，「屈」指屈尊。'},
+    {w:'三顧',d:'三次拜訪',py:'sān gù',pos:'動詞',deep:'「顧」指拜訪，「三顧」即三次拜訪，指劉備三顧茅廬的知遇之恩。'}
+   ],
+   rhet:[],tech:'敘事——以「三顧茅廬」寫先帝知遇之恩',
+   point:'「卑鄙」古今異義為必考；「三顧」典故出處',
+   emotion:'感恩戴德的知遇之情。諸葛亮追述先帝三顧茅廬的恩遇，語氣感念。',
+   symbol:'「三顧茅廬」象徵先帝對諸葛亮的知遇之恩。',
+   deep:'此句以「先帝不以臣卑鄙」寫先帝的知遇之恩，以「三顧臣於草廬之中」寫其求賢之誠。'},
+  {text:'今當遠離，臨表涕零，不知所言。',
+   trans:'如今即將遠行，面對這份表章淚流滿面，不知道說了些甚麼。',
+   words:[
+    {w:'涕零',d:'流淚。涕，眼淚',py:'tì líng',pos:'動詞',deep:'「涕」指眼淚，「零」指落下。「涕零」即流淚。'},
+    {w:'不知所言',d:'不知該說甚麼',py:'bù zhī suǒ yán',pos:'成語',deep:'「不知所言」指不知該說甚麼，形容情感激動。'}
+   ],
+   rhet:[],tech:'抒情作結——以真情收束，感人至深',
+   point:'結句的情感表達及「涕」的古義為常考',
+   emotion:'涕淚交零的忠誠之情。諸葛亮以「臨表涕零，不知所言」作結，語氣哽咽。',
+   symbol:'「涕零」象徵諸葛亮對先帝與後主的深切情感。',
+   deep:'此句以「臨表涕零，不知所言」作結，將諸葛亮的忠誠與感激推向極致，成為後世忠臣的表率。'}
+]}]},
 
-/* 7. 師說 */
-{
-  id:'shishuo', num:7, title:'師說', author:'韓愈', era:'唐', genre:'議論散文', theme:'尊師重道',
-  intro:'韓愈針對當時「恥學於師」的風氣，闡明師的職責、擇師標準與師生關係，倡導「道之所存，師之所存」的求學精神。',
-  sections:[
-  { name:'本文', sentences:[
-    { text:'古之學者必有師。師者，所以傳道、受業、解惑也。',
-      trans:'古代求學的人一定有老師。老師，是用來傳授道理、教授學業、解答疑惑的人。',
-      words:[
-        {w:'學者',d:'求學的人',py:'xué zhě',pos:'名詞',deep:'「學者」在此指求學的人，非今日指學術研究者。'},
-        {w:'所以',d:'用來……的',py:'suǒ yǐ',pos:'連詞',deep:'「所以」在此解作「用來……的」，表憑藉，非今日「因此」之意。'},
-        {w:'受',d:'同「授」，傳授',py:'shòu',pos:'動詞',deep:'「受」通「授」，解作傳授。此為必考通假字。'},
-        {w:'惑',d:'疑難問題',py:'huò',pos:'名詞',deep:'「惑」指疑難問題，此處指學習上的困惑。'}
-      ],
-      rhet:[{t:'排比',p:'傳道、受業、解惑',e:'三項並列，簡潔有力地界定教師的三大職責，層次分明。'}],
-      tech:'定義說明——開篇即為「師」下定義，確立論述基礎',
-      point:'「受」通「授」為必考通假字；師的三項職責為必背',
-      emotion:'莊重嚴肅的立論之情。韓愈開篇即為「師」下定義，語氣莊重，確立全文論述的基礎。',
-      symbol:'「傳道、受業、解惑」象徵教師的三重職責，其中「傳道」為核心，體現儒家以道為先的教育理念。',
-      deep:'此句為「師」下定義，指出教師的三大職責：傳道、受業、解惑。韓愈將「傳道」置於首位，強調教師不僅傳授知識，更要傳遞道義，體現其尊師重道的核心思想。' },
-    { text:'人非生而知之者，孰能無惑？惑而不從師，其為惑也終不解矣。',
-      trans:'人不是生下來就懂得道理的，誰能沒有疑惑呢？有疑惑卻不跟從老師學習，那些疑惑最終也無法解決了。',
-      words:[
-        {w:'生而知之',d:'天生就懂得道理',py:'shēng ér zhī zhī',pos:'成語',deep:'「生而知之」指天生就懂得道理，語出《論語》。'},
-        {w:'孰',d:'誰',py:'shú',pos:'代詞',deep:'「孰」指誰，此處以反問強調人必有惑。'},
-        {w:'從師',d:'跟隨老師學習',py:'cóng shī',pos:'動詞',deep:'「從」指跟隨，「從師」即跟隨老師學習。'}
-      ],
-      rhet:[{t:'反問',p:'孰能無惑？',e:'以反問強調人必有惑，語氣肯定，不容置疑，增強說服力。'}],
-      tech:'因果推論——由「有惑」推出「必須從師」',
-      point:'反問句的作用及「孰」的解釋為常考',
-      emotion:'邏輯嚴密的說理之情。韓愈以反問強調人必有惑，語氣肯定，推論從師的必要性。',
-      symbol:'「生而知之」象徵不切實際的天才論；「從師」象徵求學問道的正途。',
-      deep:'此句以反問強調人非生而知之，必有疑惑；有惑而不從師，則惑終不能解。韓愈以此論證從師的必要性，邏輯嚴密，為下文擇師標準的論述鋪路。' },
-    { text:'是故無貴無賤，無長無少，道之所存，師之所存也。',
-      trans:'所以無論地位高低、年齡大小，道理在哪裡，老師就在哪裡。',
-      words:[
-        {w:'無',d:'無論、不分',py:'wú',pos:'連詞',deep:'「無」在此作連詞，解作無論、不分。'},
-        {w:'貴賤',d:'地位高低',py:'guì jiàn',pos:'名詞',deep:'「貴」指地位高，「賤」指地位低。'},
-        {w:'長少',d:'年齡大小',py:'zhǎng shào',pos:'名詞',deep:'「長」指年長，「少」指年少。'},
-        {w:'所存',d:'存在的地方',py:'suǒ cún',pos:'名詞',deep:'「所存」指存在的地方，此處指道與師所在之處。'}
-      ],
-      rhet:[{t:'排比',p:'無貴無賤，無長無少',e:'兩組並列，掃除世俗擇師的偏見，氣勢充沛。'}],
-      tech:'結論句——提出擇師的唯一標準是「道」',
-      point:'本文擇師標準的核心句，必考',
-      emotion:'破除偏見的決斷之情。韓愈以「無貴無賤，無長無少」掃除世俗偏見，語氣果決，確立擇師的唯一標準。',
-      symbol:'「道之所存，師之所存」象徵擇師的唯一標準是道，而非地位或年齡。',
-      deep:'此句提出擇師的唯一標準：道。韓愈以「無貴無賤，無長無少」掃除世俗以地位、年齡取師的偏見，強調「道」才是擇師的根本。這是全文的核心論點之一。' },
-    { text:'是故弟子不必不如師，師不必賢於弟子。聞道有先後，術業有專攻，如是而已。',
-      trans:'所以弟子不一定不如老師，老師也不一定比弟子賢能。懂得道理有先有後，技藝學問各有專長，如此罷了。',
-      words:[
-        {w:'不必',d:'不一定',py:'bù bì',pos:'副詞',deep:'「不必」古義為「不一定」，與今日「不需要」不同，屬古今異義。'},
-        {w:'賢於',d:'比……賢能',py:'xián yú',pos:'動詞',deep:'「賢」指賢能，「於」表比較。「賢於弟子」即比弟子賢能。'},
-        {w:'術業',d:'技藝學問',py:'shù yè',pos:'名詞',deep:'「術」指技藝，「業」指學問。「術業」即技藝學問。'},
-        {w:'專攻',d:'專門研究',py:'zhuān gōng',pos:'動詞',deep:'「專攻」指專門研究，各有專長。'}
-      ],
-      rhet:[], tech:'結論——提出嶄新的師生觀：師生關係是相對的',
-      point:'「不必」的古義（不一定）為必考；此句為全文主旨句之一',
-      emotion:'豁然開朗的洞見之情。韓愈提出嶄新的師生觀，語氣肯定，破除對師道的僵化理解。',
-      symbol:'「聞道有先後，術業有專攻」象徵師生關係的相對性——師生各有長短，應互相學習。',
-      deep:'此句提出嶄新的師生觀：弟子不必不如師，師不必賢於弟子。韓愈以「聞道有先後，術業有專攻」解釋其原因，強調師生關係是相對的，各有專長。這是對傳統師道觀的重大突破。' }
-  ]}
-  ]
-},
+/* ========== 7 師說 ========== */
+{id:'shishuo',num:7,title:'師說',author:'韓愈',era:'唐',genre:'議論散文',theme:'尊師重道',
+ intro:'韓愈針對當時「恥學於師」的風氣，闡明師的職責、擇師標準與師生關係，倡導「道之所存，師之所存」的求學精神。',
+ sections:[{name:'本文',sentences:[
+  {text:'古之學者必有師。師者，所以傳道、受業、解惑也。',
+   trans:'古代求學的人一定有老師。老師，是用來傳授道理、教授學業、解答疑惑的人。',
+   words:[
+    {w:'學者',d:'求學的人',py:'xué zhě',pos:'名詞',deep:'「學者」在此指求學的人，非今日指學術研究者。'},
+    {w:'所以',d:'用來……的',py:'suǒ yǐ',pos:'連詞',deep:'「所以」在此解作「用來……的」，表憑藉，非今日「因此」之意。'},
+    {w:'受',d:'同「授」，傳授',py:'shòu',pos:'動詞',deep:'「受」通「授」，解作傳授。此為必考通假字。'},
+    {w:'惑',d:'疑難問題',py:'huò',pos:'名詞',deep:'「惑」指疑難問題，此處指學習上的困惑。'}
+   ],
+   rhet:[{t:'排比',p:'傳道、受業、解惑',e:'三項並列，簡潔有力地界定教師的三大職責，層次分明。'}],
+   tech:'定義說明——開篇即為「師」下定義，確立論述基礎',
+   point:'「受」通「授」為必考通假字；師的三項職責為必背',
+   emotion:'莊重嚴肅的立論之情。韓愈開篇即為「師」下定義，語氣莊重，確立全文論述的基礎。',
+   symbol:'「傳道、受業、解惑」象徵教師的三重職責，其中「傳道」為核心，體現儒家以道為先的教育理念。',
+   deep:'此句為「師」下定義，指出教師的三大職責：傳道、受業、解惑。韓愈將「傳道」置於首位，強調教師不僅傳授知識，更要傳遞道義，體現其尊師重道的核心思想。'},
+  {text:'人非生而知之者，孰能無惑？惑而不從師，其為惑也終不解矣。',
+   trans:'人不是生下來就懂得道理的，誰能沒有疑惑呢？有疑惑卻不跟從老師學習，那些疑惑最終也無法解決了。',
+   words:[
+    {w:'生而知之',d:'天生就懂得道理',py:'shēng ér zhī zhī',pos:'成語',deep:'「生而知之」指天生就懂得道理，語出《論語》。'},
+    {w:'孰',d:'誰',py:'shú',pos:'代詞',deep:'「孰」指誰，此處以反問強調人必有惑。'},
+    {w:'從師',d:'跟隨老師學習',py:'cóng shī',pos:'動詞',deep:'「從」指跟隨，「從師」即跟隨老師學習。'}
+   ],
+   rhet:[{t:'反問',p:'孰能無惑？',e:'以反問強調人必有惑，語氣肯定，不容置疑，增強說服力。'}],
+   tech:'因果推論——由「有惑」推出「必須從師」',
+   point:'反問句的作用及「孰」的解釋為常考',
+   emotion:'邏輯嚴密的說理之情。韓愈以反問強調人必有惑，語氣肯定，推論從師的必要性。',
+   symbol:'「生而知之」象徵不切實際的天才論；「從師」象徵求學問道的正途。',
+   deep:'此句以反問強調人非生而知之，必有疑惑；有惑而不從師，則惑終不能解。韓愈以此論證從師的必要性，邏輯嚴密，為下文擇師標準的論述鋪路。'},
+  {text:'是故無貴無賤，無長無少，道之所存，師之所存也。',
+   trans:'所以無論地位高低、年齡大小，道理在哪裡，老師就在哪裡。',
+   words:[
+    {w:'無',d:'無論、不分',py:'wú',pos:'連詞',deep:'「無」在此作連詞，解作無論、不分。'},
+    {w:'貴賤',d:'地位高低',py:'guì jiàn',pos:'名詞',deep:'「貴」指地位高，「賤」指地位低。'},
+    {w:'長少',d:'年齡大小',py:'zhǎng shào',pos:'名詞',deep:'「長」指年長，「少」指年少。'},
+    {w:'所存',d:'存在的地方',py:'suǒ cún',pos:'名詞',deep:'「所存」指存在的地方，此處指道與師所在之處。'}
+   ],
+   rhet:[{t:'排比',p:'無貴無賤，無長無少',e:'兩組並列，掃除世俗擇師的偏見，氣勢充沛。'}],
+   tech:'結論句——提出擇師的唯一標準是「道」',
+   point:'本文擇師標準的核心句，必考',
+   emotion:'破除偏見的決斷之情。韓愈以「無貴無賤，無長無少」掃除世俗偏見，語氣果決，確立擇師的唯一標準。',
+   symbol:'「道之所存，師之所存」象徵擇師的唯一標準是道，而非地位或年齡。',
+   deep:'此句提出擇師的唯一標準：道。韓愈以「無貴無賤，無長無少」掃除世俗以地位、年齡取師的偏見，強調「道」才是擇師的根本。這是全文的核心論點之一。'},
+  {text:'是故弟子不必不如師，師不必賢於弟子。聞道有先後，術業有專攻，如是而已。',
+   trans:'所以弟子不一定不如老師，老師也不一定比弟子賢能。懂得道理有先有後，技藝學問各有專長，如此罷了。',
+   words:[
+    {w:'不必',d:'不一定',py:'bù bì',pos:'副詞',deep:'「不必」古義為「不一定」，與今日「不需要」不同，屬古今異義。'},
+    {w:'賢於',d:'比……賢能',py:'xián yú',pos:'動詞',deep:'「賢」指賢能，「於」表比較。「賢於弟子」即比弟子賢能。'},
+    {w:'術業',d:'技藝學問',py:'shù yè',pos:'名詞',deep:'「術」指技藝，「業」指學問。「術業」即技藝學問。'},
+    {w:'專攻',d:'專門研究',py:'zhuān gōng',pos:'動詞',deep:'「專攻」指專門研究，各有專長。'}
+   ],
+   rhet:[],tech:'結論——提出嶄新的師生觀：師生關係是相對的',
+   point:'「不必」的古義（不一定）為必考；此句為全文主旨句之一',
+   emotion:'豁然開朗的洞見之情。韓愈提出嶄新的師生觀，語氣肯定，破除對師道的僵化理解。',
+   symbol:'「聞道有先後，術業有專攻」象徵師生關係的相對性——師生各有長短，應互相學習。',
+   deep:'此句提出嶄新的師生觀：弟子不必不如師，師不必賢於弟子。韓愈以「聞道有先後，術業有專攻」解釋其原因，強調師生關係是相對的，各有專長。這是對傳統師道觀的重大突破。'}
+]}]},
 
-/* 8. 始得西山宴遊記 */
-{
-  id:'xishan', num:8, title:'始得西山宴遊記', author:'柳宗元', era:'唐', genre:'遊記', theme:'物我合一',
-  intro:'柳宗元貶謫永州，借西山之遊抒發情懷。文章以「始得」為眼，寫出由「未始知」到「始遊」的心境轉折，達到物我兩忘的境界。',
-  sections:[
-  { name:'本文', sentences:[
-    { text:'自余為僇人，居是州，恆惴慄。',
-      trans:'自從我成為受刑辱的罪人，住在這個州，心中常常恐懼不安。',
-      words:[
-        {w:'僇人',d:'受刑辱的人，罪人',py:'lù rén',pos:'名詞',deep:'「僇」通「戮」，「僇人」指受刑辱的罪人，是柳宗元被貶後的自稱。'},
-        {w:'恆',d:'常常',py:'héng',pos:'副詞',deep:'「恆」指常常、總是。'},
-        {w:'惴慄',d:'恐懼不安',py:'zhuì lì',pos:'形容詞',deep:'「惴」指憂懼，「慄」指戰慄。「惴慄」即恐懼不安。'}
-      ],
-      rhet:[], tech:'直陳心境——交代貶謫背景與憂懼心情',
-      point:'「僇人」的解釋及開篇奠定全文情感基調為常考',
-      emotion:'憂懼不安的貶謫之情。柳宗元以「僇人」「惴慄」直陳心境，語氣沉重，奠定全文憂懼的基調。',
-      symbol:'「僇人」象徵柳宗元被貶的罪臣身份；「惴慄」象徵其內心的恐懼與不安。',
-      deep:'此句以「僇人」自稱，點明貶謫身份，以「恆惴慄」寫內心的恐懼不安。柳宗元以此開篇，為後文借西山之遊尋求解脫作鋪墊，形成由憂懼到超脫的情感轉折。' },
-    { text:'然後知吾嚮之未始遊，遊於是乎始。',
-      trans:'這以後才知道我從前根本未曾真正遊覽過，真正的遊覽從這裡才開始。',
-      words:[
-        {w:'嚮',d:'同「向」，從前',py:'xiàng',pos:'名詞',deep:'「嚮」通「向」，解作從前。此為必考通假字。'},
-        {w:'於是',d:'從這裡',py:'yú shì',pos:'連詞',deep:'「於是」在此解作「從這裡」，非今日「因此」之意。'},
-        {w:'始',d:'才開始',py:'shǐ',pos:'動詞',deep:'「始」指才開始，照應篇題「始得」。'}
-      ],
-      rhet:[], tech:'點題——照應篇題「始得」，點明心境轉折',
-      point:'「嚮」通「向」為必考；此句為全文主旨句',
-      emotion:'豁然超脫的領悟之情。柳宗元以「遊於是乎始」點明心境轉折，語氣豁達，寫出物我兩忘的境界。',
-      symbol:'「未始遊」象徵從前未達真正的精神境界；「遊於是乎始」象徵登西山後達到物我兩忘的超脫。',
-      deep:'此句照應篇題「始得」，點明真正的遊覽從登西山才開始。柳宗元以此寫出心境的轉折：從貶謫的憂懼中解脫，達到「心凝形釋，與萬化冥合」的境界。這是全文的主旨句。' }
-  ]}
-  ]
-},
-
-/* 9. 岳陽樓記 */
-{
-  id:'yueyang', num:9, title:'岳陽樓記', author:'范仲淹', era:'北宋', genre:'記敘抒情', theme:'憂樂情懷',
-  intro:'范仲淹應好友滕子京之請作記，由洞庭湖的陰晴之景，引出遷客騷人的悲喜之情，最終以「先天下之憂而憂」的宏大襟懷作結。',
-  sections:[
-  { name:'本文', sentences:[
-    { text:'慶曆四年春，滕子京謫守巴陵郡。',
-      trans:'慶曆四年的春天，滕子京被貶官到巴陵郡做太守。',
-      words:[
-        {w:'謫',d:'貶官',py:'zhé',pos:'動詞',deep:'「謫」指貶官，此處指滕子京被貶到巴陵郡。'},
-        {w:'守',d:'做太守（名詞作動詞）',py:'shǒu',pos:'動詞',deep:'「守」本為名詞，指太守，此處名詞作動詞，解作做太守。'}
-      ],
-      rhet:[], tech:'記敘——交代時間、人物、地點，為後文抒情議論奠下背景',
-      point:'此句為「背景鋪墊」，DSE 曾考「本文寫作緣起」',
-      emotion:'平實客觀的敘述之情。范仲淹以簡潔筆墨交代時間、人物、地點，語氣平實，為後文抒情議論奠下背景。',
-      symbol:'「謫守」象徵滕子京與范仲淹同為貶謫之人的處境，為後文「不以物喜，不以己悲」的議論埋下伏筆。',
-      deep:'此句交代寫作緣起：時間為慶曆四年春，人物為滕子京，事件為謫守巴陵郡。范仲淹以簡潔筆墨鋪墊背景，為後文寫景、抒情、議論奠下基礎。' },
-    { text:'不以物喜，不以己悲。',
-      trans:'不因外物的好壞和自己的得失而或喜或悲。',
-      words:[
-        {w:'以',d:'因為',py:'yǐ',pos:'介詞',deep:'「以」在此作介詞，解作因為。'},
-        {w:'物',d:'外物、環境',py:'wù',pos:'名詞',deep:'「物」指外在的環境與遭遇。'}
-      ],
-      rhet:[{t:'互文',p:'不以物喜，不以己悲',e:'上下句互相補充，意為「不因物與己而喜悲」，句式簡潔而內涵豐富。此為高頻考點。'}],
-      tech:'議論——提出古仁人超脫個人得失的境界',
-      point:'互文修辭為高頻考點，常考其正確理解',
-      emotion:'超然物外的豁達之情。范仲淹以互文句式提出古仁人的境界，語氣從容，展現其超脫個人得失的胸襟。',
-      symbol:'「不以物喜，不以己悲」象徵古仁人超脫個人得失、以天下為己任的精神境界。',
-      deep:'此句以互文手法提出古仁人的境界：不因外物與自身得失而或喜或悲。范仲淹以此超越遷客騷人的悲喜，為下文「先天下之憂而憂」的宏大襟懷作鋪墊，是全文的關鍵轉折。' },
-    { text:'先天下之憂而憂，後天下之樂而樂。',
-      trans:'在天下人憂愁之前先憂愁，在天下人快樂之後才快樂。',
-      words:[
-        {w:'先',d:'在……之前',py:'xiān',pos:'動詞',deep:'「先」指在……之前，此處指在天下人憂愁之前先憂愁。'},
-        {w:'後',d:'在……之後',py:'hòu',pos:'動詞',deep:'「後」指在……之後，此處指在天下人快樂之後才快樂。'}
-      ],
-      rhet:[{t:'對偶',p:'先天下之憂而憂／後天下之樂而樂',e:'對舉工整，鏗鏘有力，成為千古傳誦的名句，亦為全文主旨所在。'}],
-      tech:'議論抒情——點明全文主旨，抒發以天下為己任的抱負',
-      point:'全文主旨句，必背必考；亦常與《出師表》比較士人精神',
-      emotion:'以天下為己任的宏大之情。范仲淹以「先憂後樂」點明主旨，語氣鏗鏘，展現其博大胸襟與崇高抱負。',
-      symbol:'「先天下之憂而憂，後天下之樂而樂」象徵士人以天下為己任、憂國憂民的崇高精神。',
-      deep:'此句為全文主旨句，抒發范仲淹以天下為己任、先憂後樂的宏大襟懷。它不僅是范仲淹個人的寫照，更成為中國士人精神的經典表述，與《出師表》「鞠躬盡瘁」一脈相承。' }
-  ]}
-  ]
-},
-
-/* 10. 六國論 */
-{
-  id:'liuguo', num:10, title:'六國論', author:'蘇洵', era:'北宋', genre:'議論散文', theme:'借古諷今',
-  intro:'蘇洵借六國賂秦而亡的史實，論證「弊在賂秦」，實則借古諷今，警告北宋統治者勿以歲幣求和。全文結構嚴謹，論證層層遞進。',
-  sections:[
-  { name:'本文', sentences:[
-    { text:'六國破滅，非兵不利，戰不善，弊在賂秦。',
-      trans:'六國滅亡，不是因為兵器不鋒利，仗打得不好，弊端在於賄賂秦國。',
-      words:[
-        {w:'兵',d:'兵器',py:'bīng',pos:'名詞',deep:'「兵」在此解作兵器，非指士兵。此為易錯點。'},
-        {w:'弊',d:'弊端、弊病',py:'bì',pos:'名詞',deep:'「弊」指弊端、弊病，此處指六國滅亡的根本原因。'},
-        {w:'賂',d:'賄賂，此指割地求和',py:'lù',pos:'動詞',deep:'「賂」指賄賂，此處特指割地給秦國以求和平。'}
-      ],
-      rhet:[{t:'對比',p:'非兵不利，戰不善／弊在賂秦',e:'先否定再肯定，突出中心論點，開門見山，旗幟鮮明。'}],
-      tech:'開門見山——直接提出中心論點',
-      point:'全文中心論點，必考；「兵」解作「兵器」為易錯點',
-      emotion:'斬釘截鐵的論斷之情。蘇洵以「非……弊在……」的句式，語氣果決，直接點出六國滅亡的根本原因。',
-      symbol:'「賂秦」象徵以妥協求苟安的政策，暗諷北宋以歲幣求和的做法。',
-      deep:'此句為全文中心論點，以「非兵不利，戰不善」否定表面原因，以「弊在賂秦」點出根本原因。蘇洵以開門見山的手法確立論點，為下文層層論證奠定基礎，亦暗含借古諷今之意。' },
-    { text:'以地事秦，猶抱薪救火，薪不盡，火不滅。',
-      trans:'用土地來侍奉秦國，就像抱著柴草去救火，柴草不燒完，火就不會熄滅。',
-      words:[
-        {w:'事',d:'侍奉',py:'shì',pos:'動詞',deep:'「事」指侍奉、服侍，此處指以土地討好秦國。'},
-        {w:'猶',d:'好像',py:'yóu',pos:'副詞',deep:'「猶」指好像、如同。'},
-        {w:'薪',d:'柴草',py:'xīn',pos:'名詞',deep:'「薪」指柴草，此處以柴草比喻土地。'}
-      ],
-      rhet:[{t:'比喻',p:'猶抱薪救火',e:'以「抱薪救火」比喻「以地事秦」的荒謬，生動說明賄賂只會加速滅亡，使抽象道理具體化，增強說服力。'}],
-      tech:'比喻論證——以日常事理說明政治謬誤',
-      point:'高頻考點：比喻論證的效果分析，常考作答框架三層',
-      emotion:'痛心疾首的批判之情。蘇洵以「抱薪救火」為喻，語氣沉痛，批判六國以地事秦的愚蠢。',
-      symbol:'「抱薪救火」象徵以土地賄賂秦國只會加速自身滅亡，暗諷北宋以歲幣求和的危險。',
-      deep:'此句以「抱薪救火」為喻，生動說明「以地事秦」的荒謬：柴不盡則火不滅，地不盡則秦不息。蘇洵以此批判六國賄賂秦國的政策，並借古諷今，警告北宋統治者勿重蹈覆轍。' },
-    { text:'苟以天下之大，下而從六國破亡之故事，是又在六國下矣。',
-      trans:'如果憑藉這麼大的天下，卻重蹈六國滅亡的覆轍，那就又在六國之下了。',
-      words:[
-        {w:'苟',d:'如果',py:'gǒu',pos:'連詞',deep:'「苟」指如果、假如。'},
-        {w:'從',d:'跟隨、重蹈',py:'cóng',pos:'動詞',deep:'「從」指跟隨、重蹈，此處指重蹈六國滅亡的覆轍。'},
-        {w:'故事',d:'舊事、前例',py:'gù shì',pos:'名詞',deep:'「故事」古義指舊事、前例，與今日「故事」不同，屬古今異義。'},
-        {w:'下',d:'之下，不如',py:'xià',pos:'名詞',deep:'「下」指之下，此處指比六國更不如。'}
-      ],
-      rhet:[], tech:'借古諷今——點明寫作意圖，警告北宋統治者',
-      point:'「故事」古今異義為必考；此句為全文主旨所在',
-      emotion:'語重心長的警誡之情。蘇洵以「又在六國下矣」作結，語氣沉痛，警告北宋統治者勿重蹈覆轍。',
-      symbol:'「從六國破亡之故事」象徵重蹈覆轍；「在六國下矣」象徵北宋若賂敵將比六國更不如。',
-      deep:'此句為全文主旨所在，點明寫作意圖：借六國賄秦而亡的史實，警告北宋統治者勿以歲幣求和。蘇洵以「又在六國下矣」作結，語氣沉痛，發人深省，體現其借古諷今的用心。' }
-  ]}
-  ]
-},
-
-/* 11. 山居秋暝 */
-{
-  id:'shanju', num:11, title:'山居秋暝', author:'王維', era:'唐', genre:'唐詩·五律', theme:'山水田園',
-  intro:'王維以「詩中有畫」的筆法，寫出雨後空山的清幽秋景，於動靜相生中寄託歸隱之志。',
-  sections:[
-  { name:'全詩', sentences:[
-    { text:'空山新雨後，天氣晚來秋。',
-      trans:'空寂的山中剛下過一場新雨，傍晚的天氣帶來了秋意。',
-      words:[
-        {w:'空山',d:'空寂清幽的山林',py:'kōng shān',pos:'名詞',deep:'「空山」指空寂清幽的山林，非指空無一物，而是寫其幽靜。'},
-        {w:'新雨',d:'剛下過的雨',py:'xīn yǔ',pos:'名詞',deep:'「新雨」指剛下過的雨，寫出雨後山林的清新。'},
-        {w:'晚來',d:'傍晚時分',py:'wǎn lái',pos:'名詞',deep:'「晚來」指傍晚時分，點明時間。'}
-      ],
-      rhet:[], tech:'以景起筆——點明時地，營造清幽空靈的氛圍',
-      point:'首聯點題，「空」字為全詩詩眼，常考',
-      emotion:'恬淡閒適的歸隱之情。王維以「空山」「新雨」營造清幽氛圍，語氣恬淡，流露歸隱之志。',
-      symbol:'「空山」象徵遠離塵囂的清淨之地；「新雨」象徵洗滌心靈的清新。',
-      deep:'此聯以「空山」「新雨」「晚來秋」點明時地，營造清幽空靈的氛圍。「空」字為全詩詩眼，既寫山林的空寂，也暗含詩人空明澄澈的心境，為全詩奠定基調。' },
-    { text:'明月松間照，清泉石上流。',
-      trans:'明月的清輝灑落在松林之間，清澈的泉水在山石上流淌。',
-      words:[
-        {w:'照',d:'照耀',py:'zhào',pos:'動詞',deep:'「照」指照耀，寫月光灑落松林。'},
-        {w:'流',d:'流淌',py:'liú',pos:'動詞',deep:'「流」指流淌，寫泉水流過山石。'}
-      ],
-      rhet:[{t:'對偶',p:'明月松間照／清泉石上流',e:'名詞與名詞、動詞與動詞一一相對，畫面工整，音韻和諧，是千古名句。'}],
-      tech:'動靜結合——月光為靜景，泉流為動景，動靜相生',
-      point:'千古名句，「詩中有畫」的典型，常考對偶與動靜結合',
-      emotion:'清幽恬靜的審美之情。王維以「明月」「清泉」寫雨後山景，語氣恬淡，流露對自然的喜愛。',
-      symbol:'「明月」「清泉」象徵高潔的品格與清淨的心境，亦象徵詩人歸隱的理想境界。',
-      deep:'此聯為千古名句，以工整對偶寫出明月照松、清泉流石的畫面，動靜結合，詩中有畫。王維以此營造清幽的意境，寄託其歸隱之志，體現山水田園詩的最高成就。' },
-    { text:'隨意春芳歇，王孫自可留。',
-      trans:'任憑春天的花草凋謝吧，我這個隱居之人自然可以留在山中。',
-      words:[
-        {w:'隨意',d:'任憑',py:'suí yì',pos:'動詞',deep:'「隨意」指任憑、任隨。'},
-        {w:'歇',d:'凋謝',py:'xiē',pos:'動詞',deep:'「歇」指凋謝、消歇。'},
-        {w:'王孫',d:'本指貴族子弟，此為詩人自指',py:'wáng sūn',pos:'名詞',deep:'「王孫」本指貴族子弟，此處為詩人自指，反用《楚辭》典故。'}
-      ],
-      rhet:[{t:'用典',p:'王孫自可留',e:'反用《楚辭》「王孫兮歸來，山中兮不可久留」之意，表達留戀山林的心志。'}],
-      tech:'直抒胸臆——點明歸隱之志',
-      point:'尾聯點明主旨，反用典故為高頻考點',
-      emotion:'堅定從容的歸隱之情。王維以「自可留」點明心志，語氣堅定，表達留戀山林、不願出仕的情懷。',
-      symbol:'「王孫自可留」象徵詩人對山林隱居生活的堅守，反用典故，表達不與世俗同流的心志。',
-      deep:'此聯反用《楚辭》典故，表達留戀山林、決意歸隱的心志。王維以「隨意春芳歇」寫任憑春光消逝，以「王孫自可留」點明歸隱之志，為全詩作結，餘韻悠長。' }
-  ]}
-  ]
-},
-
-/* 12. 月下獨酌 */
-{
-  id:'yuexia', num:12, title:'月下獨酌', author:'李白', era:'唐', genre:'唐詩·五古', theme:'孤獨曠達',
-  intro:'李白於花間獨酌，邀月與影為伴，於孤獨中展開奇思，最後相期雲漢，展現出曠達超脫的浪漫情懷。',
-  sections:[
-  { name:'全詩', sentences:[
-    { text:'花間一壺酒，獨酌無相親。',
-      trans:'花叢中擺著一壺酒，我獨自飲酒，沒有親近的人相伴。',
-      words:[
-        {w:'獨酌',d:'獨自飲酒',py:'dú zhuó',pos:'動詞',deep:'「獨酌」指獨自飲酒，點明孤獨的處境。'},
-        {w:'相親',d:'親近的人',py:'xiāng qīn',pos:'名詞',deep:'「相親」指親近的人，此處指相伴之人。'}
-      ],
-      rhet:[], tech:'敘事起筆——點明「獨」字，奠定全詩孤獨基調',
-      point:'「獨」字為全詩情感核心，常考',
-      emotion:'孤獨寂寞的愁緒之情。李白以「獨酌無相親」點明孤獨，語氣略帶惆悵，為全詩奠定基調。',
-      symbol:'「花間一壺酒」象徵美好的環境；「獨酌無相親」象徵孤獨無伴的處境，形成美景與孤獨的反差。',
-      deep:'此句以「花間一壺酒」寫美景，以「獨酌無相親」寫孤獨，美景與孤獨形成反差。李白以此開篇，點明「獨」字，為後文邀月對影的奇想鋪墊。' },
-    { text:'舉杯邀明月，對影成三人。',
-      trans:'舉起酒杯邀請明月，對著自己的影子，就成了三個人。',
-      words:[
-        {w:'邀',d:'邀請',py:'yāo',pos:'動詞',deep:'「邀」指邀請，寫詩人主動邀月共飲。'},
-        {w:'對影',d:'對著自己的影子',py:'duì yǐng',pos:'動詞',deep:'「對影」指對著自己的影子。'}
-      ],
-      rhet:[{t:'想像',p:'對影成三人',e:'以奇特的想像化孤獨為熱鬧，展現李白浪漫曠達的個性，是千古名句。'}],
-      tech:'以虛寫實——用想像中的「三人」反襯現實的孤獨',
-      point:'名句，常考「三人」所指及想像手法的作用',
-      emotion:'孤獨中的曠達之情。李白以奇特想像邀月對
-/* 合併所有篇章 */
-CHAPTERS.push(...MORE);
+/* ========== 8 始得西山宴遊記 ========== */
+{id:'xishan',num:8,title:'始得西山宴遊記',author:'柳宗元',era:'唐',genre:'遊記',theme:'物我合一',
+ intro:'柳宗元貶謫永州，借西山之遊抒發情懷。文章以「始得」為眼，寫出由「未始知」到「始遊」的心境轉折，達到物我兩忘的境界。',
+ sections:[{name:'本文',sentences:[
+  {text:'自余為僇人，居是州，恆惴慄。',
+   trans:'自從我成為受刑辱的罪人，住在這個州，心中常常恐懼不安。',
+   words:[
+    {w:'僇人',d:'受刑辱的人，罪人',py:'lù rén',pos:'名詞',deep:'「僇」通「戮」，「僇人」指受刑辱的罪人，是柳宗元被貶後的自稱。'},
+    {w:'恆',d:'常常',py:'héng',pos:'副詞',deep:'「恆」指常常、總是。'},
+    {w:'惴慄',d:'恐懼不安',py:'zhuì lì',pos:'形容詞',deep:'「惴」指憂懼，「慄」指戰慄。「惴慄」即恐懼不安。'}
+   ],
+   rhet:[],tech:'直陳心境——交代貶謫背景與憂懼心情',
+   point:'「僇人」的解釋及開篇奠定全文情感基調為常考',
+   emotion:'憂懼不安的貶謫之情。柳宗元以「僇人」「惴慄」直陳心境，語氣沉重，奠定全文憂懼的基調。',
+   symbol:'「僇人」象徵柳宗元被貶的罪臣身份；「惴慄」象徵其內心的恐懼與不安。',
+   deep:'此句以「僇人」自稱，點明貶謫身份，以「恆惴慄」寫內心的恐懼不安。柳宗元以此開篇，為後文借西山之遊尋求解脫作鋪墊，形成由憂懼到超脫的情感轉折。'},
+  {text:'其隙也，則施施而行，漫漫而遊。',
+   trans:'有空閒的時候，就慢慢地走，隨意地遊覽。',
+   words:[
+    {w:'隙',d:'空閒的時候',py:'xì',pos:'名詞',deep:'「隙」指空閒、閒暇之時。'},
+    {w:'施施',d:'緩慢行走的樣子',py:'yí yí',pos:'形容詞',deep:'「施施」指緩慢行走的樣子，寫出閒散的姿態。'},
+    {w:'漫漫',d:'隨意、漫無目的的樣子',py:'màn màn',pos:'形容詞',deep:'「漫漫」指隨意、漫無目的的樣子。'}
+   ],
+   rhet:[{t:'對偶',p:'施施而行／漫漫而遊',e:'句式對稱，以疊字寫出閒散無所適從的狀態。'}],
+   tech:'動作描寫——寫出貶謫生活中強作閒適的情態',
+   point:'「施施」「漫漫」的解釋及表達效果為常考',
+   emotion:'強作閒適的無奈之情。柳宗元以「施施而行，漫漫而遊」寫出閒散的姿態，實則暗含貶謫的無奈。',
+   symbol:'「施施」「漫漫」象徵貶謫生活中無所適從的狀態。',
+   deep:'此句以疊字寫出柳宗元閒散的姿態，表面悠閒，實則暗含內心的憂懼與無奈，為後文登西山後的心境轉折作鋪墊。'},
+  {text:'日與其徒上高山，入深林，窮迴溪，幽泉怪石，無遠不到。',
+   trans:'每天和同伴登上高山，進入深林，走到曲折溪流的盡頭，幽深的泉水、奇特的石頭，沒有遠的地方不去。',
+   words:[
+    {w:'徒',d:'同伴、隨從',py:'tú',pos:'名詞',deep:'「徒」指同伴、隨從。'},
+    {w:'窮',d:'走到盡頭',py:'qióng',pos:'動詞',deep:'「窮」指走到盡頭、窮盡。'},
+    {w:'迴溪',d:'曲折的溪流',py:'huí xī',pos:'名詞',deep:'「迴」指曲折、迴旋，「溪」指溪流。'}
+   ],
+   rhet:[{t:'排比',p:'上高山，入深林，窮迴溪',e:'三個動賓短語連貫而下，寫出遊覽之廣、之勤。'}],
+   tech:'敘述——鋪寫遊歷之廣，為下文「未始知西山」作反襯',
+   point:'常考排比句的作用及「窮」的解釋',
+   emotion:'搜奇訪勝的執著之情。柳宗元以「無遠不到」寫其遊覽之勤，實則藉此排解內心的憂懼。',
+   symbol:'「上高山，入深林，窮迴溪」象徵柳宗元對精神解脫的追尋。',
+   deep:'此句以排比寫出遊歷之廣，為下文「未始知西山之怪特」作反襯，突出西山之與眾不同。'},
+  {text:'以為凡是州之山水有異態者，皆我有也，而未始知西山之怪特。',
+   trans:'我以為凡是這個州形態奇異的山水，都已被我遊賞過了，卻從不知道西山的奇特卓異。',
+   words:[
+    {w:'異態',d:'奇異的形態',py:'yì tài',pos:'名詞',deep:'「異態」指奇異的形態。'},
+    {w:'皆我有',d:'都為我所有，指都已遊賞',py:'jiē wǒ yǒu',pos:'動詞',deep:'「皆我有」指都為我所有，即都已遊賞過。'},
+    {w:'未始',d:'未曾',py:'wèi shǐ',pos:'副詞',deep:'「未始」指未曾、從來沒有。'},
+    {w:'怪特',d:'奇特卓異',py:'guài tè',pos:'形容詞',deep:'「怪特」指奇特卓異。'}
+   ],
+   rhet:[],tech:'轉折——以「以為……而未始知」形成轉折，引出西山',
+   point:'「未始」的解釋及此句的結構作用為常考',
+   emotion:'自以為是的滿足與意外發現的驚喜。柳宗元自以為已窮盡永州山水，卻未識西山，語氣中含慚愧與期待。',
+   symbol:'「以為皆我有」象徵自滿與局限；「未始知西山之怪特」象徵更高境界的發現。',
+   deep:'此句以「以為……而未始知」的轉折，引出西山，暗示柳宗元此前所遊並非真正的解脫，唯有西山才能帶來心境的轉變。'},
+  {text:'遂命僕人過湘江，緣染溪，斫榛莽，焚茅茷，窮山之高而止。',
+   trans:'於是命令僕人渡過湘江，沿著染溪而行，砍伐叢生的草木，燒掉茂密的茅草，直到山的最高處才停下來。',
+   words:[
+    {w:'緣',d:'沿著',py:'yuán',pos:'動詞',deep:'「緣」指沿著、順著。'},
+    {w:'斫',d:'砍伐',py:'zhuó',pos:'動詞',deep:'「斫」指砍伐。'},
+    {w:'榛莽',d:'叢生的草木',py:'zhēn mǎng',pos:'名詞',deep:'「榛」指叢生的樹木，「莽」指叢生的草。'},
+    {w:'茅茷',d:'茂密的茅草',py:'máo fá',pos:'名詞',deep:'「茅」指茅草，「茷」指草葉茂盛。'}
+   ],
+   rhet:[{t:'排比',p:'過湘江，緣染溪，斫榛莽，焚茅茷',e:'四個動賓短語連用，節奏急促，寫出登山之艱與決心。'}],
+   tech:'動作描寫——一系列動作寫出探幽的急切',
+   point:'常考此句的排比及其表達效果',
+   emotion:'急切探幽的決心。柳宗元以一系列動作寫出登山的急切，展現其對西山的期待。',
+   symbol:'「斫榛莽，焚茅茷」象徵掃除障礙、追求更高境界的決心。',
+   deep:'此句以四個動賓短語連用，寫出登山的艱難與急切，為後文登頂後的開闊視野作鋪墊。'},
+  {text:'攀援而登，箕踞而遨，則凡數州之土壤，皆在衽席之下。',
+   trans:'攀援著登上山頂，伸開兩腿隨意坐著遊賞，那麼幾個州的土地，都在我的坐席之下了。',
+   words:[
+    {w:'箕踞',d:'像簸箕一樣張開兩腿而坐，不拘禮節',py:'jī jù',pos:'動詞',deep:'「箕踞」指像簸箕一樣張開兩腿而坐，是不拘禮節的坐姿。'},
+    {w:'遨',d:'遊賞',py:'áo',pos:'動詞',deep:'「遨」指遊賞、遊玩。'},
+    {w:'衽席',d:'坐席',py:'rèn xí',pos:'名詞',deep:'「衽」指衣襟，「席」指坐席。「衽席」即坐席。'}
+   ],
+   rhet:[{t:'誇張',p:'凡數州之土壤，皆在衽席之下',e:'以極寫視野之高遠，反襯西山之特出與心胸之開闊。'}],
+   tech:'景物描寫——登高望遠，寫出開闊之境',
+   point:'「箕踞」的解釋及誇張手法的作用為常考',
+   emotion:'豁然開朗的震撼之情。柳宗元登上西山，視野開闊，數州土地盡在腳下，心胸為之開闊。',
+   symbol:'「數州之土壤，皆在衽席之下」象徵登高望遠後心胸的開闊與精神的提升。',
+   deep:'此句以誇張手法寫出登西山後視野之高遠，反襯西山之特出。柳宗元藉此寫出心境的轉變，為後文「心凝形釋」的境界作鋪墊。'},
+  {text:'然後知吾嚮之未始遊，遊於是乎始。',
+   trans:'這以後才知道我從前根本未曾真正遊覽過，真正的遊覽從這裡才開始。',
+   words:[
+    {w:'嚮',d:'同「向」，從前',py:'xiàng',pos:'名詞',deep:'「嚮」通「向」，解作從前。此為必考通假字。'},
+    {w:'於是',d:'從這裡',py:'yú shì',pos:'連詞',deep:'「於是」在此解作「從這裡」，非今日「因此」之意。'},
+    {w:'始',d:'才開始',py:'shǐ',pos:'動詞',deep:'「始」指才開始，照應篇題「始得」。'}
+   ],
+   rhet:[],tech:'點題——照應篇題「始得」，點明心境轉折',
+   point:'「嚮」通「向」為必考；此句為全文主旨句',
+   emotion:'豁然超脫的領悟之情。柳宗元以「遊於是乎始」點明心境轉折，語氣豁達，寫出物我兩忘的境界。',
+   symbol:'「未始遊」象徵從前未達真正的精神境界；「遊於是乎始」象徵登西山後達到物我兩忘的超脫。',
+   deep:'此句照應篇題「始得」，點明真正的遊覽從登西山才開始。柳宗元以此寫出心境的轉折：從貶謫的憂懼中解脫，達到「心凝形釋，與萬化冥合」的境界。這是全文的主旨句。'}
+]}]}
+];
 
 /* =========================================================
    工具函式
@@ -1277,14 +1069,11 @@ const LS = {
   get(k,d){ try{ return JSON.parse(localStorage.getItem('wm_'+k)) ?? d; }catch(e){ return d; } },
   set(k,v){ try{ localStorage.setItem('wm_'+k, JSON.stringify(v)); }catch(e){} }
 };
-function esc(s){ return String(s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 const $ = s => document.querySelector(s);
 
 const state = { view:'read', chapter:0 };
 
-/* =========================================================
-   視圖切換
-   ========================================================= */
 function switchView(v){
   state.view = v;
   document.querySelectorAll('.view').forEach(el=>el.classList.remove('on'));
@@ -1296,14 +1085,11 @@ function switchView(v){
   if(v==='framework') renderFramework();
 }
 
-/* =========================================================
-   精讀
-   ========================================================= */
 function countSentences(c){ return c.sections.reduce((a,s)=>a+s.sentences.length,0); }
 
 function renderSidebar(){
   const el = $('#sidebar');
-  el.innerHTML = '<div class="sb-title">十六篇指定篇章</div>' +
+  el.innerHTML = '<div class="sb-title">上篇 · 第 1–8 篇</div>' +
     CHAPTERS.map((c,i)=>`
       <div class="chap-item ${i===state.chapter?'on':''}" onclick="selectChapter(${i})">
         <div class="ci-num">${c.num}</div>
@@ -1356,6 +1142,7 @@ function markWords(text, words){
 
 function renderReader(){
   const c = CHAPTERS[state.chapter];
+  if(!c){ $('#readerContent').innerHTML='<div class="empty">無此篇章</div>'; return; }
   const readMap = LS.get('read', {});
   const readArr = readMap[c.id] || [];
 
@@ -1409,25 +1196,11 @@ function renderReader(){
         detail += `<div class="an-block an-rhet"><div class="an-title">修辭分析</div>${r}</div>`;
       }
 
-      if(s.tech){
-        detail += `<div class="an-block an-tech"><div class="an-title">寫作手法</div>${esc(s.tech)}</div>`;
-      }
-
-      if(s.symbol){
-        detail += `<div class="an-block an-sym"><div class="an-title">象徵意義</div>${esc(s.symbol)}</div>`;
-      }
-
-      if(s.emotion){
-        detail += `<div class="an-block an-emo"><div class="an-title">背後情感</div>${esc(s.emotion)}</div>`;
-      }
-
-      if(s.deep){
-        detail += `<div class="an-block an-deep"><div class="an-title">深層分析</div>${esc(s.deep)}</div>`;
-      }
-
-      if(s.point){
-        detail += `<div class="an-block an-point"><div class="an-title">考點提示</div>${esc(s.point)}</div>`;
-      }
+      if(s.tech) detail += `<div class="an-block an-tech"><div class="an-title">寫作手法</div>${esc(s.tech)}</div>`;
+      if(s.symbol) detail += `<div class="an-block an-sym"><div class="an-title">象徵意義</div>${esc(s.symbol)}</div>`;
+      if(s.emotion) detail += `<div class="an-block an-emo"><div class="an-title">背後情感</div>${esc(s.emotion)}</div>`;
+      if(s.deep) detail += `<div class="an-block an-deep"><div class="an-title">深層分析</div>${esc(s.deep)}</div>`;
+      if(s.point) detail += `<div class="an-block an-point"><div class="an-title">考點提示</div>${esc(s.point)}</div>`;
 
       html += `
       <div class="sentence ${isRead?'':'unread'}" data-key="${key}" onclick="toggleSentence(this, '${key}')">
@@ -1478,40 +1251,25 @@ function updateWordPop(){
 document.addEventListener('click', e=>{ if(!e.target.classList.contains('w')) $('#wpop').style.display='none'; });
 window.addEventListener('scroll', ()=>{ $('#wpop').style.display='none'; }, true);
 
-/* =========================================================
-   作答框架
-   ========================================================= */
 function renderFramework(){
   let html = `
   <div class="fw-intro">
     <h2>作答框架生成器</h2>
     <p>DSE 中文科閱讀卷的長答題，並非「寫得多」就得分，而是要「答得準」。以下六大框架，按題型拆解得分步驟，助你將「讀懂」轉化為「得分」。</p>
   </div>`;
-
   FRAMEWORKS.forEach(fw=>{
     html += `
     <div class="fw-card">
       <h3><span class="fw-no">${fw.no}</span>${esc(fw.title)}</h3>
-      <div class="fw-steps">
-        ${fw.steps.map(s=>`<span class="fw-step">${esc(s)}</span>`).join('')}
-      </div>
+      <div class="fw-steps">${fw.steps.map(s=>`<span class="fw-step">${esc(s)}</span>`).join('')}</div>
       <div class="fw-formula"><b>框架公式：</b>${fw.formula}</div>
-      <div class="fw-example">
-        <div class="ex-label">範例</div>
-        <div class="ex-text">${fw.example}</div>
-      </div>
-      <div style="margin-top:11px;font-size:12.5px;color:#8A7A5C;line-height:1.8;">
-        <b style="color:#C0392B;">提示：</b>${esc(fw.note)}
-      </div>
+      <div class="fw-example"><div class="ex-label">範例</div><div class="ex-text">${fw.example}</div></div>
+      <div style="margin-top:11px;font-size:12.5px;color:#8A7A5C;line-height:1.8;"><b style="color:#C0392B;">提示：</b>${esc(fw.note)}</div>
     </div>`;
   });
-
   $('#fwBody').innerHTML = html;
 }
 
-/* =========================================================
-   筆記
-   ========================================================= */
 function renderNotes(){
   const notes = LS.get('notes', {});
   $('#notesBody').innerHTML = CHAPTERS.map(c=>`
@@ -1521,33 +1279,25 @@ function renderNotes(){
       <div class="save-hint" id="hint-${c.id}">✓ 已儲存</div>
     </div>`).join('');
 }
-
 let noteTimer = null;
 function saveNote(id, el){
   const notes = LS.get('notes', {});
   notes[id] = el.value;
   LS.set('notes', notes);
   const h = $('#hint-'+id);
-  h.classList.add('on');
-  clearTimeout(noteTimer);
-  noteTimer = setTimeout(()=>h.classList.remove('on'), 1200);
+  if(h){ h.classList.add('on'); clearTimeout(noteTimer); noteTimer = setTimeout(()=>h.classList.remove('on'), 1200); }
 }
 
-/* =========================================================
-   統計
-   ========================================================= */
 function renderStats(){
   const readMap = LS.get('read', {});
   const totalS = CHAPTERS.reduce((a,c)=>a+countSentences(c),0);
   let readN = 0;
   CHAPTERS.forEach(c=>{ readN += (readMap[c.id]||[]).length; });
-
   const chapRows = CHAPTERS.map(c=>{
     const t = countSentences(c);
     const r = (readMap[c.id]||[]).length;
     return {name:c.title, t, r};
   });
-
   let html = `
   <div class="stat-grid">
     <div class="stat-box"><div class="num">${readN}<small> / ${totalS}</small></div><div class="lbl">已精讀句數</div></div>
@@ -1555,25 +1305,20 @@ function renderStats(){
     <div class="stat-box"><div class="num">${CHAPTERS.length}</div><div class="lbl">篇章總數</div></div>
     <div class="stat-box"><div class="num">${totalS}</div><div class="lbl">總句數</div></div>
   </div>
-
   <div class="panel">
     <h3>各篇精讀進度</h3>
     ${chapRows.map(r=>{
       const p = r.t ? Math.round(r.r/r.t*100) : 0;
       return `<div class="bar-row">
-        <div class="bar-lbl" style="width:130px;font-size:12px;">${esc(r.name)}</div>
+        <div class="bar-lbl">${esc(r.name)}</div>
         <div class="bar-track"><div class="bar-fill ${p<50?'low':''}" style="width:${p}%"></div></div>
         <div class="bar-val">${r.r}/${r.t}</div>
       </div>`;
     }).join('')}
   </div>`;
-
   $('#statsBody').innerHTML = html;
 }
 
-/* =========================================================
-   初始化
-   ========================================================= */
 renderSidebar();
 renderReader();
 renderFramework();
