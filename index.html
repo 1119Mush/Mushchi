@@ -2210,6 +2210,34 @@ function renderReader(){
       <span>共 ${countSentences(c)} 句</span>
     </div>
     <div class="ch-intro">${esc(c.intro)}</div>
+  </div>
+  <div class="tts-bar">
+    <div class="tts-left">
+      <button class="tts-btn" id="ttsPlay" onclick="ttsPlay()">▶ 朗讀全文</button>
+      <button class="tts-btn ghost" id="ttsPause" onclick="ttsPause()" style="display:none">⏸ 暫停</button>
+      <button class="tts-btn ghost" id="ttsStop" onclick="ttsStop()" style="display:none">■ 停止</button>
+    </div>
+    <div class="tts-right">
+      <span>朗讀次數：
+        <select class="tts-select" id="ttsTimes">
+          <option value="1">1 次</option>
+          <option value="2">2 次</option>
+          <option value="3" selected>3 次</option>
+          <option value="5">5 次</option>
+          <option value="10">10 次</option>
+        </select>
+      </span>
+      <span>速度：
+        <select class="tts-select" id="ttsRate">
+          <option value="0.7">很慢</option>
+          <option value="0.85">慢</option>
+          <option value="1" selected>正常</option>
+          <option value="1.2">快</option>
+          <option value="1.5">很快</option>
+        </select>
+      </span>
+      <span class="tts-progress" id="ttsProgress"></span>
+    </div>
   </div>`;
 
   let gi = 0;
