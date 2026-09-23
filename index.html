@@ -2156,6 +2156,7 @@ function renderSidebar(){
 }
 
 function selectChapter(i){
+  if(typeof ttsStop === 'function') ttsStop(); 
   state.chapter = i;
   renderSidebar();
   renderReader();
