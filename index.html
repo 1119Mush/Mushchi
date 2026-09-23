@@ -2364,16 +2364,19 @@ const ttsState = {
 
 function ttsPickVoice(){
   const voices = speechSynthesis.getVoices();
-  const pref = ['zh-TW','zh-HK','zh-CN','zh'];
+  // 第一優先：粵語（zh-HK 或 yue）
+  const yue = voices.find(v => {
+    const l = v.lang.replace('_','-').toLowerCase();
+    return l.startsWith('zh-hk') || l.startsWith('yue');
+  });
+  if(yue) return yue;
+  // 第二優先：其他中文
+  const pref = ['zh-TW','zh-CN','zh'];
   for(const lang of pref){
     const v = voices.find(v => v.lang.replace('_','-').toLowerCase().startsWith(lang.toLowerCase()));
     if(v) return v;
   }
   return voices[0] || null;
-}
-if('speechSynthesis' in window){
-  speechSynthesis.onvoiceschanged = ()=>{ ttsState.voice = ttsPickVoice(); };
-  ttsState.voice = ttsPickVoice();
 }
 
 function ttsCollect(){
