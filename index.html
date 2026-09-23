@@ -2400,7 +2400,14 @@ const TTS_PRONOUNCE_MAP = [
   // 專名異讀
   {re:/番禺/g, to:'潘禺'},
   {re:/月氏/g, to:'月支'},
-  {re:/吐番/g, to:'吐蕃'}
+  {re:/吐番/g, to:'吐蕃'},
+  
+  // 「惡」字破讀
+  {re:/所惡/g, to:'所悟'},           // 惡 → 悟（wù，厭惡）
+  {re:/惡之/g, to:'悟之'},           // 惡 → 悟（wù，厭惡）
+  {re:/惡乎/g, to:'烏乎'},           // 惡 → 烏（wū，怎麼）
+  {re:/惡能/g, to:'烏能'},           // 惡 → 烏（wū，怎麼）
+  {re:/惡得/g, to:'烏得'}           // 惡 → 烏（wū，怎麼）
 ];
 
 function ttsFixPronunciation(text){
