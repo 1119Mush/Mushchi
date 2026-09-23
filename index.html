@@ -2352,7 +2352,135 @@ function renderFramework(){
   });
   $('#fwBody').innerHTML = html;
 }
+/* =========================================================
+   朗讀功能（Web Speech API）
+   ========================================================= */
+const ttsState = {
+  playing:false, paused:false,
+  currentIndex:0, currentRound:0,
+  sentences:[], times:3, rate:1, voice:null
+};
 
+function ttsPickVoice(){
+  const voices = speechSynthesis.getVoices();
+  const pref = ['zh-TW','zh-HK','zh-CN','zh'];
+  for(const lang of pref){
+    const v = voices.find(v => v.lang.replace('_','-').toLowerCase().startsWith(lang.toLowerCase()));
+    if(v) return v;
+  }
+  return voices[0] || null;
+}
+if('speechSynthesis' in window){
+  speechSynthesis.onvoiceschanged = ()=>{ ttsState.voice = ttsPickVoice(); };
+  ttsState.voice = ttsPickVoice();
+}
+
+function ttsCollect(){
+  const list = [];
+  document.querySelectorAll('#readerContent .sentence').forEach(el=>{
+    const t = el.querySelector('.s-text');
+    if(t) list.push({el, text:(t.innerText||t.textContent).trim()});
+  });
+  return list;
+}
+
+function ttsPlay(){
+  if(!('speechSynthesis' in window)){
+    alert('您的瀏覽器不支援語音朗讀，請使用 Chrome / Edge / Safari 最新版。');
+    return;
+  }
+  // 續播
+  if(ttsState.paused){
+    speechSynthesis.resume();
+    ttsState.paused = false;
+    document.getElementById('ttsPause').innerHTML = '⏸ 暫停';
+    return;
+  }
+  if(ttsState.playing) return;
+
+  ttsState.times = parseInt(document.getElementById('ttsTimes').value) || 1;
+  ttsState.rate  = parseFloat(document.getElementById('ttsRate').value) || 1;
+  ttsState.currentIndex = 0;
+  ttsState.currentRound = 0;
+  ttsState.sentences = ttsCollect();
+  if(ttsState.sentences.length === 0) return;
+
+  ttsState.playing = true;
+  ttsState.paused = false;
+  document.getElementById('ttsPlay').style.display = 'none';
+  document.getElementById('ttsPause').style.display = 'inline-flex';
+  document.getElementById('ttsStop').style.display = 'inline-flex';
+  ttsState.voice = ttsPickVoice();
+  ttsSpeakNext();
+}
+
+function ttsSpeakNext(){
+  if(!ttsState.playing) return;
+  if(ttsState.currentIndex >= ttsState.sentences.length){
+    ttsState.currentRound++;
+    if(ttsState.currentRound >= ttsState.times){ ttsFinish(); return; }
+    ttsState.currentIndex = 0;
+  }
+  const item = ttsState.sentences[ttsState.currentIndex];
+  document.querySelectorAll('.sentence.tts-reading').forEach(el=>el.classList.remove('tts-reading'));
+  item.el.classList.add('tts-reading');
+  item.el.scrollIntoView({behavior:'smooth', block:'center'});
+
+  const prog = document.getElementById('ttsProgress');
+  if(prog) prog.textContent = `第 ${ttsState.currentRound+1}/${ttsState.times} 次 · 第 ${ttsState.currentIndex+1}/${ttsState.sentences.length} 句`;
+
+  const u = new SpeechSynthesisUtterance(item.text);
+  u.lang = 'zh-TW';
+  if(ttsState.voice) u.voice = ttsState.voice;
+  u.rate = ttsState.rate;
+  u.pitch = 1;
+  u.onend = ()=>{
+    if(!ttsState.playing) return;
+    ttsState.currentIndex++;
+    setTimeout(ttsSpeakNext, 120);
+  };
+  u.onerror = ()=>{
+    ttsState.currentIndex++;
+    setTimeout(ttsSpeakNext, 120);
+  };
+  speechSynthesis.speak(u);
+}
+
+function ttsPause(){
+  if(!ttsState.playing) return;
+  const btn = document.getElementById('ttsPause');
+  if(ttsState.paused){
+    speechSynthesis.resume();
+    ttsState.paused = false;
+    btn.innerHTML = '⏸ 暫停';
+  } else {
+    speechSynthesis.pause();
+    ttsState.paused = true;
+    btn.innerHTML = '▶ 繼續';
+  }
+}
+
+function ttsStop(){
+  ttsState.playing = false;
+  ttsState.paused = false;
+  if('speechSynthesis' in window) speechSynthesis.cancel();
+  document.querySelectorAll('.sentence.tts-reading').forEach(el=>el.classList.remove('tts-reading'));
+  const play = document.getElementById('ttsPlay');
+  const pause = document.getElementById('ttsPause');
+  const stop = document.getElementById('ttsStop');
+  if(play) play.style.display = 'inline-flex';
+  if(pause) pause.style.display = 'none';
+  if(stop) stop.style.display = 'none';
+  const prog = document.getElementById('ttsProgress');
+  if(prog) prog.textContent = '';
+}
+
+function ttsFinish(){
+  const prog = document.getElementById('ttsProgress');
+  ttsStop();
+  if(prog) prog.textContent = '✓ 朗讀完成';
+  setTimeout(()=>{ if(prog) prog.textContent = ''; }, 3000);
+}
 function renderNotes(){
   const notes = LS.get('notes', {});
   $('#notesBody').innerHTML = CHAPTERS.map(c=>`
