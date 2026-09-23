@@ -2378,13 +2378,44 @@ function ttsPickVoice(){
   }
   return voices[0] || null;
 }
+/* ===== 文言特殊讀音替換表 ===== */
+// 把特殊讀音的字，替換成同音的常用字，讓 TTS 讀對
+const TTS_PRONOUNCE_MAP = [
+  // 通假字
+  {re:/女(?=子|曰|嫁)/g, to:'汝'},        // 女 → 汝
+  {re:/知者/g, to:'智者'},                // 知 → 智
+  {re:/圖窮匕見/g, to:'圖窮匕現'},        // 見 → 現
+  {re:/反歸/g, to:'返歸'},                // 反 → 返
+  {re:/鄉為/g, to:'向為'},                // 鄉 → 向
 
+  // 破讀音
+  {re:/說項/g, to:'稅項'},                // 說 → 稅（shuì）
+  {re:/說服/g, to:'稅服'},                // 說 → 稅（shuì）
+  {re:/王天下/g, to:'旺天下'},            // 王 → 旺（wàng）
+  {re:/衣褐/g, to:'意褐'},                // 衣 → 意（yì）
+  {re:/食馬/g, to:'飼馬'},                // 食 → 飼（sì）
+  {re:/句讀/g, to:'句豆'},                // 讀 → 豆（dòu）
+  {re:/車騎/g, to:'車計'},                // 騎 → 計（jì）
+
+  // 專名異讀
+  {re:/番禺/g, to:'潘禺'},                // 番 → 潘（pān）
+  {re:/月氏/g, to:'月支'},                // 氏 → 支（zhī）
+  {re:/吐番/g, to:'吐蕃'},                // 番 → 蕃（bō）
+];
+
+function ttsFixPronunciation(text){
+  let out = text;
+  TTS_PRONOUNCE_MAP.forEach(item => { out = out.replace(item.re, item.to); });
+  return out;
+}
 function ttsCollect(){
   const list = [];
   document.querySelectorAll('#readerContent .sentence').forEach(el=>{
     const t = el.querySelector('.s-text');
-    if(t) list.push({el, text:(t.innerText||t.textContent).trim()});
-  });
+if(t){
+  let raw = (t.innerText||t.textContent).trim();
+  list.push({el, text: ttsFixPronunciation(raw)});
+}
   return list;
 }
 
