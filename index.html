@@ -2431,7 +2431,7 @@ function ttsSpeakNext(){
   if(prog) prog.textContent = `第 ${ttsState.currentRound+1}/${ttsState.times} 次 · 第 ${ttsState.currentIndex+1}/${ttsState.sentences.length} 句`;
 
   const u = new SpeechSynthesisUtterance(item.text);
-  u.lang = 'zh-TW';
+  u.lang = 'zh-HK';
   if(ttsState.voice) u.voice = ttsState.voice;
   u.rate = ttsState.rate;
   u.pitch = 1;
