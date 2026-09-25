@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+<script src="https://js.puter.com/v2/"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>文脈 · DSE 中文十六篇 </title>
@@ -154,6 +155,37 @@ nav.tabs button.on{background:#fff;color:var(--cinnabar);box-shadow:var(--shadow
   .tts-right{margin-left:0;width:100%;}
   .tts-progress{margin-left:0;width:100%;text-align:right;}
 }
+/* ===== AI 出題 + 弱點分析 ===== */
+.ai-panel{background:linear-gradient(135deg,#FFFDF8,#F8F4EC);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:18px;box-shadow:var(--shadow);}
+.ai-panel h3{font-size:15px;color:var(--cinnabar);margin-bottom:12px;font-family:"Kaiti",serif;letter-spacing:1px;display:flex;align-items:center;gap:8px;}
+.ai-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;align-items:center;}
+.ai-row label{font-size:12.5px;color:var(--ink2);}
+.ai-row select{font-family:inherit;font-size:12.5px;padding:6px 10px;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--ink);cursor:pointer;outline:none;}
+.ai-btn{font-family:inherit;font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;border:none;cursor:pointer;background:var(--cinnabar);color:#fff;box-shadow:0 2px 6px rgba(192,57,43,.25);transition:.16s;}
+.ai-btn:hover:not(:disabled){background:#A93226;transform:translateY(-1px);}
+.ai-btn:disabled{opacity:.5;cursor:wait;}
+.ai-btn.ghost{background:transparent;color:var(--ink2);border:1px solid var(--line);box-shadow:none;}
+.ai-btn.ghost:hover:not(:disabled){border-color:var(--gold);color:var(--ink);background:#FFFBF0;}
+.ai-output{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px;font-size:13.5px;line-height:1.9;color:var(--ink);min-height:60px;white-space:pre-wrap;display:none;}
+.ai-output.on{display:block;}
+.ai-output.loading{color:#A2967F;font-style:italic;}
+.ai-q-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:12px;}
+.ai-q-card .q-title{font-size:13px;color:var(--cinnabar);font-weight:700;margin-bottom:8px;}
+.ai-q-card .q-text{font-size:14.5px;line-height:1.9;margin-bottom:10px;color:#241F19;}
+.ai-q-card .q-options{margin:10px 0;}
+.ai-q-card .q-options div{padding:6px 10px;margin-bottom:4px;border-radius:6px;background:#FCFAF5;border:1px solid #F0E6D2;font-size:13px;cursor:pointer;transition:.15s;}
+.ai-q-card .q-options div:hover{background:#FFF8E7;border-color:var(--gold);}
+.ai-q-card .q-options div.correct{background:#EAF6F0;border-color:#7FBFA0;font-weight:700;color:#2E7A45;}
+.ai-q-card .q-options div.wrong{background:#FDEDEB;border-color:#E5A79E;font-weight:700;color:#B23A2C;}
+.ai-q-card .q-answer{margin-top:10px;padding:10px 14px;background:#FBF6EA;border-left:3px solid var(--gold);border-radius:0 8px 8px 0;font-size:13px;line-height:1.8;display:none;}
+.ai-q-card .q-answer.on{display:block;}
+.weakness-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px;}
+.weakness-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px;}
+.weakness-card h4{font-size:13px;color:var(--cinnabar);margin-bottom:8px;}
+.weakness-card .w-stat{font-size:12.5px;color:var(--ink2);line-height:1.8;}
+.weakness-card .w-stat b{color:var(--cinnabar);font-size:15px;}
+.ai-loading{display:inline-block;width:14px;height:14px;border:2px solid #E6DCCB;border-top-color:var(--cinnabar);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:6px;}
+@keyframes spin{to{transform:rotate(360deg);}}
 </style>
 </head>
 <body>
@@ -167,6 +199,7 @@ nav.tabs button.on{background:#fff;color:var(--cinnabar);box-shadow:var(--shadow
     <nav class="tabs">
       <button data-v="read" class="on" onclick="switchView('read')">精讀</button>
       <button data-v="framework" onclick="switchView('framework')">作答框架</button>
+      <button data-v="ai" onclick="switchView('ai')">AI 出題</button>
       <button data-v="notes" onclick="switchView('notes')">筆記</button>
       <button data-v="stats" onclick="switchView('stats')">統計</button>
     </nav>
@@ -184,6 +217,55 @@ nav.tabs button.on{background:#fff;color:var(--cinnabar);box-shadow:var(--shadow
   <div class="fw-wrap" id="fwBody"></div>
 </section>
 
+<section id="view-ai" class="view">
+  <div class="notes-wrap">
+    <div class="ai-panel">
+      <h3>🤖 AI 智能出題</h3>
+      <div class="ai-row">
+        <label>篇章：</label>
+        <select id="aiChapter">
+          <option value="隨機">隨機</option>
+        </select>
+        <label>題型：</label>
+        <select id="aiType">
+          <option value="字詞解釋">字詞解釋</option>
+          <option value="修辭辨析">修辭辨析</option>
+          <option value="內容理解">內容理解</option>
+          <option value="寫作手法">寫作手法</option>
+          <option value="跨篇比較">跨篇比較</option>
+          <option value="模擬DSE長答">模擬DSE長答</option>
+        </select>
+        <label>難度：</label>
+        <select id="aiLevel">
+          <option value="基礎">基礎</option>
+          <option value="中等" selected>中等</option>
+          <option value="5**">5**</option>
+        </select>
+        <label>題數：</label>
+        <select id="aiCount">
+          <option value="1">1 題</option>
+          <option value="3" selected>3 題</option>
+          <option value="5">5 題</option>
+        </select>
+        <button class="ai-btn" id="aiGenBtn" onclick="aiGenerate()">✨ 生成題目</button>
+      </div>
+      <div id="aiGenOutput" class="ai-output"></div>
+    </div>
+
+    <div class="ai-panel">
+      <h3>📊 AI 弱點分析</h3>
+      <p style="font-size:13px;color:var(--ink2);line-height:1.8;margin-bottom:12px;">
+        系統會根據你嘅答題記錄，用 AI 分析你嘅弱點，並給出針對性建議。
+      </p>
+      <div class="ai-row">
+        <button class="ai-btn" id="aiAnalyzeBtn" onclick="aiAnalyze()">🔍 開始分析</button>
+        <button class="ai-btn ghost" onclick="resetAiStats()">清除 AI 記錄</button>
+      </div>
+      <div id="aiAnalyzeOutput" class="ai-output"></div>
+    </div>
+  </div>
+</section>
+  
 <section id="view-notes" class="view">
   <div class="notes-wrap">
     <div class="panel" style="margin-bottom:18px;">
@@ -2138,6 +2220,7 @@ function switchView(v){
   if(v==='notes') renderNotes();
   if(v==='stats') renderStats();
   if(v==='framework') renderFramework();
+  if(v==='ai') initAiChapterSelect();
 }
 
 function countSentences(c){ return c.sections.reduce((a,s)=>a+s.sentences.length,0); }
@@ -2544,6 +2627,261 @@ function ttsFinish(){
   if(prog) prog.textContent = '✓ 朗讀完成';
   setTimeout(()=>{ if(prog) prog.textContent = ''; }, 3000);
 }
+
+  /* =========================================================
+   AI 出題 + 弱點分析（Puter.js）
+   ========================================================= */
+var aiState = {
+  generating: false,
+  analyzing: false
+};
+
+/* 初始化篇章下拉選單 */
+function initAiChapterSelect(){
+  var sel = document.getElementById('aiChapter');
+  if(!sel || sel.dataset.inited) return;
+  for(var i=0;i<CHAPTERS.length;i++){
+    var opt = document.createElement('option');
+    opt.value = CHAPTERS[i].title;
+    opt.textContent = CHAPTERS[i].num + '. ' + CHAPTERS[i].title;
+    sel.appendChild(opt);
+  }
+  sel.dataset.inited = '1';
+}
+
+/* 生成題目 */
+async function aiGenerate(){
+  if(aiState.generating) return;
+  if(typeof puter === 'undefined'){
+    alert('AI 服務未載入，請重新整理頁面。');
+    return;
+  }
+
+  var chapter = document.getElementById('aiChapter').value;
+  var type = document.getElementById('aiType').value;
+  var level = document.getElementById('aiLevel').value;
+  var count = parseInt(document.getElementById('aiCount').value) || 3;
+
+  var out = document.getElementById('aiGenOutput');
+  var btn = document.getElementById('aiGenBtn');
+  out.className = 'ai-output on loading';
+  out.innerHTML = '<span class="ai-loading"></span>AI 正在生成題目，請稍候...';
+  btn.disabled = true;
+  aiState.generating = true;
+
+  var prompt = '你是一位香港DSE中國語文科資深教師，熟悉考評局評分標準。\n\n'
+    + '請根據以下要求生成 ' + count + ' 條DSE中文科模擬試題：\n'
+    + '- 篇章範圍：' + chapter + '\n'
+    + '- 題型：' + type + '\n'
+    + '- 難度：' + level + '\n\n'
+    + '要求：\n'
+    + '1. 題目必須符合DSE評分標準，用繁體中文（香港）。\n'
+    + '2. 每題必須有清晰嘅題幹、選項（如適用）、正確答案、以及詳細解析。\n'
+    + '3. 解析要包含：答案依據、得分關鍵、常見錯誤。\n'
+    + '4. 難度為「5**」時，要加入深層分析（如象徵意義、背後情感、寫作手法）。\n'
+    + '5. 只返回以下JSON格式，不要有任何其他文字：\n'
+    + '[\n'
+    + '  {\n'
+    + '    "question": "題目文字",\n'
+    + '    "options": ["A選項", "B選項", "C選項", "D選項"],\n'
+    + '    "answer": "正確答案（A/B/C/D）",\n'
+    + '    "explanation": "詳細解析",\n'
+    + '    "chapter": "所屬篇章",\n'
+    + '    "type": "題型",\n'
+    + '    "level": "難度"\n'
+    + '  }\n'
+    + ']';
+
+  try{
+    var response = await puter.ai.chat(prompt, { model: 'google/gemini-2.5-flash' });
+    var text = typeof response === 'string' ? response : (response.message?.content || response.text || String(response));
+
+    // 嘗試解析 JSON
+    var jsonMatch = text.match(/\[[\s\S]*\]/);
+    var questions = null;
+    if(jsonMatch){
+      try{ questions = JSON.parse(jsonMatch[0]); }catch(e){}
+    }
+
+    if(questions && questions.length){
+      renderAiQuestions(questions, out);
+      saveAiQuestions(questions);
+    } else {
+      out.className = 'ai-output on';
+      out.textContent = text;
+    }
+  }catch(err){
+    console.error(err);
+    out.className = 'ai-output on';
+    out.textContent = '❌ 生成失敗：' + (err.message || err) + '\n\n請檢查網絡連線，或稍後再試。';
+  }
+
+  btn.disabled = false;
+  aiState.generating = false;
+}
+
+/* 渲染題目卡片 */
+function renderAiQuestions(questions, out){
+  out.className = 'ai-output on';
+  var html = '';
+  for(var i=0;i<questions.length;i++){
+    var q = questions[i];
+    html += '<div class="ai-q-card" data-idx="' + i + '">';
+    html += '<div class="q-title">第 ' + (i+1) + ' 題 · ' + (q.type||'') + ' · ' + (q.chapter||'') + ' · ' + (q.level||'') + '</div>';
+    html += '<div class="q-text">' + esc(q.question) + '</div>';
+    if(q.options && q.options.length){
+      html += '<div class="q-options">';
+      for(var j=0;j<q.options.length;j++){
+        var letter = 'ABCD'[j];
+        html += '<div onclick="aiAnswer(this, \'' + letter + '\', \'' + esc(q.answer) + '\')">' + letter + '. ' + esc(q.options[j]) + '</div>';
+      }
+      html += '</div>';
+    }
+    html += '<div class="q-answer"><b style="color:#C0392B;">正確答案：' + esc(q.answer) + '</b><br>' + esc(q.explanation).replace(/\n/g,'<br>') + '</div>';
+    html += '</div>';
+  }
+  out.innerHTML = html;
+}
+
+/* 點選答案 */
+function aiAnswer(el, chosen, correct){
+  var parent = el.parentNode;
+  if(parent.dataset.answered) return;
+  parent.dataset.answered = '1';
+  var children = parent.children;
+  for(var i=0;i<children.length;i++){
+    var letter = children[i].textContent.charAt(0);
+    if(letter === correct) children[i].classList.add('correct');
+    else if(children[i] === el && letter !== correct) children[i].classList.add('wrong');
+  }
+  var card = parent.parentNode;
+  var ans = card.querySelector('.q-answer');
+  if(ans) ans.classList.add('on');
+
+  // 記錄答題（用於弱點分析）
+  var chapter = card.querySelector('.q-title').textContent;
+  var isCorrect = (chosen === correct);
+  recordAiAnswer(chapter, isCorrect);
+}
+
+/* 記錄答題 */
+function recordAiAnswer(chapter, isCorrect){
+  var stats = LS.get('ai_stats', {});
+  if(!stats[chapter]) stats[chapter] = { total:0, correct:0, wrong:0 };
+  stats[chapter].total++;
+  if(isCorrect) stats[chapter].correct++;
+  else stats[chapter].wrong++;
+  LS.set('ai_stats', stats);
+}
+
+/* 儲存 AI 生成嘅題目 */
+function saveAiQuestions(questions){
+  var all = LS.get('ai_questions', []);
+  for(var i=0;i<questions.length;i++){
+    all.push(questions[i]);
+  }
+  if(all.length > 200) all = all.slice(-200); // 最多保留 200 題
+  LS.set('ai_questions', all);
+}
+
+/* 弱點分析 */
+async function aiAnalyze(){
+  if(aiState.analyzing) return;
+  if(typeof puter === 'undefined'){
+    alert('AI 服務未載入，請重新整理頁面。');
+    return;
+  }
+
+  var stats = LS.get('ai_stats', {});
+  var readMap = LS.get('read', {});
+
+  if(Object.keys(stats).length === 0 && Object.keys(readMap).length === 0){
+    alert('暫時未有任何答題或精讀記錄，先去練習或精讀，再回來分析吧。');
+    return;
+  }
+
+  var out = document.getElementById('aiAnalyzeOutput');
+  var btn = document.getElementById('aiAnalyzeBtn');
+  out.className = 'ai-output on loading';
+  out.innerHTML = '<span class="ai-loading"></span>AI 正在分析你嘅學習數據，請稍候...';
+  btn.disabled = true;
+  aiState.analyzing = true;
+
+  // 整理數據
+  var summary = '【學生答題統計】\n';
+  var sKeys = Object.keys(stats);
+  if(sKeys.length === 0){
+    summary += '（暫無 AI 練習記錄）\n';
+  } else {
+    for(var i=0;i<sKeys.length;i++){
+      var k = sKeys[i];
+      var s = stats[k];
+      var rate = s.total ? Math.round(s.correct / s.total * 100) : 0;
+      summary += '- ' + k + '：答題 ' + s.total + ' 題，正確 ' + s.correct + ' 題，正確率 ' + rate + '%\n';
+    }
+  }
+
+  summary += '\n【精讀進度】\n';
+  var totalRead = 0;
+  for(var j=0;j<CHAPTERS.length;j++){
+    var ch = CHAPTERS[j];
+    var readCount = (readMap[ch.id] || []).length;
+    totalRead += readCount;
+    if(readCount > 0){
+      summary += '- ' + ch.title + '：已精讀 ' + readCount + ' 句\n';
+    }
+  }
+  if(totalRead === 0) summary += '（暫無精讀記錄）\n';
+
+  var prompt = '你是一位香港DSE中國語文科補習名師，擅長根據學生數據診斷弱點。\n\n'
+    + '以下是一位學生嘅學習數據：\n\n'
+    + summary + '\n\n'
+    + '請根據以上數據，用繁體中文（香港）為學生做一份詳細嘅弱點分析報告，包括：\n'
+    + '1. 【整體表現評價】（2-3句）\n'
+    + '2. 【三大弱點】（每點具體指出問題）\n'
+    + '3. 【針對性建議】（每點給出具體行動）\n'
+    + '4. 【下一步練習方向】（具體到篇章和題型）\n\n'
+    + '要求：語氣親切、專業，像補習老師對學生講話。用 Markdown 格式，條理清晰。';
+
+  try{
+    var response = await puter.ai.chat(prompt, { model: 'google/gemini-2.5-flash' });
+    var text = typeof response === 'string' ? response : (response.message?.content || response.text || String(response));
+    out.className = 'ai-output on';
+    out.innerHTML = formatMarkdown(text);
+  }catch(err){
+    console.error(err);
+    out.className = 'ai-output on';
+    out.textContent = '❌ 分析失敗：' + (err.message || err) + '\n\n請檢查網絡連線，或稍後再試。';
+  }
+
+  btn.disabled = false;
+  aiState.analyzing = false;
+}
+
+/* 簡單 Markdown 渲染 */
+function formatMarkdown(text){
+  if(!text) return '';
+  var s = esc(text);
+  s = s.replace(/^### (.+)$/gm, '<h3 style="font-size:15px;color:#C0392B;margin:14px 0 8px;">$1</h3>');
+  s = s.replace(/^## (.+)$/gm, '<h2 style="font-size:16px;color:#C0392B;margin:16px 0 10px;">$1</h2>');
+  s = s.replace(/^# (.+)$/gm, '<h1 style="font-size:18px;color:#C0392B;margin:18px 0 10px;">$1</h1>');
+  s = s.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+  s = s.replace(/^\s*[-•] (.+)$/gm, '<li>$1</li>');
+  s = s.replace(/(<li>.*<\/li>)/s, '<ul style="padding-left:20px;margin:8px 0;">$1</ul>');
+  s = s.replace(/\n/g, '<br>');
+  return s;
+}
+
+/* 清除 AI 記錄 */
+function resetAiStats(){
+  if(confirm('確定清除所有 AI 練習記錄？')){
+    LS.set('ai_stats', {});
+    LS.set('ai_questions', []);
+    document.getElementById('aiAnalyzeOutput').className = 'ai-output';
+    document.getElementById('aiGenOutput').className = 'ai-output';
+  }
+}
+  
 function renderNotes(){
   const notes = LS.get('notes', {});
   $('#notesBody').innerHTML = CHAPTERS.map(c=>`
@@ -2593,6 +2931,7 @@ function renderStats(){
   $('#statsBody').innerHTML = html;
 }
 
+initAiChapterSelect();
 renderSidebar();
 renderReader();
 renderFramework();
