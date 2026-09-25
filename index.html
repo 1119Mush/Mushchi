@@ -2669,31 +2669,52 @@ async function aiGenerate(){
   btn.disabled = true;
   aiState.generating = true;
 
-  var prompt = '你是一位香港DSE中國語文科資深教師，熟悉考評局評分標準。\n\n'
-    + '請根據以下要求生成 ' + count + ' 條DSE中文科模擬試題：\n'
-    + '- 篇章範圍：' + chapter + '\n'
-    + '- 題型：' + type + '\n'
-    + '- 難度：' + level + '\n\n'
-    + '要求：\n'
-    + '1. 題目必須符合DSE評分標準，用繁體中文（香港）。\n'
-    + '2. 每題必須有清晰嘅題幹、選項（如適用）、正確答案、以及詳細解析。\n'
-    + '3. 解析要包含：答案依據、得分關鍵、常見錯誤。\n'
-    + '4. 難度為「5**」時，要加入深層分析（如象徵意義、背後情感、寫作手法）。\n'
-    + '5. 只返回以下JSON格式，不要有任何其他文字：\n'
-    + '[\n'
-    + '  {\n'
-    + '    "question": "題目文字",\n'
-    + '    "options": ["A選項", "B選項", "C選項", "D選項"],\n'
-    + '    "answer": "正確答案（A/B/C/D）",\n'
-    + '    "explanation": "詳細解析",\n'
-    + '    "chapter": "所屬篇章",\n'
-    + '    "type": "題型",\n'
-    + '    "level": "難度"\n'
-    + '  }\n'
-    + ']';
+  var prompt = '你係香港考評局DSE中國語文科卷一甲部嘅資深擬題員，熟悉2026年評核大綱同評分標準。\n\n'
+  + '【篇章範圍】' + chapter + '\n'
+  + '【題型】' + type + '\n'
+  + '【難度】' + level + '\n'
+  + '【題數】' + count + ' 條\n\n'
+  + '【DSE甲部考核重點】（必須嚴格跟隨）：\n'
+  + '1. 掌握常見文言字詞（實詞、虛詞、通假字、詞類活用）\n'
+  + '2. 辨識文言常見一詞多義的字詞\n'
+  + '3. 理解內容重點、概括段落大意\n'
+  + '4. 辨識修辭手法（比喻、排比、對偶、擬人、誇張、反問、設問、借代、象徵、反覆、雙關、引用）\n'
+  + '5. 辨識寫作手法（記敘、描寫、抒情、議論、說明）及其作用\n'
+  + '6. 理解文章主旨、立意、各部分要旨及結構關聯\n'
+  + '7. 辨識引用典故抒情的手法\n'
+  + '8. 與其他指定篇章作比較（內容、結構、手法異同或優劣）\n'
+  + '9. 理解傳統文化精神，評論和說明能力\n'
+  + '10. 掌握詩歌的象徵手法，分析和說明能力\n\n'
+  + '【DSE題型格式要求】：\n'
+  + '- 字詞解釋題：給出文句，要求解釋粗體字，答案須寫在橫線上（每題1-2分）\n'
+  + '- 選擇題：四選一，每題2-6分\n'
+  + '- 短答題：限字數作答，每題2-4分\n'
+  + '- 長答題：分析與說明，每題4-8分\n\n'
+  + '【難度要求】：\n'
+  + '- 基礎：直接考核字詞解釋、內容理解\n'
+  + '- 中等：考核修辭辨識、寫作手法分析、段旨歸納\n'
+  + '- 5**：考核深層分析（象徵意義、背後情感、跨篇比較、文化內涵）\n\n'
+  + '【輸出要求】：\n'
+  + '1. 全部用繁體中文（香港），文言文原文必須與教育局指定篇章完全一致。\n'
+  + '2. 每題必須有：題幹、選項（如適用）、正確答案、DSE評分標準解析。\n'
+  + '3. 解析必須包含：答案依據、得分關鍵、常見錯誤。\n'
+  + '4. 5**難度題目必須引用原文具體字句作論據。\n'
+  + '5. 只返回以下JSON格式，不要有任何其他文字：\n'
+  + '[\n'
+  + '  {\n'
+  + '    "question": "題目文字（含引文）",\n'
+  + '    "options": ["A選項", "B選項", "C選項", "D選項"],\n'
+  + '    "answer": "A",\n'
+  + '    "explanation": "DSE評分標準解析：答案依據 + 得分關鍵 + 常見錯誤",\n'
+  + '    "chapter": "所屬篇章",\n'
+  + '    "type": "題型",\n'
+  + '    "level": "難度",\n'
+  + '    "marks": "分數（例如：2分）"\n'
+  + '  }\n'
+  + ']';
 
   try{
-    var response = await puter.ai.chat(prompt, { model: 'google/gemini-2.5-flash' });
+    var response = await puter.ai.chat(prompt, { model: 'z-ai/glm-5.2:free' });
     var text = typeof response === 'string' ? response : (response.message?.content || response.text || String(response));
 
     // 嘗試解析 JSON
@@ -2844,7 +2865,7 @@ async function aiAnalyze(){
     + '要求：語氣親切、專業，像補習老師對學生講話。用 Markdown 格式，條理清晰。';
 
   try{
-    var response = await puter.ai.chat(prompt, { model: 'google/gemini-2.5-flash' });
+    var response = await puter.ai.chat(prompt, { model: 'z-ai/glm-5.2:free' });
     var text = typeof response === 'string' ? response : (response.message?.content || response.text || String(response));
     out.className = 'ai-output on';
     out.innerHTML = formatMarkdown(text);
