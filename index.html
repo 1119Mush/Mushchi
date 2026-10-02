@@ -2735,7 +2735,7 @@ async function aiGenerate(){
   + ']';
 
   try{
-    var response = await puter.ai.chat(prompt, { model: 'z-ai/glm-5.2:free' });
+    var response = await puter.ai.chat(prompt, { model:'z-ai/glm-5.2'});
     var text = typeof response === 'string' ? response : (response.message?.content || response.text || String(response));
 
     // 嘗試解析 JSON
@@ -3006,7 +3006,7 @@ async function aiAnalyze(){
     + '要求：語氣親切、專業，像補習老師對學生講話。用 Markdown 格式，條理清晰。';
 
   try{
-    var response = await puter.ai.chat(prompt, { model: 'z-ai/glm-5.2:free' });
+    var response = await puter.ai.chat(prompt, { model: 'z-ai/glm-5.2' });
     var text = typeof response === 'string' ? response : (response.message?.content || response.text || String(response));
     out.className = 'ai-output on';
     out.innerHTML = formatMarkdown(text);
