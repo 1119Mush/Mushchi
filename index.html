@@ -185,7 +185,28 @@ nav.tabs button.on{background:#fff;color:var(--cinnabar);box-shadow:var(--shadow
 .weakness-card .w-stat{font-size:12.5px;color:var(--ink2);line-height:1.8;}
 .weakness-card .w-stat b{color:var(--cinnabar);font-size:15px;}
 .ai-loading{display:inline-block;width:14px;height:14px;border:2px solid #E6DCCB;border-top-color:var(--cinnabar);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:6px;}
-@keyframes spin{to{transform:rotate(360deg);}}
+ @keyframes spin{to{transform:rotate(360deg);}}
+/* ===== AI 長答題輸入區 ===== */
+.ai-lq-area{margin-top:12px;}
+.ai-lq-area textarea{
+  width:100%;min-height:110px;resize:vertical;
+  border:1px solid var(--line);border-radius:9px;
+  padding:11px 14px;font-family:inherit;font-size:13.5px;line-height:1.9;
+  background:#FCFAF5;color:var(--ink);outline:none;transition:.16s;
+}
+.ai-lq-area textarea:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(201,169,110,.12);}
+.ai-lq-area .lq-footer{display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap;}
+.ai-lq-area .lq-wordcount{font-size:11.5px;color:#A2967F;margin-left:auto;}
+.ai-lq-feedback{
+  margin-top:14px;padding:16px 18px;background:#F8FBF9;
+  border-left:4px solid var(--jade);border-radius:0 10px 10px 0;
+  font-size:13.5px;line-height:1.9;color:#3A4A44;display:none;
+}
+.ai-lq-feedback.on{display:block;}
+.ai-lq-feedback .fb-title{font-size:13px;color:#2E7A45;font-weight:700;margin-bottom:8px;letter-spacing:1px;}
+.ai-lq-feedback .fb-score{font-size:22px;font-weight:700;color:var(--cinnabar);font-family:"Kaiti",serif;margin-bottom:10px;}
+.ai-lq-feedback .fb-section{margin-bottom:10px;}
+.ai-lq-feedback .fb-section b{color:#2E7A45;}
 </style>
 </head>
 <body>
@@ -2747,10 +2768,23 @@ function renderAiQuestions(questions, out){
   var html = '';
   for(var i=0;i<questions.length;i++){
     var q = questions[i];
-    html += '<div class="ai-q-card" data-idx="' + i + '">';
-    html += '<div class="q-title">第 ' + (i+1) + ' 題 · ' + (q.type||'') + ' · ' + (q.chapter||'') + ' · ' + (q.level||'') + '</div>';
+    var isLQ = !q.options || q.options.length === 0;
+
+    html += '<div class="ai-q-card" data-idx="' + i + '" data-type="' + (isLQ ? 'LQ' : 'MC') + '">';
+    html += '<div class="q-title">第 ' + (i+1) + ' 題 · ' + esc(q.type||'') + ' · ' + esc(q.chapter||'') + ' · ' + esc(q.level||'') + (q.marks ? ' · ' + esc(q.marks) : '') + '</div>';
     html += '<div class="q-text">' + esc(q.question) + '</div>';
-    if(q.options && q.options.length){
+
+    if(isLQ){
+      // 長答題：顯示輸入區
+      html += '<div class="ai-lq-area">';
+      html += '<textarea placeholder="請在此輸入你嘅答案...（建議 150-300 字）" oninput="aiLQCount(this)"></textarea>';
+      html += '<div class="lq-footer">';
+      html += '<button class="ai-btn" onclick="aiSubmitLQ(this, ' + i + ')">📝 提交答案，AI 批改</button>';
+      html += '<span class="lq-wordcount">0 字</span>';
+      html += '</div>';
+      html += '</div>';
+    } else {
+      // 選擇題：顯示選項
       html += '<div class="q-options">';
       for(var j=0;j<q.options.length;j++){
         var letter = 'ABCD'[j];
@@ -2758,10 +2792,117 @@ function renderAiQuestions(questions, out){
       }
       html += '</div>';
     }
-    html += '<div class="q-answer"><b style="color:#C0392B;">正確答案：' + esc(q.answer) + '</b><br>' + esc(q.explanation).replace(/\n/g,'<br>') + '</div>';
+
+    // 答案區
+    html += '<div class="q-answer"' + (isLQ ? ' style="display:none"' : '') + '><b style="color:#C0392B;">答案：' + esc(q.answer) + '</b><br>' + esc(q.explanation).replace(/\n/g,'<br>') + '</div>';
+
+    // 長答題嘅 AI 批改區
+    if(isLQ){
+      html += '<div class="ai-lq-feedback"></div>';
+    }
+
     html += '</div>';
   }
   out.innerHTML = html;
+}
+
+/* 長答字數統計 */
+function aiLQCount(textarea){
+  var len = textarea.value.replace(/\s/g,'').length;
+  var span = textarea.parentNode.querySelector('.lq-wordcount');
+  if(span) span.textContent = len + ' 字';
+}
+
+/* 提交長答，AI 批改 */
+async function aiSubmitLQ(btn, idx){
+  if(typeof puter === 'undefined'){
+    alert('AI 服務未載入，請重新整理頁面。');
+    return;
+  }
+
+  var card = btn.closest('.ai-q-card');
+  var textarea = card.querySelector('.ai-lq-area textarea');
+  var answer = textarea.value.trim();
+
+  if(answer.length < 20){
+    alert('答案太短，請至少輸入 20 字。');
+    return;
+  }
+
+  var question = card.querySelector('.q-text').textContent;
+  var title = card.querySelector('.q-title').textContent;
+  var standardAnswer = card.querySelector('.q-answer').textContent.replace('答案：','').trim();
+  var feedback = card.querySelector('.ai-lq-feedback');
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="ai-loading"></span>AI 批改中...';
+  feedback.className = 'ai-lq-feedback on';
+  feedback.innerHTML = '<div class="fb-title">🤖 AI 正在根據 DSE 評分標準批改...</div>';
+
+  var prompt = '你係香港考評局DSE中國語文科卷一甲部嘅資深評卷員，熟悉DSE評分標準。\n\n'
+    + '【題目】' + question + '\n\n'
+    + '【題目資訊】' + title + '\n\n'
+    + '【參考答案】' + standardAnswer + '\n\n'
+    + '【學生答案】' + answer + '\n\n'
+    + '請根據DSE評分標準批改學生答案，用繁體中文（香港），必須返回以下JSON格式：\n'
+    + '{\n'
+    + '  "score": "分數（例如：4/6）",\n'
+    + '  "percentage": "得分百分比（數字，例如：67）",\n'
+    + '  "strengths": "學生答案嘅優點（1-3點，具體引用學生原文）",\n'
+    + '  "weaknesses": "學生答案嘅不足（1-3點，具體指出問題）",\n'
+    + '  "improved": "改善建議（具體可行嘅行動）",\n'
+    + '  "modelAnswer": "示範答案（根據DSE標準嘅5**級答案，150-250字）",\n'
+    + '  "keyPoints": "得分關鍵（學生下次作答要注意嘅3點）"\n'
+    + '}\n\n'
+    + '評分要求：\n'
+    + '1. 嚴格按照DSE評分標準，唔好過度寬鬆。\n'
+    + '2. 必須引用學生原文具體字句作評價依據。\n'
+    + '3. 改善建議要具體可行，唔好空泛。\n'
+    + '4. 示範答案必須達到5**水平，引用原文具體字句。\n'
+    + '5. 只返回JSON，不要有任何其他文字。';
+
+  try{
+    var models = ['z-ai/glm-5.2:free', 'qwen/qwen3-30b-a3b:free', 'google/gemini-2.5-flash'];
+    var response = null;
+    for(var mi=0; mi<models.length; mi++){
+      try{
+        response = await puter.ai.chat(prompt, { model: models[mi] });
+        if(response) break;
+      }catch(e){ console.warn('模型失敗：' + models[mi]); }
+    }
+
+    var text = typeof response === 'string' ? response : (response.message?.content || response.text || String(response));
+    var jsonMatch = text.match(/\{[\s\S]*\}/);
+    var result = null;
+    if(jsonMatch){
+      try{ result = JSON.parse(jsonMatch[0]); }catch(e){}
+    }
+
+    if(result){
+      var pct = parseInt(result.percentage) || 0;
+      var color = pct >= 80 ? '#2E7A45' : (pct >= 60 ? '#C9A96E' : '#C0392B');
+
+      feedback.innerHTML =
+        '<div class="fb-title">📊 AI 批改報告</div>'
+        + '<div class="fb-score" style="color:' + color + ';">' + esc(result.score) + ' <span style="font-size:14px;color:#A2967F;">（' + pct + '%）</span></div>'
+        + '<div class="fb-section"><b>✅ 優點</b><br>' + esc(result.strengths).replace(/\n/g,'<br>') + '</div>'
+        + '<div class="fb-section"><b>⚠️ 不足</b><br>' + esc(result.weaknesses).replace(/\n/g,'<br>') + '</div>'
+        + '<div class="fb-section"><b>💡 改善建議</b><br>' + esc(result.improved).replace(/\n/g,'<br>') + '</div>'
+        + '<div class="fb-section"><b>🎯 得分關鍵</b><br>' + esc(result.keyPoints).replace(/\n/g,'<br>') + '</div>'
+        + '<div class="fb-section" style="padding:12px 14px;background:#fff;border-radius:8px;border:1px dashed #C8E6D5;"><b>📝 5** 示範答案</b><br>' + esc(result.modelAnswer).replace(/\n/g,'<br>') + '</div>';
+
+      // 顯示標準答案
+      card.querySelector('.q-answer').style.display = 'block';
+    } else {
+      feedback.innerHTML = '<div class="fb-title">📊 AI 批改結果</div><div style="white-space:pre-wrap;">' + esc(text) + '</div>';
+    }
+  }catch(err){
+    console.error(err);
+    feedback.innerHTML = '<div class="fb-title">❌ 批改失敗</div><div>' + esc(err.message || String(err)) + '</div>';
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '📝 重新提交';
 }
 
 /* 點選答案 */
